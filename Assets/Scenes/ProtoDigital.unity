@@ -686,6 +686,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 824676984}
+    - target: {fileID: 5143699630978995426, guid: 1afa677b4284ba44f87440fcd382fe84, type: 3}
+      propertyPath: decreaseValue
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5143699630978995426, guid: 1afa677b4284ba44f87440fcd382fe84, type: 3}
+      propertyPath: increaseValue
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 5153238107931210476, guid: 1afa677b4284ba44f87440fcd382fe84, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -785,6 +793,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7716128151173582067, guid: b5b7576857eb9ab47aea8e73354ab3ef, type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7716128151173582067, guid: b5b7576857eb9ab47aea8e73354ab3ef, type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8981950365209746900, guid: b5b7576857eb9ab47aea8e73354ab3ef, type: 3}

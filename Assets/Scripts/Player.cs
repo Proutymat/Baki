@@ -3,14 +3,22 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [Header("Player Movement")]
+    [SerializeField] private bool isMoving;
     [SerializeField] private float speed;
     [SerializeField] private Vector3 currentDirection;
 
     private void Start()
     {
+        isMoving = false;
         currentDirection = transform.forward;
     }
 
+    public void SetIsMoving(bool isMoving)
+    {
+        this.isMoving = isMoving;
+    }
+    
     public void ChangeSpeed(int speed)
     {
         this.speed = speed;
@@ -30,6 +38,7 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        this.transform.Translate(currentDirection * this.speed);
+        if (isMoving)
+            this.transform.Translate(currentDirection * this.speed);
     }
 }

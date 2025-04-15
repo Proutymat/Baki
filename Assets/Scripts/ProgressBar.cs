@@ -10,14 +10,13 @@ public class ProgressBar : MonoBehaviour
     [SerializeField] private float minimum = 0;
     [SerializeField] private float maximum;
     [SerializeField] private float current;
-    
-    [SerializeField] private Slider increaseSlider;
-    [SerializeField] private Slider decreaseSlider;
-    [SerializeField] private TextMeshProUGUI increaseText;
-    [SerializeField] private TextMeshProUGUI decreaseText;
+
+    [SerializeField] private float increaseValue;
+    [SerializeField] private float decreaseValue;
     
     private float _timer;
     private AudioSource _audioSource;
+    private Player _player;
 
     private void Start()
     {
@@ -28,9 +27,9 @@ public class ProgressBar : MonoBehaviour
         // Get the AudioSource component
         _audioSource = GetComponent<AudioSource>();
         
-        // Set the initial values of the sliders
-        increaseSlider.value = 0.1f;
-        decreaseSlider.value = 0.1f;
+        // Get the script of the Player object
+        _player = GameObject.Find("Player").GetComponent<Player>();
+        
     }
     
     private void Update()
@@ -39,7 +38,7 @@ public class ProgressBar : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.UpArrow) ||
             Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            current += increaseSlider.value;
+            current += increaseValue;
         }
         
         // Reset progress bar
@@ -47,10 +46,6 @@ public class ProgressBar : MonoBehaviour
         {
             current = 0;
         }
-        
-        // Update UI text
-        increaseText.text =  "+" + Math.Round(increaseSlider.value)  + "%";
-        decreaseText.text = "-" + Math.Round(decreaseSlider.value) + "% / s";
     }
 
     void FixedUpdate()
@@ -60,7 +55,7 @@ public class ProgressBar : MonoBehaviour
         if (_timer <= 0)
         {
             _timer = 0.001F;
-            current -= decreaseSlider.value / 100;
+            current -= decreaseValue / 100;
         }
         
         current = current < minimum ? minimum : current > maximum ? maximum : current; // Clamp 'current' values to min and max
@@ -69,6 +64,7 @@ public class ProgressBar : MonoBehaviour
         {
             current = 0;
             _audioSource.Play();
+            _player.SetIsMoving(false);
         }
 
     }
