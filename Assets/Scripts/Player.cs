@@ -18,6 +18,11 @@ public class Player : MonoBehaviour
     {
         this.isMoving = isMoving;
     }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        SetIsMoving(false);
+    }
     
     public void ChangeSpeed(int speed)
     {
