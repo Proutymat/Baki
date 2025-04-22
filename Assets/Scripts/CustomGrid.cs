@@ -19,6 +19,7 @@ public class CustomGrid : MonoBehaviour
     
     private List<Cell> _grounds = new List<Cell>();
     private List<Cell> _walls = new List<Cell>();
+    private List<Cell> _others = new List<Cell>();
     private List<int> _wallsIndex;
 
     private int _xStart;
@@ -52,6 +53,16 @@ public class CustomGrid : MonoBehaviour
         }
         
         _walls.Clear();
+        
+        // Clear others
+        foreach (Cell cell in _others)
+        {
+            if (Application.isPlaying)
+                Destroy(cell.gameObject);
+            else
+                DestroyImmediate(cell.gameObject);
+        }
+        _others.Clear();
     }
     
     [Button]
@@ -96,6 +107,7 @@ public class CustomGrid : MonoBehaviour
                     startObject.transform.parent = this.transform;
                     startObject.transform.localScale = new Vector3(_cellSize, _cellSize, _cellSize);
                     startCell.Init(x, _cellSize, z, _cellSize, _materialStart, _mesh, 3);
+                    _others.Add(startCell);
                 }
             }
         }
