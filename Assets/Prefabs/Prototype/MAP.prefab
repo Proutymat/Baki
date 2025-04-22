@@ -50,4 +50,6 @@ MonoBehaviour:
   _mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   _materialGround: {fileID: 2100000, guid: 1817074494fe202448ef2446e24ec132, type: 2}
   _materialWall: {fileID: 2100000, guid: 9449ecd54e41c504a875ba39dda883ab, type: 2}
+  _materialStart: {fileID: 2100000, guid: 06cd370c485aa094397405fa1b4fd764, type: 2}
   _drawGizmos: 1
+  _mapFileName: 

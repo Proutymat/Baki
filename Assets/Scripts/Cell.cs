@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class Cell : MonoBehaviour
 {
-    [SerializeField] private GameObject _placedObject;
-    
-    public void Init(float x, float y, float z, float cellSize, Material material, Mesh mesh)
+    public void Init(float x, float y, float z, float cellSize, Material material, Mesh mesh, int type)
     {
         transform.position = new Vector3(x * cellSize, y - cellSize / 2, z * cellSize);
         
@@ -22,7 +20,9 @@ public class Cell : MonoBehaviour
         }
 
         // Create the collider if the cell is a wall
-        if (y != 0)
+        if (type == 1)
             gameObject.AddComponent<BoxCollider>();
+        else if (type == 3)
+            gameObject.tag = "PlayerStart";
     }
 }
