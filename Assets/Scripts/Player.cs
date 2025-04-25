@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     {
         isMoving = false;
         timer = 0f;
-        gridCellSize = FindFirstObjectByType<CustomGrid>().transform.GetChild(0).localScale.x;
+        gridCellSize = FindFirstObjectByType<CustomGrid>().transform.GetChild(1).localScale.x;
         currentDirection = transform.forward * gridCellSize;
 
         Vector3 startPos = GameObject.FindGameObjectWithTag("PlayerStart").transform.position;
@@ -29,8 +29,16 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Wall hit");
-        this.transform.position -= currentDirection;
+        if (other.tag == "Wall")
+        {
+            Debug.Log("Wall hit");
+            this.transform.position -= currentDirection;
+        }
+        else if (other.tag == "Landmark")
+        {
+            Debug.Log("Landmark reached");
+            Destroy(other.gameObject);
+        }
         SetIsMoving(false);
     }
 

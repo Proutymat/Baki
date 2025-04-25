@@ -5,11 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="73781b9b-5c78-4d1f-a1a2-b07d1229386b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Baki/.idea/.name" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Baki/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Baki/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Prototype/MAP.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Prototype/MAP.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/ProtoDigital.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ProtoDigital.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Cell.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Cell.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/CustomGrid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CustomGrid.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +35,7 @@
 }</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scriptables/Question.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
@@ -123,7 +126,10 @@
       <workItem from="1744899887372" duration="5277000" />
       <workItem from="1744987471036" duration="4262000" />
       <workItem from="1745277661969" duration="14468000" />
-      <workItem from="1745322712538" duration="381000" />
+      <workItem from="1745322712538" duration="1888000" />
+      <workItem from="1745411606978" duration="71000" />
+      <workItem from="1745411733767" duration="11077000" />
+      <workItem from="1745576597690" duration="5601000" />
     </task>
     <servers />
   </component>

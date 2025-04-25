@@ -44,12 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28309c96659cc1a4c9ec555cf2bb1059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cellSize: 7
+  _cellSize: 5
   _xSize: 10
   _ySize: 10
+  _landmarkSize: 3
   _mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
-  _materialGround: {fileID: 2100000, guid: 1817074494fe202448ef2446e24ec132, type: 2}
-  _materialWall: {fileID: 2100000, guid: 9449ecd54e41c504a875ba39dda883ab, type: 2}
-  _materialStart: {fileID: 2100000, guid: 06cd370c485aa094397405fa1b4fd764, type: 2}
-  _drawGizmos: 1
+  _drawGizmos: 0
   _mapFileName: 

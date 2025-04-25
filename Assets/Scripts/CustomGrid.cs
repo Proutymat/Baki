@@ -10,21 +10,16 @@ public class CustomGrid : MonoBehaviour
     [SerializeField] private float _cellSize = 1f;
     [SerializeField] private int _xSize = 10;
     [SerializeField] private int _ySize = 10;
+    [SerializeField] private int _landmarkSize = 3;
     [SerializeField] private Mesh _mesh;
-    [SerializeField] private Material _materialGround;
-    [SerializeField] private Material _materialWall;
-    [SerializeField] private Material _materialStart;
     [SerializeField] private bool _drawGizmos = true;
     [SerializeField] private string _mapFileName;
     
-    private List<Cell> _grounds = new List<Cell>();
-    private List<Cell> _walls = new List<Cell>();
-    private List<Cell> _others = new List<Cell>();
     private List<int> _wallsIndex;
 
     private int _xStart;
     private int _zStart;
-    
+        
     public float CellSize { get { return _cellSize; } }
     public int XSize { get { return _xSize; } }
     public int YSize { get { return _ySize; } }
@@ -32,85 +27,71 @@ public class CustomGrid : MonoBehaviour
     [Button]
     private void ClearGrid()
     {
-        // Clear grounds
-        foreach (Cell cell in _grounds)
+        // Destroy all child objects
+        Transform[] children = new Transform[transform.childCount];
+        for (int i = 0; i < children.Length; i++)
+        {
+            children[i] = transform.GetChild(i);
+        }
+
+        foreach (Transform child in children)
         {
             if (Application.isPlaying)
-                Destroy(cell.gameObject);
+                Destroy(child.gameObject);
             else
-                DestroyImmediate(cell.gameObject);
+                DestroyImmediate(child.gameObject);
         }
         
-        _grounds.Clear();
-        
-        // Clear walls
-        foreach (Cell cell in _walls)
-        {
-            if (Application.isPlaying)
-                Destroy(cell.gameObject);
-            else
-                DestroyImmediate(cell.gameObject);
-        }
-        
-        _walls.Clear();
-        
-        // Clear others
-        foreach (Cell cell in _others)
-        {
-            if (Application.isPlaying)
-                Destroy(cell.gameObject);
-            else
-                DestroyImmediate(cell.gameObject);
-        }
-        _others.Clear();
+        Debug.Log("Grid cleared.");
     }
     
     [Button]
     void GenerateGrid()
     {
-         LoadCSV();
+         if (LoadCSV() == 0)
+         {
+             Debug.LogError("Grid generation failed. Check the CSV file.");
+             return;
+         }
          ClearGrid();
          
          _xSize = Mathf.Clamp(_xSize, 1, 150);
          _ySize = Mathf.Clamp(_ySize, 1, 150);
          
-        
-         int size = _wallsIndex.Count;
+        // Ground
+         GameObject ground = new GameObject("Ground");
+         Cell groundCell = ground.AddComponent<Cell>();
+         ground.transform.parent = this.transform;
+         ground.transform.localScale = new Vector3(_cellSize * _ySize, _cellSize, _cellSize * _xSize);
+         groundCell.Init(0 + _ySize / 2f, 0, 0 + _xSize / 2f, _cellSize, _mesh, 2);
          
         // Generate grid
         for (int x = 0; x < _ySize; x++)
         {
             for (int z = 0; z < _xSize; z++)
             {
-                // GROUNDS
+                if (_wallsIndex[x * _xSize + z] == 2) continue; // Skip ground cells
+                
                 GameObject cellObject = new GameObject("Cell(" + x + "," + z + ")");
                 Cell cell = cellObject.AddComponent<Cell>();
                 cellObject.transform.parent = this.transform;
-                cellObject.transform.localScale = new Vector3(_cellSize, _cellSize, _cellSize);
-                cell.Init(x, 0, z, _cellSize, _materialGround, _mesh, 0);
-                _grounds.Add(cell);
                 
-                // WALLS
-                if (_wallsIndex[x * _xSize + z] == 1)
+                // Landmarks
+                if (_wallsIndex[x * _xSize + z] >= 4)
                 {
-                    GameObject wallObject = new GameObject("Wall(" + x + "," + z + ")");
-                    Cell wallCell = wallObject.AddComponent<Cell>();
-                    wallObject.transform.parent = this.transform;
-                    wallObject.transform.localScale = new Vector3(_cellSize, _cellSize, _cellSize);
-                    wallCell.Init(x, _cellSize, z, _cellSize, _materialWall, _mesh, 1);
-                    _walls.Add(wallCell);
+                    cellObject.transform.localScale = new Vector3(_cellSize * _landmarkSize, _cellSize, _cellSize * _landmarkSize);
                 }
-                else if (_wallsIndex[x * _xSize + z] == 3)
+                // Walls and start
+                else
                 {
-                    GameObject startObject = new GameObject("PlayerStart(" + x + "," + z + ")");
-                    Cell startCell = startObject.AddComponent<Cell>();
-                    startObject.transform.parent = this.transform;
-                    startObject.transform.localScale = new Vector3(_cellSize, _cellSize, _cellSize);
-                    startCell.Init(x, _cellSize, z, _cellSize, _materialStart, _mesh, 3);
-                    _others.Add(startCell);
+                    cellObject.transform.localScale = new Vector3(_cellSize, _cellSize, _cellSize);
                 }
+                
+                cell.Init(x, _cellSize, z, _cellSize, _mesh, _wallsIndex[x * _xSize + z]);
             }
         }
+        
+        Debug.Log("Grid successfully generated !");
     }
     
     void OnDrawGizmos()
@@ -140,15 +121,13 @@ public class CustomGrid : MonoBehaviour
 
    
     
-    private void LoadCSV()
+    private int LoadCSV()
     {
-        
-        Debug.Log("Loading CSV file: " + _mapFileName);
         TextAsset csvFile = Resources.Load<TextAsset>(_mapFileName);
         if (csvFile == null)
         {
             Debug.LogError($"CSV file '{_mapFileName}.csv' not found in Resources folder.");
-            return;
+            return 0;
         }
 
         _wallsIndex = new List<int>();
@@ -170,14 +149,21 @@ public class CustomGrid : MonoBehaviour
             {
                 int mappedValue = symbol.Trim() switch
                 {
-                    "X" => 1,
-                    "." => 0,
-                    "O" => 2,
-                    "S" => 3,
+                    "S" => 1,
+                    "." => 2,
+                    "X" => 3,
+                    "A" => 4,
+                    "B" => 5,
+                    "C" => 6,
+                    "D" => 7,
+                    "E" => 8,
                     _ => 0 // Par défaut
                 };
                 _wallsIndex.Add(mappedValue);
             }
         }
+        
+        Debug.Log(_mapFileName + ".csv correctly loaded.");
+        return 1;
     }
 }

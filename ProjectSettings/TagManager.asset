@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 3
   tags:
   - PlayerStart
+  - Wall
+  - Landmark
   layers:
   - Default
   - TransparentFX
