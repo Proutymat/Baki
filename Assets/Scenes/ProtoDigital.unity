@@ -870,6 +870,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2726262682570050051, guid: b8928d16ab9a3bb4b96bd54839093f7d, type: 3}
+      propertyPath: questionsFileName
+      value: questionsCSV
+      objectReference: {fileID: 0}
     - target: {fileID: 5376118898655137962, guid: b8928d16ab9a3bb4b96bd54839093f7d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 34.46242
