@@ -1,2 +1,19 @@
 fileFormatVersion: 2
 guid: 4e79bb7c8124f3c4fa2bd30d104885a8
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - materialGround: {fileID: 2100000, guid: 1817074494fe202448ef2446e24ec132, type: 2}
+  - materialWall: {fileID: 2100000, guid: 9449ecd54e41c504a875ba39dda883ab, type: 2}
+  - materialStart: {fileID: 2100000, guid: 390fe1e55a9d073498d4dbb4dac2719c, type: 2}
+  - materialLandmarksA: {instanceID: 0}
+  - materialLandmarksB: {instanceID: 0}
+  - materialLandmarksC: {instanceID: 0}
+  - materialLandmarksD: {instanceID: 0}
+  - materialLandmarksE: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

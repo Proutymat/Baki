@@ -124,31 +124,36 @@ public class GameManager : MonoBehaviour
         // Update stats
         if (_player.IsMoving)
             timeSpentMoving += Time.deltaTime;
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            _questions[0].nbQuestionAsked++;
+        }
     }
 
-    [Button]
+#if UNITY_EDITOR
+    
+    [DisableInPlayMode][Button]
     private void ClearQuestionsFolder()
     {
-        #if UNITY_EDITOR
-            string folderPath = "Assets/Scriptables/Questions";
-    
-            // If the folder doesn't exist, create it
-            if (!UnityEditor.AssetDatabase.IsValidFolder(folderPath))
-            {
-                UnityEditor.AssetDatabase.CreateFolder("Assets/Scriptables", "Questions");
-            }
-    
-            // Delete all existing Question assets in the folder
-            string[] guids = UnityEditor.AssetDatabase.FindAssets("t:Question", new[] { folderPath });
-            foreach (string guid in guids)
-            {
-                string assetPath = UnityEditor.AssetDatabase.GUIDToAssetPath(guid);
-                UnityEditor.AssetDatabase.DeleteAsset(assetPath);
-            }
-        #endif
+        _questions.Clear();
+        
+        string folderPath = "Assets/Scriptables/Questions";
+        // If the folder doesn't exist, create it
+        if (!UnityEditor.AssetDatabase.IsValidFolder(folderPath))
+        {
+            UnityEditor.AssetDatabase.CreateFolder("Assets/Scriptables", "Questions");
+        }
+        // Delete all existing Question assets in the folder
+        string[] guids = UnityEditor.AssetDatabase.FindAssets("t:Question", new[] { folderPath });
+        foreach (string guid in guids)
+        {
+            string assetPath = UnityEditor.AssetDatabase.GUIDToAssetPath(guid);
+            UnityEditor.AssetDatabase.DeleteAsset(assetPath);
+        }
     }
     
-    [Button]
+    [DisableInPlayMode][Button]
     private void LoadQuestionsCSV()
     {
         ClearQuestionsFolder();
@@ -182,13 +187,14 @@ public class GameManager : MonoBehaviour
             
 
             // Sauvegarde du ScriptableObject dans le projet (dans un dossier "Assets/Resources/Questions")
-            #if UNITY_EDITOR
-                string assetPath = $"Assets/Scriptables/Questions/question_" + i + ".asset";
-                UnityEditor.AssetDatabase.CreateAsset(scriptable, assetPath);
-                UnityEditor.AssetDatabase.SaveAssets();
-            #endif
+            string assetPath = $"Assets/Scriptables/Questions/question_" + i + ".asset";
+            UnityEditor.AssetDatabase.CreateAsset(scriptable, assetPath);
+            UnityEditor.AssetDatabase.SaveAssets();
+            
+            _questions.Add(scriptable);
         }
 
         Debug.Log("Questions imported successfully!");
     }
+#endif
 }
