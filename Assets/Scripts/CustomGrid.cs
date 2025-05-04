@@ -7,16 +7,19 @@ using Sirenix.OdinInspector;
 
 public class CustomGrid : MonoBehaviour
 {
-    [SerializeField] private float _cellSize = 1f;
-    [SerializeField] private int _xSize = 10;
-    [SerializeField] private int _ySize = 10;
-    [SerializeField] private int _landmarkSize = 3;
+    [Header("Assigned Objects")]
     [SerializeField] private Mesh _mesh;
+    
+    [Header("Grid Settings")]
+    [SerializeField] private float _cellSize = 1f;
+    [SerializeField] private int _landmarkSize = 3;
     [SerializeField] private bool _drawGizmos = true;
     [SerializeField] private string _mapFileName;
     
     private List<int> _wallsIndex;
 
+    private int _xSize = 10;
+    private int _ySize = 10;
     private int _xStart;
     private int _zStart;
         
@@ -24,6 +27,7 @@ public class CustomGrid : MonoBehaviour
     public int XSize { get { return _xSize; } }
     public int YSize { get { return _ySize; } }
 
+    
     [Button]
     private void ClearGrid()
     {
@@ -123,6 +127,8 @@ public class CustomGrid : MonoBehaviour
     
     private int LoadCSV()
     {
+        bool hasStartCell = false;
+        
         TextAsset csvFile = Resources.Load<TextAsset>(_mapFileName);
         if (csvFile == null)
         {
@@ -160,7 +166,16 @@ public class CustomGrid : MonoBehaviour
                     _ => 0 // Par défaut
                 };
                 _wallsIndex.Add(mappedValue);
+                
+                if (mappedValue == 1)
+                    hasStartCell = true;
             }
+        }
+        
+        if (!hasStartCell)
+        {
+            Debug.LogError("No start cell found in the CSV file.");
+            return 0;
         }
         
         Debug.Log(_mapFileName + ".csv correctly loaded.");
