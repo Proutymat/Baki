@@ -9,12 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
-  m_Name: question_3
+  m_Script: {fileID: 11500000, guid: 25fcf42d6da222a42af08651a160d415, type: 3}
+  m_Name: value_1
   m_EditorClassIdentifier: 
-  question: Mourir aujourd'hui ou mourir demain ?
-  answers:
-  - Aujourd'hui
-  - Demain
-  type: 2
-  landmarkType: 0
+  valueName: Education
+  law1: Lorem ipsum
+  law2: Lorem ipsum
+  law3: Lorem ipsum
+  law4: Lorem ipsum
+  law5: Lorem ipsum
+  law6: Lorem ipsum
+  law7: "Lorem ipsum\r"

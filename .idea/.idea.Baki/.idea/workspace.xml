@@ -5,27 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="73781b9b-5c78-4d1f-a1a2-b07d1229386b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Baki/.idea/.name" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Baki/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Baki/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/mac/lib/fmodstudio.bundle/Contents/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/mac/lib/fmodstudio.bundle/Contents/Info.plist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/mac/lib/fmodstudioL.bundle/Contents/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/mac/lib/fmodstudioL.bundle/Contents/Info.plist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/mac/lib/resonanceaudio.bundle/Contents/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/mac/lib/resonanceaudio.bundle/Contents/Info.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/questionsCSV.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/questionsCSV.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/questionsCSV.csv.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/questionsCSV.csv.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/ProtoDigital.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ProtoDigital.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Laws.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Question.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Question.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Questions/question_1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Questions/question_1.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Questions/question_1.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Questions/question_1.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Questions/question_2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Questions/question_2.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Questions/question_2.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Questions/question_2.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Questions/question_3.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Questions/question_3.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Questions/question_3.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Questions/question_3.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Questions/question_4.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Questions/question_4.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Questions/question_4.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Questions/question_4.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Questions/question_5.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Questions/question_5.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Questions/question_5.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Questions/question_5.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Questions/question_6.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Questions/question_6.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Questions/question_6.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Questions/question_6.asset.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Questions.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Questions/question_1.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Questions/question_1.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Questions/question_2.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Questions/question_2.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Questions/question_3.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Questions/question_3.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Questions/question_4.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Questions/question_4.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Questions/question_5.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Questions/question_5.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Questions/question_6.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Questions/question_6.asset.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +49,9 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scriptables/Question.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Value.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
@@ -158,13 +159,15 @@
       <workItem from="1745764436187" duration="486000" />
       <workItem from="1745765042552" duration="6498000" />
       <workItem from="1745929388733" duration="244000" />
-      <workItem from="1746019606869" duration="4771000" />
+      <workItem from="1746019606869" duration="5602000" />
+      <workItem from="1746620477530" duration="19544000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityProjectDiscoverer">
     <option name="hasUnityReference" value="true" />

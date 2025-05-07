@@ -1,7 +1,7 @@
-Question;Réponse 1;Réponse 2;Type 
-Tu préfères le jour ou la nuit ?;Jour;Nuit;1
-Devenir sourd ou devenir muet ?;Sourd;Muet;2
-Mourir aujourd'hui ou mourir demain ?;Aujourd'hui;Demain;2
-Justice punitive ou réhabilitative ?;Punitive;Réhabillitative;2
-Sauver un adulte ou un bébé ?;Adulte;Bébé;2
-Si c'était possible, j'aimerais acquérir tout le savoir du monde;Oui;Non;3
+Question;Valeur;Réponse 1;Réponse 1 incrément;Réponse 2;Réponse 2 incrément
+Tu préfères le jour ou la nuit ?;sansCategorie;Jour;5;Nuit;-5
+Devenir sourd ou devenir muet ?;valeur1;Sourd;5;Muet;-5
+Mourir aujourd'hui ou mourir demain ?;valeur2;Aujourd'hui;5;Demain;-5
+Justice punitive ou réhabilitative ?;valeur3;Punitive;5;Réhabillitative;-5
+Sauver un adulte ou un bébé ?;valeur4;Adulte;5;Bébé;-5
+Si c'était possible, j'aimerais acquérir tout le savoir du monde;sansCategorie;Oui;5;Non;-5
