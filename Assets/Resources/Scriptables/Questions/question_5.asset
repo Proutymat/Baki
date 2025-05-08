@@ -10,11 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
-  m_Name: question_2
+  m_Name: question_5
   m_EditorClassIdentifier: 
-  question: Devenir sourd ou devenir muet ?
-  answers:
-  - Sourd
-  - Muet
-  type: 2
-  landmarkType: 0
+  question: "Sauver un adulte ou un b\xE9b\xE9 ?"
+  answer1: Adulte
+  answer2: "B\xE9b\xE9"
+  answer1Increment: 5
+  answer2Increment: -5
+  type: 0
+  nbQuestionAsked: 0
+  nbAnswer1: 0
+  nbAnswer2: 0
+  timeSpentAnswering: 0

@@ -2,9 +2,10 @@ using System;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
+using Sirenix.Serialization;
 
 
-public class GameManager : MonoBehaviour
+public class GameManager : SerializedMonoBehaviour
 {
     [Header("Materials")] public Material materialGround;
     public Material materialWall;
@@ -15,16 +16,30 @@ public class GameManager : MonoBehaviour
     public Material materialLandmarksD;
     public Material materialLandmarksE;
 
-    [Header("Game Settings")] public float gameTime = 600;
+    [Header("Game Settings")]
+    [SerializeField] private float gameTime = 600;
     [SerializeField] private string questionsFileName;
-
-
+    [SerializeField] private string valuesFileName;
+    
     private static GameManager _instance;
     private Player _player;
-    
-    private List<Question> _questions;
 
-    // STATS
+    [SerializeField] private bool _debug = false;
+    
+    [Header("Static lists (not used in game)")]
+    [SerializeField, ShowIf("_debug")] private List<Question> _questionsNoCategory;
+    [SerializeField, ShowIf("_debug")] private List<Question> _questionsValue1;
+    [SerializeField, ShowIf("_debug")] private List<Question> _questionsValue2;
+    [SerializeField, ShowIf("_debug")] private List<Question> _questionsValue3;
+    [SerializeField, ShowIf("_debug")] private List<Question> _questionsValue4;
+    [SerializeField, ShowIf("_debug")] private List<Value> _values;
+    
+    [Header("Working lists")]
+    [SerializeField, ShowIf("_debug")] private List<List<Question>> _questions;
+    [SerializeField, ShowIf("_debug")] private Question currentQuestion;
+    [SerializeField, ShowIf("_debug")] private List<LawCursor> _lawCursors;
+
+    // Stats
     private int nbUnitTraveled;
     private int nbLandmarksReached;
     private int nbWallsHit;
@@ -86,30 +101,40 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Start()
+    private void InitializeGame()
     {
-        _player = FindFirstObjectByType<Player>();
-
         // Initialize game settings
         nbUnitTraveled = 0;
         nbLandmarksReached = 0;
         nbWallsHit = 0;
         nbDirectionChanges = 0;
         
-        // Load questions
-        _questions = new List<Question>();
-        string[] guids = UnityEditor.AssetDatabase.FindAssets("t:Question", new[] { "Assets/Scriptables/Questions" });
-        foreach (string guid in guids)
+        // Load questions in working lists
+        _questions = new List<List<Question>>();
+        _questions.Add(new List<Question>(_questionsNoCategory));
+        _questions.Add(new List<Question>(_questionsValue1));
+        _questions.Add(new List<Question>(_questionsValue2));
+        _questions.Add(new List<Question>(_questionsValue3));
+        _questions.Add(new List<Question>(_questionsValue4));
+        
+        _lawCursors.Clear();
+        
+        // Create law cursors
+        _lawCursors = new List<LawCursor>();
+        for (int i = 0; i < _values.Count; i++)
         {
-            string assetPath = UnityEditor.AssetDatabase.GUIDToAssetPath(guid);
-            Question question = UnityEditor.AssetDatabase.LoadAssetAtPath<Question>(assetPath);
-            if (question != null)
-            {
-                _questions.Add(question);
-            }
+            LawCursor lawCursor = new LawCursor(_values[i]);
+            _lawCursors.Add(lawCursor);
         }
-        Debug.Log("Questions loaded: " + _questions.Count);
     }
+    
+    private void Start()
+    {
+        _player = FindFirstObjectByType<Player>();
+        _questions = new List<List<Question>>();
+        _lawCursors = new List<LawCursor>();
+        InitializeGame();
+    } 
 
     private void Update()
     {
@@ -127,22 +152,133 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            _questions[0].nbQuestionAsked++;
+            ChooseNextQuestion();
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            InitializeGame();
         }
     }
 
-#if UNITY_EDITOR
-    
-    [DisableInPlayMode][Button]
-    private void ClearQuestionsFolder()
+    private void AnsweringQuestion(int valueIncrement)
     {
-        _questions.Clear();
+        if (currentQuestion.type == 0) return; // Skip if no category
         
-        string folderPath = "Assets/Scriptables/Questions";
+        _lawCursors[currentQuestion.type - 1].IncrementLawCursorValue(valueIncrement);
+    }
+
+    private void ChooseNextQuestion()
+    {
+        if (_questions.Count < 1)
+        {
+            Debug.Log("No more questions available.");
+            return;
+        }
+        
+        
+        // Choose a random number between 0 and the number of values
+        int valueIndex = UnityEngine.Random.Range(0, _questions.Count);
+        int questionIndex = UnityEngine.Random.Range(0, _questions[valueIndex].Count);
+
+        currentQuestion = _questions[valueIndex][questionIndex];
+        
+        // Remove the question from the list
+        _questions[valueIndex].RemoveAt(questionIndex);
+        if (_questions[valueIndex].Count == 0)
+            _questions.RemoveAt(valueIndex);
+        
+        AnsweringQuestion(4);
+    }
+    
+    
+    
+    // ---------------------------------
+    //      DEBUGGING AND TESTING
+    // ---------------------------------
+    
+#if UNITY_EDITOR
+
+    private void ClearValuesFolder()
+    {
+        _values.Clear();
+        
+        string folderPath = "Assets/Resources/Scriptables/Values";
         // If the folder doesn't exist, create it
         if (!UnityEditor.AssetDatabase.IsValidFolder(folderPath))
         {
-            UnityEditor.AssetDatabase.CreateFolder("Assets/Scriptables", "Questions");
+            UnityEditor.AssetDatabase.CreateFolder("Assets/Resources/Scriptables", "Values");
+        }
+        // Delete all existing Values assets in the folder
+        string[] guids = UnityEditor.AssetDatabase.FindAssets("t:Values", new[] { folderPath });
+        foreach (string guid in guids)
+        {
+            string assetPath = UnityEditor.AssetDatabase.GUIDToAssetPath(guid);
+            UnityEditor.AssetDatabase.DeleteAsset(assetPath);
+        }
+    }
+    
+    private void LoadValuesCSV()
+    {
+        ClearValuesFolder();
+        
+        // Check if the file exists
+        TextAsset csvFile = Resources.Load<TextAsset>(valuesFileName);
+        if (csvFile == null)
+        {
+            Debug.LogError($"CSV file '{valuesFileName}.csv' not found in Resources folder.");
+            return;
+        }
+
+        string[] lines = csvFile.text.Split(new[] { '\n' }, System.StringSplitOptions.RemoveEmptyEntries);
+
+
+        for (int i = 1; i < lines.Length; i++)
+        {
+            string line = lines[i];
+            string[] fields = line.Split(';');
+
+            if (fields.Length < 8)
+            {
+                Debug.LogWarning("Malformed line skipped: " + line);
+                continue;
+            }
+
+            Value scriptable = ScriptableObject.CreateInstance<Value>();
+            scriptable.valueName = fields[0];
+            scriptable.law1 = fields[1];
+            scriptable.law2 = fields[2];
+            scriptable.law3 = fields[3];
+            scriptable.law4 = fields[4];
+            scriptable.law5 = fields[5];
+            scriptable.law6 = fields[6];
+            scriptable.law7 = fields[7];
+
+
+            // Sauvegarde du ScriptableObject dans le projet (dans un dossier "Assets/Resources/Questions")
+            string assetPath = $"Assets/Resources/Scriptables/Values/value_" + i + ".asset";
+            UnityEditor.AssetDatabase.CreateAsset(scriptable, assetPath);
+            UnityEditor.AssetDatabase.SaveAssets();
+
+            _values.Add(scriptable);
+            
+            Debug.Log("Values imported successfully!");
+        }
+    }
+    
+    private void ClearQuestionsFolder()
+    {
+        _questionsValue1.Clear();
+        _questionsValue2.Clear();
+        _questionsValue3.Clear();
+        _questionsValue4.Clear();
+        _questionsNoCategory.Clear();
+        
+        string folderPath = "Assets/Resources/Scriptables/Questions";
+        // If the folder doesn't exist, create it
+        if (!UnityEditor.AssetDatabase.IsValidFolder(folderPath))
+        {
+            UnityEditor.AssetDatabase.CreateFolder("Assets/Resources/Scriptables", "Questions");
         }
         // Delete all existing Question assets in the folder
         string[] guids = UnityEditor.AssetDatabase.FindAssets("t:Question", new[] { folderPath });
@@ -153,7 +289,6 @@ public class GameManager : MonoBehaviour
         }
     }
     
-    [DisableInPlayMode][Button]
     private void LoadQuestionsCSV()
     {
         ClearQuestionsFolder();
@@ -174,7 +309,7 @@ public class GameManager : MonoBehaviour
             string line = lines[i];
             string[] fields = line.Split(';');
 
-            if (fields.Length < 4)
+            if (fields.Length < 6)
             {
                 Debug.LogWarning("Malformed line skipped: " + line);
                 continue;
@@ -182,19 +317,65 @@ public class GameManager : MonoBehaviour
 
             Question scriptable = ScriptableObject.CreateInstance<Question>();
             scriptable.question = fields[0];
-            scriptable.answers = new List<string> { fields[1], fields[2] };
-            scriptable.type = int.Parse(fields[3]);
+            scriptable.answer1 = fields[2];
+            scriptable.answer1Increment = int.Parse(fields[3]);
+            scriptable.answer2 = fields[4];
+            scriptable.answer2Increment = int.Parse(fields[5]);
             
 
             // Sauvegarde du ScriptableObject dans le projet (dans un dossier "Assets/Resources/Questions")
-            string assetPath = $"Assets/Scriptables/Questions/question_" + i + ".asset";
+            string assetPath = $"Assets/Resources/Scriptables/Questions/question_" + i + ".asset";
             UnityEditor.AssetDatabase.CreateAsset(scriptable, assetPath);
             UnityEditor.AssetDatabase.SaveAssets();
             
-            _questions.Add(scriptable);
+            // Assigning to value type
+            if (fields[1] == "sansCategorie")
+            {
+                scriptable.type = 0;
+                _questionsNoCategory.Add(scriptable);
+            }
+            else if (fields[1] == "valeur1")
+            {
+                scriptable.type = 1;
+                _questionsValue1.Add(scriptable);
+            }
+            else if (fields[1] == "valeur2")
+            {
+                scriptable.type = 2;
+                _questionsValue2.Add(scriptable);
+            }
+            else if (fields[1] == "valeur3")
+            {
+                scriptable.type = 3;
+                _questionsValue3.Add(scriptable);
+            }
+            else if (fields[1] == "valeur4")
+            {
+                scriptable.type = 4;
+                _questionsValue4.Add(scriptable);
+            }
+            else
+            {
+                Debug.LogWarning("Unknown question type: " + fields[1]);
+            }
         }
 
         Debug.Log("Questions imported successfully!");
+    }
+
+    [DisableInPlayMode]
+    [Button]
+    private void ClearScriptables()
+    {
+        ClearQuestionsFolder();
+        ClearValuesFolder();
+    }
+
+    [DisableInPlayMode][Button]
+    private void LoadCSV()
+    {
+        LoadValuesCSV();
+        LoadQuestionsCSV();
     }
 #endif
 }

@@ -5,9 +5,11 @@ using System.Collections.Generic;
 public class Question : ScriptableObject
 {
     public string question;
-    public List<string> answers;
-    public int type; // 0 = none, 1 = Tu préfères, 2 = Dilemme, 3 = Oui ou Non
-    public int landmarkType; // 0 = none, 1 = A, 2 = B, 3 = C, 4 = D, 5 = E
+    public string answer1;
+    public string answer2;
+    public int answer1Increment;
+    public int answer2Increment;
+    public int type; // 0 = No category, 1 = Value 1, 2 = Value 2, 3 = Value 3, 4 = Value 4
     
     // STATS
     public int nbQuestionAsked;
