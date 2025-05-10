@@ -17,28 +17,35 @@ public class GameManager : SerializedMonoBehaviour
     public Material materialLandmarksE;
 
     [Header("Game Settings")]
-    [SerializeField] private float gameTime = 600;
+    [SerializeField] private float gameDuration = 600;
+    [SerializeField] private int printIntervalsInPercent;
     [SerializeField] private string questionsFileName;
     [SerializeField] private string valuesFileName;
+    
     
     private static GameManager _instance;
     private Player _player;
 
-    [SerializeField] private bool _debug = false;
+    [SerializeField] private bool debug = false;
     
     [Header("Static lists (not used in game)")]
-    [SerializeField, ShowIf("_debug")] private List<Question> _questionsNoCategory;
-    [SerializeField, ShowIf("_debug")] private List<Question> _questionsValue1;
-    [SerializeField, ShowIf("_debug")] private List<Question> _questionsValue2;
-    [SerializeField, ShowIf("_debug")] private List<Question> _questionsValue3;
-    [SerializeField, ShowIf("_debug")] private List<Question> _questionsValue4;
-    [SerializeField, ShowIf("_debug")] private List<Value> _values;
+    [SerializeField, ShowIf("debug")] private List<Question> _questionsNoCategory;
+    [SerializeField, ShowIf("debug")] private List<Question> _questionsValue1;
+    [SerializeField, ShowIf("debug")] private List<Question> _questionsValue2;
+    [SerializeField, ShowIf("debug")] private List<Question> _questionsValue3;
+    [SerializeField, ShowIf("debug")] private List<Question> _questionsValue4;
+    [SerializeField, ShowIf("debug")] private List<Value> _values;
     
-    [Header("Working lists")]
-    [SerializeField, ShowIf("_debug")] private List<List<Question>> _questions;
-    [SerializeField, ShowIf("_debug")] private Question currentQuestion;
-    [SerializeField, ShowIf("_debug")] private List<LawCursor> _lawCursors;
-
+    [Header("Working values")]
+    [SerializeField, ShowIf("debug")] private List<List<Question>> _questions;
+    [SerializeField, ShowIf("debug")] private Question currentQuestion;
+    [SerializeField, ShowIf("debug")] private List<LawCursor> _lawCursors;
+    [SerializeField, ShowIf("debug")] private List<string> lawsQueue;
+    [SerializeField, ShowIf("debug")] private float gameTimer;
+    [SerializeField, ShowIf("debug")] private int lastPrintedPercent = 0;
+    private string logFilePath; // DEBUG FRESQUE
+    private bool isGameOver = false;
+    
     // Stats
     private int nbUnitTraveled;
     private int nbLandmarksReached;
@@ -103,11 +110,19 @@ public class GameManager : SerializedMonoBehaviour
 
     private void InitializeGame()
     {
-        // Initialize game settings
+        // Initialize game stats
         nbUnitTraveled = 0;
         nbLandmarksReached = 0;
         nbWallsHit = 0;
         nbDirectionChanges = 0;
+        nbButtonsPressed = 0;
+        timeSpentMoving = 0;
+        
+        // Initialize game settings
+        gameTimer = gameDuration;
+        lawsQueue = new List<string>();
+        lastPrintedPercent = 0;
+        isGameOver = false;
         
         // Load questions in working lists
         _questions = new List<List<Question>>();
@@ -126,6 +141,16 @@ public class GameManager : SerializedMonoBehaviour
             LawCursor lawCursor = new LawCursor(_values[i]);
             _lawCursors.Add(lawCursor);
         }
+        
+        
+        // DEBUG FRESQUE : Create log file
+        string folderPath = Application.dataPath + "/FresquesDebug";
+        if (!System.IO.Directory.Exists(folderPath))
+        {
+            System.IO.Directory.CreateDirectory(folderPath);
+        }
+        string timestamp = System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
+        logFilePath = $"{folderPath}/fresque{timestamp}.txt";
     }
     
     private void Start()
@@ -135,17 +160,57 @@ public class GameManager : SerializedMonoBehaviour
         _lawCursors = new List<LawCursor>();
         InitializeGame();
     } 
+    
+    private void WriteFinalStatsToFile()
+    {
+        if (string.IsNullOrEmpty(logFilePath))
+        {
+            Debug.LogError("Log file path not initialized.");
+            return;
+        }
+
+        using (System.IO.StreamWriter writer = new System.IO.StreamWriter(logFilePath, true))
+        {
+            writer.WriteLine("======== FIN DE PARTIE ========");
+            writer.WriteLine($"Temps total : {gameDuration:F2} secondes");
+            writer.WriteLine($"Temps passé en mouvement : {timeSpentMoving:F2} secondes");
+            writer.WriteLine($"Unités parcourues : {nbUnitTraveled}");
+            writer.WriteLine($"Points de repère atteints : {nbLandmarksReached}");
+            writer.WriteLine($"Murs percutés : {nbWallsHit}");
+            writer.WriteLine($"Changements de direction : {nbDirectionChanges}");
+            writer.WriteLine($"Boutons pressés : {nbButtonsPressed}");
+            writer.WriteLine("================================");
+            writer.WriteLine();
+        }
+    }
 
     private void Update()
     {
         // Update game time
-        gameTime -= Time.deltaTime;
-        if (gameTime <= 0)
+        gameTimer -= Time.deltaTime;
+        if (gameTimer <= 0)
         {
             // End game logic
-            Debug.Log("Game Over");
+            if (!isGameOver)
+            {
+                WriteFinalStatsToFile();
+                isGameOver = true;
+                Debug.Log("Game Over");
+            }
+            
         }
-
+        
+        // Update fresque
+        int percentElapsed = Mathf.FloorToInt(100 * (1 - (gameTimer / gameDuration)));
+        if (percentElapsed >= lastPrintedPercent + printIntervalsInPercent)
+        {
+            lastPrintedPercent += printIntervalsInPercent;
+            PrintLawsQueue();
+            
+            Debug.Log("" + lastPrintedPercent + "% of the game elapsed");
+        }
+        
+        
         // Update stats
         if (_player.IsMoving)
             timeSpentMoving += Time.deltaTime;
@@ -161,11 +226,35 @@ public class GameManager : SerializedMonoBehaviour
         }
     }
 
-    private void AnsweringQuestion(int valueIncrement)
+    private void PrintLawsQueue()
     {
-        if (currentQuestion.type == 0) return; // Skip if no category
+        if (string.IsNullOrEmpty(logFilePath))
+        {
+            Debug.LogError("Log file path not initialized.");
+            return;
+        }
+
+
+        // Append to file (true = append mode)
+        using (System.IO.StreamWriter writer = new System.IO.StreamWriter(logFilePath, true))
+        {
+            writer.WriteLine("------------------------");
+            writer.WriteLine($"   SALVE DE LOIS " + lastPrintedPercent);
+            writer.WriteLine("------------------------");
+            foreach (var law in lawsQueue)
+            {
+                writer.WriteLine(law);
+            }
+            writer.WriteLine();
+        }
         
-        _lawCursors[currentQuestion.type - 1].IncrementLawCursorValue(valueIncrement);
+        lawsQueue.Clear();
+    }
+
+    private string AnsweringQuestion(int valueIncrement)
+    {
+        if (currentQuestion.type == 0) return ""; // Skip if no category
+        return _lawCursors[currentQuestion.type - 1].IncrementLawCursorValue(valueIncrement);
     }
 
     private void ChooseNextQuestion()
@@ -187,8 +276,13 @@ public class GameManager : SerializedMonoBehaviour
         _questions[valueIndex].RemoveAt(questionIndex);
         if (_questions[valueIndex].Count == 0)
             _questions.RemoveAt(valueIndex);
-        
-        AnsweringQuestion(4);
+
+        string result = AnsweringQuestion(4);
+        if (result != "")
+        {
+            lawsQueue.Add(result);
+            Debug.Log("New law : " + result);
+        }
     }
     
     

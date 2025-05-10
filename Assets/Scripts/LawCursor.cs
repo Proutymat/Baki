@@ -21,15 +21,59 @@ public class LawCursor
     private bool law6Checked;
     private bool law7Checked;
 
+    private static int lawStep = 3;
+
     [SerializeField] private int lawCursorValue;
-    
-    public void IncrementLawCursorValue(int value)
+
+    public string IncrementLawCursorValue(int value)
     {
         lawCursorValue += value;
-        Debug.Log("LAW CURSOR VALUE: " + lawCursorValue);
+
+        // Law -3
+        if (lawCursorValue <= -3 * lawStep && law1Checked == false)
+        {
+            law1Checked = true;
+            return law1;
+        }
+
+        // Law -2
+        if (lawCursorValue <= -2 * lawStep && law2Checked == false)
+        {
+            law2Checked = true;
+            return law2;
+        }
+
+        // Law -1
+        if (lawCursorValue <= -1 * lawStep && law3Checked == false)
+        {
+            law3Checked = true;
+            return law3;
+        }
+
+        // Law 1
+        if (lawCursorValue >= lawStep && law5Checked == false)
+        {
+            law5Checked = true;
+            return law5;
+        }
+
+        // Law 2
+        if (lawCursorValue >= lawStep * 2 && law6Checked == false)
+        {
+            law6Checked = true;
+            return law6;
+        }
+
+        // Law 3
+        if (lawCursorValue >= lawStep * 3 && law7Checked == false)
+        {
+            law6Checked = true;
+            return law6;
+        }
+        return "";
     }
 
-    public LawCursor(Value value)
+public LawCursor(Value value)
     {
         valueName = value.name;
         law1 = value.law1;

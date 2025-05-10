@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: value_1
   m_EditorClassIdentifier: 
   valueName: Education
-  law1: Lorem ipsum
-  law2: Lorem ipsum
-  law3: Lorem ipsum
-  law4: Lorem ipsum
-  law5: Lorem ipsum
-  law6: Lorem ipsum
-  law7: "Lorem ipsum\r"
+  law1: Loi -3 Education
+  law2: Loi -2 Education
+  law3: Loi -1 Education
+  law4: Loi 0 Education
+  law5: Loi 1 Education
+  law6: Loi 2 Education
+  law7: "Loi 3 Education\r"

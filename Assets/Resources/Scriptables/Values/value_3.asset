@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: value_3
   m_EditorClassIdentifier: 
   valueName: Bananeraie
-  law1: Lorem ipsum
-  law2: Lorem ipsum
-  law3: Lorem ipsum
-  law4: Lorem ipsum
-  law5: Lorem ipsum
-  law6: Lorem ipsum
-  law7: "Lorem ipsum\r"
+  law1: Loi -3 Bananeraie
+  law2: Loi -2 Bananeraie
+  law3: Loi -1 Bananeraie
+  law4: Loi 0 Bananeraie
+  law5: Loi 1 Bananeraie
+  law6: Loi 2 Bananeraie
+  law7: "Loi 3 Bananeraie\r"
