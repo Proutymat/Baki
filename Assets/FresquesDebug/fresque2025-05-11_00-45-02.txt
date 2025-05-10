@@ -1,0 +1,34 @@
+------------------------
+   SALVE DE LOIS 20
+------------------------
+
+------------------------
+   SALVE DE LOIS 40
+------------------------
+
+------------------------
+   SALVE DE LOIS 60
+------------------------
+
+------------------------
+   SALVE DE LOIS 80
+------------------------
+
+======== FIN DE PARTIE ========
+Temps total : 15,00 secondes
+Temps passé en mouvement : 14,42 secondes
+Unités parcourues : 7
+Points de repère atteints : 0
+Murs percutés : 0
+Changements de direction : 7
+Boutons pressés : 7
+================================
+
+------------------------
+   SALVE DE LOIS 100
+------------------------
+
+------------------------
+   SALVE DE LOIS 120
+------------------------
+
