@@ -3,18 +3,26 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using Sirenix.Serialization;
+using TMPro;
 
 
 public class GameManager : SerializedMonoBehaviour
 {
-    [Header("Materials")] public Material materialGround;
-    public Material materialWall;
-    public Material materialStart;
-    public Material materialLandmarksA;
-    public Material materialLandmarksB;
-    public Material materialLandmarksC;
-    public Material materialLandmarksD;
-    public Material materialLandmarksE;
+    [SerializeField] private bool setObjectsInInspector = false;
+    [Header("Materials"), ShowIf("setObjectsInInspector")] 
+    [SerializeField, ShowIf("setObjectsInInspector")] public Material materialGround;
+    [SerializeField, ShowIf("setObjectsInInspector")] public Material materialWall;
+    [SerializeField, ShowIf("setObjectsInInspector")] public Material materialStart;
+    [SerializeField, ShowIf("setObjectsInInspector")] public Material materialLandmarksA;
+    [SerializeField, ShowIf("setObjectsInInspector")] public Material materialLandmarksB;
+    [SerializeField, ShowIf("setObjectsInInspector")] public Material materialLandmarksC;
+    [SerializeField, ShowIf("setObjectsInInspector")] public Material materialLandmarksD;
+    [SerializeField, ShowIf("setObjectsInInspector")] public Material materialLandmarksE;
+    [Header("UI text"), ShowIf("setObjectsInInspector")]
+    [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI questionText;
+    [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer1Text;
+    [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer2Text;
+
 
     [Header("Game Settings")]
     [SerializeField] private float gameDuration = 600;
@@ -25,6 +33,7 @@ public class GameManager : SerializedMonoBehaviour
     
     private static GameManager _instance;
     private Player _player;
+    private ProgressBar progressBar;
 
     [SerializeField] private bool debug = false;
     
@@ -43,7 +52,7 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("debug")] private List<string> lawsQueue;
     [SerializeField, ShowIf("debug")] private float gameTimer;
     [SerializeField, ShowIf("debug")] private int lastPrintedPercent = 0;
-    private string logFilePath; // DEBUG FRESQUE
+    private string logFilePath; // DEBUG FRESQUE : Path to the log file
     private bool isGameOver = false;
     
     // Stats
@@ -53,6 +62,15 @@ public class GameManager : SerializedMonoBehaviour
     private int nbDirectionChanges;
     private int nbButtonsPressed;
     private float timeSpentMoving;
+    private int nbQuestionsAnswered;
+    private int nbLeftAnswers;
+    private int nbRightAnswers;
+    private float timeBetweenQuestions;
+    private float shortestTimeBetweenQuestions;
+    private float longestTimeBetweenQuestions;
+    private int nbProgressBarFull;
+
+    private float questionTimer;
 
     public int DistanceTraveled
     {
@@ -117,6 +135,15 @@ public class GameManager : SerializedMonoBehaviour
         nbDirectionChanges = 0;
         nbButtonsPressed = 0;
         timeSpentMoving = 0;
+        nbQuestionsAnswered = 0;
+        nbLeftAnswers = 0;
+        nbRightAnswers = 0;
+        timeBetweenQuestions = 0;
+        nbProgressBarFull = 0;
+        shortestTimeBetweenQuestions = float.MaxValue;
+        longestTimeBetweenQuestions = float.MinValue;
+
+        questionTimer = 0;
         
         // Initialize game settings
         gameTimer = gameDuration;
@@ -142,6 +169,8 @@ public class GameManager : SerializedMonoBehaviour
             _lawCursors.Add(lawCursor);
         }
         
+        NextQuestion();
+        
         
         // DEBUG FRESQUE : Create log file
         string folderPath = Application.dataPath + "/FresquesDebug";
@@ -156,6 +185,7 @@ public class GameManager : SerializedMonoBehaviour
     private void Start()
     {
         _player = FindFirstObjectByType<Player>();
+        progressBar = FindFirstObjectByType<ProgressBar>();
         _questions = new List<List<Question>>();
         _lawCursors = new List<LawCursor>();
         InitializeGame();
@@ -179,6 +209,13 @@ public class GameManager : SerializedMonoBehaviour
             writer.WriteLine($"Murs percutés : {nbWallsHit}");
             writer.WriteLine($"Changements de direction : {nbDirectionChanges}");
             writer.WriteLine($"Boutons pressés : {nbButtonsPressed}");
+            writer.WriteLine($"Questions répondues : {nbQuestionsAnswered}");
+            writer.WriteLine($"Réponses gauche : {nbLeftAnswers}");
+            writer.WriteLine($"Réponses droite : {nbRightAnswers}");
+            writer.WriteLine($"Temps moyen entre les questions : {timeBetweenQuestions/nbQuestionsAnswered:F2} secondes");
+            writer.WriteLine($"Temps le plus court entre deux questions : {shortestTimeBetweenQuestions:F2} secondes");
+            writer.WriteLine($"Temps le plus long entre deux questions : {longestTimeBetweenQuestions:F2} secondes");
+            writer.WriteLine($"Barre de progression pleine : {nbProgressBarFull}");
             writer.WriteLine("================================");
             writer.WriteLine();
         }
@@ -214,10 +251,11 @@ public class GameManager : SerializedMonoBehaviour
         // Update stats
         if (_player.IsMoving)
             timeSpentMoving += Time.deltaTime;
+        questionTimer += Time.deltaTime;
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            ChooseNextQuestion();
+            NextQuestion();
         }
 
         if (Input.GetKeyDown(KeyCode.R))
@@ -251,17 +289,58 @@ public class GameManager : SerializedMonoBehaviour
         lawsQueue.Clear();
     }
 
-    private string AnsweringQuestion(int valueIncrement)
+    public void AnsweringQuestion(int answerIndex)
     {
-        if (currentQuestion.type == 0) return ""; // Skip if no category
-        return _lawCursors[currentQuestion.type - 1].IncrementLawCursorValue(valueIncrement);
+        // UPDATE STATS
+        nbQuestionsAnswered++;
+        if (answerIndex == 1)
+            nbLeftAnswers++;
+        else
+            nbRightAnswers++;
+
+        // Update time between questions (if more than 5 questions answered)
+        if (nbQuestionsAnswered > 5)
+        {
+            if (questionTimer < shortestTimeBetweenQuestions)
+                shortestTimeBetweenQuestions = questionTimer;
+            if (questionTimer > longestTimeBetweenQuestions)
+                longestTimeBetweenQuestions = questionTimer;
+        }
+        timeBetweenQuestions += questionTimer;
+        questionTimer = 0;
+        
+        
+        // Progress bar is full
+        if (progressBar.IncreaseProgressBar())
+        {
+            nbProgressBarFull++;
+            _player.SetIsMoving(false);
+        }
+        
+        
+        // If the question has no category, skip
+        if (currentQuestion.type != 0)
+        {
+            int lawIncrement = answerIndex == 1 ? currentQuestion.answer1Increment : currentQuestion.answer2Increment;
+            string result = _lawCursors[currentQuestion.type - 1].IncrementLawCursorValue(lawIncrement);
+            if (result != "")
+            {
+                lawsQueue.Add(result);
+                Debug.Log("New law : " + result);
+            }
+        }
+
+        NextQuestion();
     }
 
-    private void ChooseNextQuestion()
+    private void NextQuestion()
     {
         if (_questions.Count < 1)
         {
             Debug.Log("No more questions available.");
+            questionText.text = "No more questions available.";
+            answer1Text.text = "BAKI";
+            answer2Text.text = "BAKI";
             return;
         }
         
@@ -272,17 +351,15 @@ public class GameManager : SerializedMonoBehaviour
 
         currentQuestion = _questions[valueIndex][questionIndex];
         
+        // Display the question and answers
+        questionText.text = currentQuestion.question;
+        answer1Text.text = currentQuestion.answer1;
+        answer2Text.text = currentQuestion.answer2;
+        
         // Remove the question from the list
         _questions[valueIndex].RemoveAt(questionIndex);
         if (_questions[valueIndex].Count == 0)
             _questions.RemoveAt(valueIndex);
-
-        string result = AnsweringQuestion(4);
-        if (result != "")
-        {
-            lawsQueue.Add(result);
-            Debug.Log("New law : " + result);
-        }
     }
     
     

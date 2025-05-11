@@ -34,15 +34,14 @@ public class ProgressBar : MonoBehaviour
     
     private void Update()
     {
-        // Increase progress bar
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.UpArrow) ||
-            Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow))
+        // DEBUG : Increase progress bar
+        if (Input.GetKeyDown(KeyCode.B) && Input.GetKeyDown(KeyCode.A) && Input.GetKeyDown(KeyCode.R))
         {
             current += increaseValue;
         }
         
-        // Reset progress bar
-        if (Input.GetKeyDown(KeyCode.R))
+        // DEBUG : Reset progress bar
+        if (Input.GetKeyDown(KeyCode.R) && Input.GetKeyDown(KeyCode.E) && Input.GetKeyDown(KeyCode.S))
         {
             current = 0;
         }
@@ -76,5 +75,11 @@ public class ProgressBar : MonoBehaviour
         float fillAmount = (float)current / maximumOffset;
         mask.fillAmount = fillAmount;
         return fillAmount;
+    }
+    
+    public bool IncreaseProgressBar()
+    {
+        current += increaseValue;
+        return current >= maximum;
     }
 } 
