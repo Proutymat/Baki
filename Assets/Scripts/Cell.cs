@@ -8,9 +8,18 @@ public class Cell : MonoBehaviour
     
     public void Init(float x, float y, float z, float cellSize, Mesh mesh, int type)
     {
-        _type = type;
-        transform.position = new Vector3(x * cellSize, y - cellSize / 2, z * cellSize);
-        
+        _type = (type >= 400) ? type / 100 : type;
+        if (type < 4)
+            transform.position = new Vector3(x * cellSize, y - cellSize / 2, z * cellSize);
+        else
+        {
+            // /!\ OFFSETS DONT WORK WITH EVEN NUMBERS /!\
+            // First number is the landmark type, second is the width, third is the height
+            int widthOffset = ((type % 100) / 10) / 2;
+            int heightOffset = (type % 10) / 2;
+            transform.position = new Vector3((x + heightOffset) * cellSize, y - cellSize / 2, (z + widthOffset) * cellSize);
+        }
+
         // Create the mesh
         MeshFilter meshFilter = gameObject.AddComponent<MeshFilter>();
         meshFilter.mesh = mesh;
