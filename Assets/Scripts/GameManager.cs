@@ -195,7 +195,6 @@ public class GameManager : SerializedMonoBehaviour
 
     private void Play()
     {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/AMB/AMB_InGame/AMB_IG_Start");
     }
     
     private void WriteFinalStatsToFile()

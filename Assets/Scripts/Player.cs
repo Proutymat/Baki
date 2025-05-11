@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     private string previousDirection;
     private Vector3 startCellPosition;
     private bool midSoundPlayed;
+    private bool hasMovedOnce;
     
     public bool IsMoving { get { return isMoving; } set { isMoving = value; } }
 
@@ -36,6 +37,7 @@ public class Player : MonoBehaviour
         previousDirection = "none";
         transform.position = new Vector3(startCellPosition.x, startCellPosition.y + gridCellSize / 2, startCellPosition.z);
         midSoundPlayed = false;
+        hasMovedOnce = false;
     }
 
     public void SetIsMoving(bool newMovingValue)
@@ -45,8 +47,12 @@ public class Player : MonoBehaviour
         {
             unitTimer = 0;
             midSoundPlayed = true; // Set to true to avoid playing mid sound with starting sound
-            FMODUnity.RuntimeManager.PlayOneShot("event:/AMB/AMB_InGame/AMB_IG_SystemMove");
             FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/SFX_InGame/SFX_IG_BordReStart");
+            if (!hasMovedOnce)
+            {
+                FMODUnity.RuntimeManager.PlayOneShot("event:/AMB/AMB_InGame/AMB_IG_SystemStart");
+                hasMovedOnce = true;
+            }
         }
         // Player stop moving
         else if (!newMovingValue && isMoving)
