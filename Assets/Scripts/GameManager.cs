@@ -3,18 +3,26 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using Sirenix.Serialization;
+using TMPro;
 
 
 public class GameManager : SerializedMonoBehaviour
 {
-    [Header("Materials")] public Material materialGround;
-    public Material materialWall;
-    public Material materialStart;
-    public Material materialLandmarksA;
-    public Material materialLandmarksB;
-    public Material materialLandmarksC;
-    public Material materialLandmarksD;
-    public Material materialLandmarksE;
+    [SerializeField] private bool setObjectsInInspector = false;
+    [Header("Materials"), ShowIf("setObjectsInInspector")] 
+    [SerializeField, ShowIf("setObjectsInInspector")] public Material materialGround;
+    [SerializeField, ShowIf("setObjectsInInspector")] public Material materialWall;
+    [SerializeField, ShowIf("setObjectsInInspector")] public Material materialStart;
+    [SerializeField, ShowIf("setObjectsInInspector")] public Material materialLandmarksA;
+    [SerializeField, ShowIf("setObjectsInInspector")] public Material materialLandmarksB;
+    [SerializeField, ShowIf("setObjectsInInspector")] public Material materialLandmarksC;
+    [SerializeField, ShowIf("setObjectsInInspector")] public Material materialLandmarksD;
+    [SerializeField, ShowIf("setObjectsInInspector")] public Material materialLandmarksE;
+    [Header("UI text"), ShowIf("setObjectsInInspector")]
+    [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI questionText;
+    [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer1Text;
+    [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer2Text;
+
 
     [Header("Game Settings")]
     [SerializeField] private float gameDuration = 600;
@@ -25,6 +33,9 @@ public class GameManager : SerializedMonoBehaviour
     
     private static GameManager _instance;
     private Player _player;
+    private ProgressBar progressBar;
+    
+    
 
     [SerializeField] private bool debug = false;
     
@@ -142,6 +153,8 @@ public class GameManager : SerializedMonoBehaviour
             _lawCursors.Add(lawCursor);
         }
         
+        NextQuestion();
+        
         
         // DEBUG FRESQUE : Create log file
         string folderPath = Application.dataPath + "/FresquesDebug";
@@ -156,6 +169,7 @@ public class GameManager : SerializedMonoBehaviour
     private void Start()
     {
         _player = FindFirstObjectByType<Player>();
+        progressBar = FindFirstObjectByType<ProgressBar>();
         _questions = new List<List<Question>>();
         _lawCursors = new List<LawCursor>();
         InitializeGame();
@@ -217,7 +231,7 @@ public class GameManager : SerializedMonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            ChooseNextQuestion();
+            NextQuestion();
         }
 
         if (Input.GetKeyDown(KeyCode.R))
@@ -251,17 +265,33 @@ public class GameManager : SerializedMonoBehaviour
         lawsQueue.Clear();
     }
 
-    private string AnsweringQuestion(int valueIncrement)
+    public void AnsweringQuestion(int answerIndex)
     {
-        if (currentQuestion.type == 0) return ""; // Skip if no category
-        return _lawCursors[currentQuestion.type - 1].IncrementLawCursorValue(valueIncrement);
+        progressBar.IncreaseProgressBar();
+        
+        // If the question has no category, skip
+        if (currentQuestion.type != 0)
+        {
+            int lawIncrement = answerIndex == 1 ? currentQuestion.answer1Increment : currentQuestion.answer2Increment;
+            string result = _lawCursors[currentQuestion.type - 1].IncrementLawCursorValue(lawIncrement);
+            if (result != "")
+            {
+                lawsQueue.Add(result);
+                Debug.Log("New law : " + result);
+            }
+        }
+
+        NextQuestion();
     }
 
-    private void ChooseNextQuestion()
+    private void NextQuestion()
     {
         if (_questions.Count < 1)
         {
             Debug.Log("No more questions available.");
+            questionText.text = "No more questions available.";
+            answer1Text.text = "BAKI";
+            answer2Text.text = "BAKI";
             return;
         }
         
@@ -272,17 +302,15 @@ public class GameManager : SerializedMonoBehaviour
 
         currentQuestion = _questions[valueIndex][questionIndex];
         
+        // Display the question and answers
+        questionText.text = currentQuestion.question;
+        answer1Text.text = currentQuestion.answer1;
+        answer2Text.text = currentQuestion.answer2;
+        
         // Remove the question from the list
         _questions[valueIndex].RemoveAt(questionIndex);
         if (_questions[valueIndex].Count == 0)
             _questions.RemoveAt(valueIndex);
-
-        string result = AnsweringQuestion(4);
-        if (result != "")
-        {
-            lawsQueue.Add(result);
-            Debug.Log("New law : " + result);
-        }
     }
     
     
