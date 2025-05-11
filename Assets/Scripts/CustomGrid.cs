@@ -146,8 +146,9 @@ public class CustomGrid : MonoBehaviour
         {
             string line = lines[y].Trim();
             if (string.IsNullOrWhiteSpace(line)) continue;
-
-            string[] values = line.Split(','); // Utilisation de tabulation comme séparateur ici
+            
+            string[] values = line.Split(';'); // Utilisation de tabulation comme séparateur ici
+            Debug.Log("Y : " + y + " VALUES : " + string.Join(", ", values));
             if (_xSize == 0)
                 _xSize = values.Length;
 
@@ -156,7 +157,7 @@ public class CustomGrid : MonoBehaviour
                 int mappedValue = symbol.Trim() switch
                 {
                     "S" => 1,
-                    "." => 2,
+                    "" => 2,
                     "X" => 3,
                     "A" => 4,
                     "B" => 5,
@@ -165,6 +166,7 @@ public class CustomGrid : MonoBehaviour
                     "E" => 8,
                     _ => 0 // Par défaut
                 };
+                Debug.Log("Mapped value: " + symbol);
                 _wallsIndex.Add(mappedValue);
                 
                 if (mappedValue == 1)
