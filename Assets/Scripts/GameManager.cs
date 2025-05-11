@@ -32,7 +32,7 @@ public class GameManager : SerializedMonoBehaviour
     
     
     private static GameManager _instance;
-    private Player _player;
+    private Player player;
     private ProgressBar progressBar;
 
     [SerializeField] private bool debug = false;
@@ -52,7 +52,7 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("debug")] private List<string> lawsQueue;
     [SerializeField, ShowIf("debug")] private float gameTimer;
     [SerializeField, ShowIf("debug")] private int lastPrintedPercent = 0;
-    private string logFilePath; // DEBUG FRESQUE : Path to the log file
+    private string logFilePath; // DEBUG FRESQUE : Path to the log folder
     private bool isGameOver = false;
     
     // Stats
@@ -128,6 +128,8 @@ public class GameManager : SerializedMonoBehaviour
 
     private void InitializeGame()
     {
+        player.Initialize();
+        
         // Initialize game stats
         nbUnitTraveled = 0;
         nbLandmarksReached = 0;
@@ -184,12 +186,16 @@ public class GameManager : SerializedMonoBehaviour
     
     private void Start()
     {
-        _player = FindFirstObjectByType<Player>();
+        player = FindFirstObjectByType<Player>();
         progressBar = FindFirstObjectByType<ProgressBar>();
         _questions = new List<List<Question>>();
         _lawCursors = new List<LawCursor>();
         InitializeGame();
-    } 
+    }
+
+    private void Play()
+    {
+    }
     
     private void WriteFinalStatsToFile()
     {
@@ -249,16 +255,16 @@ public class GameManager : SerializedMonoBehaviour
         
         
         // Update stats
-        if (_player.IsMoving)
+        if (player.IsMoving)
             timeSpentMoving += Time.deltaTime;
         questionTimer += Time.deltaTime;
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            NextQuestion();
+            Play();
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) && Input.GetKeyDown(KeyCode.E) && Input.GetKeyDown(KeyCode.S) && Input.GetKeyDown(KeyCode.T)) 
         {
             InitializeGame();
         }
@@ -291,6 +297,8 @@ public class GameManager : SerializedMonoBehaviour
 
     public void AnsweringQuestion(int answerIndex)
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_QuestionRespondClick");
+        
         // UPDATE STATS
         nbQuestionsAnswered++;
         if (answerIndex == 1)
@@ -314,7 +322,7 @@ public class GameManager : SerializedMonoBehaviour
         if (progressBar.IncreaseProgressBar())
         {
             nbProgressBarFull++;
-            _player.SetIsMoving(false);
+            player.SetIsMoving(false);
         }
         
         
