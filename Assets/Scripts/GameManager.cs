@@ -34,8 +34,6 @@ public class GameManager : SerializedMonoBehaviour
     private static GameManager _instance;
     private Player _player;
     private ProgressBar progressBar;
-    
-    
 
     [SerializeField] private bool debug = false;
     
@@ -54,7 +52,7 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("debug")] private List<string> lawsQueue;
     [SerializeField, ShowIf("debug")] private float gameTimer;
     [SerializeField, ShowIf("debug")] private int lastPrintedPercent = 0;
-    private string logFilePath; // DEBUG FRESQUE
+    private string logFilePath; // DEBUG FRESQUE : Path to the log file
     private bool isGameOver = false;
     
     // Stats
@@ -64,6 +62,15 @@ public class GameManager : SerializedMonoBehaviour
     private int nbDirectionChanges;
     private int nbButtonsPressed;
     private float timeSpentMoving;
+    private int nbQuestionsAnswered;
+    private int nbLeftAnswers;
+    private int nbRightAnswers;
+    private float timeBetweenQuestions;
+    private float shortestTimeBetweenQuestions;
+    private float longestTimeBetweenQuestions;
+    private int nbProgressBarFull;
+
+    private float questionTimer;
 
     public int DistanceTraveled
     {
@@ -128,6 +135,15 @@ public class GameManager : SerializedMonoBehaviour
         nbDirectionChanges = 0;
         nbButtonsPressed = 0;
         timeSpentMoving = 0;
+        nbQuestionsAnswered = 0;
+        nbLeftAnswers = 0;
+        nbRightAnswers = 0;
+        timeBetweenQuestions = 0;
+        nbProgressBarFull = 0;
+        shortestTimeBetweenQuestions = float.MaxValue;
+        longestTimeBetweenQuestions = float.MinValue;
+
+        questionTimer = 0;
         
         // Initialize game settings
         gameTimer = gameDuration;
@@ -193,6 +209,13 @@ public class GameManager : SerializedMonoBehaviour
             writer.WriteLine($"Murs percutés : {nbWallsHit}");
             writer.WriteLine($"Changements de direction : {nbDirectionChanges}");
             writer.WriteLine($"Boutons pressés : {nbButtonsPressed}");
+            writer.WriteLine($"Questions répondues : {nbQuestionsAnswered}");
+            writer.WriteLine($"Réponses gauche : {nbLeftAnswers}");
+            writer.WriteLine($"Réponses droite : {nbRightAnswers}");
+            writer.WriteLine($"Temps moyen entre les questions : {timeBetweenQuestions/nbQuestionsAnswered:F2} secondes");
+            writer.WriteLine($"Temps le plus court entre deux questions : {shortestTimeBetweenQuestions:F2} secondes");
+            writer.WriteLine($"Temps le plus long entre deux questions : {longestTimeBetweenQuestions:F2} secondes");
+            writer.WriteLine($"Barre de progression pleine : {nbProgressBarFull}");
             writer.WriteLine("================================");
             writer.WriteLine();
         }
@@ -228,6 +251,7 @@ public class GameManager : SerializedMonoBehaviour
         // Update stats
         if (_player.IsMoving)
             timeSpentMoving += Time.deltaTime;
+        questionTimer += Time.deltaTime;
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -267,7 +291,32 @@ public class GameManager : SerializedMonoBehaviour
 
     public void AnsweringQuestion(int answerIndex)
     {
-        progressBar.IncreaseProgressBar();
+        // UPDATE STATS
+        nbQuestionsAnswered++;
+        if (answerIndex == 1)
+            nbLeftAnswers++;
+        else
+            nbRightAnswers++;
+
+        // Update time between questions (if more than 5 questions answered)
+        if (nbQuestionsAnswered > 5)
+        {
+            if (questionTimer < shortestTimeBetweenQuestions)
+                shortestTimeBetweenQuestions = questionTimer;
+            if (questionTimer > longestTimeBetweenQuestions)
+                longestTimeBetweenQuestions = questionTimer;
+        }
+        timeBetweenQuestions += questionTimer;
+        questionTimer = 0;
+        
+        
+        // Progress bar is full
+        if (progressBar.IncreaseProgressBar())
+        {
+            nbProgressBarFull++;
+            _player.SetIsMoving(false);
+        }
+        
         
         // If the question has no category, skip
         if (currentQuestion.type != 0)

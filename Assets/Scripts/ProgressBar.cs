@@ -77,8 +77,9 @@ public class ProgressBar : MonoBehaviour
         return fillAmount;
     }
     
-    public void IncreaseProgressBar()
+    public bool IncreaseProgressBar()
     {
         current += increaseValue;
+        return current >= maximum;
     }
 } 

@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="73781b9b-5c78-4d1f-a1a2-b07d1229386b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Baki/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Baki/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FresquesDebug/fresque2025-05-10_21-12-07.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FresquesDebug/fresque2025-05-10_21-12-07.txt.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/ProtoDigital.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ProtoDigital.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ProgressBar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ProgressBar.cs" afterDir="false" />
@@ -137,7 +139,7 @@
       <workItem from="1746711801015" duration="647000" />
       <workItem from="1746730541291" duration="1815000" />
       <workItem from="1746752151031" duration="4910000" />
-      <workItem from="1746972155478" duration="2559000" />
+      <workItem from="1746972155478" duration="5141000" />
     </task>
     <servers />
   </component>
