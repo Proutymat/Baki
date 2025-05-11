@@ -40,6 +40,7 @@ public class Player : MonoBehaviour
             Debug.Log("Wall hit");
             this.transform.position -= currentDirection;
             gameManager.WallsHit++;
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/SFX_InGame/SFX_IG_BoardImpact");
         }
         // Player hit landmark   
         else if (other.tag == "Landmark")
@@ -61,17 +62,29 @@ public class Player : MonoBehaviour
         Vector3 previousDirection = currentDirection;
         
         SetIsMoving(true);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_DirectionClick");
         
         // Direction are inverted because I fucked up the axis in map generation
         if (direction == "foreward")
-            currentDirection = Vector3.left * gridCellSize;
+        {
+            currentDirection = Vector3.left * gridCellSize; 
+            Debug.Log("Moving foreward");
+        }
         else if (direction == "backward")
-            currentDirection = Vector3.right * gridCellSize;
+        {
+            currentDirection = Vector3.right * gridCellSize; 
+            Debug.Log("Moving backward");
+        }
         else if (direction == "right")
+        {
             currentDirection = Vector3.forward * gridCellSize;
+            Debug.Log("Moving right");
+        }
         else if (direction == "left")
+        {
             currentDirection = Vector3.back * gridCellSize;
-
+            Debug.Log("Moving left");
+        }
         // Game stats
         if (previousDirection != currentDirection)
             gameManager.DirectionChanges++;
