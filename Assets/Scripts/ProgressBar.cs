@@ -15,21 +15,15 @@ public class ProgressBar : MonoBehaviour
     [SerializeField] private float decreaseValue;
     
     private float _timer;
-    private AudioSource _audioSource;
-    private Player _player;
+    private bool barIsEmpty;
 
     private void Start()
     {
         // Set the initial value of the progress bar
         current = minimum;
         mask.fillAmount = 0;
-        
-        // Get the AudioSource component
-        _audioSource = GetComponent<AudioSource>();
-        
-        // Get the script of the Player object
-        _player = GameObject.Find("Player").GetComponent<Player>();
-        
+
+        barIsEmpty = true;
     }
     
     private void Update()
@@ -44,6 +38,8 @@ public class ProgressBar : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R) && Input.GetKeyDown(KeyCode.E) && Input.GetKeyDown(KeyCode.S))
         {
             current = 0;
+            barIsEmpty = true;
+            FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_QuestionBarEmpty");
         }
     }
 
@@ -56,14 +52,18 @@ public class ProgressBar : MonoBehaviour
             _timer = 0.001F;
             current -= decreaseValue / 100;
         }
-        
-        current = current < minimum ? minimum : current > maximum ? maximum : current; // Clamp 'current' values to min and max
 
+        if (current < 0 && !barIsEmpty)
+        {
+            barIsEmpty = true;
+            current = 0;
+            FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_QuestionBarEmpty");
+        }
+        
         if (UpdateFillAmount() == 1)
         {
             current = 0;
-            _audioSource.Play();
-            _player.SetIsMoving(false);
+            barIsEmpty = true;
         }
 
     }
@@ -80,6 +80,17 @@ public class ProgressBar : MonoBehaviour
     public bool IncreaseProgressBar()
     {
         current += increaseValue;
-        return current >= maximum;
+        
+        if (current >= maximum)
+        {
+            current = maximum;
+            FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_QuestionBarFull");
+            return true;
+        }
+        else
+        {
+            barIsEmpty = false;
+            return false;
+        }
     }
-} 
+}
