@@ -280,6 +280,17 @@ public class GameManager : SerializedMonoBehaviour
 
     public void EnterLandmark()
     {
+        if (dilemmes.Count < 1)
+        {
+            Debug.Log("No more landmark questions available.");
+            dilemmeText.text = "No more landmark questions available.";
+            answer1DilemmeText.text = "BAKI";
+            answer2DilemmeText.text = "BAKI";
+            answer3DilemmeText.text = "BAKI";
+            answer4DilemmeText.text = "BAKI";
+            return;
+        }
+        
         // Chose a random dilemme
         int index = UnityEngine.Random.Range(0, dilemmes.Count);
         currentDilemme = dilemmes[index];
