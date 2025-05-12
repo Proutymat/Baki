@@ -343,7 +343,7 @@ public class GameManager : SerializedMonoBehaviour
                 answer = currentDilemme.answer4;
             
             writer.WriteLine("------------------------");
-            writer.WriteLine(currentQuestion.question + " : " + answer);
+            writer.WriteLine(currentDilemme.question + " : " + answer);
             writer.WriteLine("------------------------");
         }
     }
