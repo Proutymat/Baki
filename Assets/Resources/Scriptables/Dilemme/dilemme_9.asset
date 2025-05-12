@@ -17,3 +17,7 @@ MonoBehaviour:
   answer2: La passiflore
   answer3: La tulipe
   answer4: "Le tournesol\r"
+  nbAnswer1: 0
+  nbAnswer2: 0
+  nbAnswer3: 0
+  nbAnswer4: 0

@@ -17,3 +17,7 @@ MonoBehaviour:
   answer2: Mes proches
   answer3: "La soci\xE9t\xE9"
   answer4: "Rien\r"
+  nbAnswer1: 0
+  nbAnswer2: 0
+  nbAnswer3: 0
+  nbAnswer4: 0

@@ -173,6 +173,12 @@ public class GameManager : SerializedMonoBehaviour
         {
             _instance = this;
         }
+        
+        Debug.Log ("displays connected: " + Display.displays.Length);
+        for (int i = 1; i < Display.displays.Length; i++)
+        {
+            Display.displays[i].Activate();
+        }
     }
 
     private void InitializeGame()
@@ -573,6 +579,7 @@ public class GameManager : SerializedMonoBehaviour
             nbProgressBarFull++;
             player.SetIsMoving(false);
             PrintAreaPlayer();
+            player.EnableMeshRenderer(true);
             
             if (!unboardingStep1)
             {

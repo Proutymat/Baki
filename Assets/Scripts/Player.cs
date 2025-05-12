@@ -43,6 +43,11 @@ public class Player : MonoBehaviour
         hasMovedOnce = false;
     }
 
+    public void EnableMeshRenderer(bool enable)
+    {
+        meshRenderer.enabled = enable;
+    }
+    
     public void SetIsMoving(bool newMovingValue)
     {
         // Player restart moving
@@ -57,12 +62,11 @@ public class Player : MonoBehaviour
                 hasMovedOnce = true;
             }
             
-            meshRenderer.enabled = false;
+            EnableMeshRenderer(false);
         }
         // Player stop moving
         else if (!newMovingValue && isMoving)
         {
-            meshRenderer.enabled = true;
             //FMODUnity.RuntimeManager.PlayOneShot("event:/AMB/AMB_InGame/AMB_IG_SystemStop");
             //FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/SFX_InGame/SFX_IG_BordStop");
         }
@@ -88,6 +92,7 @@ public class Player : MonoBehaviour
             gameManager.LandmarksReached++;
             gameManager.PrintAreaPlayer();
             gameManager.EnterLandmark();
+            EnableMeshRenderer(true);
         }
         SetIsMoving(false);
     }

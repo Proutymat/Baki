@@ -18,3 +18,7 @@ MonoBehaviour:
   answer2: Le bleu infini
   answer3: Le rose fragile
   answer4: "Le gris doux\r"
+  nbAnswer1: 0
+  nbAnswer2: 0
+  nbAnswer3: 0
+  nbAnswer4: 0

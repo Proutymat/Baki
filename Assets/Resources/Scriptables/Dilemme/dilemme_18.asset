@@ -17,3 +17,7 @@ MonoBehaviour:
   answer2: "Une \xE9chappatoire"
   answer3: "Un rem\xE8de"
   answer4: "Une futilit\xE9\r"
+  nbAnswer1: 0
+  nbAnswer2: 0
+  nbAnswer3: 0
+  nbAnswer4: 0

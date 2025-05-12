@@ -17,3 +17,7 @@ MonoBehaviour:
   answer2: BAKI
   answer3: Tes proches
   answer4: "Ton quotidien\r"
+  nbAnswer1: 0
+  nbAnswer2: 0
+  nbAnswer3: 0
+  nbAnswer4: 0

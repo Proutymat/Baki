@@ -17,3 +17,7 @@ MonoBehaviour:
   answer2: Oui
   answer3: Oui
   answer4: "Oui\r"
+  nbAnswer1: 0
+  nbAnswer2: 0
+  nbAnswer3: 0
+  nbAnswer4: 0

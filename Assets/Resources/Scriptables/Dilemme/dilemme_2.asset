@@ -17,3 +17,7 @@ MonoBehaviour:
   answer2: L'amour
   answer3: La haine
   answer4: "La tristesse\r"
+  nbAnswer1: 0
+  nbAnswer2: 0
+  nbAnswer3: 0
+  nbAnswer4: 0

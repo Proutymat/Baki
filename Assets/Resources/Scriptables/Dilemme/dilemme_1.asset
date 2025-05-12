@@ -17,3 +17,7 @@ MonoBehaviour:
   answer2: Membre familial
   answer3: "Toi-m\xEAme"
   answer4: "500 inconnus\r"
+  nbAnswer1: 0
+  nbAnswer2: 0
+  nbAnswer3: 0
+  nbAnswer4: 0

@@ -17,3 +17,7 @@ MonoBehaviour:
   answer2: Ignorer
   answer3: Demander de l'aide
   answer4: "Fuir\r"
+  nbAnswer1: 0
+  nbAnswer2: 0
+  nbAnswer3: 0
+  nbAnswer4: 0
