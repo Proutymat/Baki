@@ -174,10 +174,15 @@ public class GameManager : SerializedMonoBehaviour
             _instance = this;
         }
         
-        Debug.Log ("displays connected: " + Display.displays.Length);
-        for (int i = 1; i < Display.displays.Length; i++)
+        // Activate the second display if available
+        if(Display.displays.Length > 1)
         {
-            Display.displays[i].Activate();
+            Display.displays[1].Activate();
+            Debug.Log("Display 2 activated");
+        }
+        else
+        {
+            Debug.Log("Display 2 not found");
         }
     }
 
