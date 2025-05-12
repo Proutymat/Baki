@@ -5,12 +5,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="73781b9b-5c78-4d1f-a1a2-b07d1229386b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/UI.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UI/BakiFont.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UI/BakiFont.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UI/Proto.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UI/Proto/Arrows.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UI/Proto/Arrows/BT_BAS.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UI/Proto/Arrows/BT_BAS.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UI/Proto/Arrows/BT_BAS_HOVER.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UI/Proto/Arrows/BT_BAS_HOVER.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UI/Proto/Arrows/BT_DROITE.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UI/Proto/Arrows/BT_DROITE.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UI/Proto/Arrows/BT_DROITE_HOVER.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UI/Proto/Arrows/BT_DROITE_HOVER.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UI/Proto/Arrows/BT_GAUCHE.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UI/Proto/Arrows/BT_GAUCHE.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UI/Proto/Arrows/BT_GAUCHE_HOVER.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UI/Proto/Arrows/BT_GAUCHE_HOVER.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UI/Proto/Arrows/BT_HAUT.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UI/Proto/Arrows/BT_HAUT.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UI/Proto/Arrows/BT_HAUT_HOVER.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UI/Proto/Arrows/BT_HAUT_HOVER.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UI/Proto/BitcountGridSingle[CRSV,ELSH,ELXP,slnt,wght] SDF.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UI/Proto/BitcountGridSingle[CRSV,ELSH,ELXP,slnt,wght] SDF.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UI/Proto/PROTODIGI_INTEFACE.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/UI/Proto/PROTODIGI_INTEFACE.mp4.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Baki/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Baki/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/mac/lib/fmodstudio.bundle/Contents/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/mac/lib/fmodstudio.bundle/Contents/Info.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/mac/lib/fmodstudioL.bundle/Contents/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/mac/lib/fmodstudioL.bundle/Contents/Info.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/mac/lib/resonanceaudio.bundle/Contents/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/mac/lib/resonanceaudio.bundle/Contents/Info.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Button.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Button.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/GameManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/GameManager.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Prototype/Canvas.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Prototype/Canvas.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Prototype/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Prototype/Player.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/ProtoDigital.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ProtoDigital.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ProgressBar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ProgressBar.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,6 +186,17 @@
     <option name="unityProjectFolder" value="true" />
   </component>
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>

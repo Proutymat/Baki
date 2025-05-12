@@ -53,6 +53,8 @@ public class ProgressBar : MonoBehaviour
             current -= decreaseValue / 100;
         }
 
+        current = current < minimum ? minimum : current > maximum ? maximum : current; // Clamp 'current' values to min and max
+        
         if (current < 0 && !barIsEmpty)
         {
             barIsEmpty = true;
@@ -83,7 +85,6 @@ public class ProgressBar : MonoBehaviour
         
         if (current >= maximum)
         {
-            current = maximum;
             FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_QuestionBarFull");
             return true;
         }

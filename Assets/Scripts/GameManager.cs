@@ -4,6 +4,7 @@ using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using Sirenix.Serialization;
 using TMPro;
+using UnityEngine.UI;
 
 
 public class GameManager : SerializedMonoBehaviour
@@ -22,6 +23,20 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI questionText;
     [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer1Text;
     [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer2Text;
+    [Header("UI arrows"), ShowIf("setObjectsInInspector")]
+    [SerializeField, ShowIf("setObjectsInInspector")] private Sprite arrowUp;
+    [SerializeField, ShowIf("setObjectsInInspector")] private Sprite arrowUpHovered;
+    [SerializeField, ShowIf("setObjectsInInspector")] private Sprite arrowDown;
+    [SerializeField, ShowIf("setObjectsInInspector")] private Sprite arrowDownHovered;
+    [SerializeField, ShowIf("setObjectsInInspector")] private Sprite arrowLeft;
+    [SerializeField, ShowIf("setObjectsInInspector")] private Sprite arrowLeftHovered;
+    [SerializeField, ShowIf("setObjectsInInspector")] private Sprite arrowRight;
+    [SerializeField, ShowIf("setObjectsInInspector")] private Sprite arrowRightHovered;
+    [SerializeField, ShowIf("setObjectsInInspector")] private Image buttonUp;
+    [SerializeField, ShowIf("setObjectsInInspector")] private Image buttonDown;
+    [SerializeField, ShowIf("setObjectsInInspector")] private Image buttonLeft;
+    [SerializeField, ShowIf("setObjectsInInspector")] private Image buttonRight;
+    
 
 
     [Header("Game Settings")]
@@ -224,6 +239,38 @@ public class GameManager : SerializedMonoBehaviour
             writer.WriteLine($"Barre de progression pleine : {nbProgressBarFull}");
             writer.WriteLine("================================");
             writer.WriteLine();
+        }
+    }
+
+    public void UpdateArrowButtonsSprite(string direction)
+    {
+        if (direction == "foreward")
+        {
+            buttonUp.sprite = arrowUpHovered;
+            buttonDown.sprite = arrowDown;
+            buttonLeft.sprite = arrowLeft;
+            buttonRight.sprite = arrowRight;
+        }
+        else if (direction == "backward")
+        {
+            buttonUp.sprite = arrowUp;
+            buttonDown.sprite = arrowDownHovered;
+            buttonLeft.sprite = arrowLeft;
+            buttonRight.sprite = arrowRight;
+        }
+        else if (direction == "left")
+        {
+            buttonUp.sprite = arrowUp;
+            buttonDown.sprite = arrowDown;
+            buttonLeft.sprite = arrowLeftHovered;
+            buttonRight.sprite = arrowRight;
+        }
+        else if (direction == "right")
+        {
+            buttonUp.sprite = arrowUp;
+            buttonDown.sprite = arrowDown;
+            buttonLeft.sprite = arrowLeft;
+            buttonRight.sprite = arrowRightHovered;
         }
     }
 
