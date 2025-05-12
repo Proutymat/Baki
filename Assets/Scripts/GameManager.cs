@@ -4,6 +4,7 @@ using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using Sirenix.Serialization;
 using TMPro;
+using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.UI;
 
 
@@ -23,6 +24,11 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI questionText;
     [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer1Text;
     [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer2Text;
+    [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI dilemmeText;
+    [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer1DilemmeText;
+    [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer2DilemmeText;
+    [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer3DilemmeText;
+    [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer4DilemmeText;
     [Header("UI arrows"), ShowIf("setObjectsInInspector")]
     [SerializeField, ShowIf("setObjectsInInspector")] private Sprite arrowUp;
     [SerializeField, ShowIf("setObjectsInInspector")] private Sprite arrowUpHovered;
@@ -44,6 +50,7 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject arrows;
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject questionsArea;
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject progressBarObject;
+    [SerializeField, ShowIf("setObjectsInInspector")] private Image uiBackground;
 
 
     [Header("Game Settings")]
@@ -51,6 +58,7 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField] private int printIntervalsInPercent;
     [SerializeField] private string questionsFileName;
     [SerializeField] private string valuesFileName;
+    [SerializeField] private string dilemmeFileName;
     
     
     private static GameManager _instance;
@@ -80,6 +88,7 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("debug")] private List<Question> _questionsEducation;
     [SerializeField, ShowIf("debug")] private List<Question> _questionsChancesVsResultats;
     [SerializeField, ShowIf("debug")] private List<Value> _values;
+    [SerializeField, ShowIf("debug")] private List<Dilemme> dilemmes;
     
     [Header("Working values")]
     [SerializeField, ShowIf("debug")] private List<List<Question>> _questions;
@@ -88,8 +97,12 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("debug")] private List<string> lawsQueue;
     [SerializeField, ShowIf("debug")] private float gameTimer;
     [SerializeField, ShowIf("debug")] private int lastPrintedPercent = 0;
-    private string logFilePath; // DEBUG FRESQUE : Path to the log folder
+    private string fresqueLogFilePath; // DEBUG FRESQUE : Path to the log folder
+    private string answersLogFilePath; // DEBUG QUESTIONS : Path to the log folder
     private bool isGameOver = false;
+    private bool inLandmark;
+    private Dilemme currentDilemme;
+    private bool playtestMode = false;
     
     // Stats
     private int nbUnitTraveled;
@@ -221,6 +234,8 @@ public class GameManager : SerializedMonoBehaviour
             _lawCursors.Add(lawCursor);
         }
         
+        Debug.Log("Law cursors created : " + _lawCursors.Count);
+        
         // Remove empty question lists
         for (int i = _questions.Count - 1; i >= 0; i--)
         {
@@ -235,13 +250,18 @@ public class GameManager : SerializedMonoBehaviour
         PrintAreaPlayer();
         
         // DEBUG FRESQUE : Create log file
-        string folderPath = Application.dataPath + "/FresquesDebug";
+        string folderPath = Application.dataPath + "/Logs";
         if (!System.IO.Directory.Exists(folderPath))
         {
             System.IO.Directory.CreateDirectory(folderPath);
         }
-        string timestamp = System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
-        logFilePath = $"{folderPath}/fresque{timestamp}.txt";
+
+        folderPath += "/" + System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
+        System.IO.Directory.CreateDirectory(folderPath);
+        fresqueLogFilePath = $"{folderPath}/fresque.txt";
+        answersLogFilePath = $"{folderPath}/answers.txt";
+
+        SetPlaytestMode(false);
     }
     
     private void Start()
@@ -257,16 +277,86 @@ public class GameManager : SerializedMonoBehaviour
     {
         playerCamera.transform.position = new Vector3(player.transform.position.x, playerCamera.transform.position.y, player.transform.position.z);
     }
+
+    public void EnterLandmark()
+    {
+        // Chose a random dilemme
+        int index = UnityEngine.Random.Range(0, dilemmes.Count);
+        currentDilemme = dilemmes[index];
+        dilemmes.RemoveAt(index);
+        
+        inLandmark = true;
+        progressBar.gameObject.SetActive(false);
+        questionsArea.SetActive(false);
+        arrows.SetActive(false);
+        dilemmeText.transform.parent.transform.parent.gameObject.SetActive(true);
+        
+        // Display the question and answers
+        dilemmeText.text = currentDilemme.question;
+        answer1DilemmeText.text = currentDilemme.answer1;
+        answer2DilemmeText.text = currentDilemme.answer2;
+        answer3DilemmeText.text = currentDilemme.answer3;
+        answer4DilemmeText.text = currentDilemme.answer4;
+    }
+
+    public void ExitLandmark(int answerIndex)
+    {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_QuestionRespondClick");
+        
+        inLandmark = false;
+        progressBar.gameObject.SetActive(true);
+        questionsArea.SetActive(true);
+        arrows.SetActive(true);
+        questionTimer = 0;
+        
+        dilemmeText.transform.parent.transform.parent.gameObject.SetActive(false);
+
+        // Save answer stats only if in playtest mode
+        if (playtestMode)
+        {
+            if (answerIndex == 1)
+                currentDilemme.nbAnswer1++;
+            else if (answerIndex == 2)
+                currentDilemme.nbAnswer2++;
+            else if (answerIndex == 3)
+                currentDilemme.nbAnswer3++;
+            else if (answerIndex == 4)
+                currentDilemme.nbAnswer4++;
+        }
+        
+        // Save answers to file
+        if (string.IsNullOrEmpty(answersLogFilePath))
+        {
+            Debug.LogError("Log file path not initialized.");
+            return;
+        }
+        using (System.IO.StreamWriter writer = new System.IO.StreamWriter(answersLogFilePath, true))
+        {
+            string answer = "";
+            if (answerIndex == 1)
+                answer = currentDilemme.answer1;
+            else if (answerIndex == 2)
+                answer = currentDilemme.answer2;
+            else if (answerIndex == 3)
+                answer = currentDilemme.answer3;
+            else if (answerIndex == 4)
+                answer = currentDilemme.answer4;
+            
+            writer.WriteLine("------------------------");
+            writer.WriteLine(currentQuestion.question + " : " + answer);
+            writer.WriteLine("------------------------");
+        }
+    }
     
     private void WriteFinalStatsToFile()
     {
-        if (string.IsNullOrEmpty(logFilePath))
+        if (string.IsNullOrEmpty(fresqueLogFilePath))
         {
             Debug.LogError("Log file path not initialized.");
             return;
         }
 
-        using (System.IO.StreamWriter writer = new System.IO.StreamWriter(logFilePath, true))
+        using (System.IO.StreamWriter writer = new System.IO.StreamWriter(fresqueLogFilePath, true))
         {
             writer.WriteLine("======== FIN DE PARTIE ========");
             writer.WriteLine($"Temps total : {gameDuration:F2} secondes");
@@ -340,6 +430,17 @@ public class GameManager : SerializedMonoBehaviour
         progressBar.IsPaused = false;
     }
 
+    private void SetPlaytestMode(bool value)
+    {
+        playtestMode = value;
+
+        // Change background color
+        if (playtestMode)
+            uiBackground.color = Color.black;
+        else
+            uiBackground.color = Color.grey;
+    }
+    
     private void Update()
     {
         // Update game time
@@ -376,11 +477,18 @@ public class GameManager : SerializedMonoBehaviour
         {
             InitializeGame();
         }
+        
+        if (Input.GetKeyDown(KeyCode.J) && Input.GetKeyDown(KeyCode.K) && Input.GetKeyDown(KeyCode.L))
+        {
+            SetPlaytestMode(!playtestMode);
+        }
     }
+    
+    
 
     private void PrintLawsQueue()
     {
-        if (string.IsNullOrEmpty(logFilePath))
+        if (string.IsNullOrEmpty(fresqueLogFilePath))
         {
             Debug.LogError("Log file path not initialized.");
             return;
@@ -388,7 +496,7 @@ public class GameManager : SerializedMonoBehaviour
 
 
         // Append to file (true = append mode)
-        using (System.IO.StreamWriter writer = new System.IO.StreamWriter(logFilePath, true))
+        using (System.IO.StreamWriter writer = new System.IO.StreamWriter(fresqueLogFilePath, true))
         {
             writer.WriteLine("------------------------");
             writer.WriteLine($"   SALVE DE LOIS " + lastPrintedPercent);
@@ -406,6 +514,28 @@ public class GameManager : SerializedMonoBehaviour
     public void AnsweringQuestion(int answerIndex)
     {
         FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_QuestionRespondClick");
+
+        // Save answer stats only if in playtest mode
+        if (playtestMode)
+        {
+            currentQuestion.nbQuestionAsked++;
+            if (answerIndex == 1)
+                currentQuestion.nbAnswer1++;
+            else
+                currentQuestion.nbAnswer2++;
+        }
+        
+        // Save answers to file
+        if (string.IsNullOrEmpty(answersLogFilePath))
+        {
+            Debug.LogError("Log file path not initialized.");
+            return;
+        }
+        using (System.IO.StreamWriter writer = new System.IO.StreamWriter(answersLogFilePath, true))
+        {
+            Debug.Log("Writing to file : " + answersLogFilePath);
+            writer.WriteLine(currentQuestion.question + " : " + (answerIndex == 1 ? currentQuestion.answer1 : currentQuestion.answer2));
+        }
         
         // UPDATE STATS
         nbQuestionsAnswered++;
@@ -471,9 +601,6 @@ public class GameManager : SerializedMonoBehaviour
         // Choose a random number between 0 and the number of values
         int valueIndex = UnityEngine.Random.Range(0, _questions.Count);
         int questionIndex = UnityEngine.Random.Range(0, _questions[valueIndex].Count);
-
-        Debug.Log("Value index : " + valueIndex + " Question index : " + questionIndex + "\n" +
-                  "Question : " + _questions.Count);
         
         currentQuestion = _questions[valueIndex][questionIndex];
         
@@ -498,6 +625,26 @@ public class GameManager : SerializedMonoBehaviour
     
 #if UNITY_EDITOR
 
+    [Button, DisableInPlayMode]
+    private void ClearDilemmeFolder()
+    {
+        dilemmes.Clear();
+        
+        string folderPath = "Assets/Resources/Scriptables/Dilemme";
+        // If the folder doesn't exist, create it
+        if (!UnityEditor.AssetDatabase.IsValidFolder(folderPath))
+        {
+            UnityEditor.AssetDatabase.CreateFolder("Assets/Resources/Scriptables", "Dilemme");
+        }
+        // Delete all existing Dilemme assets in the folder
+        string[] guids = UnityEditor.AssetDatabase.FindAssets("t:Dilemme", new[] { folderPath });
+        foreach (string guid in guids)
+        {
+            string assetPath = UnityEditor.AssetDatabase.GUIDToAssetPath(guid);
+            UnityEditor.AssetDatabase.DeleteAsset(assetPath);
+        }
+    }
+    
     private void ClearLawsFolder()
     {
         _values.Clear();
@@ -514,6 +661,49 @@ public class GameManager : SerializedMonoBehaviour
         {
             string assetPath = UnityEditor.AssetDatabase.GUIDToAssetPath(guid);
             UnityEditor.AssetDatabase.DeleteAsset(assetPath);
+        }
+    }
+
+    [Button, DisableInPlayMode]
+    private void LoadDilemmeCSV()
+    {
+        // Check if the file exists
+        TextAsset csvFile = Resources.Load<TextAsset>(dilemmeFileName);
+        if (csvFile == null)
+        {
+            Debug.LogError($"CSV file '{dilemmeFileName}.csv' not found in Resources folder.");
+            return;
+        }
+
+        string[] lines = csvFile.text.Split(new[] { '\n' }, System.StringSplitOptions.RemoveEmptyEntries);
+        
+        for (int i = 1; i < lines.Length; i++)
+        {
+            string line = lines[i];
+            string[] fields = line.Split(';');
+
+            if (fields.Length < 5)
+            {
+                Debug.LogWarning("Malformed line skipped: " + line);
+                continue;
+            }
+
+            Dilemme scriptable = ScriptableObject.CreateInstance<Dilemme>();
+            scriptable.question = fields[0];
+            scriptable.answer1 = fields[1];
+            scriptable.answer2 = fields[2];
+            scriptable.answer3 = fields[3];
+            scriptable.answer4 = fields[4];
+
+
+            // Sauvegarde du ScriptableObject dans le projet (dans un dossier "Assets/Resources/Questions")
+            string assetPath = $"Assets/Resources/Scriptables/Dilemme/dilemme_" + i + ".asset";
+            UnityEditor.AssetDatabase.CreateAsset(scriptable, assetPath);
+            UnityEditor.AssetDatabase.SaveAssets();
+
+            dilemmes.Add(scriptable);
+            
+            Debug.Log("Dilemmes imported successfully : " + dilemmes.Count);
         }
     }
     
@@ -722,19 +912,20 @@ public class GameManager : SerializedMonoBehaviour
         Debug.Log("Questions imported successfully!");
     }
 
-    [DisableInPlayMode]
-    [Button]
+    [Button, DisableInPlayMode]
     private void ClearScriptables()
     {
         ClearQuestionsFolder();
         ClearLawsFolder();
+        ClearDilemmeFolder();
     }
 
-    [DisableInPlayMode][Button]
+    [Button, DisableInPlayMode]
     private void LoadCSV()
     {
         LoadValuesCSV();
         LoadQuestionsCSV();
+        LoadDilemmeCSV();
     }
 #endif
 }

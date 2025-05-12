@@ -87,6 +87,7 @@ public class Player : MonoBehaviour
             Destroy(other.gameObject);
             gameManager.LandmarksReached++;
             gameManager.PrintAreaPlayer();
+            gameManager.EnterLandmark();
         }
         SetIsMoving(false);
     }
