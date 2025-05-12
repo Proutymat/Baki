@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
     private bool midSoundPlayed;
     private bool hasMovedOnce;
     
+    private MeshRenderer meshRenderer;
+    
     public bool IsMoving { get { return isMoving; } set { isMoving = value; } }
 
     private void Start()
@@ -25,6 +27,7 @@ public class Player : MonoBehaviour
         currentDirection = transform.forward * gridCellSize;
         startCellPosition = GameObject.FindGameObjectWithTag("PlayerStart").transform.position;
         gameManager = GameManager.Instance;
+        meshRenderer = GetComponent<MeshRenderer>();
         
         Initialize();
     }
@@ -53,10 +56,13 @@ public class Player : MonoBehaviour
                 FMODUnity.RuntimeManager.PlayOneShot("event:/AMB/AMB_InGame/AMB_IG_Start");
                 hasMovedOnce = true;
             }
+            
+            meshRenderer.enabled = false;
         }
         // Player stop moving
         else if (!newMovingValue && isMoving)
         {
+            meshRenderer.enabled = true;
             //FMODUnity.RuntimeManager.PlayOneShot("event:/AMB/AMB_InGame/AMB_IG_SystemStop");
             //FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/SFX_InGame/SFX_IG_BordStop");
         }
@@ -80,6 +86,7 @@ public class Player : MonoBehaviour
             Debug.Log("Landmark reached");
             Destroy(other.gameObject);
             gameManager.LandmarksReached++;
+            gameManager.PrintAreaPlayer();
         }
         SetIsMoving(false);
     }

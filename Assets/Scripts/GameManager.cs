@@ -36,7 +36,14 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("setObjectsInInspector")] private Image buttonDown;
     [SerializeField, ShowIf("setObjectsInInspector")] private Image buttonLeft;
     [SerializeField, ShowIf("setObjectsInInspector")] private Image buttonRight;
-    
+
+    [Header("Others"), ShowIf("setObjectsInInspector")] 
+    [SerializeField, ShowIf("setObjectsInInspector")] private Camera canvasCamera;
+    [SerializeField, ShowIf("setObjectsInInspector")] private Camera playerCamera;
+    [SerializeField, ShowIf("setObjectsInInspector")] private Canvas blackScreenCanvas;
+    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject arrows;
+    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject questionsArea;
+    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject progressBarObject;
 
 
     [Header("Game Settings")]
@@ -50,14 +57,28 @@ public class GameManager : SerializedMonoBehaviour
     private Player player;
     private ProgressBar progressBar;
 
+    private bool unboardingStep1 = false;
+    private bool unboardingStep2 = false;
+    
+
     [SerializeField] private bool debug = false;
     
     [Header("Static lists (not used in game)")]
     [SerializeField, ShowIf("debug")] private List<Question> _questionsNoCategory;
-    [SerializeField, ShowIf("debug")] private List<Question> _questionsValue1;
-    [SerializeField, ShowIf("debug")] private List<Question> _questionsValue2;
-    [SerializeField, ShowIf("debug")] private List<Question> _questionsValue3;
-    [SerializeField, ShowIf("debug")] private List<Question> _questionsValue4;
+    [SerializeField, ShowIf("debug")] private List<Question> _questionsMort;
+    [SerializeField, ShowIf("debug")] private List<Question> _questionsProgres;
+    [SerializeField, ShowIf("debug")] private List<Question> _questionsSpriritualite;
+    [SerializeField, ShowIf("debug")] private List<Question> _questionsTravail;
+    [SerializeField, ShowIf("debug")] private List<Question> _questionsNature;
+    [SerializeField, ShowIf("debug")] private List<Question> _questionsMorale;
+    [SerializeField, ShowIf("debug")] private List<Question> _questionsJustice;
+    [SerializeField, ShowIf("debug")] private List<Question> _questionsArt;
+    [SerializeField, ShowIf("debug")] private List<Question> _questionsTraditions;
+    [SerializeField, ShowIf("debug")] private List<Question> _questionsEgo;
+    [SerializeField, ShowIf("debug")] private List<Question> _questionsBonheur;
+    [SerializeField, ShowIf("debug")] private List<Question> _questionsMerite;
+    [SerializeField, ShowIf("debug")] private List<Question> _questionsEducation;
+    [SerializeField, ShowIf("debug")] private List<Question> _questionsChancesVsResultats;
     [SerializeField, ShowIf("debug")] private List<Value> _values;
     
     [Header("Working values")]
@@ -159,8 +180,12 @@ public class GameManager : SerializedMonoBehaviour
         nbProgressBarFull = 0;
         shortestTimeBetweenQuestions = float.MaxValue;
         longestTimeBetweenQuestions = float.MinValue;
-
+ 
         questionTimer = 0;
+        
+        // Unboarding
+        progressBar.IsPaused = true;
+        arrows.SetActive(false);
         
         // Initialize game settings
         gameTimer = gameDuration;
@@ -171,10 +196,20 @@ public class GameManager : SerializedMonoBehaviour
         // Load questions in working lists
         _questions = new List<List<Question>>();
         _questions.Add(new List<Question>(_questionsNoCategory));
-        _questions.Add(new List<Question>(_questionsValue1));
-        _questions.Add(new List<Question>(_questionsValue2));
-        _questions.Add(new List<Question>(_questionsValue3));
-        _questions.Add(new List<Question>(_questionsValue4));
+        _questions.Add(new List<Question>(_questionsMort));
+        _questions.Add(new List<Question>(_questionsProgres));
+        _questions.Add(new List<Question>(_questionsSpriritualite));
+        _questions.Add(new List<Question>(_questionsTravail));
+        _questions.Add(new List<Question>(_questionsNature));
+        _questions.Add(new List<Question>(_questionsMorale));
+        _questions.Add(new List<Question>(_questionsJustice));
+        _questions.Add(new List<Question>(_questionsArt));
+        _questions.Add(new List<Question>(_questionsTraditions));
+        _questions.Add(new List<Question>(_questionsEgo));
+        _questions.Add(new List<Question>(_questionsBonheur));
+        _questions.Add(new List<Question>(_questionsMerite));
+        _questions.Add(new List<Question>(_questionsEducation));
+        _questions.Add(new List<Question>(_questionsChancesVsResultats));
         
         _lawCursors.Clear();
         
@@ -187,7 +222,7 @@ public class GameManager : SerializedMonoBehaviour
         }
         
         NextQuestion();
-        
+        PrintAreaPlayer();
         
         // DEBUG FRESQUE : Create log file
         string folderPath = Application.dataPath + "/FresquesDebug";
@@ -208,8 +243,9 @@ public class GameManager : SerializedMonoBehaviour
         InitializeGame();
     }
 
-    private void Play()
+    public void PrintAreaPlayer()
     {
+        playerCamera.transform.position = new Vector3(player.transform.position.x, playerCamera.transform.position.y, player.transform.position.z);
     }
     
     private void WriteFinalStatsToFile()
@@ -272,6 +308,26 @@ public class GameManager : SerializedMonoBehaviour
             buttonLeft.sprite = arrowLeft;
             buttonRight.sprite = arrowRightHovered;
         }
+        
+        if (!unboardingStep2)
+        {
+            unboardingStep2 = true;
+            UnboardingStep2();
+        }
+    }
+
+    private void UnboardingStep1()
+    {
+        arrows.SetActive(true);
+        questionsArea.SetActive(false);
+        blackScreenCanvas.gameObject.SetActive(false);
+    }
+    
+    private void UnboardingStep2()
+    {
+        questionsArea.SetActive(true);
+        progressBarObject.SetActive(true);
+        progressBar.IsPaused = false;
     }
 
     private void Update()
@@ -305,11 +361,6 @@ public class GameManager : SerializedMonoBehaviour
         if (player.IsMoving)
             timeSpentMoving += Time.deltaTime;
         questionTimer += Time.deltaTime;
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Play();
-        }
 
         if (Input.GetKeyDown(KeyCode.R) && Input.GetKeyDown(KeyCode.E) && Input.GetKeyDown(KeyCode.S) && Input.GetKeyDown(KeyCode.T)) 
         {
@@ -370,6 +421,13 @@ public class GameManager : SerializedMonoBehaviour
         {
             nbProgressBarFull++;
             player.SetIsMoving(false);
+            PrintAreaPlayer();
+            
+            if (!unboardingStep1)
+            {
+                unboardingStep1 = true;
+                UnboardingStep1();
+            }
         }
         
         
@@ -425,18 +483,18 @@ public class GameManager : SerializedMonoBehaviour
     
 #if UNITY_EDITOR
 
-    private void ClearValuesFolder()
+    private void ClearLawsFolder()
     {
         _values.Clear();
         
-        string folderPath = "Assets/Resources/Scriptables/Values";
+        string folderPath = "Assets/Resources/Scriptables/Laws";
         // If the folder doesn't exist, create it
         if (!UnityEditor.AssetDatabase.IsValidFolder(folderPath))
         {
-            UnityEditor.AssetDatabase.CreateFolder("Assets/Resources/Scriptables", "Values");
+            UnityEditor.AssetDatabase.CreateFolder("Assets/Resources/Scriptables", "Laws");
         }
-        // Delete all existing Values assets in the folder
-        string[] guids = UnityEditor.AssetDatabase.FindAssets("t:Values", new[] { folderPath });
+        // Delete all existing Laws assets in the folder
+        string[] guids = UnityEditor.AssetDatabase.FindAssets("t:Laws", new[] { folderPath });
         foreach (string guid in guids)
         {
             string assetPath = UnityEditor.AssetDatabase.GUIDToAssetPath(guid);
@@ -446,7 +504,7 @@ public class GameManager : SerializedMonoBehaviour
     
     private void LoadValuesCSV()
     {
-        ClearValuesFolder();
+        ClearLawsFolder();
         
         // Check if the file exists
         TextAsset csvFile = Resources.Load<TextAsset>(valuesFileName);
@@ -482,7 +540,7 @@ public class GameManager : SerializedMonoBehaviour
 
 
             // Sauvegarde du ScriptableObject dans le projet (dans un dossier "Assets/Resources/Questions")
-            string assetPath = $"Assets/Resources/Scriptables/Values/value_" + i + ".asset";
+            string assetPath = $"Assets/Resources/Scriptables/Laws/law_" + i + ".asset";
             UnityEditor.AssetDatabase.CreateAsset(scriptable, assetPath);
             UnityEditor.AssetDatabase.SaveAssets();
 
@@ -494,10 +552,20 @@ public class GameManager : SerializedMonoBehaviour
     
     private void ClearQuestionsFolder()
     {
-        _questionsValue1.Clear();
-        _questionsValue2.Clear();
-        _questionsValue3.Clear();
-        _questionsValue4.Clear();
+        _questionsMort.Clear();
+        _questionsProgres.Clear();
+        _questionsSpriritualite.Clear();
+        _questionsTravail.Clear();
+        _questionsNature.Clear();
+        _questionsMorale.Clear();
+        _questionsJustice.Clear();
+        _questionsArt.Clear();
+        _questionsTraditions.Clear();
+        _questionsEgo.Clear();
+        _questionsBonheur.Clear();
+        _questionsMerite.Clear();
+        _questionsEducation.Clear();
+        _questionsChancesVsResultats.Clear();
         _questionsNoCategory.Clear();
         
         string folderPath = "Assets/Resources/Scriptables/Questions";
@@ -560,25 +628,75 @@ public class GameManager : SerializedMonoBehaviour
                 scriptable.type = 0;
                 _questionsNoCategory.Add(scriptable);
             }
-            else if (fields[1] == "valeur1")
+            else if (fields[1] == "mort")
             {
                 scriptable.type = 1;
-                _questionsValue1.Add(scriptable);
+                _questionsMort.Add(scriptable);
             }
-            else if (fields[1] == "valeur2")
+            else if (fields[1] == "progres")
             {
                 scriptable.type = 2;
-                _questionsValue2.Add(scriptable);
+                _questionsProgres.Add(scriptable);
             }
-            else if (fields[1] == "valeur3")
+            else if (fields[1] == "spiritualite")
             {
                 scriptable.type = 3;
-                _questionsValue3.Add(scriptable);
+                _questionsSpriritualite.Add(scriptable);
             }
-            else if (fields[1] == "valeur4")
+            else if (fields[1] == "travail")
             {
                 scriptable.type = 4;
-                _questionsValue4.Add(scriptable);
+                _questionsTravail.Add(scriptable);
+            }
+            else if (fields[1] == "nature")
+            {
+                scriptable.type = 5;
+                _questionsNature.Add(scriptable);
+            }
+            else if (fields[1] == "morale")
+            {
+                scriptable.type = 6;
+                _questionsMorale.Add(scriptable);
+            }
+            else if (fields[1] == "justice")
+            {
+                scriptable.type = 7;
+                _questionsJustice.Add(scriptable);
+            }
+            else if (fields[1] == "art")
+            {
+                scriptable.type = 8;
+                _questionsJustice.Add(scriptable);
+            }
+            else if (fields[1] == "traditions")
+            {
+                scriptable.type = 9;
+                _questionsTraditions.Add(scriptable);
+            }
+            else if (fields[1] == "ego")
+            {
+                scriptable.type = 10;
+                _questionsEgo.Add(scriptable);
+            }
+            else if (fields[1] == "bonheur")
+            {
+                scriptable.type = 11;
+                _questionsBonheur.Add(scriptable);
+            }
+            else if (fields[1] == "merite")
+            {
+                scriptable.type = 12;
+                _questionsMerite.Add(scriptable);
+            }
+            else if (fields[1] == "education")
+            {
+                scriptable.type = 13;
+                _questionsEducation.Add(scriptable);
+            }
+            else if (fields[1] == "chancesVsResultats")
+            {
+                scriptable.type = 14;
+                _questionsChancesVsResultats.Add(scriptable);
             }
             else
             {
@@ -594,7 +712,7 @@ public class GameManager : SerializedMonoBehaviour
     private void ClearScriptables()
     {
         ClearQuestionsFolder();
-        ClearValuesFolder();
+        ClearLawsFolder();
     }
 
     [DisableInPlayMode][Button]

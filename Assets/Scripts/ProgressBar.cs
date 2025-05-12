@@ -14,8 +14,13 @@ public class ProgressBar : MonoBehaviour
     [SerializeField] private float increaseValue;
     [SerializeField] private float decreaseValue;
     
+    [SerializeField] private bool isPaused;
+    public bool IsPaused { set { isPaused = value; } }
+    
     private float _timer;
     private bool barIsEmpty;
+    
+    
 
     private void Start()
     {
@@ -24,6 +29,7 @@ public class ProgressBar : MonoBehaviour
         mask.fillAmount = 0;
 
         barIsEmpty = true;
+        isPaused = true;
     }
     
     private void Update()
@@ -50,7 +56,7 @@ public class ProgressBar : MonoBehaviour
         if (_timer <= 0)
         {
             _timer = 0.001F;
-            current -= decreaseValue / 100;
+            if (!isPaused) current -= decreaseValue / 100;
         }
 
         current = current < minimum ? minimum : current > maximum ? maximum : current; // Clamp 'current' values to min and max

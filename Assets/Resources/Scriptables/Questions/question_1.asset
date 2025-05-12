@@ -15,8 +15,8 @@ MonoBehaviour:
   question: "Tu pr\xE9f\xE8res le jour ou la nuit ?"
   answer1: Jour
   answer2: Nuit
-  answer1Increment: 5
-  answer2Increment: -5
+  answer1Increment: 15
+  answer2Increment: -15
   type: 0
   nbQuestionAsked: 0
   nbAnswer1: 0
