@@ -6,45 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="73781b9b-5c78-4d1f-a1a2-b07d1229386b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Baki/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Baki/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Prototype/Canvas.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Prototype/Canvas.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Questions/question_1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scriptables/Questions/question_1.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Questions/question_1.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scriptables/Questions/question_1.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Questions/question_2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scriptables/Questions/question_2.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Questions/question_2.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scriptables/Questions/question_2.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Questions/question_3.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scriptables/Questions/question_3.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Questions/question_3.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scriptables/Questions/question_3.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Questions/question_4.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scriptables/Questions/question_4.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Questions/question_4.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scriptables/Questions/question_4.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Questions/question_5.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scriptables/Questions/question_5.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Questions/question_5.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scriptables/Questions/question_5.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Questions/question_6.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scriptables/Questions/question_6.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Questions/question_6.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scriptables/Questions/question_6.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Values.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Values/value_1.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Values/value_1.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Values/value_2.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Values/value_2.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Values/value_3.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Values/value_3.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Values/value_4.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Values/value_4.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/landmarks_family_test.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/landmarks_family_test.csv.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/landmarks_family_test2.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/landmarks_family_test2.csv.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/landmarks_family_test3.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/landmarks_family_test3.csv.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/lawsCSV.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/lawsCSV.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/lawsCSV.csv.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/lawsCSV.csv.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/map.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/map.csv.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/questionsCSV.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/questionsCSV.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/questionsCSV.csv.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/questionsCSV.csv.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ProtoDigital.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ProtoDigital.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LawCursor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LawCursor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ProgressBar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ProgressBar.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

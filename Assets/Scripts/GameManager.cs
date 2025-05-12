@@ -221,6 +221,16 @@ public class GameManager : SerializedMonoBehaviour
             _lawCursors.Add(lawCursor);
         }
         
+        // Remove empty question lists
+        for (int i = _questions.Count - 1; i >= 0; i--)
+        {
+            if (_questions[i].Count == 0)
+            {
+                Debug.Log("Removing empty question list at index: " + i);
+                _questions.RemoveAt(i);
+            }
+        }
+        
         NextQuestion();
         PrintAreaPlayer();
         
@@ -462,6 +472,9 @@ public class GameManager : SerializedMonoBehaviour
         int valueIndex = UnityEngine.Random.Range(0, _questions.Count);
         int questionIndex = UnityEngine.Random.Range(0, _questions[valueIndex].Count);
 
+        Debug.Log("Value index : " + valueIndex + " Question index : " + questionIndex + "\n" +
+                  "Question : " + _questions.Count);
+        
         currentQuestion = _questions[valueIndex][questionIndex];
         
         // Display the question and answers
@@ -472,7 +485,9 @@ public class GameManager : SerializedMonoBehaviour
         // Remove the question from the list
         _questions[valueIndex].RemoveAt(questionIndex);
         if (_questions[valueIndex].Count == 0)
+        {
             _questions.RemoveAt(valueIndex);
+        }
     }
     
     
@@ -666,7 +681,7 @@ public class GameManager : SerializedMonoBehaviour
             else if (fields[1] == "art")
             {
                 scriptable.type = 8;
-                _questionsJustice.Add(scriptable);
+                _questionsArt.Add(scriptable);
             }
             else if (fields[1] == "traditions")
             {
