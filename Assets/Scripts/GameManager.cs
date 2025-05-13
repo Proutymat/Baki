@@ -274,7 +274,7 @@ public class GameManager : SerializedMonoBehaviour
         fresqueLogFilePath = $"{folderPath}/fresque.txt";
         answersLogFilePath = $"{folderPath}/answers.txt";
 
-        SetPlaytestMode(false);
+        SetPlaytestMode(true);
     }
     
     private void Start()
