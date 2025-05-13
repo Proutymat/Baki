@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_75
   m_EditorClassIdentifier: 
-  question: "plut\xF4t supprimer les llivres ou films ?"
+  question: "Plut\xF4t supprimer les livres ou films ?"
   answer1: Les livres
   answer2: Les films
   answer1Increment: 15

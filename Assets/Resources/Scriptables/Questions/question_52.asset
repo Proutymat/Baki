@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: question_52
   m_EditorClassIdentifier: 
   question: Qui gagne entre un bouledog et un cheval ?
-  answer1: Oui
-  answer2: Non
+  answer1: Le bouledog
+  answer2: Le cheval
   answer1Increment: 15
   answer2Increment: -15
   type: 0

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   question: "En g\xE9n\xE9ral, la confiance est quelque chose qu'on acquiert ou qu'on
     perd ?"
-  answer1: Oui
-  answer2: Non
+  answer1: Qu'on acquiert
+  answer2: Qu'on perd
   answer1Increment: 15
   answer2Increment: -15
   type: 0

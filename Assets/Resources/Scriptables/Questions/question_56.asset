@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   question: Sous une averse, on se prend plus de gouttes en courant ou en marchant
     ?
-  answer1: Oui
-  answer2: Non
+  answer1: En courant
+  answer2: En marchant
   answer1Increment: 15
   answer2Increment: -15
   type: 0

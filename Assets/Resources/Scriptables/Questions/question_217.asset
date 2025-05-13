@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_217
   m_EditorClassIdentifier: 
-  question: "tu pr\xE9ferais te r\xE9incarner en humain ou en animal ?"
+  question: "Tu pr\xE9ferais te r\xE9incarner en humain ou en animal ?"
   answer1: En humain
   answer2: En animal
   answer1Increment: 15

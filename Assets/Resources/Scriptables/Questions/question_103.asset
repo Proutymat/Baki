@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_103
   m_EditorClassIdentifier: 
-  question: "tu pourrais tenir plus longtemps que la moyenne face \xE0 la torture"
+  question: "Tu pourrais tenir plus longtemps que la moyenne face \xE0 la torture"
   answer1: Oui
   answer2: Non
   answer1Increment: 15

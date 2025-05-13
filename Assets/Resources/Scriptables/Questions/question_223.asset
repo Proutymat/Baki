@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   question: Lampadaire ou boule de bowling ?
   answer1: Lampadaire
-  answer2: Boule de bowling
+  answer2: Boule de bolwing
   answer1Increment: 15
   answer2Increment: -15
   type: 0

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_202
   m_EditorClassIdentifier: 
-  question: ne plus avoir de genoux ou ne plus avoir de coudes
+  question: Ne plus avoir de genoux ou ne plus avoir de coudes
   answer1: Plus de genoux
   answer2: Plus de coudes
   answer1Increment: 15

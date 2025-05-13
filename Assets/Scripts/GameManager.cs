@@ -44,6 +44,7 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("setObjectsInInspector")] private Image buttonRight;
 
     [Header("Others"), ShowIf("setObjectsInInspector")] 
+    [SerializeField, ShowIf("setObjectsInInspector")] private Canvas mainCanvas;
     [SerializeField, ShowIf("setObjectsInInspector")] private Camera canvasCamera;
     [SerializeField, ShowIf("setObjectsInInspector")] private Camera playerCamera;
     [SerializeField, ShowIf("setObjectsInInspector")] private Canvas blackScreenCanvas;
@@ -51,6 +52,7 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject questionsArea;
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject progressBarObject;
     [SerializeField, ShowIf("setObjectsInInspector")] private Image uiBackground;
+    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject endingCanvas;
 
 
     [Header("Game Settings")]
@@ -465,19 +467,10 @@ public class GameManager : SerializedMonoBehaviour
     
     private void Update()
     {
+        if (isGameOver || !unboardingStep2) return;
+        
         // Update game time
         gameTimer -= Time.deltaTime;
-        if (gameTimer <= 0)
-        {
-            // End game logic
-            if (!isGameOver)
-            {
-                WriteFinalStatsToFile();
-                isGameOver = true;
-                Debug.Log("Game Over");
-            }
-            
-        }
         
         // Update fresque
         int percentElapsed = Mathf.FloorToInt(100 * (1 - (gameTimer / gameDuration)));
@@ -489,16 +482,20 @@ public class GameManager : SerializedMonoBehaviour
             Debug.Log("" + lastPrintedPercent + "% of the game elapsed");
         }
         
+        // End game logic
+        if (gameTimer <= 0)
+        {
+            player.SetIsMoving(false);
+            WriteFinalStatsToFile();
+            isGameOver = true;
+            endingCanvas.SetActive(true);
+            mainCanvas.gameObject.SetActive(false);
+        }
         
         // Update stats
         if (player.IsMoving)
             timeSpentMoving += Time.deltaTime;
         questionTimer += Time.deltaTime;
-
-        if (Input.GetKeyDown(KeyCode.R) && Input.GetKeyDown(KeyCode.E) && Input.GetKeyDown(KeyCode.S) && Input.GetKeyDown(KeyCode.T)) 
-        {
-            InitializeGame();
-        }
         
         if (Input.GetKeyDown(KeyCode.J) && Input.GetKeyDown(KeyCode.K) && Input.GetKeyDown(KeyCode.L))
         {
@@ -521,7 +518,7 @@ public class GameManager : SerializedMonoBehaviour
         using (System.IO.StreamWriter writer = new System.IO.StreamWriter(fresqueLogFilePath, true))
         {
             writer.WriteLine("------------------------");
-            writer.WriteLine($"   SALVE DE LOIS " + lastPrintedPercent);
+            writer.WriteLine($"   SALVE DE LOIS " + lastPrintedPercent + "%");
             writer.WriteLine("------------------------");
             foreach (var law in lawsQueue)
             {
@@ -593,10 +590,10 @@ public class GameManager : SerializedMonoBehaviour
             }
         }
         
-        
         // If the question has no category, skip
         if (currentQuestion.type != 0)
         {
+            
             int lawIncrement = answerIndex == 1 ? currentQuestion.answer1Increment : currentQuestion.answer2Increment;
             string result = _lawCursors[currentQuestion.type - 1].IncrementLawCursorValue(lawIncrement);
             if (result != "")
@@ -690,6 +687,8 @@ public class GameManager : SerializedMonoBehaviour
     [Button, DisableInPlayMode]
     private void LoadDilemmeCSV()
     {
+        ClearDilemmeFolder();
+        
         // Check if the file exists
         TextAsset csvFile = Resources.Load<TextAsset>(dilemmeFileName);
         if (csvFile == null)
