@@ -1,7 +1,226 @@
 Question;Valeur;Réponse 1;Réponse 1 incrément;Réponse 2;Réponse 2 incrément
-Tu préfères le jour ou la nuit ?;sansCategorie;Jour;5;Nuit;-5
-Devenir sourd ou devenir muet ?;valeur1;Sourd;5;Muet;-5
-Mourir aujourd'hui ou mourir demain ?;valeur2;Aujourd'hui;5;Demain;-5
-Justice punitive ou réhabilitative ?;valeur3;Punitive;5;Réhabillitative;-5
-Sauver un adulte ou un bébé ?;valeur4;Adulte;5;Bébé;-5
-Si c'était possible, j'aimerais acquérir tout le savoir du monde;sansCategorie;Oui;5;Non;-5
+Tu préfères le jour ou la nuit ?;sansCategorie;Jour;15;Nuit;-15
+Devenir sourd ou devenir muet ?;sansCategorie;Sourd;15;Muet;-15
+Mourir aujourd'hui ou mourir demain ?;mort;Aujourd'hui;15;Demain;-15
+Sauver un adulte ou un bébé ?;morale;Adulte;15;Bébé;-15
+Se téléporter ou lire dans les pensées ?;sansCategorie;Se téléporter;15;Lire dans les pensées;-15
+Les animaux rêvent quand ils dorment;sansCategorie;Oui;15;Non;-15
+L'IA pourra penser pour de vrai;progres;Oui;15;Non;-15
+On possède un âme;spiritualite;Oui;15;Non;-15
+Est-ce que tu me fais confiance ?;sansCategorie;Oui;15;Non;-15
+Quel est le pire, remord ou regret ?;sansCategorie;Remord;15;Regret;-15
+Tu penses avoir réussi ta vie;sansCategorie;Oui;15;Non;-15
+Tu es productif;travail;Oui;15;Non;-15
+Tout à un sens;nature;Oui;15;Non;-15
+Le libre arbitre existe;nature;Oui;15;Non;-15
+Le destin existe;nature;Oui;15;Non;-15
+Il y a quelque chose après la mort;spiritualite;Oui;15;Non;-15
+Il existe une forme de vérité absolue;nature;Oui;15;Non;-15
+L'Homme est bon par nature;morale;Oui;15;Non;-15
+La peine de mort peut être justifiée;justice;Oui;15;Non;-15
+Chien ou chat ?;sansCategorie;Chien;15;Chat;-15
+L'art doit choquer;art;Oui;15;Non;-15
+L'art est utile;art;Oui;15;Non;-15
+Est-ce que tu t'aimes ?;ego;Oui;15;Non;-15
+La technologie nous dépasse;progres;Oui;15;Non;-15
+C'était mieux avant;traditions;Oui;15;Non;-15
+Tu es souvent nostalgique;sansCategorie;Oui;15;Non;-15
+La famille ou les amis ?;sansCategorie;La famille;15;Les amis;-15
+Le bonheur est quantifiable;bonheur;Oui;15;Non;-15
+Tu te sens plus intelligent que la moyenne;ego;Oui;15;Non;-15
+Tu as plus d'égo que la moyenne;ego;Oui;15;Non;-15
+Tu te sens compris.e;ego;Oui;15;Non;-15
+La réussite ne peut exister qu'au prix de nombreux échecs;merite;Oui;15;Non;-15
+Toute pratique peut-être artistique;art;Oui;15;Non;-15
+L'art doit-être beau;art;Oui;15;Non;-15
+Il y a certaines choses chez moi que je ne pourrais jamais changer;ego;Oui;15;Non;-15
+La vie n'a aucun sens;spiritualite;Oui;15;Non;-15
+Tout le monde est beau;nature;Oui;15;Non;-15
+Tout le monde est intérresant;merite;Oui;15;Non;-15
+Le talent existe;nature;Oui;15;Non;-15
+Je suis destiné à ressembler à mes parents;ego;Oui;15;Non;-15
+Tu pourrais manger ton plat préféré tous les jours;sansCategorie;Oui;15;Non;-15
+Tu pourrais survivre plus longtemps que la moyenne sur une île déserte;ego;Oui;15;Non;-15
+Tu aimerais devenir célébre;ego;Oui;15;Non;-15
+Tu pourrais être heureux.e seul.e;sansCategorie;Oui;15;Non;-15
+Tu préfères connaître le grand amour ou devenir ultra riche ?;sansCategorie;Grand amour;15;Richesse;-15
+Tu crois en l'âme soeur;sansCategorie;Oui;15;Non;-15
+Tu crois au coup de foudre;sansCategorie;Oui;15;Non;-15
+L'amour peut-être inconditionnel;morale;Oui;15;Non;-15
+Tu préfères perdre tous les souvenirs que tu as des gens que tu aimes ou qu'ils perdent tous leurs souvenirs de toi ?;sansCategorie;Tu perds tes souvenirs;15;Les autres t'oublient;-15
+Les animaux ont une conscience;sansCategorie;Oui;15;Non;-15
+Parfois, la violence est la meilleure solution;justice;Oui;15;Non;-15
+Qui gagne entre un bouledog et un cheval ?;sansCategorie;Le bouledog;15;Le cheval;-15
+Toutes les addictions sont néfastes;justice;Oui;15;Non;-15
+On naît tous avec un cerveau vierge ?;mort;Oui;15;Non;-15
+Il peut-être moral de censurer;mort;Oui;15;Non;-15
+Sous une averse, on se prend plus de gouttes en courant ou en marchant ?;mort;En courant;15;En marchant;-15
+La routine te fais peur;mort;Oui;15;Non;-15
+La discipline est plus utile que l'intelligence;mort;Oui;15;Non;-15
+Il vaut toujours mieux être seul que mal accompagné;mort;Oui;15;Non;-15
+Il existe des choses fondamentalement moches;mort;Oui;15;Non;-15
+Selon vous l'univers a une fin;mort;Oui;15;Non;-15
+Est-ce que tu te sens toi-même ?;mort;Oui;15;Non;-15
+L'humanité rentrera en contact avec d'autres formes de vie;merite;Oui;15;Non;-15
+Tout le monde est capable de changer;merite;Oui;15;Non;-15
+L'Etat te protège;merite;Oui;15;Non;-15
+Pourrais tu renoncer à tes valeurs pour sauver quelqu'un qui t'es cher;merite;Oui;15;Non;-15
+Il y a forcément des pauvres et des riches dans un système fonctionnel ;merite;Oui;15;Non;-15
+Si la technologie le permettait, tu aimerais être cryogénisé;mort;Oui;15;Non;-15
+Tu aimerais être immortel;mort;Oui;15;Non;-15
+Le suicide est immoral;mort;Oui;15;Non;-15
+Existe-t-il une personne vivante dont tu souhaite la mort ?;mort;Oui;15;Non;-15
+Si c'était possible, tu aimerais acquérir tout le savoir du monde;mort;Oui;15;Non;-15
+Est-ce que le monde irait mieux si tout le monde était exactement comme toi ?;mort;Oui;15;Non;-15
+Tu préfèrerais ressembler à tout le monde ou être absolument différent de tout le monde ?;merite;Ressembler à tout le monde;15;Etre différent;-15
+Plutôt supprimer les livres ou films ?;merite;Les livres;15;Les films;-15
+Tout progrès est bon à prendre;mort;Oui;15;Non;-15
+Est-ce tu penses être suffisamment objectif à propos de toi ?;mort;Oui;15;Non;-15
+Tu pourrais être heureux sans voyager;mort;Oui;15;Non;-15
+Tu penses que tes parents sont fiers de toi;mort;Oui;15;Non;-15
+Tes meilleures années sont derrière toi;mort;Oui;15;Non;-15
+Le regard des autres te préoccupe;mort;Oui;15;Non;-15
+Si une chose est populaire, ça veut dire qu'elle est bien;mort;Oui;15;Non;-15
+Voyager dans le passé ou dans le futur ?;progres;Passé;15;Futur;-15
+Tu es plus fasciné par l'infiniment petit ou l'infiniment grand ?;progres;Infiniment petit;15;Infiniment grand;-15
+Est-ce que tu as un ou plusieurs secrets que tu n'a jamais dit à personne;progres;Oui;15;Non;-15
+On a moins de problèmes quand on est enfant;progres;Oui;15;Non;-15
+Est-ce que tu te parles tout.e seul.e à voix haute ?;progres;Oui;15;Non;-15
+"Qu'est-ce qui est une plus grosse ""tromperie"" : une connexion émotionelle ou une aventure physique ?";progres;Emtionel;15;Physique;-15
+Est-ce que tu t'ennuies facilement ?;progres;Oui;15;Non;-15
+Tu as déjà trahi quelqu'un d'important pour toi ?;merite;Oui;15;Non;-15
+Tu penses te sentir plus souvent coupable que les autres ?;merite;Oui;15;Non;-15
+Une bonne hygiène de vie est nécessaire au bonheur;merite;Oui;15;Non;-15
+Toute inégalité est injuste;progres;Oui;15;Non;-15
+Selon toi, il y a plus d'astres dans la galaxie ou de grains de sable sur terre ?;progres;Galaxie;15;Sable;-15
+Il faut aider les personnes qui le souhaitent à mourir;progres;Oui;15;Non;-15
+On est jamais mieux servi que par soi-même;progres;Oui;15;Non;-15
+Pour prendre une décision, tu a tendance à suivre ton coeur ou à suivre ta tête ?;progres;Ton coeur;15;Ta tête;-15
+Tu préfères mourir brûlé.e ou en te noyant ?;progres;Brulé.e;15;Noyade;-15
+Tu aimerais vivre sans aucune responsabilité ?;progres;Oui;15;Non;-15
+Est-ce que tu aimes les enfants ?;progres;Oui;15;Non;-15
+Le progrès scientifique est la boussole de l'humanité;progres;Oui;15;Non;-15
+Tout le monde mérite une deuxième chance ?;progres;Oui;15;Non;-15
+Tu pourrais tenir plus longtemps que la moyenne face à la torture;progres;Oui;15;Non;-15
+Il existe un contexte dans lequel tu pourrais tuer quelqu'un;spiritualite;Oui;15;Non;-15
+Se remettre avec un.e ex peut être une bonne idée;spiritualite;Oui;15;Non;-15
+Tu es pessimiste ou optimiste ?;spiritualite;Pessimiste;15;Optimiste;-15
+Il est plus important que chacun parte avec les mêmes chances que de garantir que tous arrivent au même niveau;spiritualite;Oui;15;Non;-15
+Les politiques de discrimination positive sont nécessaires pour rétablir un équilibre;merite;Oui;15;Non;-15
+L'État devrait intervenir pour réduire les écarts de richesse, même si cela freine certains méritants;merite;Oui;15;Non;-15
+L'école doit être un moyen de corriger les inégalités de naissance, même si cela demande des traitements inégaux;spiritualite;Oui;15;Non;-15
+Tu préfères aider personnellement un proche dans le besoin plutôt que de financer un système qui aide des inconnus.;spiritualite;Oui;15;Non;-15
+La sélection par tirage au sort est plus juste que la sélection sur dossier pour la fac;spiritualite;Oui;15;Non;-15
+Un revenu universel permettrait une forme d’égalité réelle plus juste que la simple égalité devant la loi;spiritualite;Oui;15;Non;-15
+Garantir l'égalité des chances est possible;spiritualite;Oui;15;Non;-15
+Des compétitions sportives où le dopage serait autorisé seraient intéressantes ;spiritualite;Oui;15;Non;-15
+Tu prèfères savoir comment tu va mourir ou savoir quand tu va mourir ?;spiritualite;Comment;15;Quand;-15
+Un bébé pleure toujours pour une raison particulière;spiritualite;Oui;15;Non;-15
+La personnalité d'un adulte est la conséquence de ses premières années de vie;spiritualite;Oui;15;Non;-15
+Les professeurs sont légitimes à enseigner la morale;spiritualite;Oui;15;Non;-15
+Il est parfois bon de mentir à un enfant pour le préserver;spiritualite;Oui;15;Non;-15
+En lui présentant les choses de la bonne manière, un enfant peut tout comprendre;spiritualite;Oui;15;Non;-15
+Les enfants sont plus honnêtes que les adultes;travail;Oui;15;Non;-15
+Il faudrait interdire à certaines personnes de faire des enfants;travail;Oui;15;Non;-15
+Un enfant est capable de savoir ce qui est bon pour lui;travail;Oui;15;Non;-15
+L'école sert à apprendre son rôle de citoyen;travail;Oui;15;Non;-15
+L'école sert à découvrir sa passion;travail;Oui;15;Non;-15
+Certains enfants ne sont pas faits pour l'école;travail;Oui;15;Non;-15
+Tous les enfants doivent suivre le même programme scolaire jusqu'à un certain âge;travail;Oui;15;Non;-15
+Les enfants qui font un bloquage sur des matières scolaires ont eu de mauvais profs;travail;Oui;15;Non;-15
+Il est facile de trancher ce qui est de la responsabilité de l'enseignant et ce qui est de la responsabilité des parents;travail;Oui;15;Non;-15
+La punition est parfois nécessaire pour éduquer un enfant;travail;Oui;15;Non;-15
+Tout enfant a été soit harceleur soit harcelé;travail;Oui;15;Non;-15
+Il faudrait revoir les programmes scolaires tous les ans;travail;Oui;15;Non;-15
+Les programmes scolaires servent à cristaliser et transmettre les connaissances les plus fondamentales d'une société;travail;Oui;15;Non;-15
+Tu aurais ton BAC si tu le repassais aujourd'hui;travail;Oui;15;Non;-15
+Les adolescents se spécialisent trop tôt;travail;Oui;15;Non;-15
+Ne pas avoir de passion est un désaventage en société;nature;Oui;15;Non;-15
+C'est difficile de se faire des amis;nature;Oui;15;Non;-15
+Les relations sociales sont complexes;nature;Oui;15;Non;-15
+Le hasard existe ;nature;Oui;15;Non;-15
+L'école sensibilise suffisament à l'importance de la politique en démocratie;nature;Oui;15;Non;-15
+Les jeunes devraient pouvoir voter plus tôt;nature;Oui;15;Non;-15
+Les jeunes devraient pouvoir voter plus tard;nature;Oui;15;Non;-15
+Le retrait du droit de vote peut être une punition légitime;nature;Oui;15;Non;-15
+Les élus devraient avoir obligatoirement un casier judiciaire vierge;nature;Oui;15;Non;-15
+Seul les crimes et non les délits devraient empêcher l'exercice de certains métiers;nature;Oui;15;Non;-15
+Au vu de l'urgence écologiqe, le nucléaire est la meilleure solution;nature;Oui;15;Non;-15
+La préconisation de quatres repas par jour relève plus du poids des lobbys que de conseils médicaux sérieux;nature;Oui;15;Non;-15
+Si tous les métiers payaient autant, personne ne voudrait faire certains métiers;nature;Oui;15;Non;-15
+Les élites nous cachent des choses capitales;nature;Oui;15;Non;-15
+Les relations internationales sont régies par la loi de la jungle;nature;Oui;15;Non;-15
+Il est complétement naïf de croire en une paix mondiale;morale;Oui;15;Non;-15
+La mondialisation agie plus au service de la paix que de la guerre;morale;Oui;15;Non;-15
+Si certaines conditions se réunissent, tu serais prêt à prendre les armes pour ton pays;morale;Oui;15;Non;-15
+L'humanité apprend de ses erreures;morale;Oui;15;Non;-15
+Si travailler n'était pas obligatoire pour vivre, tu ne travaillerais pas;morale;Oui;15;Non;-15
+Peu importe la compétition, il est impossible de garantir une égalité des conditions entre participants;morale;Oui;15;Non;-15
+Nous stressons plus que nos ancêtres ;morale;Oui;15;Non;-15
+Le désir de reconnaissance est malsaint ;morale;Oui;15;Non;-15
+Vivre depuis assez longtemps dans un pays devrait systématiquement justifier l'obtention de la nationalité de celui-ci;morale;Oui;15;Non;-15
+Les rues sont moins sûres qu'avant;morale;Oui;15;Non;-15
+Les caméras dans la rue te font sentir plus en sécurité;morale;Oui;15;Non;-15
+Les patrouilles de police te font sentir plus en sécurité;morale;Oui;15;Non;-15
+Tu te sens globalement en sécurité;morale;Oui;15;Non;-15
+Il est possible de profondément changer la société en utilisant uniquement les outils démocratiques mis à notre disposition;morale;Oui;15;Non;-15
+La consommation de drogue devrait être légale;morale;Oui;15;Non;-15
+Il est possible de trop se remmettre en question;morale;Oui;15;Non;-15
+Tout est politique;justice;Oui;15;Non;-15
+On banalise trop le sexe;justice;Oui;15;Non;-15
+Tu es en mesure de prouver de manière certaine et universelle l'existence matérielle de tous les objets qui t'entourent;justice;Oui;15;Non;-15
+Tu trouverais amusant de réaliser aujourd'hui que tu ne perçois pas le monde matériel comme les autres;justice;Oui;15;Non;-15
+La propriété privée est un droit fondamental;justice;Oui;15;Non;-15
+Tous les humains à qui on donne trop de pouvoir ont des déviances ;justice;Oui;15;Non;-15
+La bière c'est de gauche et le vin c'est de droite;justice;Oui;15;Non;-15
+Le clivage gauche droite est désué;justice;Oui;15;Non;-15
+Placée dans un contexte propice, toute personne est un criminel en puissance;justice;Oui;15;Non;-15
+En général, la confiance est quelque chose qu'on acquiert ou qu'on perd ?;justice;Qu'on acquiert;15;Qu'on perd;-15
+Faire aveuglément confiance à la science relève de la croyance;justice;Oui;15;Non;-15
+La notion de mauvais goût est une notion méprisante;justice;Oui;15;Non;-15
+Il existe des sous cultures;justice;Oui;15;Non;-15
+La police devrait être désarmée;justice;Oui;15;Non;-15
+Les fumeurs  tiennent moins à la vie que les non fumeurs;justice;Oui;15;Non;-15
+La consommation de viande ne pose problème que parce qu'elle se fait en masse;justice;Oui;15;Non;-15
+Interdire c'est inciter;justice;Oui;15;Non;-15
+Faire simle est plus complexe que faire compliqué;justice;Oui;15;Non;-15
+La majorité des gens sont idiots;art;Oui;15;Non;-15
+Tu crois au karma;art;Oui;15;Non;-15
+Un cancer c'est le résulrat d'un corps malmené qui se désolidarise de son propriétaire;art;Oui;15;Non;-15
+L'humain est plutôt un corps ou plutôt un esprit ?;art;Un corps;15;Un esprit;-15
+Certaines formes de douleurs sont bonnes;art;Oui;15;Non;-15
+Chaque sensation corporelle est un message sensé et interprétable;art;Oui;15;Non;-15
+Le progrès technique crée plus d'emploi qu'il n'en détruit;art;Oui;15;Non;-15
+Les nouveaux riches ont un syndrôme de stockholm ;art;Oui;15;Non;-15
+On peut rire de tout;art;Oui;15;Non;-15
+On peut débattre de tout;art;Oui;15;Non;-15
+100 humains peuvent battre un gorille;art;Oui;15;Non;-15
+Monter des escaliers fatigue plus que monter une pente;art;Oui;15;Non;-15
+Dans un trajet qu'est-ce qui passe le plus vite, l'aller ou le retour ?;art;L'aller;15;Le retour;-15
+Pouvoir se représenter à des éléctions devrait être impossible;art;Oui;15;Non;-15
+Il est possible de changer le plomb en or;art;Oui;15;Non;-15
+Ne plus jamais pouvoir respirer par la bouche ou par le nez ?;art;Par la bouche;15;Par le nez;-15
+Ne plus avoir de genoux ou ne plus avoir de coudes;traditions;Plus de genoux;15;Plus de coudes;-15
+Les abysses cachent des choses totalement insoupsonnées;traditions;Oui;15;Non;-15
+C'est quand on s'ennuie que viennent les idées;traditions;Oui;15;Non;-15
+Savoir raconter les histoires est plus important qu'en avoir des bonnes à raconter;traditions;Oui;15;Non;-15
+Dans une chanson, la musique est plus importante que les paroles;traditions;Oui;15;Non;-15
+La culture du vide existe;traditions;Oui;15;Non;-15
+La maturité est uniquement une question d'âge;traditions;Oui;15;Non;-15
+Les douleurs émotionnelles sont souvent plus violentes que les douleurs physiques ;traditions;Oui;15;Non;-15
+"Est-ce que le mot ""toxique"" est sur-utilisé ? ";traditions;Oui;15;Non;-15
+Quelqu'un qui rit du malheur des autres fait forcément de cette personne quelqu'un d'immoral ;traditions;Oui;15;Non;-15
+Est-ce que vieillir te fait peur ? ;ego;Oui;15;Non;-15
+Est-ce que tu aimerais voir un biopic sur ta vie ?;ego;Oui;15;Non;-15
+Est-ce que tu t'es déjà surpris à être condescendant ? ;ego;Oui;15;Non;-15
+est-ce que tu as le sentiment de mentir plus que la moyenne ?;ego;Oui;15;Non;-15
+Est-ce qu'il y a des gens en qui tu fais confiance aveuglément ? ;ego;Oui;15;Non;-15
+Tu préferais te réincarner en humain ou en animal ?;ego;En humain;15;En animal;-15
+Quel est le plus agaçant entre quelqu'un qui parle énormément ou quelqu'un qui parle très peu ?;ego;Enormément;15;Très peu;-15
+Tu peux facilement être vexé;ego;Oui;15;Non;-15
+Le temps peut guérir toutes les blessures;bonheur;Oui;15;Non;-15
+De manière générale tu privilégie plutôt la fréquence ou l'intensité ?;bonheur;Fréquence;15;Intensité;-15
+Est-ce que tu estimes te connaître à 100% ?;bonheur;Oui;15;Non;-15
+Lampadaire ou boule de bowling ?;bonheur;Lampadaire;15;Boule de bolwing;-15
+Te souviens-tu de tes rêves ?;bonheur;Oui;15;Non;-15
+Qui fais-tu passer en premier ?;bonheur;Toi-même ;15;Les autres ;-15

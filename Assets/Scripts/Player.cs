@@ -6,7 +6,8 @@ public class Player : MonoBehaviour
 {
     [Header("Player Movement")]
     [SerializeField] private bool isMoving;
-    [SerializeField] private float secondPerUnit = 1f;
+    [SerializeField] private float secondPerUnit = 3f;
+    [SerializeField] private float secondPerUnitSpecialZone = 2f;
     [SerializeField] private Vector3 currentDirection;
 
     private float unitTimer;
@@ -17,6 +18,8 @@ public class Player : MonoBehaviour
     private bool midSoundPlayed;
     private bool hasMovedOnce;
     
+    private MeshRenderer meshRenderer;
+    
     public bool IsMoving { get { return isMoving; } set { isMoving = value; } }
 
     private void Start()
@@ -25,6 +28,7 @@ public class Player : MonoBehaviour
         currentDirection = transform.forward * gridCellSize;
         startCellPosition = GameObject.FindGameObjectWithTag("PlayerStart").transform.position;
         gameManager = GameManager.Instance;
+        meshRenderer = GetComponent<MeshRenderer>();
         
         Initialize();
     }
@@ -40,6 +44,11 @@ public class Player : MonoBehaviour
         hasMovedOnce = false;
     }
 
+    public void EnableMeshRenderer(bool enable)
+    {
+        meshRenderer.enabled = enable;
+    }
+    
     public void SetIsMoving(bool newMovingValue)
     {
         // Player restart moving
@@ -53,6 +62,8 @@ public class Player : MonoBehaviour
                 FMODUnity.RuntimeManager.PlayOneShot("event:/AMB/AMB_InGame/AMB_IG_Start");
                 hasMovedOnce = true;
             }
+            
+            EnableMeshRenderer(false);
         }
         // Player stop moving
         else if (!newMovingValue && isMoving)
@@ -80,6 +91,9 @@ public class Player : MonoBehaviour
             Debug.Log("Landmark reached");
             Destroy(other.gameObject);
             gameManager.LandmarksReached++;
+            gameManager.PrintAreaPlayer();
+            gameManager.EnterLandmark();
+            EnableMeshRenderer(true);
         }
         SetIsMoving(false);
     }

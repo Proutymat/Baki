@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 778fe052ea062fc43a96d7c4f734cca6, type: 3}
+  m_Name: dilemme_4
+  m_EditorClassIdentifier: 
+  question: "Si tu devais ne plus jamais ressentir une \xE9motion, laquelle choisirais-tu
+    ?"
+  answer1: La joie
+  answer2: L'amour
+  answer3: La haine
+  answer4: "La tristesse\r"
+  nbAnswer1: 0
+  nbAnswer2: 0
+  nbAnswer3: 0
+  nbAnswer4: 0

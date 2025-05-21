@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_5
   m_EditorClassIdentifier: 
-  question: "Sauver un adulte ou un b\xE9b\xE9 ?"
-  answer1: Adulte
-  answer2: "B\xE9b\xE9"
-  answer1Increment: 5
-  answer2Increment: -5
+  question: "Se t\xE9l\xE9porter ou lire dans les pens\xE9es ?"
+  answer1: "Se t\xE9l\xE9porter"
+  answer2: "Lire dans les pens\xE9es"
+  answer1Increment: 15
+  answer2Increment: -15
   type: 0
   nbQuestionAsked: 0
   nbAnswer1: 0

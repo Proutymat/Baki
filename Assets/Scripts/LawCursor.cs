@@ -5,6 +5,7 @@ using UnityEngine;
 public class LawCursor
 {
     [SerializeField] private string valueName;
+    
     private string law1; // Law -3
     private string law2; // Law -2
     private string law3; // Law -1
@@ -21,7 +22,13 @@ public class LawCursor
     private bool law6Checked;
     private bool law7Checked;
 
-    private static int lawStep = 3;
+    private static int law1Value = -100;
+    private static int law2Value = -66;
+    private static int law3Value = -33;
+    private static int law4Value = 0;
+    private static int law5Value = 33;
+    private static int law6Value = 66;
+    private static int law7Value = 100;
 
     [SerializeField] private int lawCursorValue;
 
@@ -30,42 +37,42 @@ public class LawCursor
         lawCursorValue += value;
 
         // Law -3
-        if (lawCursorValue <= -3 * lawStep && law1Checked == false)
+        if (lawCursorValue <= law1Value && law1Checked == false)
         {
             law1Checked = true;
             return law1;
         }
 
         // Law -2
-        if (lawCursorValue <= -2 * lawStep && law2Checked == false)
+        if (lawCursorValue <= law2Value && law2Checked == false)
         {
             law2Checked = true;
             return law2;
         }
 
         // Law -1
-        if (lawCursorValue <= -1 * lawStep && law3Checked == false)
+        if (lawCursorValue <= law3Value && law3Checked == false)
         {
             law3Checked = true;
             return law3;
         }
 
         // Law 1
-        if (lawCursorValue >= lawStep && law5Checked == false)
+        if (lawCursorValue >= law5Value && law5Checked == false)
         {
             law5Checked = true;
             return law5;
         }
 
         // Law 2
-        if (lawCursorValue >= lawStep * 2 && law6Checked == false)
+        if (lawCursorValue >= law6Value && law6Checked == false)
         {
             law6Checked = true;
             return law6;
         }
 
         // Law 3
-        if (lawCursorValue >= lawStep * 3 && law7Checked == false)
+        if (lawCursorValue >= law7Value && law7Checked == false)
         {
             law6Checked = true;
             return law6;

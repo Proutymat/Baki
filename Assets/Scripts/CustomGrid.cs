@@ -12,7 +12,6 @@ public class CustomGrid : MonoBehaviour
     
     [Header("Grid Settings")]
     [SerializeField] private float _cellSize = 1f;
-    [SerializeField] private int _landmarkSize = 3;
     [SerializeField] private bool _drawGizmos = true;
     [SerializeField] private string _mapFileName;
     
@@ -81,9 +80,12 @@ public class CustomGrid : MonoBehaviour
                 cellObject.transform.parent = this.transform;
                 
                 // Landmarks
-                if (_wallsIndex[x * _xSize + z] >= 4)
+                if (_wallsIndex[x * _xSize + z] >= 400)
                 {
-                    cellObject.transform.localScale = new Vector3(_cellSize * _landmarkSize, _cellSize, _cellSize * _landmarkSize);
+                    int value = _wallsIndex[x * _xSize + z];
+                    int width = (value % 100) / 10;
+                    int height = value % 10;
+                    cellObject.transform.localScale = new Vector3(_cellSize * height, _cellSize, _cellSize * width);
                 }
                 // Walls and start
                 else
@@ -154,23 +156,50 @@ public class CustomGrid : MonoBehaviour
 
             foreach (string symbol in values)
             {
-                int mappedValue = symbol.Trim() switch
+                string trimmed = symbol.Trim();
+                int mappedValue = 0;
+
+                if (string.IsNullOrEmpty(trimmed))
                 {
-                    "S" => 1,
-                    "" => 2,
-                    "X" => 3,
-                    "A" => 4,
-                    "B" => 5,
-                    "C" => 6,
-                    "D" => 7,
-                    "E" => 8,
-                    _ => 0 // Par défaut
-                };
-                Debug.Log("Mapped value: " + symbol);
-                _wallsIndex.Add(mappedValue);
-                
-                if (mappedValue == 1)
+                    mappedValue = 2; // Cellule vide (terrain)
+                }
+                else if (trimmed == "S")
+                {
+                    mappedValue = 1; // Start
                     hasStartCell = true;
+                }
+                else if (trimmed.StartsWith("X"))
+                {
+                    mappedValue = 3;
+                }
+                else
+                {
+                    char prefix = trimmed[0];
+                    string numberPart = trimmed.Substring(1);
+
+                    if (int.TryParse(numberPart, out int number))
+                    {
+                        // First number is the landmark type, second is the width, third is the height
+                        // A45 -> 445, B23 -> 523, etc. 
+                        switch (prefix)
+                        {
+                            case 'A': mappedValue = 400 + number; break;
+                            case 'B': mappedValue = 500 + number; break;
+                            case 'C': mappedValue = 600 + number; break;
+                            case 'D': mappedValue = 700 + number; break;
+                            case 'E': mappedValue = 800 + number; break;
+                            default: mappedValue = 0; break;
+                        }
+                    }
+                    else
+                    {
+                        Debug.LogWarning($"Unrecognized symbol format: {trimmed}");
+                        mappedValue = 0;
+                    }
+                }
+
+                Debug.Log("Mapped value: " + symbol + " -> " + mappedValue);
+                _wallsIndex.Add(mappedValue);
             }
         }
         

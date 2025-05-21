@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25fcf42d6da222a42af08651a160d415, type: 3}
+  m_Name: law_5
+  m_EditorClassIdentifier: 
+  valueName: Nature
+  law1: Loi -3 Nature
+  law2: Loi -2 Nature
+  law3: Loi -1 Nature
+  law4: Loi 0 Nature
+  law5: Loi 1 Nature
+  law6: Loi 2 Nature
+  law7: "Loi 3 Nature\r"

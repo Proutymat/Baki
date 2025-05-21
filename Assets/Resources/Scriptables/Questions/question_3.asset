@@ -15,8 +15,8 @@ MonoBehaviour:
   question: Mourir aujourd'hui ou mourir demain ?
   answer1: Aujourd'hui
   answer2: Demain
-  answer1Increment: 5
-  answer2Increment: -5
+  answer1Increment: 15
+  answer2Increment: -15
   type: 0
   nbQuestionAsked: 0
   nbAnswer1: 0

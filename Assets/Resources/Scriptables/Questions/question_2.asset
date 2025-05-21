@@ -15,8 +15,8 @@ MonoBehaviour:
   question: Devenir sourd ou devenir muet ?
   answer1: Sourd
   answer2: Muet
-  answer1Increment: 5
-  answer2Increment: -5
+  answer1Increment: 15
+  answer2Increment: -15
   type: 0
   nbQuestionAsked: 0
   nbAnswer1: 0

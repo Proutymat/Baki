@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_6
   m_EditorClassIdentifier: 
-  question: "Si c'\xE9tait possible, j'aimerais acqu\xE9rir tout le savoir du monde"
+  question: "Les animaux r\xEAvent quand ils dorment"
   answer1: Oui
   answer2: Non
-  answer1Increment: 5
-  answer2Increment: -5
+  answer1Increment: 15
+  answer2Increment: -15
   type: 0
   nbQuestionAsked: 0
   nbAnswer1: 0
