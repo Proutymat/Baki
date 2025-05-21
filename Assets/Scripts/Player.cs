@@ -6,7 +6,8 @@ public class Player : MonoBehaviour
 {
     [Header("Player Movement")]
     [SerializeField] private bool isMoving;
-    [SerializeField] private float secondPerUnit = 1f;
+    [SerializeField] private float secondPerUnit = 3f;
+    [SerializeField] private float secondPerUnitSpecialZone = 2f;
     [SerializeField] private Vector3 currentDirection;
 
     private float unitTimer;

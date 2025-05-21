@@ -645,7 +645,7 @@ public class GameManager : SerializedMonoBehaviour
     
 #if UNITY_EDITOR
 
-    [Button, DisableInPlayMode]
+    
     private void ClearDilemmeFolder()
     {
         dilemmes.Clear();
@@ -729,6 +729,7 @@ public class GameManager : SerializedMonoBehaviour
         }
     }
     
+    [Button, DisableInPlayMode]
     private void LoadValuesCSV()
     {
         ClearLawsFolder();
@@ -810,6 +811,7 @@ public class GameManager : SerializedMonoBehaviour
         }
     }
     
+    [Button, DisableInPlayMode]
     private void LoadQuestionsCSV()
     {
         ClearQuestionsFolder();
@@ -934,16 +936,14 @@ public class GameManager : SerializedMonoBehaviour
         Debug.Log("Questions imported successfully!");
     }
 
-    [Button, DisableInPlayMode]
     private void ClearScriptables()
     {
         ClearQuestionsFolder();
         ClearLawsFolder();
         ClearDilemmeFolder();
     }
-
-    [Button, DisableInPlayMode]
-    private void LoadCSV()
+    
+    private void LoadAllCSV()
     {
         LoadValuesCSV();
         LoadQuestionsCSV();
