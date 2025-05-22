@@ -432,7 +432,14 @@ public class GameManager : SerializedMonoBehaviour
             buttonLeft.sprite = arrowLeft;
             buttonRight.sprite = arrowRightHovered;
         }
-        
+        else
+        {
+            buttonUp.sprite = arrowUp;
+            buttonDown.sprite = arrowDown;
+            buttonLeft.sprite = arrowLeft;
+            buttonRight.sprite = arrowRight;
+        }
+
         if (!unboardingStep2)
         {
             unboardingStep2 = true;

@@ -68,6 +68,7 @@ public class Player : MonoBehaviour
         // Player stop moving
         else if (!newMovingValue && isMoving)
         {
+            gameManager.UpdateArrowButtonsSprite("stop");
             //FMODUnity.RuntimeManager.PlayOneShot("event:/AMB/AMB_InGame/AMB_IG_SystemStop");
             //FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/SFX_InGame/SFX_IG_BordStop");
         }
