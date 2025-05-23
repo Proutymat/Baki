@@ -166,7 +166,7 @@ public class Player : MonoBehaviour
         switch(zoneName)
         {
             case "FF":
-                // FMOD EVENT
+                BA_C_Instance.setParameterByName("BordDistance",2);
                 break;
             case "FL":
                 // FMOD EVENT
@@ -179,28 +179,28 @@ public class Player : MonoBehaviour
                 // FMOD EVENT
                 break;
             case "LL":
-                // FMOD EVENT
+                BA_L_Instance.setParameterByName("BordDistance",2);
                 break;
             case "L":
-                // FMOD EVENT
+                BA_L_Instance.setParameterByName("BordDistance",1);
                 break;
             case "R":
-                // FMOD EVENT
+                BA_R_Instance.setParameterByName("BordDistance",1);
                 break;
             case "RR":
-                // FMOD EVENT
+                BA_R_Instance.setParameterByName("BordDistance",2);
                 break;
             case "BL":
                 // FMOD EVENT
                 break;
             case "B":
-                // FMOD EVENT
+                BA_B_Instance.setParameterByName("BordDistance",1);
                 break;
             case "BR":
                 // FMOD EVENT
                 break;
             case "BB":
-                // FMOD EVENT
+                BA_B_Instance.setParameterByName("BordDistance",2);
                 break;
         }
     }
@@ -210,7 +210,7 @@ public class Player : MonoBehaviour
         switch(zoneName)
         {
             case "FF":
-                // STOP FMOD EVENT
+                BA_C_Instance.setParameterByName("BordDistance",4);
                 break;
             case "FL":
                 // STOP FMOD EVENT
@@ -222,28 +222,28 @@ public class Player : MonoBehaviour
                 // STOP FMOD EVENT
                 break;
             case "LL":
-                // STOP FMOD EVENT
+                BA_L_Instance.setParameterByName("BordDistance",4);
                 break;
             case "L":
-                // STOP FMOD EVENT
+                BA_L_Instance.setParameterByName("BordDistance",4);
                 break;
             case "R":
-                // STOP FMOD EVENT
+                BA_R_Instance.setParameterByName("BordDistance",4);
                 break;
             case "RR":
-                // STOP FMOD EVENT
+                BA_R_Instance.setParameterByName("BordDistance",4);
                 break;
             case "BL":
                 // STOP FMOD EVENT
                 break;
             case "B":
-                // STOP FMOD EVENT
+                BA_B_Instance.setParameterByName("BordDistance",4);
                 break;
             case "BR":
                 // STOP FMOD EVENT
                 break;
             case "BB":
-                // STOP FMOD EVENT
+                BA_B_Instance.setParameterByName("BordDistance",4);
                 break;
         }
     }
