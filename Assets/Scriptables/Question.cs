@@ -4,12 +4,17 @@ using System.Collections.Generic;
 [CreateAssetMenu(fileName = "Question", menuName = "Scriptable Objects/Question")]
 public class Question : ScriptableObject
 {
-    public string question;
+    public string question; 
     public string answer1;
     public string answer2;
-    public int answer1Increment;
-    public int answer2Increment;
-    public int type; // 0 = No category, 1 = Value 1, 2 = Value 2, 3 = Value 3, 4 = Value 4
+    public int answer1Type1;
+    public int answer1Type1ADD;
+    public int answer2Type1;
+    public int answer2Type1ADD;
+    public int answer1Type2;
+    public int answer1Type2ADD;
+    public int answer2Type2;
+    public int answer2Type2ADD;
     
     // STATS
     public int nbQuestionAsked;
