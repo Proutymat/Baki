@@ -64,7 +64,7 @@ public class GameManager : SerializedMonoBehaviour
     
     
     private static GameManager _instance;
-    private Player player;
+    [SerializeField] private Player player;
     private ProgressBar progressBar;
 
     private bool unboardingStep1 = false;
@@ -286,6 +286,7 @@ public class GameManager : SerializedMonoBehaviour
         InitializeGame();
     }
 
+    [Button("Update Cam")]
     public void PrintAreaPlayer()
     {
         playerCamera.transform.position = new Vector3(player.transform.position.x, playerCamera.transform.position.y, player.transform.position.z);
@@ -465,11 +466,7 @@ public class GameManager : SerializedMonoBehaviour
     {
         playtestMode = value;
 
-        // Change background color
-        if (playtestMode)
-            uiBackground.color = Color.black;
-        else
-            uiBackground.color = Color.grey;
+       
     }
     
     private void Update()
