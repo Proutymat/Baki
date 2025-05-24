@@ -15,9 +15,14 @@ MonoBehaviour:
   question: "Se t\xE9l\xE9porter ou lire dans les pens\xE9es ?"
   answer1: "Se t\xE9l\xE9porter"
   answer2: "Lire dans les pens\xE9es"
-  answer1Increment: 15
-  answer2Increment: -15
-  type: 0
+  answer1Type1: -1
+  answer1Type1ADD: 0
+  answer2Type1: -1
+  answer2Type1ADD: 0
+  answer1Type2: -1
+  answer1Type2ADD: 0
+  answer2Type2: -1
+  answer2Type2ADD: 0
   nbQuestionAsked: 0
   nbAnswer1: 0
   nbAnswer2: 0

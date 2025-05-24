@@ -12,11 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25fcf42d6da222a42af08651a160d415, type: 3}
   m_Name: law_1
   m_EditorClassIdentifier: 
-  valueName: Mort
+  valueName: mort
   law1: Loi -3 Mort
+  law1Priority: 3
   law2: Loi -2 Mort
+  law2Priority: 2
   law3: Loi -1 Mort
-  law4: Loi -0 Mort
-  law5: Loi 1 Mort
-  law6: Loi 2 Mort
-  law7: "Loi 3 Mort\r"
+  law3Priority: 1
+  law4: Loi 1 Mort
+  law4Priority: 1
+  law5: Loi 2 Mort
+  law5Priority: 2
+  law6: Loi 3 Mort
+  law6Priority: 3
