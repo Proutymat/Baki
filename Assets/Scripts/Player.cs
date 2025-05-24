@@ -2,6 +2,7 @@ using System;
 using Unity.VisualScripting;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using FMOD.Studio;
 
 public class Player : MonoBehaviour
 {
@@ -24,7 +25,7 @@ public class Player : MonoBehaviour
     
     private MeshRenderer meshRenderer;
     
-    // Speical zone
+    // Special zone
     private BoxCollider szBox_FF; // Forward forward
     private BoxCollider szBox_FL; // Forward left
     private BoxCollider szBox_F; // Forward
@@ -38,6 +39,25 @@ public class Player : MonoBehaviour
     private BoxCollider szBox_BR; // Backward right
     private BoxCollider szBox_BB; // Backward backward
     
+    //Instance Fmod event
+
+    [SerializeField] private FMODUnity.EventReference BA_C;
+    [SerializeField] private FMODUnity.EventReference BA_L;
+    [SerializeField] private FMODUnity.EventReference BA_LS;
+    [SerializeField] private FMODUnity.EventReference BA_LR;
+    [SerializeField] private FMODUnity.EventReference BA_R;
+    [SerializeField] private FMODUnity.EventReference BA_RS;
+    [SerializeField] private FMODUnity.EventReference BA_RR;
+    [SerializeField] private FMODUnity.EventReference BA_B;
+    FMOD.Studio.EventInstance BA_C_Instance;
+    FMOD.Studio.EventInstance BA_L_Instance;
+    FMOD.Studio.EventInstance BA_LS_Instance;
+    FMOD.Studio.EventInstance BA_LR_Instance;
+    FMOD.Studio.EventInstance BA_R_Instance;
+    FMOD.Studio.EventInstance BA_RS_Instance;
+    FMOD.Studio.EventInstance BA_RR_Instance;
+    FMOD.Studio.EventInstance BA_B_Instance;
+    
     public bool IsMoving { get { return isMoving; } set { isMoving = value; } }
     
     private void Start()
@@ -48,6 +68,26 @@ public class Player : MonoBehaviour
         gameManager = GameManager.Instance;
         meshRenderer = GetComponent<MeshRenderer>();
         
+        //FMOD Instance start
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/SFX_SpecialZone/SFX_SZ_OutZone/SFX_SZ_OZ_BoardAppraoch/SFX_SZ_OZ_BA_Start");
+        
+        BA_C_Instance = FMODUnity.RuntimeManager.CreateInstance(BA_C);
+        BA_L_Instance = FMODUnity.RuntimeManager.CreateInstance(BA_L);
+        BA_LS_Instance = FMODUnity.RuntimeManager.CreateInstance(BA_LS);
+        BA_LR_Instance = FMODUnity.RuntimeManager.CreateInstance(BA_LR);
+        BA_R_Instance = FMODUnity.RuntimeManager.CreateInstance(BA_R);
+        BA_RS_Instance = FMODUnity.RuntimeManager.CreateInstance(BA_RS);
+        BA_RR_Instance = FMODUnity.RuntimeManager.CreateInstance(BA_RR);
+        BA_B_Instance = FMODUnity.RuntimeManager.CreateInstance(BA_B);
+        
+        BA_C_Instance.start(); BA_C_Instance.release();
+        BA_L_Instance.start(); BA_L_Instance.release();
+        BA_LS_Instance.start(); BA_LS_Instance.release();
+        BA_LR_Instance.start(); BA_LR_Instance.release();
+        BA_R_Instance.start(); BA_R_Instance.release();
+        BA_RS_Instance.start(); BA_RS_Instance.release();
+        BA_RR_Instance.start(); BA_RR_Instance.release();
+        BA_B_Instance.start(); BA_B_Instance.release();
         
         Initialize();
     }
@@ -117,41 +157,42 @@ public class Player : MonoBehaviour
         switch(zoneName)
         {
             case "FF":
-                // FMOD EVENT
+                BA_C_Instance.setParameterByName("BordDistance",2);
                 break;
             case "FL":
                 // FMOD EVENT
                 break;
             case "F":
                 // FMOD EVENT
+                BA_C_Instance.setParameterByName("BordDistance",1);
                 break;
             case "FR":
                 // FMOD EVENT
                 break;
-            case "LL":
-                // FMOD EVENT
+           /* case "LL":
+                BA_L_Instance.setParameterByName("BordDistance",2);
                 break;
             case "L":
-                // FMOD EVENT
+                BA_L_Instance.setParameterByName("BordDistance",1);
                 break;
             case "R":
-                // FMOD EVENT
+                BA_R_Instance.setParameterByName("BordDistance",1);
                 break;
             case "RR":
-                // FMOD EVENT
+                BA_R_Instance.setParameterByName("BordDistance",2);
                 break;
             case "BL":
                 // FMOD EVENT
                 break;
             case "B":
-                // FMOD EVENT
+                BA_B_Instance.setParameterByName("BordDistance",1);
                 break;
             case "BR":
                 // FMOD EVENT
                 break;
             case "BB":
-                // FMOD EVENT
-                break;
+                BA_B_Instance.setParameterByName("BordDistance",2);
+                break;*/
         }
     }
     
@@ -160,41 +201,41 @@ public class Player : MonoBehaviour
         switch(zoneName)
         {
             case "FF":
-                // STOP FMOD EVENT
+                BA_C_Instance.setParameterByName("BordDistance",4);
                 break;
             case "FL":
                 // STOP FMOD EVENT
                 break;
             case "F":
-                // STOP FMOD EVENT
+                BA_C_Instance.setParameterByName("BordDistance",4);
                 break;
             case "FR":
                 // STOP FMOD EVENT
-                break;
+                break;/*
             case "LL":
-                // STOP FMOD EVENT
+                BA_L_Instance.setParameterByName("BordDistance",4);
                 break;
             case "L":
-                // STOP FMOD EVENT
+                BA_L_Instance.setParameterByName("BordDistance",4);
                 break;
             case "R":
-                // STOP FMOD EVENT
+                BA_R_Instance.setParameterByName("BordDistance",4);
                 break;
             case "RR":
-                // STOP FMOD EVENT
+                BA_R_Instance.setParameterByName("BordDistance",4);
                 break;
             case "BL":
                 // STOP FMOD EVENT
                 break;
             case "B":
-                // STOP FMOD EVENT
+                BA_B_Instance.setParameterByName("BordDistance",4);
                 break;
             case "BR":
                 // STOP FMOD EVENT
                 break;
             case "BB":
-                // STOP FMOD EVENT
-                break;
+                BA_B_Instance.setParameterByName("BordDistance",4);
+                break;*/
         }
     }
 
