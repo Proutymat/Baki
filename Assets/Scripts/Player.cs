@@ -80,23 +80,14 @@ public class Player : MonoBehaviour
         BA_RR_Instance = FMODUnity.RuntimeManager.CreateInstance(BA_RR);
         BA_B_Instance = FMODUnity.RuntimeManager.CreateInstance(BA_B);
         
-        BA_C_Instance.start();
-        BA_L_Instance.start();
-        BA_LS_Instance.start();
-        BA_LR_Instance.start();
-        BA_R_Instance.start();
-        BA_RS_Instance.start();
-        BA_RR_Instance.start();
-        BA_B_Instance.start();
-        
-        BA_C_Instance.release();
-        BA_L_Instance.release();
-        BA_LS_Instance.release();
-        BA_LR_Instance.release();
-        BA_R_Instance.release();
-        BA_RS_Instance.release();
-        BA_RR_Instance.release();
-        BA_B_Instance.release();
+        BA_C_Instance.start(); BA_C_Instance.release();
+        BA_L_Instance.start(); BA_L_Instance.release();
+        BA_LS_Instance.start(); BA_LS_Instance.release();
+        BA_LR_Instance.start(); BA_LR_Instance.release();
+        BA_R_Instance.start(); BA_R_Instance.release();
+        BA_RS_Instance.start(); BA_RS_Instance.release();
+        BA_RR_Instance.start(); BA_RR_Instance.release();
+        BA_B_Instance.start(); BA_B_Instance.release();
         
         Initialize();
     }
@@ -178,7 +169,7 @@ public class Player : MonoBehaviour
             case "FR":
                 // FMOD EVENT
                 break;
-            case "LL":
+           /* case "LL":
                 BA_L_Instance.setParameterByName("BordDistance",2);
                 break;
             case "L":
@@ -201,7 +192,7 @@ public class Player : MonoBehaviour
                 break;
             case "BB":
                 BA_B_Instance.setParameterByName("BordDistance",2);
-                break;
+                break;*/
         }
     }
     
@@ -220,7 +211,7 @@ public class Player : MonoBehaviour
                 break;
             case "FR":
                 // STOP FMOD EVENT
-                break;
+                break;/*
             case "LL":
                 BA_L_Instance.setParameterByName("BordDistance",4);
                 break;
@@ -244,7 +235,7 @@ public class Player : MonoBehaviour
                 break;
             case "BB":
                 BA_B_Instance.setParameterByName("BordDistance",4);
-                break;
+                break;*/
         }
     }
 
