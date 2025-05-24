@@ -13,6 +13,10 @@ public class Player : MonoBehaviour
     [SerializeField] private float secondPerUnitSpecialZone = 2f;
     [SerializeField] private Vector3 currentDirection;
     [SerializeField] private GameObject specialZonesBoxes;
+    
+    [Header("UI Animations")]
+    [SerializeField] private Animator moveAnimation;
+    
 
     private float unitTimer;
     private float gridCellSize;
@@ -41,6 +45,7 @@ public class Player : MonoBehaviour
     
     //Instance Fmod event
 
+    [Header("Fmod Events")]
     [SerializeField] private FMODUnity.EventReference BA_C;
     [SerializeField] private FMODUnity.EventReference BA_L;
     [SerializeField] private FMODUnity.EventReference BA_LS;
@@ -339,6 +344,8 @@ public class Player : MonoBehaviour
         // Move the player to next unit
         if (unitTimer >= speed)
         {
+            moveAnimation.SetTrigger("Move");
+            
             unitTimer = 0f;
             this.transform.position += currentDirection;
             gameManager.DistanceTraveled++;
