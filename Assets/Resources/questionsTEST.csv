@@ -1,0 +1,103 @@
+Question;Réponse 1;Réponse 2;Réponse 1.1 valeur;R 1.1;Réponse 2.1 valeur;R 2.1;Réponse 1.2 valeur;R 1.2;Réponse 2.2 valeur;R 2.2
+Tu préfères le jour ou la nuit ?;Jour;Nuit;capitaliste;15;capitaliste;15;sansCategorie;0;sansCategorie;0
+Devenir sourd ou devenir muet ?;Sourd;Muet;sansCategorie;0;sansCategorie;0;sansCategorie;0;sansCategorie;0
+Mourir aujourd'hui ou mourir demain ?;Aujourd'hui;Demain;sansCategorie;0;sansCategorie;0;sansCategorie;0;sansCategorie;0
+Sauver un adulte ou un bébé ?;Adulte;Bébé;tradiProgres;0;tradiProgres;0;sansCategorie;0;sansCategorie;0
+Se téléporter ou lire dans les pensées ?;Se téléporter;Lire dans les pensées;sansCategorie;0;rapportAuxAutres;0;sansCategorie;0;sansCategorie;0
+Les animaux rêvent quand ils dorment;Oui;Non;sansCategorie;0;cartesien;0;sansCategorie;0;sansCategorie;0
+L'IA pourra penser pour de vrai;Oui;Non;cartesien;0;natureHumaine;0;sansCategorie;0;sansCategorie;0
+On possède un âme;Oui;Non;spiritualite;0;sansCategorie;0;sansCategorie;0;sansCategorie;0
+Est-ce que tu me fais confiance ?;Oui;Non;cartesien;0;sansCategorie;0;sansCategorie;0;sansCategorie;0
+Quel est le pire, remord ou regret ?;Remord;Regret;sansCategorie;0;sansCategorie;0;sansCategorie;0;sansCategorie;0
+Tu penses avoir réussi ta vie;Oui;Non;ego;0;capitaliste;0;spiritualite;0;sansCategorie;0
+Tu es productif;Oui;Non;capitaliste;0;sansCategorie;0;sansCategorie;0;sansCategorie;0
+Tout à un sens;Oui;Non;cartesien;0;spiritualite;0;sansCategorie;0;sansCategorie;0
+Le libre arbitre existe;Oui;Non;sansCategorie;0;deterministe;0;sansCategorie;0;sansCategorie;0
+Le destin existe;Oui;Non;deterministe;0;sansCategorie;0;sansCategorie;0;sansCategorie;0
+Il y a quelque chose après la mort;Oui;Non;spiritualite;0;cartesien;0;sansCategorie;0;sansCategorie;0
+Il existe une forme de vérité absolue;Oui;Non;spiritualite;0;sansCategorie;0;cartesien;0;sansCategorie;0
+L'Homme est bon par nature;Oui;Non;natureHumaine;0;natureHumaine;0;fermete;0;fermete;0
+La peine de mort peut être justifiée;Oui;Non;fermete;0;fermete;0;sansCategorie;0;sansCategorie;0
+Chien ou chat ?;Chien;Chat;rapportAuxAutres;0;independance;0;sansCategorie;0;sansCategorie;0
+L'art doit choquer;Oui;Non;art;0;art;0;sansCategorie;0;sansCategorie;0
+L'art est utile;Oui;Non;art;0;art;0;sansCategorie;0;sansCategorie;0
+Est-ce que tu t'aimes ?;Oui;Non;ego;0;ego;0;sansCategorie;0;sansCategorie;0
+La technologie nous dépasse;Oui;Non;cartesien;0;cartesien;0;sansCategorie;0;sansCategorie;0
+C'était mieux avant;Oui;Non;tradiProgres;0;tradiProgres;0;sansCategorie;0;sansCategorie;0
+Tu es souvent nostalgique;Oui;Non;sansCategorie;0;sansCategorie;0;sansCategorie;0;sansCategorie;0
+La famille ou les amis ?;La famille;Les amis;sansCategorie;0;sansCategorie;0;sansCategorie;0;sansCategorie;0
+Le bonheur est quantifiable;Oui;Non;cartesien;0;spiritualite;0;sansCategorie;0;sansCategorie;0
+Tu te sens plus intelligent que la moyenne;Oui;Non;ego;0;ego;0;sansCategorie;0;sansCategorie;0
+Tu as plus d'égo que la moyenne;Oui;Non;ego;0;ego;0;sansCategorie;0;sansCategorie;0
+Tu te sens compris.e;Oui;Non;rapportAuxAutres;0;rapportAuxAutres;0;bonheur;0;bonheur;0
+La réussite ne peut exister qu'au prix de nombreux échecs;Oui;Non;capitaliste;0;capitaliste;0;sansCategorie;0;sansCategorie;0
+Toute pratique peut-être artistique;Oui;Non;art;0;art;0;sansCategorie;0;sansCategorie;0
+L'art doit-être beau;Oui;Non;art;0;art;0;sansCategorie;0;sansCategorie;0
+Il y a certaines choses chez moi que je ne pourrais jamais changer;Oui;Non;ego;0;ego;0;sansCategorie;0;sansCategorie;0
+La vie n'a aucun sens;Oui;Non;spiritualite;0;spiritualite;0;sansCategorie;0;sansCategorie;0
+Tout le monde est beau;Oui;Non;sansCategorie;0;sansCategorie;0;sansCategorie;0;sansCategorie;0
+Tout le monde est intérresant;Oui;Non;rapportAuxAutres;0;rapportAuxAutres;0;sansCategorie;0;sansCategorie;0
+Le talent existe;Oui;Non;deterministe;0;deterministe;0;natureHumaine;0;natureHumaine;0
+Je suis destiné à ressembler à mes parents;Oui;Non;deterministe;0;deterministe;0;education;0;education;0
+Tu pourrais manger ton plat préféré tous les jours;Oui;Non;bonheur;0;bonheur;0;sansCategorie;0;sansCategorie;0
+Tu pourrais survivre plus longtemps que la moyenne sur une île déserte;Oui;Non;ego;0;ego;0;sansCategorie;0;sansCategorie;0
+Tu aimerais devenir célébre;Oui;Non;ego;0;ego;0;RapportASoi;0;RapportASoi;0
+Tu pourrais être heureux.e seul.e;Oui;Non;independance;0;independance;0;bonheur;0;bonheur;0
+Tu préfères connaître le grand amour ou devenir ultra riche ?;Grand amour;Richesse;sansCategorie;0;capitaliste;0;sansCategorie;0;independance;0
+Tu crois en l'âme soeur;Oui;Non;sansCategorie;0;sansCategorie;0;sansCategorie;0;sansCategorie;0
+Tu crois au coup de foudre;Oui;Non;sansCategorie;0;sansCategorie;0;sansCategorie;0;sansCategorie;0
+L'amour peut-être inconditionnel;Oui;Non;sansCategorie;0;sansCategorie;0;sansCategorie;0;sansCategorie;0
+Tu préfères perdre tous les souvenirs que tu as des gens que tu aimes ou qu'ils perdent tous leurs souvenirs de toi ?;Tu perds tes souvenirs;Les autres t'oublient;sansCategorie;0;sansCategorie;0;sansCategorie;0;sansCategorie;0
+Les animaux ont une conscience;Oui;Non;cartesien;0;cartesien;0;sansCategorie;0;sansCategorie;0
+Parfois, la violence est la meilleure solution;Oui;Non;morale;0;morale;0;justice;0;justice;0
+Qui gagne entre un bouledog et un cheval ?;Le bouledog;Le cheval;sansCategorie;0;sansCategorie;0;sansCategorie;0;sansCategorie;0
+Toutes les addictions sont néfastes;Oui;Non;RapportASoi;0;RapportASoi;0;sansCategorie;0;sansCategorie;0
+On naît tous avec un cerveau vierge ?;Oui;Non;natureHumaine;0;natureHumaine;0;education;0;education;0
+Il peut-être moral de censurer;Oui;Non;morale;0;morale;0;sansCategorie;0;sansCategorie;0
+Sous une averse, on se prend plus de gouttes en courant ou en marchant ?;En courant;En marchant;sansCategorie;0;sansCategorie;0;sansCategorie;0;sansCategorie;0
+La routine te fais peur;Oui;Non;bonheur;0;bonheur;0;tradiProgres;0;tradiProgres;0
+La discipline est plus utile que l'intelligence;Oui;Non;fermete;0;fermete;0;sansCategorie;0;sansCategorie;0
+Il vaut toujours mieux être seul que mal accompagné;Oui;Non;RapportASoi;0;RapportASoi;0;rapportAuxAutres;0;rapportAuxAutres;0
+Il existe des choses fondamentalement moches;Oui;Non;tradiProgres;0;tradiProgres;0;sansCategorie;0;sansCategorie;0
+Selon vous l'univers a une fin;Oui;Non;sansCategorie;0;sansCategorie;0;sansCategorie;0;sansCategorie;0
+Est-ce que tu te sens toi-même ?;Oui;Non;RapportASoi;0;RapportASoi;0;bonheur;0;bonheur;0
+L'humanité rentrera en contact avec d'autres formes de vie;Oui;Non;sansCategorie;0;sansCategorie;0;sansCategorie;0;sansCategorie;0
+Tout le monde est capable de changer;Oui;Non;tradiProgres;0;tradiProgres;0;deterministe;0;deterministe;0
+L'Etat te protège;Oui;Non;fermete;0;fermete;0;sansCategorie;0;sansCategorie;0
+Pourrais tu renoncer à tes valeurs pour sauver quelqu'un qui t'es cher;Oui;Non;morale;0;morale;0;sansCategorie;0;sansCategorie;0
+Il y a forcément des pauvres et des riches dans un système fonctionnel ;Oui;Non;capitaliste;0;capitaliste;0;fermete;0;fermete;0
+Si la technologie le permettait, tu aimerais être cryogénisé;Oui;Non;sansCategorie;0;sansCategorie;0;sansCategorie;0;sansCategorie;0
+Tu aimerais être immortel;Oui;Non;mort;0;mort;0;sansCategorie;0;sansCategorie;0
+Le suicide est immoral;Oui;Non;morale;0;morale;0;sansCategorie;0;sansCategorie;0
+Existe-t-il une personne vivante dont tu souhaite la mort ?;Oui;Non;justice;0;mort;0;fermete;0;morale;0
+Si c'était possible, tu aimerais acquérir tout le savoir du monde;Oui;Non;cartesien;0;cartesien;0;ego;0;ego;0
+Est-ce que le monde irait mieux si tout le monde était exactement comme toi ?;Oui;Non;RapportASoi;0;RapportASoi;0;ego;0;ego;0
+Tu préfèrerais ressembler à tout le monde ou être absolument différent de tout le monde ?;Ressembler à tout le monde;Etre différent;sansCategorie;0;sansCategorie;0;sansCategorie;0;sansCategorie;0
+Plutôt supprimer les livres ou films ?;Les livres;Les films;sansCategorie;0;sansCategorie;0;sansCategorie;0;sansCategorie;0
+Tout progrès est bon à prendre;Oui;Non;cartesien;0;cartesien;0;tradiProgres;0;tradiProgres;0
+Est-ce tu penses être suffisamment objectif à propos de toi ?;Oui;Non;ego;0;ego;0;sansCategorie;0;sansCategorie;0
+Tu pourrais être heureux sans voyager;Oui;Non;rapportAuxAutres;0;rapportAuxAutres;0;bonheur;0;bonheur;0
+Tu penses que tes parents sont fiers de toi;Oui;Non;sansCategorie;0;sansCategorie;0;sansCategorie;0;sansCategorie;0
+Tes meilleures années sont derrière toi;Oui;Non;bonheur;0;bonheur;0;tradiProgres;0;tradiProgres;0
+Le regard des autres te préoccupe;Oui;Non;RapportASoi;0;RapportASoi;0;rapportAuxAutres;0;rapportAuxAutres;0
+Si une chose est populaire, ça veut dire qu'elle est bien;Oui;Non;art;0;art;0;sansCategorie;0;sansCategorie;0
+Voyager dans le passé ou dans le futur ?;Passé;Futur;tradiProgres;0;tradiProgres;0;sansCategorie;0;sansCategorie;0
+Tu es plus fasciné par l'infiniment petit ou l'infiniment grand ?;Infiniment petit;Infiniment grand;sansCategorie;0;sansCategorie;0;sansCategorie;0;sansCategorie;0
+Est-ce que tu as un ou plusieurs secrets que tu n'a jamais dit à personne;Oui;Non;sansCategorie;0;sansCategorie;0;sansCategorie;0;sansCategorie;0
+On a moins de problèmes quand on est enfant;Oui;Non;bonheur;0;independance;0;sansCategorie;0;sansCategorie;0
+Est-ce que tu te parles tout.e seul.e à voix haute ?;Oui;Non;sansCategorie;0;sansCategorie;0;sansCategorie;0;sansCategorie;0
+"Qu'est-ce qui est une plus grosse ""tromperie"" : une connexion émotionelle ou une aventure physique ?";Emtionel;Physique;sansCategorie;0;sansCategorie;0;sansCategorie;0;sansCategorie;0
+Est-ce que tu t'ennuies facilement ?;Oui;Non;independance;0;independance;0;bonheur;0;bonheur;0
+Tu as déjà trahi quelqu'un d'important pour toi ?;Oui;Non;rapportAuxAutres;0;rapportAuxAutres;0;sansCategorie;0;sansCategorie;0
+Tu penses te sentir plus souvent coupable que les autres ?;Oui;Non;ego;0;ego;0;RapportASoi;0;RapportASoi;0
+Une bonne hygiène de vie est nécessaire au bonheur;Oui;Non;fermete;0;fermete;0;bonheur;0;bonheur;0
+Toute inégalité est injuste;Oui;Non;egaliteEquite;0;egaliteEquite;0;justice;0;justice;0
+Selon toi, il y a plus d'astres dans la galaxie ou de grains de sable sur terre ?;Galaxie;Sable;sansCategorie;0;sansCategorie;0;sansCategorie;0;sansCategorie;0
+Il faut aider les personnes qui le souhaitent à mourir;Oui;Non;mort;0;mort;0;morale;0;morale;0
+On est jamais mieux servi que par soi-même;Oui;Non;independance;0;independance;0;ego;0;ego;0
+Pour prendre une décision, tu a tendance à suivre ton coeur ou à suivre ta tête ?;Ton coeur;Ta tête;sansCategorie;0;cartesien;0;sansCategorie;0;sansCategorie;0
+Tu préfères mourir brûlé.e ou en te noyant ?;Brulé.e;Noyade;sansCategorie;0;sansCategorie;0;sansCategorie;0;sansCategorie;0
+Tu aimerais vivre sans aucune responsabilité ?;Oui;Non;bonheur;0;bonheur;0;independance;0;independance;0
+Est-ce que tu aimes les enfants ?;Oui;Non;sansCategorie;0;sansCategorie;0;sansCategorie;0;sansCategorie;0
+Le progrès scientifique est la boussole de l'humanité;Oui;Non;cartesien;0;cartesien;0;tradiProgres;0;tradiProgres;0
+Tout le monde mérite une deuxième chance ?;Oui;Non;justice;0;justice;0;fermete;0;fermete;0

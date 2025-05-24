@@ -61,12 +61,12 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField] private int printIntervalsInPercent;
     [SerializeField] private int maxLawsInterval = 5;
     [SerializeField] private string questionsFileName;
-    [SerializeField] private string valuesFileName;
+    [SerializeField] private string lawsFileName;
     [SerializeField] private string dilemmeFileName;
     
     
     private static GameManager _instance;
-    private Player player;
+    [SerializeField] private Player player;
     private ProgressBar progressBar;
 
     private bool unboardingStep1 = false;
@@ -93,7 +93,6 @@ public class GameManager : SerializedMonoBehaviour
     private bool isGameOver = false;
     private bool inLandmark;
     private Dilemme currentDilemme;
-    private bool playtestMode = false;
     
     // Stats
     private int nbUnitTraveled;
@@ -209,7 +208,7 @@ public class GameManager : SerializedMonoBehaviour
         isGameOver = false;
         
         // Load questions in working list
-        runtimeQuestions = new List<Question>();
+        runtimeQuestions = new List<Question>(questions);
         
         lawCursors.Clear();
         
@@ -237,8 +236,6 @@ public class GameManager : SerializedMonoBehaviour
         System.IO.Directory.CreateDirectory(folderPath);
         fresqueLogFilePath = $"{folderPath}/fresque.txt";
         answersLogFilePath = $"{folderPath}/answers.txt";
-
-        SetPlaytestMode(true);
     }
     
     private void Start()
@@ -250,6 +247,7 @@ public class GameManager : SerializedMonoBehaviour
         InitializeGame();
     }
 
+    [Button("Update Cam")]
     public void PrintAreaPlayer()
     {
         playerCamera.transform.position = new Vector3(player.transform.position.x, playerCamera.transform.position.y, player.transform.position.z);
@@ -298,19 +296,6 @@ public class GameManager : SerializedMonoBehaviour
         questionTimer = 0;
         
         dilemmeText.transform.parent.transform.parent.gameObject.SetActive(false);
-
-        // Save answer stats only if in playtest mode
-        if (playtestMode)
-        {
-            if (answerIndex == 1)
-                currentDilemme.nbAnswer1++;
-            else if (answerIndex == 2)
-                currentDilemme.nbAnswer2++;
-            else if (answerIndex == 3)
-                currentDilemme.nbAnswer3++;
-            else if (answerIndex == 4)
-                currentDilemme.nbAnswer4++;
-        }
         
         // Save answers to file
         if (string.IsNullOrEmpty(answersLogFilePath))
@@ -424,17 +409,6 @@ public class GameManager : SerializedMonoBehaviour
         progressBarObject.SetActive(true);
         progressBar.IsPaused = false;
     }
-
-    private void SetPlaytestMode(bool value)
-    {
-        playtestMode = value;
-
-        // Change background color
-        if (playtestMode)
-            uiBackground.color = Color.black;
-        else
-            uiBackground.color = Color.grey;
-    }
     
     private void Update()
     {
@@ -467,11 +441,6 @@ public class GameManager : SerializedMonoBehaviour
         if (player.IsMoving)
             timeSpentMoving += Time.deltaTime;
         questionTimer += Time.deltaTime;
-        
-        if (Input.GetKeyDown(KeyCode.J) && Input.GetKeyDown(KeyCode.K) && Input.GetKeyDown(KeyCode.L))
-        {
-            SetPlaytestMode(!playtestMode);
-        }
     }
     
     
@@ -516,16 +485,6 @@ public class GameManager : SerializedMonoBehaviour
     public void AnsweringQuestion(int answerIndex)
     {
         FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_QuestionRespondClick");
-
-        // Save answer stats only if in playtest mode
-        if (playtestMode)
-        {
-            currentQuestion.nbQuestionAsked++;
-            if (answerIndex == 1)
-                currentQuestion.nbAnswer1++;
-            else
-                currentQuestion.nbAnswer2++;
-        }
         
         // Save answers to file
         if (string.IsNullOrEmpty(answersLogFilePath))
@@ -621,6 +580,8 @@ public class GameManager : SerializedMonoBehaviour
 
     private void NextQuestion()
     {
+        Debug.Log("Next question called");
+        
         if (runtimeQuestions.Count < 1)
         {
             Debug.Log("No more questions available.");
@@ -635,7 +596,8 @@ public class GameManager : SerializedMonoBehaviour
         int questionIndex = UnityEngine.Random.Range(0, runtimeQuestions.Count);
 
         // Change and delete the question if both law values are fully checked
-        if (lawCursors[runtimeQuestions[questionIndex].answer1Type1].LawsFullyChecked && lawCursors[runtimeQuestions[questionIndex].answer2Type1].LawsFullyChecked)
+        if (runtimeQuestions[questionIndex].answer1Type1 >= 0 && lawCursors[runtimeQuestions[questionIndex].answer1Type1].LawsFullyChecked
+            && runtimeQuestions[questionIndex].answer2Type1 >=0 && lawCursors[runtimeQuestions[questionIndex].answer2Type1].LawsFullyChecked)
         {
             Debug.Log("Question skipped.");
             runtimeQuestions.RemoveAt(questionIndex);
@@ -652,250 +614,42 @@ public class GameManager : SerializedMonoBehaviour
         
         // Remove the question from the list
         runtimeQuestions.RemoveAt(questionIndex);
+        
+        Debug.Log("Question Displayed : " + currentQuestion.question);
     }
-    
-    
-    
-    // ---------------------------------
-    //      DEBUGGING AND TESTING
-    // ---------------------------------
-    
-#if UNITY_EDITOR
 
-    
-    private void ClearDilemmeFolder()
+
+    [Button, DisableInPlayMode]
+    private void LoadDilemme()
     {
         dilemmes.Clear();
-        
-        string folderPath = "Assets/Resources/Scriptables/Dilemme";
-        // If the folder doesn't exist, create it
-        if (!UnityEditor.AssetDatabase.IsValidFolder(folderPath))
-        {
-            UnityEditor.AssetDatabase.CreateFolder("Assets/Resources/Scriptables", "Dilemme");
-        }
-        // Delete all existing Dilemme assets in the folder
-        string[] guids = UnityEditor.AssetDatabase.FindAssets("t:Dilemme", new[] { folderPath });
-        foreach (string guid in guids)
-        {
-            string assetPath = UnityEditor.AssetDatabase.GUIDToAssetPath(guid);
-            UnityEditor.AssetDatabase.DeleteAsset(assetPath);
-        }
+        dilemmes = LoadCSV.LoadDilemmeCSV(dilemmeFileName);
+        Debug.Log("Dilemmes loaded : " + dilemmes.Count);
     }
     
-    private void ClearLawsFolder()
+    [Button, DisableInPlayMode]
+    private void LoadLaws()
     {
         laws.Clear();
-        
-        string folderPath = "Assets/Resources/Scriptables/Laws";
-        // If the folder doesn't exist, create it
-        if (!UnityEditor.AssetDatabase.IsValidFolder(folderPath))
-        {
-            UnityEditor.AssetDatabase.CreateFolder("Assets/Resources/Scriptables", "Laws");
-        }
-        // Delete all existing Laws assets in the folder
-        string[] guids = UnityEditor.AssetDatabase.FindAssets("t:Laws", new[] { folderPath });
-        foreach (string guid in guids)
-        {
-            string assetPath = UnityEditor.AssetDatabase.GUIDToAssetPath(guid);
-            UnityEditor.AssetDatabase.DeleteAsset(assetPath);
-        }
-    }
-
-    [Button, DisableInPlayMode]
-    private void LoadDilemmeCSV()
-    {
-        ClearDilemmeFolder();
-        
-        // Check if the file exists
-        TextAsset csvFile = Resources.Load<TextAsset>(dilemmeFileName);
-        if (csvFile == null)
-        {
-            Debug.LogError($"CSV file '{dilemmeFileName}.csv' not found in Resources folder.");
-            return;
-        }
-
-        string[] lines = csvFile.text.Split(new[] { '\n' }, System.StringSplitOptions.RemoveEmptyEntries);
-        
-        for (int i = 1; i < lines.Length; i++)
-        {
-            string line = lines[i];
-            string[] fields = line.Split(';');
-
-            if (fields.Length < 5)
-            {
-                Debug.LogWarning("Malformed line skipped: " + line);
-                continue;
-            }
-
-            Dilemme scriptable = ScriptableObject.CreateInstance<Dilemme>();
-            scriptable.question = fields[0];
-            scriptable.answer1 = fields[1];
-            scriptable.answer2 = fields[2];
-            scriptable.answer3 = fields[3];
-            scriptable.answer4 = fields[4];
-
-
-            // Sauvegarde du ScriptableObject dans le projet (dans un dossier "Assets/Resources/Questions")
-            string assetPath = $"Assets/Resources/Scriptables/Dilemme/dilemme_" + i + ".asset";
-            UnityEditor.AssetDatabase.CreateAsset(scriptable, assetPath);
-            UnityEditor.AssetDatabase.SaveAssets();
-
-            dilemmes.Add(scriptable);
-            
-            Debug.Log("Dilemmes imported successfully : " + dilemmes.Count);
-        }
+        laws = LoadCSV.LoadLawsCSV(lawsFileName);
+        Debug.Log("Laws loaded : " + laws.Count);
     }
     
     [Button, DisableInPlayMode]
-    private void LoadLawsCSV()
-    {
-        ClearLawsFolder();
-        
-        // Check if the file exists
-        TextAsset csvFile = Resources.Load<TextAsset>(valuesFileName);
-        if (csvFile == null)
-        {
-            Debug.LogError($"CSV file '{valuesFileName}.csv' not found in Resources folder.");
-            return;
-        }
-
-        string[] lines = csvFile.text.Split(new[] { '\n' }, System.StringSplitOptions.RemoveEmptyEntries);
-
-
-        for (int i = 1; i < lines.Length; i++)
-        {
-            string line = lines[i];
-            string[] fields = line.Split(';');
-
-            if (fields.Length < 8)
-            {
-                Debug.LogWarning("Malformed line skipped: " + line);
-                continue;
-            }
-
-            Value scriptable = ScriptableObject.CreateInstance<Value>();
-            scriptable.valueName = fields[0];
-            scriptable.law1 = fields[1];
-            scriptable.law1Priority = int.Parse(fields[2]);
-            scriptable.law2 = fields[3];
-            scriptable.law2Priority = int.Parse(fields[4]);
-            scriptable.law3 = fields[5];
-            scriptable.law3Priority = int.Parse(fields[6]);
-            scriptable.law4 = fields[7];
-            scriptable.law4Priority = int.Parse(fields[8]);
-            scriptable.law5 = fields[9];
-            scriptable.law5Priority = int.Parse(fields[10]);
-            scriptable.law6 = fields[11];
-            scriptable.law6Priority = int.Parse(fields[12]);
-            
-
-
-            // Sauvegarde du ScriptableObject dans le projet (dans un dossier "Assets/Resources/Questions")
-            string assetPath = $"Assets/Resources/Scriptables/Laws/law_" + i + ".asset";
-            UnityEditor.AssetDatabase.CreateAsset(scriptable, assetPath);
-            UnityEditor.AssetDatabase.SaveAssets();
-
-            laws.Add(scriptable);
-            
-            Debug.Log("Values imported successfully!");
-        }
-    }
-    
-    private void ClearQuestionsFolder()
+    private void LoadQuestions()
     {
         questions.Clear();
-        
-        string folderPath = "Assets/Resources/Scriptables/Questions";
-        // If the folder doesn't exist, create it
-        if (!UnityEditor.AssetDatabase.IsValidFolder(folderPath))
-        {
-            UnityEditor.AssetDatabase.CreateFolder("Assets/Resources/Scriptables", "Questions");
-        }
-        // Delete all existing Question assets in the folder
-        string[] guids = UnityEditor.AssetDatabase.FindAssets("t:Question", new[] { folderPath });
-        foreach (string guid in guids)
-        {
-            string assetPath = UnityEditor.AssetDatabase.GUIDToAssetPath(guid);
-            UnityEditor.AssetDatabase.DeleteAsset(assetPath);
-        }
-    }
-
-    private int LawsStringToInt(string lawsName)
-    {
-        int i = 0;
-        foreach (Value law in laws)
-        {
-            if (law.valueName == lawsName)
-                return i;
-        }
-
-        return -1;
+        questions = LoadCSV.LoadQuestionsCSV(questionsFileName, laws);
+        Debug.Log("Questions loaded : " + questions.Count);
     }
     
     [Button, DisableInPlayMode]
-    private void LoadQuestionsCSV()
+    private void ClearAllScriptables()
     {
-        ClearQuestionsFolder();
-        
-        // Check if the file exists
-        TextAsset csvFile = Resources.Load<TextAsset>(questionsFileName);
-        if (csvFile == null)
-        {
-            Debug.LogError($"CSV file '{questionsFileName}.csv' not found in Resources folder.");
-            return;
-        }
-
-        string[] lines = csvFile.text.Split(new[] { '\n' }, System.StringSplitOptions.RemoveEmptyEntries);
-
-        int i;
-        for (i = 1; i < lines.Length; i++)
-        {
-            string line = lines[i];
-            string[] fields = line.Split(';');
-
-            if (fields.Length < 6)
-            {
-                Debug.LogWarning("Malformed line skipped: " + line);
-                continue;
-            }
-
-            Question scriptable = ScriptableObject.CreateInstance<Question>();
-            scriptable.question = fields[0];
-            scriptable.answer1 = fields[1];
-            scriptable.answer2 = fields[2];
-            scriptable.answer1Type1 = LawsStringToInt(fields[3]);
-            scriptable.answer1Type1ADD = int.Parse(fields[4]);
-            scriptable.answer2Type1 = LawsStringToInt(fields[5]);
-            scriptable.answer2Type1ADD = int.Parse(fields[6]);
-            scriptable.answer1Type2 = LawsStringToInt(fields[7]);
-            scriptable.answer1Type1ADD = int.Parse(fields[8]);
-            scriptable.answer2Type2 = LawsStringToInt(fields[9]);
-            scriptable.answer2Type1ADD = int.Parse(fields[10]);
-            
-
-            // Sauvegarde du ScriptableObject dans le projet (dans un dossier "Assets/Resources/Questions")
-            string assetPath = $"Assets/Resources/Scriptables/Questions/question_" + i + ".asset";
-            UnityEditor.AssetDatabase.CreateAsset(scriptable, assetPath);
-            UnityEditor.AssetDatabase.SaveAssets();
-            
-            questions.Add(scriptable);
-        }
-
-        Debug.Log(questions.Count + "/" + i + " questions imported successfully!");
+        dilemmes.Clear();
+        questions.Clear();
+        laws.Clear();
+        LoadCSV.ClearScriptables();
+        Debug.Log("All scriptables cleared.");
     }
-
-    private void ClearScriptables()
-    {
-        ClearQuestionsFolder();
-        ClearLawsFolder();
-        ClearDilemmeFolder();
-    }
-    
-    private void LoadAllCSV()
-    {
-        LoadLawsCSV();
-        LoadQuestionsCSV();
-        LoadDilemmeCSV();
-    }
-#endif
 }

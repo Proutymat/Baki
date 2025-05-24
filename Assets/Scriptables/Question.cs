@@ -15,11 +15,4 @@ public class Question : ScriptableObject
     public int answer1Type2ADD;
     public int answer2Type2;
     public int answer2Type2ADD;
-    
-    // STATS
-    public int nbQuestionAsked;
-    public int nbAnswer1;
-    public int nbAnswer2;
-    public float timeSpentAnswering;
-
 }

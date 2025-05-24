@@ -15,9 +15,14 @@ MonoBehaviour:
   question: Le talent existe
   answer1: Oui
   answer2: Non
-  answer1Increment: 15
-  answer2Increment: -15
-  type: 0
+  answer1Type1: -1
+  answer1Type1ADD: 0
+  answer2Type1: -1
+  answer2Type1ADD: 0
+  answer1Type2: 3
+  answer1Type2ADD: 0
+  answer2Type2: 3
+  answer2Type2ADD: 0
   nbQuestionAsked: 0
   nbAnswer1: 0
   nbAnswer2: 0
