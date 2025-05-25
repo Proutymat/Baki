@@ -68,6 +68,12 @@ public class CustomGrid : MonoBehaviour
          ground.transform.localScale = new Vector3(_cellSize * _ySize, _cellSize, _cellSize * _xSize);
          groundCell.Init(0 + _ySize / 2f, 0, 0 + _xSize / 2f, _cellSize, _mesh, 2);
          
+        GameObject walls = new GameObject("WALLS");
+        walls.AddComponent<MeshFilter>();
+        walls.AddComponent<MeshRenderer>();
+        walls.GetComponent<MeshRenderer>().material = GameManager.Instance.materialWall;
+        walls.transform.parent = this.transform;
+         
         // Generate grid
         for (int x = 0; x < _ySize; x++)
         {
@@ -94,10 +100,32 @@ public class CustomGrid : MonoBehaviour
                 }
                 
                 cell.Init(x, _cellSize, z, _cellSize, _mesh, _wallsIndex[x * _xSize + z]);
+
+                if (_wallsIndex[x * _xSize + z] == 3)
+                {
+                    cellObject.transform.parent = walls.transform;
+                }
             }
         }
         
         Debug.Log("Grid successfully generated !");
+        
+        MeshFilter[] meshFilters = walls.GetComponentsInChildren<MeshFilter>();
+        CombineInstance[] instance = new CombineInstance[meshFilters.Length];
+        Debug.Log("Taille of meshFilters: " + meshFilters.Length);
+        for (int i = 0; i < meshFilters.Length; i++)
+        {
+            instance[i].mesh = meshFilters[i].sharedMesh;
+            instance[i].transform = meshFilters[i].transform.localToWorldMatrix;
+            meshFilters[i].gameObject.SetActive(false);
+        }
+        
+        Mesh combinedMesh = new Mesh();
+        combinedMesh.indexFormat = UnityEngine.Rendering.IndexFormat.UInt32; // ← AJOUT ICI
+        combinedMesh.CombineMeshes(instance, true, false);
+        walls.transform.GetComponent<MeshFilter>().mesh = combinedMesh;
+        walls.transform.gameObject.SetActive(true);
+        
     }
     
     void OnDrawGizmos()

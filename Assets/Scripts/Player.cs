@@ -42,6 +42,9 @@ public class Player : MonoBehaviour
     private BoxCollider szBox_B; // Backward
     private BoxCollider szBox_BR; // Backward right
     private BoxCollider szBox_BB; // Backward backward
+
+    private bool FFOn;
+    private bool FOn;
     
     //Instance Fmod event
 
@@ -107,6 +110,10 @@ public class Player : MonoBehaviour
         midSoundPlayed = false;
         hasMovedOnce = false;
         speed = secondPerUnit;
+        
+        // Reset special zones
+        FFOn = false;
+        FOn = false;
     }
 
     public void EnableMeshRenderer(bool enable)
@@ -162,14 +169,16 @@ public class Player : MonoBehaviour
         switch(zoneName)
         {
             case "FF":
-                BA_C_Instance.setParameterByName("BordDistance",2);
+                FFOn = true;
+                BA_C_Instance.setParameterByName("BordDistance", 2);
                 break;
             case "FL":
                 // FMOD EVENT
                 break;
             case "F":
                 // FMOD EVENT
-                BA_C_Instance.setParameterByName("BordDistance",1);
+                FOn = true;
+                BA_C_Instance.setParameterByName("BordDistance", 1);
                 break;
             case "FR":
                 // FMOD EVENT
@@ -206,13 +215,17 @@ public class Player : MonoBehaviour
         switch(zoneName)
         {
             case "FF":
-                BA_C_Instance.setParameterByName("BordDistance",4);
+                FFOn = false;
+                if (!FOn)
+                    BA_C_Instance.setParameterByName("BordDistance", 4);
                 break;
             case "FL":
                 // STOP FMOD EVENT
                 break;
             case "F":
-                BA_C_Instance.setParameterByName("BordDistance",4);
+                FOn = false;
+                if (!FFOn)
+                    BA_C_Instance.setParameterByName("BordDistance", 4);
                 break;
             case "FR":
                 // STOP FMOD EVENT
@@ -394,7 +407,7 @@ public class Player : MonoBehaviour
         szFF.AddComponent<SpecialZoneDetector>().ZoneName = "FF";   
         szBox_FF = szFF.AddComponent<BoxCollider>();
         szBox_FF.isTrigger = true;
-        szFF.transform.localScale = new Vector3(gridCellSize * 1, gridCellSize, gridCellSize);
+        szFF.transform.localScale = new Vector3(gridCellSize * 0.5f, gridCellSize * 0.5f, gridCellSize * 0.5f);
         szFF.transform.parent = specialZonesBoxes.transform;
         szFF.transform.position = new Vector3(transform.position.x - 2 * gridCellSize, transform.position.y, transform.position.z);
         
@@ -403,7 +416,7 @@ public class Player : MonoBehaviour
         szFL.AddComponent<SpecialZoneDetector>().ZoneName = "FL";
         szBox_FL = szFL.AddComponent<BoxCollider>();
         szBox_FL.isTrigger = true;
-        szFL.transform.localScale = new Vector3(gridCellSize * 1, gridCellSize, gridCellSize);
+        szFL.transform.localScale = new Vector3(gridCellSize * 0.5f, gridCellSize * 0.5f, gridCellSize * 0.5f);
         szFL.transform.parent = specialZonesBoxes.transform;
         szFL.transform.position = new Vector3(transform.position.x - 1 * gridCellSize, transform.position.y, transform.position.z - 1 * gridCellSize);
         
@@ -412,7 +425,7 @@ public class Player : MonoBehaviour
         szF.AddComponent<SpecialZoneDetector>().ZoneName = "F";
         szBox_F = szF.AddComponent<BoxCollider>();
         szBox_F.isTrigger = true;
-        szF.transform.localScale = new Vector3(gridCellSize * 1, gridCellSize, gridCellSize);
+        szF.transform.localScale = new Vector3(gridCellSize * 0.5f, gridCellSize * 0.5f, gridCellSize * 0.5f);
         szF.transform.parent = specialZonesBoxes.transform;
         szF.transform.position = new Vector3(transform.position.x - 1 * gridCellSize, transform.position.y, transform.position.z);
         
@@ -421,7 +434,7 @@ public class Player : MonoBehaviour
         szFR.AddComponent<SpecialZoneDetector>().ZoneName = "FR";
         szBox_FR = szFR.AddComponent<BoxCollider>();
         szBox_FR.isTrigger = true;
-        szFR.transform.localScale = new Vector3(gridCellSize * 1, gridCellSize, gridCellSize);
+        szFR.transform.localScale = new Vector3(gridCellSize * 0.5f, gridCellSize * 0.5f, gridCellSize * 0.5f);
         szFR.transform.parent = specialZonesBoxes.transform;
         szFR.transform.position = new Vector3(transform.position.x - 1 * gridCellSize, transform.position.y, transform.position.z + 1 * gridCellSize);
         
@@ -431,7 +444,7 @@ public class Player : MonoBehaviour
         szLL.AddComponent<SpecialZoneDetector>().ZoneName = "LL";
         szBox_LL = szLL.AddComponent<BoxCollider>();
         szBox_LL.isTrigger = true;
-        szLL.transform.localScale = new Vector3(gridCellSize * 1, gridCellSize, gridCellSize);
+        szLL.transform.localScale = new Vector3(gridCellSize * 0.5f, gridCellSize * 0.5f, gridCellSize * 0.5f);
         szLL.transform.parent = specialZonesBoxes.transform;
         szLL.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 2 * gridCellSize);
         
@@ -440,7 +453,7 @@ public class Player : MonoBehaviour
         szL.AddComponent<SpecialZoneDetector>().ZoneName = "L";
         szBox_L = szL.AddComponent<BoxCollider>();
         szBox_L.isTrigger = true;
-        szL.transform.localScale = new Vector3(gridCellSize * 1, gridCellSize, gridCellSize);
+        szL.transform.localScale = new Vector3(gridCellSize * 0.5f, gridCellSize * 0.5f, gridCellSize * 0.5f);
         szL.transform.parent = specialZonesBoxes.transform;
         szL.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1 * gridCellSize);
         
@@ -449,7 +462,7 @@ public class Player : MonoBehaviour
         szR.AddComponent<SpecialZoneDetector>().ZoneName = "R";
         szBox_R = szR.AddComponent<BoxCollider>();
         szBox_R.isTrigger = true;
-        szR.transform.localScale = new Vector3(gridCellSize * 1, gridCellSize, gridCellSize);
+        szR.transform.localScale = new Vector3(gridCellSize * 0.5f, gridCellSize * 0.5f, gridCellSize * 0.5f);
         szR.transform.parent = specialZonesBoxes.transform;
         szR.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1 * gridCellSize);
         
@@ -458,7 +471,7 @@ public class Player : MonoBehaviour
         szRR.AddComponent<SpecialZoneDetector>().ZoneName = "RR";
         szBox_RR = szRR.AddComponent<BoxCollider>();
         szBox_RR.isTrigger = true;
-        szRR.transform.localScale = new Vector3(gridCellSize * 1, gridCellSize, gridCellSize);
+        szRR.transform.localScale = new Vector3(gridCellSize * 0.5f, gridCellSize * 0.5f, gridCellSize * 0.5f);
         szRR.transform.parent = specialZonesBoxes.transform;
         szRR.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 2 * gridCellSize);
         
@@ -467,7 +480,7 @@ public class Player : MonoBehaviour
         szBL.AddComponent<SpecialZoneDetector>().ZoneName = "BL";
         szBox_BL = szBL.AddComponent<BoxCollider>();
         szBox_BL.isTrigger = true;
-        szBL.transform.localScale = new Vector3(gridCellSize * 1, gridCellSize, gridCellSize);
+        szBL.transform.localScale = new Vector3(gridCellSize * 0.5f, gridCellSize * 0.5f, gridCellSize * 0.5f);
         szBL.transform.parent = specialZonesBoxes.transform;
         szBL.transform.position = new Vector3(transform.position.x + 1 * gridCellSize, transform.position.y, transform.position.z - 1 * gridCellSize);
         
@@ -476,7 +489,7 @@ public class Player : MonoBehaviour
         szB.AddComponent<SpecialZoneDetector>().ZoneName = "B";
         szBox_B = szB.AddComponent<BoxCollider>();
         szBox_B.isTrigger = true;
-        szB.transform.localScale = new Vector3(gridCellSize * 1, gridCellSize, gridCellSize);
+        szB.transform.localScale = new Vector3(gridCellSize * 0.5f, gridCellSize * 0.5f, gridCellSize * 0.5f);
         szB.transform.parent = specialZonesBoxes.transform;
         szB.transform.position = new Vector3(transform.position.x + 1 * gridCellSize, transform.position.y, transform.position.z);
         
@@ -485,7 +498,7 @@ public class Player : MonoBehaviour
         szBR.AddComponent<SpecialZoneDetector>().ZoneName = "BR";
         szBox_BR = szBR.AddComponent<BoxCollider>();
         szBox_BR.isTrigger = true;
-        szBR.transform.localScale = new Vector3(gridCellSize * 1, gridCellSize, gridCellSize);
+        szBR.transform.localScale = new Vector3(gridCellSize * 0.5f, gridCellSize * 0.5f, gridCellSize * 0.5f);
         szBR.transform.parent = specialZonesBoxes.transform;
         szBR.transform.position = new Vector3(transform.position.x + 1 * gridCellSize, transform.position.y, transform.position.z + 1 * gridCellSize);
         
@@ -494,7 +507,7 @@ public class Player : MonoBehaviour
         szBB.AddComponent<SpecialZoneDetector>().ZoneName = "BB";
         szBox_BB = szBB.AddComponent<BoxCollider>();
         szBox_BB.isTrigger = true;
-        szBB.transform.localScale = new Vector3(gridCellSize * 1, gridCellSize, gridCellSize);
+        szBB.transform.localScale = new Vector3(gridCellSize * 0.5f, gridCellSize * 0.5f, gridCellSize * 0.5f);
         szBB.transform.parent = specialZonesBoxes.transform;
         szBB.transform.position = new Vector3(transform.position.x + 2 * gridCellSize, transform.position.y, transform.position.z);
     }

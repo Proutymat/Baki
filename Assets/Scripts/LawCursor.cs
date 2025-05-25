@@ -29,12 +29,12 @@ public class LawCursor
     
     private bool lawsFullyChecked;
 
-    private static int law1Value = -100;
-    private static int law2Value = -66;
-    private static int law3Value = -33;
-    private static int law4Value = 33;
-    private static int law5Value = 66;
-    private static int law6Value = 100;
+    private static int law1Value = -80;
+    private static int law2Value = -60;
+    private static int law3Value = -40;
+    private static int law4Value = 40;
+    private static int law5Value = 60;
+    private static int law6Value = 80;
     
     [SerializeField] private int lawCursorValue;
 
