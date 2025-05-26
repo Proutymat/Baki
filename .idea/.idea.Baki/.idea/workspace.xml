@@ -5,16 +5,56 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="73781b9b-5c78-4d1f-a1a2-b07d1229386b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/SHADER_FINAL.shadergraph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SHADER_FINAL.shadergraph.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Automate Bold W00 Regular.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Automate Bold W00 Regular.ttf.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/BakiFont.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/BakiFont.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/BitcountGridSingle[CRSV,ELSH,ELXP,slnt,wght].ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/BitcountGridSingle[CRSV,ELSH,ELXP,slnt,wght].ttf.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/UiFont.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/UiFont.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Baki/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Baki/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/button_down.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/button_down.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/button_left.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/button_left.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/button_right.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/button_right.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/button_up.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/button_up.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ProtoDigital.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ProtoDigital.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Prototype.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Prototype/Square.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Prototype/Square.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Prototype/arrow_down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Prototype/arrow_down.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Prototype/arrow_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Prototype/arrow_left.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Prototype/arrow_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Prototype/arrow_right.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Prototype/arrow_up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Prototype/arrow_up.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Line.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/Animation/Line.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/BAYERPATTERN.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/BAYERPATTERN.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Proto.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Proto/Arrows.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Proto/Arrows/BT_BAS.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Proto/Arrows/BT_BAS.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Proto/Arrows/BT_BAS_HOVER.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Proto/Arrows/BT_BAS_HOVER.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Proto/Arrows/BT_DROITE.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Proto/Arrows/BT_DROITE.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Proto/Arrows/BT_DROITE_HOVER.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Proto/Arrows/BT_DROITE_HOVER.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Proto/Arrows/BT_GAUCHE.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Proto/Arrows/BT_GAUCHE.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Proto/Arrows/BT_GAUCHE_HOVER.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Proto/Arrows/BT_GAUCHE_HOVER.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Proto/Arrows/BT_HAUT.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Proto/Arrows/BT_HAUT.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Proto/Arrows/BT_HAUT_HOVER.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Proto/Arrows/BT_HAUT_HOVER.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Proto/BitcountGridSingle[CRSV,ELSH,ELXP,slnt,wght] SDF.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Proto/BitcountGridSingle[CRSV,ELSH,ELXP,slnt,wght] SDF.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Proto/PROTODIGI_INTEFACE.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Proto/PROTODIGI_INTEFACE.mp4.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/SHADER_FOND.shadergraph" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/SHADER_FOND.shadergraph.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
