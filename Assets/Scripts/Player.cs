@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using Sirenix.OdinInspector;
@@ -13,6 +14,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float secondPerUnitSpecialZone = 2f;
     [SerializeField] private Vector3 currentDirection;
     [SerializeField] private GameObject specialZonesBoxes;
+    [SerializeField] private List<SpecialZoneDetector> specialZoneDetectors;
     
     [Header("UI Animations")]
     [SerializeField] private Animator moveAnimation;
@@ -44,7 +46,17 @@ public class Player : MonoBehaviour
     private BoxCollider szBox_BB; // Backward backward
 
     private bool FFOn;
+    private bool FLOn;
     private bool FOn;
+    private bool FROn;
+    private bool LLOn;
+    private bool LOn;
+    private bool ROn;
+    private bool RROn;
+    private bool BLOn;
+    private bool BOn;
+    private bool BROn;
+    private bool BBOn;
     
     //Instance Fmod event
 
@@ -70,7 +82,7 @@ public class Player : MonoBehaviour
     
     private void Start()
     {
-        gridCellSize = FindFirstObjectByType<CustomGrid>().transform.GetChild(1).localScale.x;
+        gridCellSize = FindFirstObjectByType<CustomGrid>().transform.GetChild(1).GetChild(0).localScale.x;
         currentDirection = transform.forward * gridCellSize;
         startCellPosition = GameObject.FindGameObjectWithTag("PlayerStart").transform.position;
         gameManager = GameManager.Instance;
@@ -113,7 +125,17 @@ public class Player : MonoBehaviour
         
         // Reset special zones
         FFOn = false;
+        FLOn = false;
         FOn = false;
+        FROn = false;
+        LLOn = false;
+        LOn = false;
+        ROn = false;
+        RROn = false;
+        BLOn = false;
+        BOn = false;
+        BROn = false;
+        BBOn = false;
     }
 
     public void EnableMeshRenderer(bool enable)
@@ -141,120 +163,12 @@ public class Player : MonoBehaviour
         else if (!newMovingValue && isMoving)
         {
             gameManager.UpdateArrowButtonsSprite("stop");
+            StopSpecialZoneSound();
             //FMODUnity.RuntimeManager.PlayOneShot("event:/AMB/AMB_InGame/AMB_IG_SystemStop");
             //FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/SFX_InGame/SFX_IG_BordStop");
         }
 
         isMoving = newMovingValue;
-    }
-
-    public void SetInSpecialZone(bool newInSpecialZone)
-    {
-        // Enter special zone
-        if (newInSpecialZone && !isMoving)
-        {
-            speed = secondPerUnitSpecialZone;
-        }
-        // Exit special zone
-        else if (!newInSpecialZone && isMoving)
-        {
-            speed = secondPerUnit;
-        }
-        
-        inSpecialZone = newInSpecialZone;
-    }
-
-    public void SZDetectorEnterTriggered(string zoneName)
-    {
-        switch(zoneName)
-        {
-            case "FF":
-                FFOn = true;
-                BA_C_Instance.setParameterByName("BordDistance", 2);
-                break;
-            case "FL":
-                // FMOD EVENT
-                break;
-            case "F":
-                // FMOD EVENT
-                FOn = true;
-                BA_C_Instance.setParameterByName("BordDistance", 1);
-                break;
-            case "FR":
-                // FMOD EVENT
-                break;
-           /* case "LL":
-                BA_L_Instance.setParameterByName("BordDistance",2);
-                break;
-            case "L":
-                BA_L_Instance.setParameterByName("BordDistance",1);
-                break;
-            case "R":
-                BA_R_Instance.setParameterByName("BordDistance",1);
-                break;
-            case "RR":
-                BA_R_Instance.setParameterByName("BordDistance",2);
-                break;
-            case "BL":
-                // FMOD EVENT
-                break;
-            case "B":
-                BA_B_Instance.setParameterByName("BordDistance",1);
-                break;
-            case "BR":
-                // FMOD EVENT
-                break;
-            case "BB":
-                BA_B_Instance.setParameterByName("BordDistance",2);
-                break;*/
-        }
-    }
-    
-    public void SZDetectorExitTriggered(string zoneName)
-    {
-        switch(zoneName)
-        {
-            case "FF":
-                FFOn = false;
-                if (!FOn)
-                    BA_C_Instance.setParameterByName("BordDistance", 4);
-                break;
-            case "FL":
-                // STOP FMOD EVENT
-                break;
-            case "F":
-                FOn = false;
-                if (!FFOn)
-                    BA_C_Instance.setParameterByName("BordDistance", 4);
-                break;
-            case "FR":
-                // STOP FMOD EVENT
-                break;/*
-            case "LL":
-                BA_L_Instance.setParameterByName("BordDistance",4);
-                break;
-            case "L":
-                BA_L_Instance.setParameterByName("BordDistance",4);
-                break;
-            case "R":
-                BA_R_Instance.setParameterByName("BordDistance",4);
-                break;
-            case "RR":
-                BA_R_Instance.setParameterByName("BordDistance",4);
-                break;
-            case "BL":
-                // STOP FMOD EVENT
-                break;
-            case "B":
-                BA_B_Instance.setParameterByName("BordDistance",4);
-                break;
-            case "BR":
-                // STOP FMOD EVENT
-                break;
-            case "BB":
-                BA_B_Instance.setParameterByName("BordDistance",4);
-                break;*/
-        }
     }
 
     public void OnColliderTriggered(string collisionName)
@@ -320,9 +234,91 @@ public class Player : MonoBehaviour
             FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/SFX_InGame/SFX_IG_DirectionalRotate_SPAT/SFX_IG_DirectionalRotate_L");
             Debug.Log("Moving left");
         }
+    }
+
+    private void StopSpecialZoneSound()
+    {
+        BA_C_Instance.setParameterByName("BordDistance", 4);
+        BA_L_Instance.setParameterByName("BordDistance", 4);
+        BA_R_Instance.setParameterByName("BordDistance", 4);
+        BA_LS_Instance.setParameterByName("BordDistance", 4);
+        BA_RS_Instance.setParameterByName("BordDistance", 4);
+        BA_LR_Instance.setParameterByName("BordDistance", 4);
+        BA_RR_Instance.setParameterByName("BordDistance", 4);
+        BA_B_Instance.setParameterByName("BordDistance", 4);
+    }
+
+    public void SetInSpecialZone(bool newInSpecialZone)
+    {
+        // Enter special zone
+        if (newInSpecialZone && !isMoving)
+        {
+            speed = secondPerUnitSpecialZone;
+            UpdateSpecialZoneDetection();
+        }
+        // Exit special zone
+        else if (!newInSpecialZone && isMoving)
+        {
+            speed = secondPerUnit;
+            StopSpecialZoneSound();
+        }
         
+        inSpecialZone = newInSpecialZone;
+    }
+    
+    void UpdateSpecialZoneDetection()
+    {
+        foreach (SpecialZoneDetector detector in specialZoneDetectors)
+            detector.CheckCollision(); 
         
-        
+        // Check FF + F
+        if (specialZoneDetectors[2].IsOn)
+            BA_C_Instance.setParameterByName("BordDistance", 1);
+        else if (specialZoneDetectors[0].IsOn)
+            BA_C_Instance.setParameterByName("BordDistance", 3);
+        else
+            BA_C_Instance.setParameterByName("BordDistance", 4);
+        // Check FL
+        if (specialZoneDetectors[1].IsOn)
+            BA_L_Instance.setParameterByName("BordDistance", 2);
+        else
+            BA_L_Instance.setParameterByName("BordDistance", 4);
+        // Check FR
+        if (specialZoneDetectors[3].IsOn)
+            BA_R_Instance.setParameterByName("BordDistance", 2);
+        else
+            BA_R_Instance.setParameterByName("BordDistance", 4);
+        // Check LL + L
+        if (specialZoneDetectors[5].IsOn)
+            BA_LS_Instance.setParameterByName("BordDistance", 1);
+        else if (specialZoneDetectors[4].IsOn)
+            BA_LS_Instance.setParameterByName("BordDistance", 3);
+        else
+            BA_LS_Instance.setParameterByName("BordDistance", 4);
+        // Check R + RR
+        if (specialZoneDetectors[6].IsOn)
+            BA_RS_Instance.setParameterByName("BordDistance", 1);
+        else if (specialZoneDetectors[7].IsOn)
+            BA_RS_Instance.setParameterByName("BordDistance", 3);
+        else
+            BA_RS_Instance.setParameterByName("BordDistance", 4);
+        // Check BL
+        if (specialZoneDetectors[8].IsOn)
+            BA_LR_Instance.setParameterByName("BordDistance", 2);
+        else
+            BA_LR_Instance.setParameterByName("BordDistance", 4);
+        // Check BR
+        if (specialZoneDetectors[10].IsOn)
+            BA_RR_Instance.setParameterByName("BordDistance", 2);
+        else
+            BA_RR_Instance.setParameterByName("BordDistance", 4);
+        // Check B + BB
+        if (specialZoneDetectors[9].IsOn)
+            BA_B_Instance.setParameterByName("BordDistance", 1);
+        else if (specialZoneDetectors[11].IsOn)
+            BA_B_Instance.setParameterByName("BordDistance", 3);
+        else
+            BA_B_Instance.setParameterByName("BordDistance", 4);
     }
 
     void Update() 
@@ -363,6 +359,7 @@ public class Player : MonoBehaviour
             this.transform.position += currentDirection;
             gameManager.DistanceTraveled++;
             midSoundPlayed = false;
+            UpdateSpecialZoneDetection();
             
             // Forward sound
             if (currentDirection == Vector3.left * gridCellSize)
@@ -384,6 +381,8 @@ public class Player : MonoBehaviour
     [Button, DisableInPlayMode]
     private void CreateSpecialZoneCollider()
     {
+        specialZoneDetectors.Clear();
+        
         // Destroy all child objects
         Transform[] children = new Transform[specialZonesBoxes.transform.childCount];
         for (int i = 0; i < children.Length; i++)
@@ -400,11 +399,12 @@ public class Player : MonoBehaviour
         }
         
         
-        gridCellSize = FindFirstObjectByType<CustomGrid>().transform.GetChild(1).localScale.x;
+        gridCellSize = FindFirstObjectByType<CustomGrid>().transform.GetChild(1).GetChild(0).localScale.x;
         
         // Forward forward
         GameObject szFF = new GameObject("szBoxFF");
-        szFF.AddComponent<SpecialZoneDetector>().ZoneName = "FF";   
+        specialZoneDetectors.Add(szFF.AddComponent<SpecialZoneDetector>());
+        szFF.GetComponent<SpecialZoneDetector>().ZoneName = "FF";
         szBox_FF = szFF.AddComponent<BoxCollider>();
         szBox_FF.isTrigger = true;
         szFF.transform.localScale = new Vector3(gridCellSize * 0.5f, gridCellSize * 0.5f, gridCellSize * 0.5f);
@@ -413,7 +413,8 @@ public class Player : MonoBehaviour
         
         // Forward left
         GameObject szFL = new GameObject("szBoxFL");
-        szFL.AddComponent<SpecialZoneDetector>().ZoneName = "FL";
+        specialZoneDetectors.Add(szFL.AddComponent<SpecialZoneDetector>());
+        szFL.GetComponent<SpecialZoneDetector>().ZoneName = "FL";
         szBox_FL = szFL.AddComponent<BoxCollider>();
         szBox_FL.isTrigger = true;
         szFL.transform.localScale = new Vector3(gridCellSize * 0.5f, gridCellSize * 0.5f, gridCellSize * 0.5f);
@@ -422,7 +423,8 @@ public class Player : MonoBehaviour
         
         // Forward
         GameObject szF = new GameObject("szBoxF");
-        szF.AddComponent<SpecialZoneDetector>().ZoneName = "F";
+        specialZoneDetectors.Add(szF.AddComponent<SpecialZoneDetector>());
+        szF.GetComponent<SpecialZoneDetector>().ZoneName = "F";
         szBox_F = szF.AddComponent<BoxCollider>();
         szBox_F.isTrigger = true;
         szF.transform.localScale = new Vector3(gridCellSize * 0.5f, gridCellSize * 0.5f, gridCellSize * 0.5f);
@@ -431,7 +433,8 @@ public class Player : MonoBehaviour
         
         // Forward right
         GameObject szFR = new GameObject("szBoxFR");
-        szFR.AddComponent<SpecialZoneDetector>().ZoneName = "FR";
+        specialZoneDetectors.Add(szFR.AddComponent<SpecialZoneDetector>());
+        szFR.GetComponent<SpecialZoneDetector>().ZoneName = "FR";
         szBox_FR = szFR.AddComponent<BoxCollider>();
         szBox_FR.isTrigger = true;
         szFR.transform.localScale = new Vector3(gridCellSize * 0.5f, gridCellSize * 0.5f, gridCellSize * 0.5f);
@@ -441,7 +444,8 @@ public class Player : MonoBehaviour
         
         // Left left
         GameObject szLL = new GameObject("szBoxLL");
-        szLL.AddComponent<SpecialZoneDetector>().ZoneName = "LL";
+        specialZoneDetectors.Add(szLL.AddComponent<SpecialZoneDetector>());
+        szLL.GetComponent<SpecialZoneDetector>().ZoneName = "LL";
         szBox_LL = szLL.AddComponent<BoxCollider>();
         szBox_LL.isTrigger = true;
         szLL.transform.localScale = new Vector3(gridCellSize * 0.5f, gridCellSize * 0.5f, gridCellSize * 0.5f);
@@ -450,7 +454,8 @@ public class Player : MonoBehaviour
         
         // Left
         GameObject szL = new GameObject("szBoxL");
-        szL.AddComponent<SpecialZoneDetector>().ZoneName = "L";
+        specialZoneDetectors.Add(szL.AddComponent<SpecialZoneDetector>());
+        szL.GetComponent<SpecialZoneDetector>().ZoneName = "L";
         szBox_L = szL.AddComponent<BoxCollider>();
         szBox_L.isTrigger = true;
         szL.transform.localScale = new Vector3(gridCellSize * 0.5f, gridCellSize * 0.5f, gridCellSize * 0.5f);
@@ -459,7 +464,8 @@ public class Player : MonoBehaviour
         
         // Right
         GameObject szR = new GameObject("szBoxR");
-        szR.AddComponent<SpecialZoneDetector>().ZoneName = "R";
+        specialZoneDetectors.Add(szR.AddComponent<SpecialZoneDetector>());
+        szR.GetComponent<SpecialZoneDetector>().ZoneName = "R";
         szBox_R = szR.AddComponent<BoxCollider>();
         szBox_R.isTrigger = true;
         szR.transform.localScale = new Vector3(gridCellSize * 0.5f, gridCellSize * 0.5f, gridCellSize * 0.5f);
@@ -468,7 +474,8 @@ public class Player : MonoBehaviour
         
         // Right right
         GameObject szRR = new GameObject("szBoxRR");
-        szRR.AddComponent<SpecialZoneDetector>().ZoneName = "RR";
+        specialZoneDetectors.Add(szRR.AddComponent<SpecialZoneDetector>());
+        szRR.GetComponent<SpecialZoneDetector>().ZoneName = "RR";
         szBox_RR = szRR.AddComponent<BoxCollider>();
         szBox_RR.isTrigger = true;
         szRR.transform.localScale = new Vector3(gridCellSize * 0.5f, gridCellSize * 0.5f, gridCellSize * 0.5f);
@@ -477,7 +484,8 @@ public class Player : MonoBehaviour
         
         // Backward left
         GameObject szBL = new GameObject("szBoxBL");
-        szBL.AddComponent<SpecialZoneDetector>().ZoneName = "BL";
+        specialZoneDetectors.Add(szBL.AddComponent<SpecialZoneDetector>());
+        szBL.GetComponent<SpecialZoneDetector>().ZoneName = "BL";
         szBox_BL = szBL.AddComponent<BoxCollider>();
         szBox_BL.isTrigger = true;
         szBL.transform.localScale = new Vector3(gridCellSize * 0.5f, gridCellSize * 0.5f, gridCellSize * 0.5f);
@@ -486,7 +494,8 @@ public class Player : MonoBehaviour
         
         // Backward
         GameObject szB = new GameObject("szBoxB");
-        szB.AddComponent<SpecialZoneDetector>().ZoneName = "B";
+        specialZoneDetectors.Add(szB.AddComponent<SpecialZoneDetector>());
+        szB.GetComponent<SpecialZoneDetector>().ZoneName = "B";
         szBox_B = szB.AddComponent<BoxCollider>();
         szBox_B.isTrigger = true;
         szB.transform.localScale = new Vector3(gridCellSize * 0.5f, gridCellSize * 0.5f, gridCellSize * 0.5f);
@@ -495,7 +504,8 @@ public class Player : MonoBehaviour
         
         // Backward right
         GameObject szBR = new GameObject("szBoxBR");
-        szBR.AddComponent<SpecialZoneDetector>().ZoneName = "BR";
+        specialZoneDetectors.Add(szBR.AddComponent<SpecialZoneDetector>());
+        szBR.GetComponent<SpecialZoneDetector>().ZoneName = "BR";
         szBox_BR = szBR.AddComponent<BoxCollider>();
         szBox_BR.isTrigger = true;
         szBR.transform.localScale = new Vector3(gridCellSize * 0.5f, gridCellSize * 0.5f, gridCellSize * 0.5f);
@@ -504,7 +514,8 @@ public class Player : MonoBehaviour
         
         // Backward backward
         GameObject szBB = new GameObject("szBoxBB");
-        szBB.AddComponent<SpecialZoneDetector>().ZoneName = "BB";
+        specialZoneDetectors.Add(szBB.AddComponent<SpecialZoneDetector>());
+        szBB.GetComponent<SpecialZoneDetector>().ZoneName = "BB";
         szBox_BB = szBB.AddComponent<BoxCollider>();
         szBox_BB.isTrigger = true;
         szBB.transform.localScale = new Vector3(gridCellSize * 0.5f, gridCellSize * 0.5f, gridCellSize * 0.5f);
