@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: law_4
   m_EditorClassIdentifier: 
   valueName: natureHumaine
-  law1: Loi -3 Travail
+  law1: Loi -3 Nature
   law1Priority: 3
-  law2: Loi -2 Travail
+  law2: Loi -2 Nature
   law2Priority: 2
-  law3: Loi -1 Travail
+  law3: Loi -1 Nature
   law3Priority: 1
-  law4: Loi 1 Travail
+  law4: Loi 1 Nature
   law4Priority: 1
-  law5: Loi 2 Travail
+  law5: Loi 2 Nature
   law5Priority: 2
-  law6: Loi 3 Travail
+  law6: Loi 3 Nature
   law6Priority: 3

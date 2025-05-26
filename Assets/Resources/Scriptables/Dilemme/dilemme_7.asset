@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 778fe052ea062fc43a96d7c4f734cca6, type: 3}
   m_Name: dilemme_7
   m_EditorClassIdentifier: 
-  question: Est-ce que tu t'aimes ?
-  answer1: Oui
-  answer2: Oui
-  answer3: Oui
-  answer4: "Oui\r"
+  question: Qu'est-ce qui t'effraie le plus ?
+  answer1: La mort
+  answer2: L'inconnu
+  answer3: Le temps
+  answer4: "L'infini\r"
   nbAnswer1: 0
   nbAnswer2: 0
   nbAnswer3: 0

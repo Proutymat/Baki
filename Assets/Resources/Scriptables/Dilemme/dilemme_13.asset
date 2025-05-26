@@ -15,8 +15,8 @@ MonoBehaviour:
   question: "Ta plus grande qualit\xE9 ?"
   answer1: La patiente
   answer2: L'empathie
-  answer3: "L\u2019intelligence"
-  answer4: "L\u2019honn\xEAtet\xE9\r"
+  answer3: L'intelligence
+  answer4: "L'hon\xEAtet\xE9\r"
   nbAnswer1: 0
   nbAnswer2: 0
   nbAnswer3: 0

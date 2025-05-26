@@ -1,0 +1,21 @@
+VALEUR;Loi -3;Loi -3 Priority;Loi -2;Loi -2 Priority;Loi -1;Loi -1 Priority;Loi 1;Loi 1 Priority;Loi 2;Loi 2 Priority;Loi 3;Loi 3 Priority
+mort;Loi -3 Mort;3;Loi -2 Mort;2;Loi -1 Mort;1;Loi 1 Mort;1;Loi 2 Mort;2;Loi 3 Mort;3
+rapportAuxAutres;Loi -3 RapportAuxAutres;3;Loi -2 RapportAuxAutres;2;Loi -1 RapportAuxAutres;1;Loi 1 RapportAuxAutres;1;Loi 2 RapportAuxAutres;2;Loi 3 RapportAuxAutres;3
+RapportASoi;Loi -3 RapportASoi;3;Loi -2 RapportASoi;2;Loi -1 RapportASoi;1;Loi 1 RapportASoi;1;Loi 2 RapportASoi;2;Loi 3 RapportASoi;3
+natureHumaine;Loi -3 Nature;3;Loi -2 Nature;2;Loi -1 Nature;1;Loi 1 Nature;1;Loi 2 Nature;2;Loi 3 Nature;3
+spiritualite;Loi -3 Spiritualite;3;Loi -2 Spiritualite;2;Loi -1 Spiritualite;1;Loi 1 Spiritualite;1;Loi 2 Spiritualite;2;Spiritualite;3
+ego;Loi -3 Ego;3;Loi -2 Ego;2;Loi -1 Ego;1;Loi 1 Ego;1;Loi 2 Ego;2;Loi 3 Ego;3
+tradiProgres;Loi -3 Traditions;3;Loi -2 Traditions;2;Loi -1 Traditions;1;Loi 1 Traditions;1;Loi 2 Traditions;2;Loi 3 Traditions;3
+art;Loi -3 Art;3;Loi -2 Art;2;Loi -1 Art;1;Loi 1 Art;1;Loi 2 Art;2;Loi 3 Art;3
+morale;Loi -3 Morale;3;Loi -2 Morale;2;Loi -1 Morale;1;Loi 1 Morale;1;Loi 2 Morale;2;Loi 3 Morale;3
+education;Loi -3 Education;3;Loi -2 Education;2;Loi -1 Education;1;Loi 1 Education;1;Loi 2 Education;2;Loi 3 Education;3
+bonheur;Loi -3 Bonheur;3;Loi -2 Bonheur;2;Loi -1 Bonheur;1;Loi 1 Bonheur;1;Loi 2 Bonheur;2;Loi 3 Bonheur;3
+roleEtat;Loi -3 RoleEtat;3;Loi -2 RoleEtat;2;Loi -1 RoleEtat;1;Loi 1 RoleEtat;1;Loi 2 RoleEtat;2;Loi 3 RoleEtat;3
+egaliteEquite;Loi -3 EgaliteEquite;3;Loi -2 EgaliteEquite;2;EgaliteEquite;1;Loi 1 EgaliteEquite;1;Loi 2 EgaliteEquite;2;Loi 3 EgaliteEquite;3
+justice;Loi -3 Justice;3;Loi -2 Justice;2;Loi -1 Justice;1;Loi 1 Justice;1;Loi 2 Justice;2;Loi 3 Justice;3
+roleCitoyen;Loi -3 RoleCitoyen;3;Loi -2 RoleCitoyen;2;Loi -1 RoleCitoyen;1;Loi 1 RoleCitoyen;1;Loi 2 RoleCitoyen;2;Loi 3 RoleCitoyen;3
+cartesien;Loi -3 Cartesien;3;Loi -2 Cartesien;2;Loi -1 Cartesien;1;Loi 1 Cartesien;1;Loi 2 Cartesien;2;Loi 3 Cartesien;3
+capitaliste;Loi -3 Capitaliste;3;Loi -2 Capitaliste;2;Loi -1 Capitaliste;1;Loi 1 Capitaliste;1;Loi 2 Capitaliste;2;Loi 3 Capitaliste;3
+fermete;Loi -3 Fermete;3;Loi -2 Fermete;2;Loi -1 Fermete;1;Loi 1 Fermete;1;Loi 2 Fermete;2;Loi 3 Fermete;3
+deterministe;Loi -3 Deterministe;3;Loi -2 Deterministe;2;Loi -1 Deterministe;1;Loi 1 Deterministe;1;Loi 2 Deterministe;2;Loi 3 Deterministe;3
+independance;Loi -3 Independance;3;Loi -2 Independance;2;Loi -1 Independance;1;Loi 1 Independance;1;Loi 2 Independance;2;Loi 3 Independance;3

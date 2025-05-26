@@ -18,13 +18,9 @@ MonoBehaviour:
   answer2: Richesse
   answer1Type1: -1
   answer1Type1ADD: 0
-  answer2Type1: -1
-  answer2Type1ADD: 0
+  answer2Type1: 16
+  answer2Type1ADD: 10
   answer1Type2: -1
   answer1Type2ADD: 0
-  answer2Type2: -1
+  answer2Type2: 19
   answer2Type2ADD: 0
-  nbQuestionAsked: 0
-  nbAnswer1: 0
-  nbAnswer2: 0
-  timeSpentAnswering: 0
