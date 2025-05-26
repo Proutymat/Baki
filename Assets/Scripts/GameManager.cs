@@ -463,23 +463,27 @@ public class GameManager : SerializedMonoBehaviour
             writer.WriteLine("------------------------");
             
             int lawPrinted = 0;
-            int priorityIndex = lawsQueuePriority.Max();
-            
-            while (lawsQueue.Count > 0 && lawPrinted < maxLawsInterval && priorityIndex > 0)
+
+            if (lawsQueuePriority.Any())
             {
-                // Get the index of the first law with the highest priority
-                int index = lawsQueuePriority.IndexOf(priorityIndex);
-                writer.WriteLine(lawsQueue[index]);
-                lawsQueue.RemoveAt(index);
-                lawsQueuePriority.RemoveAt(index);
-                lawPrinted++;
-                
-                // Update the priority index
-                if (lawsQueuePriority.Count > 0)
-                    priorityIndex = lawsQueuePriority.Max();
-            }
+                int priorityIndex = lawsQueuePriority.Max();
             
-            writer.WriteLine();
+                while (lawsQueue.Count > 0 && lawPrinted < maxLawsInterval && priorityIndex > 0)
+                {
+                    // Get the index of the first law with the highest priority
+                    int index = lawsQueuePriority.IndexOf(priorityIndex);
+                    writer.WriteLine(lawsQueue[index]);
+                    lawsQueue.RemoveAt(index);
+                    lawsQueuePriority.RemoveAt(index);
+                    lawPrinted++;
+                
+                    // Update the priority index
+                    if (lawsQueuePriority.Count > 0)
+                        priorityIndex = lawsQueuePriority.Max();
+                }
+            
+                writer.WriteLine();
+            }
         }
     }
 
@@ -587,8 +591,7 @@ public class GameManager : SerializedMonoBehaviour
 
     private void NextQuestion()
     {
-        Debug.Log("Next question called");
-        
+        // If there are no more questions left
         if (runtimeQuestions.Count < 1)
         {
             Debug.Log("No more questions available.");
@@ -621,8 +624,6 @@ public class GameManager : SerializedMonoBehaviour
         
         // Remove the question from the list
         runtimeQuestions.RemoveAt(questionIndex);
-        
-        Debug.Log("Question Displayed : " + currentQuestion.question);
     }
 
 

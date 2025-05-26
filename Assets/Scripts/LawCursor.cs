@@ -96,7 +96,8 @@ public class LawCursor
 
 public LawCursor(Value value)
     {
-        valueName = value.name;
+        valueName = value.valueName;
+        Debug.Log("LawCursor created with value: " + valueName);
         law1 = value.law1;
         law2 = value.law2;
         law3 = value.law3;
