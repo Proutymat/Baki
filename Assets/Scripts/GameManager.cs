@@ -54,6 +54,7 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject progressBarObject;
     [SerializeField, ShowIf("setObjectsInInspector")] private Image uiBackground;
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject endingCanvas;
+    [SerializeField] private GameObject directionnalArrows;
 
 
     [Header("Game Settings")]
@@ -524,6 +525,12 @@ public class GameManager : SerializedMonoBehaviour
             player.SetIsMoving(false);
             PrintAreaPlayer();
             player.EnableMeshRenderer(true);
+            
+            // Active all children of the directionnal arrows
+            foreach (Transform child in directionnalArrows.transform)
+            {
+                child.gameObject.SetActive(true);
+            }
             
             if (!unboardingStep1)
             {

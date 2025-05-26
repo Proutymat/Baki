@@ -11,6 +11,6 @@ public class PlayerCollider : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        player.OnColliderTriggered(other.tag);
+        player.OnColliderTriggered(other);
     }
 }

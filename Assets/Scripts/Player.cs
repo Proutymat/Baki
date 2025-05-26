@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Vector3 currentDirection;
     [SerializeField] private GameObject specialZonesBoxes;
     [SerializeField] private List<SpecialZoneDetector> specialZoneDetectors;
+    [SerializeField] private GameObject directionnalArrows;
     
     [Header("UI Animations")]
     [SerializeField] private Animator moveAnimation;
@@ -157,6 +158,12 @@ public class Player : MonoBehaviour
                 hasMovedOnce = true;
             }
             
+            // Hide all children of directionnal arrows
+            foreach (Transform child in directionnalArrows.transform)
+            {
+                child.gameObject.SetActive(false);
+            }
+            
             EnableMeshRenderer(false);
         }
         // Player stop moving
@@ -171,10 +178,10 @@ public class Player : MonoBehaviour
         isMoving = newMovingValue;
     }
 
-    public void OnColliderTriggered(string collisionName)
+    public void OnColliderTriggered(Collider collider)
     {
         // Player hit wall
-        if (collisionName == "Wall")
+        if (collider.tag == "Wall")
         {
             Debug.Log("Wall hit");
             this.transform.position -= currentDirection;
@@ -182,10 +189,10 @@ public class Player : MonoBehaviour
             FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/SFX_InGame/SFX_IG_BoardImpact");
         }
         // Player hit landmark   
-        else if (collisionName == "Landmark")
+        else if (collider.tag == "Landmark")
         {
             Debug.Log("Landmark reached");
-            //Destroy(other.gameObject);
+            Destroy(collider.gameObject);
             gameManager.LandmarksReached++;
             gameManager.PrintAreaPlayer();
             gameManager.EnterLandmark();
@@ -359,7 +366,8 @@ public class Player : MonoBehaviour
             this.transform.position += currentDirection;
             gameManager.DistanceTraveled++;
             midSoundPlayed = false;
-            UpdateSpecialZoneDetection();
+            if (inSpecialZone)
+                UpdateSpecialZoneDetection();
             
             // Forward sound
             if (currentDirection == Vector3.left * gridCellSize)

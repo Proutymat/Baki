@@ -42,7 +42,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _ColorMask: 15
-    - _Contrast: 0.278
+    - _Contrast: 0.354
     - _EvolutionSpeed: 0.006
     - _NoiseSize: 10
     - _Stencil: 0
