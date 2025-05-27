@@ -357,7 +357,6 @@ public class Player : MonoBehaviour
                 FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/SFX_InGame/SFX_IG_DirectionalStep_SPAT/SFX_IG_DirectionalStep_R");
             
             midSoundPlayed = true;
-            Debug.Log("Mid sound played");
         }
         
         // Move the player to next unit

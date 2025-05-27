@@ -395,19 +395,32 @@ public class GameManager : SerializedMonoBehaviour
             unboardingStep2 = true;
             UnboardingStep2();
         }
+        
+        ShowHideQuestionArea(true);
+    }
+    
+    private void ShowHideQuestionArea(bool show)
+    {
+        if (show)
+        {
+            questionsArea.SetActive(true);
+            progressBarObject.SetActive(true);
+        }
+        else
+        {
+            questionsArea.SetActive(false);
+            progressBarObject.SetActive(false);
+        }
     }
 
     private void UnboardingStep1()
     {
         arrows.SetActive(true);
-        questionsArea.SetActive(false);
-        blackScreenCanvas.gameObject.SetActive(false);
+        ShowHideQuestionArea(false);
     }
     
     private void UnboardingStep2()
     {
-        questionsArea.SetActive(true);
-        progressBarObject.SetActive(true);
         progressBar.IsPaused = false;
     }
     
@@ -529,8 +542,9 @@ public class GameManager : SerializedMonoBehaviour
             player.SetIsMoving(false);
             PrintAreaPlayer();
             player.EnableMeshRenderer(true);
+            ShowHideQuestionArea(false);
             
-            // Active all children of the directionnal arrows
+            // Active all children of the directional arrows
             foreach (Transform child in directionnalArrows.transform)
             {
                 child.gameObject.SetActive(true);
@@ -609,7 +623,7 @@ public class GameManager : SerializedMonoBehaviour
         if (runtimeQuestions[questionIndex].answer1Type1 >= 0 && lawCursors[runtimeQuestions[questionIndex].answer1Type1].LawsFullyChecked
             && runtimeQuestions[questionIndex].answer2Type1 >=0 && lawCursors[runtimeQuestions[questionIndex].answer2Type1].LawsFullyChecked)
         {
-            Debug.Log("Question skipped.");
+            Debug.Log("Question skipped : " + runtimeQuestions[questionIndex].answer1Type1 + "and " + runtimeQuestions[questionIndex].answer2Type1 + " are fully checked.");
             runtimeQuestions.RemoveAt(questionIndex);
             NextQuestion();
             return;
