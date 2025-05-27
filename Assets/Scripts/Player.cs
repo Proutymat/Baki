@@ -166,13 +166,14 @@ public class Player : MonoBehaviour
                 child.gameObject.SetActive(false);
             }
             
-            uiAnimations.ResumeAnimations();
+            uiAnimations.ResumeAnimationsAndShader();
             EnableMeshRenderer(false);
         }
         // Player stop moving
         else if (!newMovingValue && isMoving)
         {
             gameManager.UpdateArrowButtonsSprite("stop");
+            uiAnimations.StopShader();
             StopSpecialZoneSound();
             //FMODUnity.RuntimeManager.PlayOneShot("event:/AMB/AMB_InGame/AMB_IG_SystemStop");
             //FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/SFX_InGame/SFX_IG_BordStop");

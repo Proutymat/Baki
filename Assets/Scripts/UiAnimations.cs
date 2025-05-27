@@ -30,12 +30,12 @@ public class UiAnimations : MonoBehaviour
     {
         shaderImage.material.SetFloat("_vitesse", 0);
         shaderSpeed = 0.8f;
+        shaderValue = 0f;
     }
 
     public void SetAnimation(int index)
     {
         animationsOn[index] = 0;
-        Debug.Log("Animation " + index + " set to off.");
         
         // Choose a random number between 0 and 3
         int randomIndex = Random.Range(0, animators.Count);
@@ -43,7 +43,6 @@ public class UiAnimations : MonoBehaviour
             randomIndex = Random.Range(0, animators.Count);
 
         animators[randomIndex].SetTrigger("trigger");
-        Debug.Log("Animation " + randomIndex + " set to on.");
         animationsOn[randomIndex] = 1;
     }
     
@@ -54,28 +53,36 @@ public class UiAnimations : MonoBehaviour
         DOTween.To(() => shaderValue, x => {
             shaderValue = x;
             shaderImage.material.SetFloat("_vitesse", shaderValue);
-        }, shaderSpeed, 0.5f);
+        }, shaderSpeed, 3f);
+    }
+    
+    public void StopShader()
+    {
+        DOTween.To(() => shaderValue, x => {
+            shaderValue = x;
+            shaderImage.material.SetFloat("_vitesse", shaderValue);
+        }, 0f, 3f);
+    }
+    
+    public void PlayShader()
+    {
+        DOTween.To(() => shaderValue, x => {
+            shaderValue = x;
+            shaderImage.material.SetFloat("_vitesse", shaderValue);
+        }, shaderSpeed, 3f);
     }
 
     public void PauseAnimations()
     {
         foreach (var animator in animators)
             animator.speed = 0;
-        
-        DOTween.To(() => shaderValue, x => {
-            shaderValue = x;
-            shaderImage.material.SetFloat("_vitesse", shaderValue);
-        }, 0f, 0.5f);
     }
     
-    public void ResumeAnimations()
+    public void ResumeAnimationsAndShader()
     {
         foreach (var animator in animators)
             animator.speed = 1;
         
-        DOTween.To(() => shaderValue, x => {
-            shaderValue = x;
-            shaderImage.material.SetFloat("_vitesse", shaderValue);
-        }, shaderSpeed, 0.5f);
+        PlayShader();
     }
 }

@@ -6,17 +6,55 @@
   <component name="ChangeListManager">
     <list default="true" id="73781b9b-5c78-4d1f-a1a2-b07d1229386b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Baki/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Baki/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AnimationEndDetector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AnimationEndDetector.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ProtoDigital.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ProtoDigital.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UiAnimations.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UiAnimations.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Dots.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/Animation/Dots.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/DotsAnimation.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/Animation/DotsAnimation.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Icones.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/Animation/Icones.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/IconesAnimation.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/Animation/IconesAnimation.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Line.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/Animation/Line.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/LineAnimation.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/Animation/LineAnimation.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Movement.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/Animation/Movement.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Text.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/Animation/Text.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/TextAnimation.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/Animation/TextAnimation.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Arrows.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Arrows/button_down.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Arrows/button_down.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Arrows/button_left.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Arrows/button_left.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Arrows/button_right.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Arrows/button_right.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Arrows/button_up.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Arrows/button_up.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Dots.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Dots.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/DotsAnimation.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/DotsAnimation.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Icones.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Icones.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/IconesAnimation.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/IconesAnimation.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Line.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Line.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/LineAnimation.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/LineAnimation.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Movement.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Movement.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/MovementAnimation.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/MovementAnimation.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Text.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Text.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/TextAnimation.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/TextAnimation.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/BT_BAS.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/BT_BAS.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/BT_BAS_HOVER.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/BT_BAS_HOVER.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/BT_DROITE.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/BT_DROITE.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/BT_DROITE_HOVER.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/BT_DROITE_HOVER.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/BT_GAUCHE.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/BT_GAUCHE.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/BT_GAUCHE_HOVER.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/BT_GAUCHE_HOVER.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/BT_HAUT.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/BT_HAUT.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/BT_HAUT_HOVER.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/BT_HAUT_HOVER.png.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
