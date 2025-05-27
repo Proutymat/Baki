@@ -21,6 +21,6 @@ MonoBehaviour:
   answer2Type1: 13
   answer2Type1ADD: 10
   answer1Type2: 17
-  answer1Type2ADD: 0
+  answer1Type2ADD: -10
   answer2Type2: 17
-  answer2Type2ADD: 0
+  answer2Type2ADD: 10

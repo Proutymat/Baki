@@ -18,7 +18,7 @@ MonoBehaviour:
   answer1Type1: -1
   answer1Type1ADD: 0
   answer2Type1: 1
-  answer2Type1ADD: 0
+  answer2Type1ADD: -10
   answer1Type2: -1
   answer1Type2ADD: 0
   answer2Type2: -1

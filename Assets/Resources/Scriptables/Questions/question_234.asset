@@ -20,6 +20,6 @@ MonoBehaviour:
   answer2Type1: 1
   answer2Type1ADD: -5
   answer1Type2: 17
-  answer1Type2ADD: 0
+  answer1Type2ADD: 5
   answer2Type2: 17
-  answer2Type2ADD: 0
+  answer2Type2ADD: -5

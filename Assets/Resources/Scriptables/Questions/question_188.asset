@@ -16,9 +16,9 @@ MonoBehaviour:
   answer1: Un corps
   answer2: Un esprit
   answer1Type1: 3
-  answer1Type1ADD: 0
+  answer1Type1ADD: 5
   answer2Type1: 3
-  answer2Type1ADD: 0
+  answer2Type1ADD: -5
   answer1Type2: -1
   answer1Type2ADD: 0
   answer2Type2: -1

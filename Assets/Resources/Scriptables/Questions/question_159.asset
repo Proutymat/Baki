@@ -17,10 +17,10 @@ MonoBehaviour:
   answer1: Oui
   answer2: Non
   answer1Type1: 12
-  answer1Type1ADD: 10
+  answer1Type1ADD: -10
   answer2Type1: 12
-  answer2Type1ADD: -10
+  answer2Type1ADD: 10
   answer1Type2: 13
-  answer1Type2ADD: 0
+  answer1Type2ADD: 10
   answer2Type2: 13
-  answer2Type2ADD: 0
+  answer2Type2ADD: -10

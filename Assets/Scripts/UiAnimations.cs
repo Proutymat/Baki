@@ -21,7 +21,7 @@ public class UiAnimations : MonoBehaviour
     public void SetAnimation(int index)
     {
         animationsOn[index] = 0;
-        Debug.Log("Animation " + index + " set to off.");
+        //Debug.Log("Animation " + index + " set to off.");
         
         // Choose a random number between 0 and 3
         int randomIndex = Random.Range(0, animators.Count);

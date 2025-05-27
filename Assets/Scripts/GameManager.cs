@@ -499,7 +499,7 @@ public class GameManager : SerializedMonoBehaviour
         }
         using (System.IO.StreamWriter writer = new System.IO.StreamWriter(answersLogFilePath, true))
         {
-            Debug.Log("Writing to file : " + answersLogFilePath);
+            //Debug.Log("Writing to file : " + answersLogFilePath);
             writer.WriteLine(currentQuestion.question + " : " + (answerIndex == 1 ? currentQuestion.answer1 : currentQuestion.answer2));
         }
         
@@ -648,7 +648,6 @@ public class GameManager : SerializedMonoBehaviour
     {
         questions.Clear();
         questions = LoadCSV.LoadQuestionsCSV(questionsFileName, laws);
-        Debug.Log("Questions loaded : " + questions.Count);
     }
     
     [Button, DisableInPlayMode]
