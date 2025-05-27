@@ -92,6 +92,7 @@ public class Player : MonoBehaviour
         
         //FMOD Instance start
         FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/SFX_SpecialZone/SFX_SZ_OutZone/SFX_SZ_OZ_BoardAppraoch/SFX_SZ_OZ_BA_Start");
+        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_StartGame");
         
         BA_C_Instance = FMODUnity.RuntimeManager.CreateInstance(BA_C);
         BA_L_Instance = FMODUnity.RuntimeManager.CreateInstance(BA_L);
