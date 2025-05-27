@@ -219,9 +219,9 @@ public static class LoadCSV
             scriptable.answer2Type1 = LawsStringToInt(fields[5], laws);
             scriptable.answer2Type1ADD = int.Parse(fields[6]);
             scriptable.answer1Type2 = LawsStringToInt(fields[7], laws);
-            scriptable.answer1Type1ADD = int.Parse(fields[8]);
+            scriptable.answer1Type2ADD = int.Parse(fields[8]);
             scriptable.answer2Type2 = LawsStringToInt(fields[9], laws);
-            scriptable.answer2Type1ADD = int.Parse(fields[10]);
+            scriptable.answer2Type2ADD = int.Parse(fields[10]);
 
 
             // Sauvegarde du ScriptableObject dans le projet (dans un dossier "Assets/Resources/Questions")

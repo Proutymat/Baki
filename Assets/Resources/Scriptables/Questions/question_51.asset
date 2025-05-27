@@ -15,15 +15,11 @@ MonoBehaviour:
   question: Parfois, la violence est la meilleure solution
   answer1: Oui
   answer2: Non
-  answer1Type1: 5
-  answer1Type1ADD: 0
-  answer2Type1: 5
-  answer2Type1ADD: 0
-  answer1Type2: 6
-  answer1Type2ADD: 0
-  answer2Type2: 6
-  answer2Type2ADD: 0
-  nbQuestionAsked: 0
-  nbAnswer1: 0
-  nbAnswer2: 0
-  timeSpentAnswering: 0
+  answer1Type1: 8
+  answer1Type1ADD: -10
+  answer2Type1: 8
+  answer2Type1ADD: 10
+  answer1Type2: 13
+  answer1Type2ADD: 10
+  answer2Type2: 13
+  answer2Type2ADD: -10

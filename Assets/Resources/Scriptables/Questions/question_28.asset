@@ -15,15 +15,11 @@ MonoBehaviour:
   question: Le bonheur est quantifiable
   answer1: Oui
   answer2: Non
-  answer1Type1: 12
-  answer1Type1ADD: 0
+  answer1Type1: 15
+  answer1Type1ADD: 10
   answer2Type1: 4
-  answer2Type1ADD: 0
+  answer2Type1ADD: 10
   answer1Type2: -1
   answer1Type2ADD: 0
   answer2Type2: -1
   answer2Type2ADD: 0
-  nbQuestionAsked: 0
-  nbAnswer1: 0
-  nbAnswer2: 0
-  timeSpentAnswering: 0

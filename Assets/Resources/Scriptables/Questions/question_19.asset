@@ -15,15 +15,11 @@ MonoBehaviour:
   question: "La peine de mort peut \xEAtre justifi\xE9e"
   answer1: Oui
   answer2: Non
-  answer1Type1: 13
-  answer1Type1ADD: 0
-  answer2Type1: 13
-  answer2Type1ADD: 0
+  answer1Type1: 17
+  answer1Type1ADD: 20
+  answer2Type1: 17
+  answer2Type1ADD: -10
   answer1Type2: -1
   answer1Type2ADD: 0
   answer2Type2: -1
   answer2Type2ADD: 0
-  nbQuestionAsked: 0
-  nbAnswer1: 0
-  nbAnswer2: 0
-  timeSpentAnswering: 0

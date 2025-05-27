@@ -6,12 +6,55 @@
   <component name="ChangeListManager">
     <list default="true" id="73781b9b-5c78-4d1f-a1a2-b07d1229386b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Baki/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Baki/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sam/Animation/Line.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sam/Animation/Line.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sam/Animation/LineAnimation.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sam/Animation/LineAnimation.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sam/Animation/Movement.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sam/Animation/Movement.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sam/Animation/MovementAnimation.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sam/Animation/MovementAnimation.anim" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/ProtoDigital.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ProtoDigital.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UiAnimations.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UiAnimations.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Arrows.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Arrows/button_down.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Arrows/button_down.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Arrows/button_left.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Arrows/button_left.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Arrows/button_right.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Arrows/button_right.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Arrows/button_up.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Arrows/button_up.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Dots.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Dots.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/DotsAnimation.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/DotsAnimation.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Icones.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Icones.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/IconesAnimation.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/IconesAnimation.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Line.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Line.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/LineAnimation.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/LineAnimation.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Movement.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Movement.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/MovementAnimation.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/MovementAnimation.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Text.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Text.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/TextAnimation.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/TextAnimation.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/BT_BAS.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/BT_BAS.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/BT_BAS_HOVER.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/BT_BAS_HOVER.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/BT_DROITE.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/BT_DROITE.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/BT_DROITE_HOVER.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/BT_DROITE_HOVER.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/BT_GAUCHE.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/BT_GAUCHE.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/BT_GAUCHE_HOVER.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/BT_GAUCHE_HOVER.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/BT_HAUT.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/BT_HAUT.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/BT_HAUT_HOVER.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/BT_HAUT_HOVER.png.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,14 +77,14 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/612ea0208cc847f49d539e6511ed3cd51df400/ff/8227d856/GameObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scriptables/Dilemme.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scriptables/Question.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/LoadCSV.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerCollider.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/ProgressBar.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SpecialZoneDetector.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.shadergraph@608f316e1f48/Editor/Drawing/Blackboard/SGBlackboardCategory.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@9496653a3df6/Runtime/UGUI/UI/Core/Image.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -73,22 +116,31 @@
       <option name="WORKING_DIRECTORY" value="C:\Users\ELE66defb67b315c\Desktop\BUILDS" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="PTY_MODE" value="Auto" />
       <method v="2" />
     </configuration>
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="D:\Unity\6000.0.42f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.42f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\ELE66defb67b315c\Desktop\GithubDesktop\Baki -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\ELE66defb67b315c\Desktop\GithubDesktop\Baki" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="PTY_MODE" value="Auto" />
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="D:\Unity\6000.0.42f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.42f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Users\ELE66defb67b315c\Desktop\GithubDesktop\Baki -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\ELE66defb67b315c\Desktop\GithubDesktop\Baki" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="PTY_MODE" value="Auto" />
       <method v="2" />
     </configuration>
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -102,6 +154,7 @@
       <option name="selectedOptions">
         <list />
       </option>
+      <option name="useMixedMode" value="false" />
       <method v="2" />
     </configuration>
     <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -115,6 +168,7 @@
       <option name="selectedOptions">
         <list />
       </option>
+      <option name="useMixedMode" value="false" />
       <method v="2" />
     </configuration>
   </component>
@@ -153,6 +207,8 @@
       <workItem from="1747964401424" duration="1685000" />
       <workItem from="1748027451987" duration="3932000" />
       <workItem from="1748092172271" duration="4438000" />
+      <workItem from="1748184948077" duration="8476000" />
+      <workItem from="1748358400561" duration="1790000" />
     </task>
     <servers />
   </component>

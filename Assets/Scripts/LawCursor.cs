@@ -29,12 +29,12 @@ public class LawCursor
     
     private bool lawsFullyChecked;
 
-    private static int law1Value = -100;
-    private static int law2Value = -66;
-    private static int law3Value = -33;
-    private static int law4Value = 33;
-    private static int law5Value = 66;
-    private static int law6Value = 100;
+    private static int law1Value = -70;
+    private static int law2Value = -50;
+    private static int law3Value = -30;
+    private static int law4Value = 30;
+    private static int law5Value = 50;
+    private static int law6Value = 70;
     
     [SerializeField] private int lawCursorValue;
 
@@ -96,7 +96,8 @@ public class LawCursor
 
 public LawCursor(Value value)
     {
-        valueName = value.name;
+        valueName = value.valueName;
+        Debug.Log("LawCursor created with value: " + valueName);
         law1 = value.law1;
         law2 = value.law2;
         law3 = value.law3;

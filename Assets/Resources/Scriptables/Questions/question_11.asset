@@ -15,15 +15,11 @@ MonoBehaviour:
   question: "Tu penses avoir r\xE9ussi ta vie"
   answer1: Oui
   answer2: Non
-  answer1Type1: 9
-  answer1Type1ADD: 0
-  answer2Type1: -1
-  answer2Type1ADD: 0
+  answer1Type1: 5
+  answer1Type1ADD: 10
+  answer2Type1: 16
+  answer2Type1ADD: 5
   answer1Type2: 4
-  answer1Type2ADD: 0
+  answer1Type2ADD: 10
   answer2Type2: -1
   answer2Type2ADD: 0
-  nbQuestionAsked: 0
-  nbAnswer1: 0
-  nbAnswer2: 0
-  timeSpentAnswering: 0

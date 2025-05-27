@@ -15,15 +15,11 @@ MonoBehaviour:
   question: Il existe des choses fondamentalement moches
   answer1: Oui
   answer2: Non
-  answer1Type1: 1
-  answer1Type1ADD: 0
-  answer2Type1: 1
-  answer2Type1ADD: 0
+  answer1Type1: 6
+  answer1Type1ADD: -5
+  answer2Type1: 6
+  answer2Type1ADD: 5
   answer1Type2: -1
   answer1Type2ADD: 0
   answer2Type2: -1
   answer2Type2ADD: 0
-  nbQuestionAsked: 0
-  nbAnswer1: 0
-  nbAnswer2: 0
-  timeSpentAnswering: 0

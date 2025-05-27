@@ -43,6 +43,7 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("setObjectsInInspector")] private Image buttonDown;
     [SerializeField, ShowIf("setObjectsInInspector")] private Image buttonLeft;
     [SerializeField, ShowIf("setObjectsInInspector")] private Image buttonRight;
+    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject bottomArrowIndication;
 
     [Header("Others"), ShowIf("setObjectsInInspector")] 
     [SerializeField, ShowIf("setObjectsInInspector")] private Canvas mainCanvas;
@@ -54,7 +55,12 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject progressBarObject;
     [SerializeField, ShowIf("setObjectsInInspector")] private Image uiBackground;
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject endingCanvas;
-
+    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject directionnalArrows;
+    
+    [Header("PROTOTYPE THINGS")]
+    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject normalBackground;
+    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject dilemmeBackground;
+    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject deco;
 
     [Header("Game Settings")]
     [SerializeField] private float gameDuration = 600;
@@ -255,6 +261,8 @@ public class GameManager : SerializedMonoBehaviour
 
     public void EnterLandmark()
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/MX/MX_Interest_Point1");
+        
         if (dilemmes.Count < 1)
         {
             Debug.Log("No more landmark questions available.");
@@ -275,6 +283,9 @@ public class GameManager : SerializedMonoBehaviour
         progressBar.gameObject.SetActive(false);
         questionsArea.SetActive(false);
         arrows.SetActive(false);
+        deco.SetActive(false);
+        normalBackground.SetActive(false);
+        dilemmeBackground.SetActive(true);
         dilemmeText.transform.parent.transform.parent.gameObject.SetActive(true);
         
         // Display the question and answers
@@ -293,8 +304,11 @@ public class GameManager : SerializedMonoBehaviour
         progressBar.gameObject.SetActive(true);
         questionsArea.SetActive(true);
         arrows.SetActive(true);
+        normalBackground.SetActive(true);
+        deco.SetActive(true);
         questionTimer = 0;
         
+        dilemmeBackground.SetActive(false);
         dilemmeText.transform.parent.transform.parent.gameObject.SetActive(false);
         
         // Save answers to file
@@ -359,6 +373,8 @@ public class GameManager : SerializedMonoBehaviour
             buttonDown.sprite = arrowDown;
             buttonLeft.sprite = arrowLeft;
             buttonRight.sprite = arrowRight;
+            
+            bottomArrowIndication.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
         else if (direction == "backward")
         {
@@ -366,6 +382,8 @@ public class GameManager : SerializedMonoBehaviour
             buttonDown.sprite = arrowDownHovered;
             buttonLeft.sprite = arrowLeft;
             buttonRight.sprite = arrowRight;
+            
+            bottomArrowIndication.transform.rotation = Quaternion.Euler(0, 0, 180);
         }
         else if (direction == "left")
         {
@@ -373,6 +391,8 @@ public class GameManager : SerializedMonoBehaviour
             buttonDown.sprite = arrowDown;
             buttonLeft.sprite = arrowLeftHovered;
             buttonRight.sprite = arrowRight;
+            
+            bottomArrowIndication.transform.rotation = Quaternion.Euler(0, 0, 90);
         }
         else if (direction == "right")
         {
@@ -380,6 +400,8 @@ public class GameManager : SerializedMonoBehaviour
             buttonDown.sprite = arrowDown;
             buttonLeft.sprite = arrowLeft;
             buttonRight.sprite = arrowRightHovered;
+            
+            bottomArrowIndication.transform.rotation = Quaternion.Euler(0, 0, -90);
         }
         else
         {
@@ -394,19 +416,32 @@ public class GameManager : SerializedMonoBehaviour
             unboardingStep2 = true;
             UnboardingStep2();
         }
+        
+        ShowHideQuestionArea(true);
+    }
+    
+    private void ShowHideQuestionArea(bool show)
+    {
+        if (show)
+        {
+            questionsArea.SetActive(true);
+            progressBarObject.SetActive(true);
+        }
+        else
+        {
+            questionsArea.SetActive(false);
+            progressBarObject.SetActive(false);
+        }
     }
 
     private void UnboardingStep1()
     {
         arrows.SetActive(true);
-        questionsArea.SetActive(false);
-        blackScreenCanvas.gameObject.SetActive(false);
+        ShowHideQuestionArea(false);
     }
     
     private void UnboardingStep2()
     {
-        questionsArea.SetActive(true);
-        progressBarObject.SetActive(true);
         progressBar.IsPaused = false;
     }
     
@@ -462,23 +497,27 @@ public class GameManager : SerializedMonoBehaviour
             writer.WriteLine("------------------------");
             
             int lawPrinted = 0;
-            int priorityIndex = lawsQueuePriority.Max();
-            
-            while (lawsQueue.Count > 0 && lawPrinted < maxLawsInterval && priorityIndex > 0)
+
+            if (lawsQueuePriority.Any())
             {
-                // Get the index of the first law with the highest priority
-                int index = lawsQueuePriority.IndexOf(priorityIndex);
-                writer.WriteLine(lawsQueue[index]);
-                lawsQueue.RemoveAt(index);
-                lawsQueuePriority.RemoveAt(index);
-                lawPrinted++;
-                
-                // Update the priority index
-                if (lawsQueuePriority.Count > 0)
-                    priorityIndex = lawsQueuePriority.Max();
-            }
+                int priorityIndex = lawsQueuePriority.Max();
             
-            writer.WriteLine();
+                while (lawsQueue.Count > 0 && lawPrinted < maxLawsInterval && priorityIndex > 0)
+                {
+                    // Get the index of the first law with the highest priority
+                    int index = lawsQueuePriority.IndexOf(priorityIndex);
+                    writer.WriteLine(lawsQueue[index]);
+                    lawsQueue.RemoveAt(index);
+                    lawsQueuePriority.RemoveAt(index);
+                    lawPrinted++;
+                
+                    // Update the priority index
+                    if (lawsQueuePriority.Count > 0)
+                        priorityIndex = lawsQueuePriority.Max();
+                }
+            
+                writer.WriteLine();
+            }
         }
     }
 
@@ -494,7 +533,7 @@ public class GameManager : SerializedMonoBehaviour
         }
         using (System.IO.StreamWriter writer = new System.IO.StreamWriter(answersLogFilePath, true))
         {
-            Debug.Log("Writing to file : " + answersLogFilePath);
+            //Debug.Log("Writing to file : " + answersLogFilePath);
             writer.WriteLine(currentQuestion.question + " : " + (answerIndex == 1 ? currentQuestion.answer1 : currentQuestion.answer2));
         }
         
@@ -524,6 +563,13 @@ public class GameManager : SerializedMonoBehaviour
             player.SetIsMoving(false);
             PrintAreaPlayer();
             player.EnableMeshRenderer(true);
+            ShowHideQuestionArea(false);
+            
+            // Active all children of the directional arrows
+            foreach (Transform child in directionnalArrows.transform)
+            {
+                child.gameObject.SetActive(true);
+            }
             
             if (!unboardingStep1)
             {
@@ -580,8 +626,7 @@ public class GameManager : SerializedMonoBehaviour
 
     private void NextQuestion()
     {
-        Debug.Log("Next question called");
-        
+        // If there are no more questions left
         if (runtimeQuestions.Count < 1)
         {
             Debug.Log("No more questions available.");
@@ -599,7 +644,7 @@ public class GameManager : SerializedMonoBehaviour
         if (runtimeQuestions[questionIndex].answer1Type1 >= 0 && lawCursors[runtimeQuestions[questionIndex].answer1Type1].LawsFullyChecked
             && runtimeQuestions[questionIndex].answer2Type1 >=0 && lawCursors[runtimeQuestions[questionIndex].answer2Type1].LawsFullyChecked)
         {
-            Debug.Log("Question skipped.");
+            Debug.Log("Question skipped : " + runtimeQuestions[questionIndex].answer1Type1 + "and " + runtimeQuestions[questionIndex].answer2Type1 + " are fully checked.");
             runtimeQuestions.RemoveAt(questionIndex);
             NextQuestion();
             return;
@@ -614,11 +659,9 @@ public class GameManager : SerializedMonoBehaviour
         
         // Remove the question from the list
         runtimeQuestions.RemoveAt(questionIndex);
-        
-        Debug.Log("Question Displayed : " + currentQuestion.question);
     }
 
-
+#if UNITY_EDITOR
     [Button, DisableInPlayMode]
     private void LoadDilemme()
     {
@@ -640,7 +683,6 @@ public class GameManager : SerializedMonoBehaviour
     {
         questions.Clear();
         questions = LoadCSV.LoadQuestionsCSV(questionsFileName, laws);
-        Debug.Log("Questions loaded : " + questions.Count);
     }
     
     [Button, DisableInPlayMode]
@@ -652,4 +694,6 @@ public class GameManager : SerializedMonoBehaviour
         LoadCSV.ClearScriptables();
         Debug.Log("All scriptables cleared.");
     }
+#endif    
+    
 }

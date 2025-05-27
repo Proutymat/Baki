@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 778fe052ea062fc43a96d7c4f734cca6, type: 3}
   m_Name: dilemme_9
   m_EditorClassIdentifier: 
-  question: "Quelle est ta fleur pr\xE9f\xE9r\xE9e ?"
-  answer1: Le pissenlit
-  answer2: La passiflore
-  answer3: La tulipe
-  answer4: "Le tournesol\r"
+  question: "Le fait que je te tutoie te d\xE9ranges ?"
+  answer1: "Tu ne me d\xE9range pas"
+  answer2: "Tu me d\xE9range"
+  answer3: "Vous ne me d\xE9rangez pas"
+  answer4: "Vous me d\xE9rangez\r"
   nbAnswer1: 0
   nbAnswer2: 0
   nbAnswer3: 0

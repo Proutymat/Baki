@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25fcf42d6da222a42af08651a160d415, type: 3}
   m_Name: law_14
   m_EditorClassIdentifier: 
-  valueName: fermete
-  law1: Loi -3 ChancesVsResultats
+  valueName: justice
+  law1: Loi -3 Justice
   law1Priority: 3
-  law2: Loi -2 ChancesVsResultats
+  law2: Loi -2 Justice
   law2Priority: 2
-  law3: Loi -1 ChancesVsResultats
+  law3: Loi -1 Justice
   law3Priority: 1
-  law4: Loi 1 ChancesVsResultats
+  law4: Loi 1 Justice
   law4Priority: 1
-  law5: Loi 2 ChancesVsResultats
+  law5: Loi 2 Justice
   law5Priority: 2
-  law6: Loi 3 ChancesVsResultats
+  law6: Loi 3 Justice
   law6Priority: 3
