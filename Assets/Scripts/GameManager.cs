@@ -263,6 +263,7 @@ public class GameManager : SerializedMonoBehaviour
 
     public void EnterLandmark()
     {
+        // FMOD : stop ambient music
         FMODUnity.RuntimeManager.PlayOneShot("event:/MX/MX_Interest_Point1");
         
         if (dilemmes.Count < 1)
@@ -301,6 +302,7 @@ public class GameManager : SerializedMonoBehaviour
     public void ExitLandmark(int answerIndex)
     {
         FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_QuestionRespondClick");
+        // FMOD : stop landmark music
         
         inLandmark = false;
         progressBar.gameObject.SetActive(true);
@@ -449,7 +451,7 @@ public class GameManager : SerializedMonoBehaviour
     
     private void Update()
     {
-        if (isGameOver || !unboardingStep2) return;
+        if (isGameOver || !unboardingStep2 || inLandmark) return;
         
         // Update game time
         gameTimer -= Time.deltaTime;
