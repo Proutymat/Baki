@@ -43,6 +43,7 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("setObjectsInInspector")] private Image buttonDown;
     [SerializeField, ShowIf("setObjectsInInspector")] private Image buttonLeft;
     [SerializeField, ShowIf("setObjectsInInspector")] private Image buttonRight;
+    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject bottomArrowIndication;
 
     [Header("Others"), ShowIf("setObjectsInInspector")] 
     [SerializeField, ShowIf("setObjectsInInspector")] private Canvas mainCanvas;
@@ -360,6 +361,8 @@ public class GameManager : SerializedMonoBehaviour
             buttonDown.sprite = arrowDown;
             buttonLeft.sprite = arrowLeft;
             buttonRight.sprite = arrowRight;
+            
+            bottomArrowIndication.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
         else if (direction == "backward")
         {
@@ -367,6 +370,8 @@ public class GameManager : SerializedMonoBehaviour
             buttonDown.sprite = arrowDownHovered;
             buttonLeft.sprite = arrowLeft;
             buttonRight.sprite = arrowRight;
+            
+            bottomArrowIndication.transform.rotation = Quaternion.Euler(0, 0, 180);
         }
         else if (direction == "left")
         {
@@ -374,6 +379,8 @@ public class GameManager : SerializedMonoBehaviour
             buttonDown.sprite = arrowDown;
             buttonLeft.sprite = arrowLeftHovered;
             buttonRight.sprite = arrowRight;
+            
+            bottomArrowIndication.transform.rotation = Quaternion.Euler(0, 0, 90);
         }
         else if (direction == "right")
         {
@@ -381,6 +388,8 @@ public class GameManager : SerializedMonoBehaviour
             buttonDown.sprite = arrowDown;
             buttonLeft.sprite = arrowLeft;
             buttonRight.sprite = arrowRightHovered;
+            
+            bottomArrowIndication.transform.rotation = Quaternion.Euler(0, 0, -90);
         }
         else
         {
