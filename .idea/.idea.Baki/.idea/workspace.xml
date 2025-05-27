@@ -5,16 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="73781b9b-5c78-4d1f-a1a2-b07d1229386b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Baki/.idea/.name" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Baki/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Baki/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Prototype/Canvas.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Prototype/Canvas.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sam/LandmarkDetection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sam/LandmarkDetection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ProtoDigital.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ProtoDigital.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AnimationEndDetector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AnimationEndDetector.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UiAnimations.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UiAnimations.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Shader/SHADER_FOND.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/Shader/SHADER_FOND.shadergraph" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Dots.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/Animation/Dots.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/DotsAnimation.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/Animation/DotsAnimation.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Icones.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/Animation/Icones.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/IconesAnimation.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/Animation/IconesAnimation.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Line.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/Animation/Line.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/LineAnimation.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/Animation/LineAnimation.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Movement.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/Animation/Movement.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/Text.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/Animation/Text.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/Animation/TextAnimation.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/Animation/TextAnimation.anim" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -15,13 +15,13 @@ public class UiAnimations : MonoBehaviour
     void Start()
     {
         animationsOn = new List<int>();
-        animationsOn.Add(1);
-        animationsOn.Add(1);
         animationsOn.Add(0);
         animationsOn.Add(0);
+        animationsOn.Add(1);
+        animationsOn.Add(1);
         
-        animators[0].SetTrigger("trigger");
-        animators[1].SetTrigger("trigger");
+        animators[2].SetTrigger("trigger");
+        animators[3].SetTrigger("trigger");
         
         Initialize();
     }
@@ -35,7 +35,7 @@ public class UiAnimations : MonoBehaviour
     public void SetAnimation(int index)
     {
         animationsOn[index] = 0;
-        //Debug.Log("Animation " + index + " set to off.");
+        Debug.Log("Animation " + index + " set to off.");
         
         // Choose a random number between 0 and 3
         int randomIndex = Random.Range(0, animators.Count);
@@ -43,6 +43,7 @@ public class UiAnimations : MonoBehaviour
             randomIndex = Random.Range(0, animators.Count);
 
         animators[randomIndex].SetTrigger("trigger");
+        Debug.Log("Animation " + randomIndex + " set to on.");
         animationsOn[randomIndex] = 1;
     }
     
@@ -76,11 +77,5 @@ public class UiAnimations : MonoBehaviour
             shaderValue = x;
             shaderImage.material.SetFloat("_vitesse", shaderValue);
         }, shaderSpeed, 0.5f);
-    }
-    
-    void Update()
-    {
-        //Debug.Log("Animations On: " + animationsOn[0] + ", " + animationsOn[1] + ", " + animationsOn[2] + ", " + animationsOn[3]);
-        Debug.Log("Shader Speed: " + shaderSpeed);
     }
 }
