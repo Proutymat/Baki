@@ -55,8 +55,12 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject progressBarObject;
     [SerializeField, ShowIf("setObjectsInInspector")] private Image uiBackground;
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject endingCanvas;
-    [SerializeField] private GameObject directionnalArrows;
-
+    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject directionnalArrows;
+    
+    [Header("PROTOTYPE THINGS")]
+    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject normalBackground;
+    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject dilemmeBackground;
+    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject deco;
 
     [Header("Game Settings")]
     [SerializeField] private float gameDuration = 600;
@@ -277,6 +281,9 @@ public class GameManager : SerializedMonoBehaviour
         progressBar.gameObject.SetActive(false);
         questionsArea.SetActive(false);
         arrows.SetActive(false);
+        deco.SetActive(false);
+        normalBackground.SetActive(false);
+        dilemmeBackground.SetActive(true);
         dilemmeText.transform.parent.transform.parent.gameObject.SetActive(true);
         
         // Display the question and answers
@@ -295,8 +302,11 @@ public class GameManager : SerializedMonoBehaviour
         progressBar.gameObject.SetActive(true);
         questionsArea.SetActive(true);
         arrows.SetActive(true);
+        normalBackground.SetActive(true);
+        deco.SetActive(true);
         questionTimer = 0;
         
+        dilemmeBackground.SetActive(false);
         dilemmeText.transform.parent.transform.parent.gameObject.SetActive(false);
         
         // Save answers to file
