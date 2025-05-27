@@ -626,7 +626,7 @@ public class GameManager : SerializedMonoBehaviour
         runtimeQuestions.RemoveAt(questionIndex);
     }
 
-
+#if UNITY_EDITOR
     [Button, DisableInPlayMode]
     private void LoadDilemme()
     {
@@ -660,4 +660,6 @@ public class GameManager : SerializedMonoBehaviour
         LoadCSV.ClearScriptables();
         Debug.Log("All scriptables cleared.");
     }
+#endif    
+    
 }
