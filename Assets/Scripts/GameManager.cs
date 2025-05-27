@@ -263,8 +263,8 @@ public class GameManager : SerializedMonoBehaviour
 
     public void EnterLandmark()
     {
-        // FMOD : stop ambient music
         FMODUnity.RuntimeManager.PlayOneShot("event:/MX/MX_Interest_Point1");
+        FMODUnity.RuntimeManager.PlayOneShot("event:/MX/MX_Trig/MX_TrigIP1_Start");
         
         if (dilemmes.Count < 1)
         {
@@ -302,7 +302,7 @@ public class GameManager : SerializedMonoBehaviour
     public void ExitLandmark(int answerIndex)
     {
         FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_QuestionRespondClick");
-        // FMOD : stop landmark music
+        FMODUnity.RuntimeManager.PlayOneShot("event:/MX/MX_Trig/MX_TrigIP1_Stop");
         
         inLandmark = false;
         progressBar.gameObject.SetActive(true);
