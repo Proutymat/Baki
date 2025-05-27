@@ -28,8 +28,8 @@ public class UiAnimations : MonoBehaviour
 
     void Initialize()
     {
-        shaderSpeed = 0f;
-        shaderImage.material.SetFloat("_vitesse", shaderSpeed);
+        shaderImage.material.SetFloat("_vitesse", 0);
+        shaderSpeed = 0.8f;
     }
 
     public void SetAnimation(int index)
@@ -81,6 +81,6 @@ public class UiAnimations : MonoBehaviour
     void Update()
     {
         //Debug.Log("Animations On: " + animationsOn[0] + ", " + animationsOn[1] + ", " + animationsOn[2] + ", " + animationsOn[3]);
-        Debug.Log("");
+        Debug.Log("Shader Speed: " + shaderSpeed);
     }
 }
