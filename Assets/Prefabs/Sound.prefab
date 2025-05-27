@@ -128,7 +128,7 @@ MonoBehaviour:
       Data2: 1167595494
       Data3: 148888760
       Data4: -777864038
-    Path: event:/AMB/AMB_SpecialZone/AMB_SZ_OutZone/AMB_SZ_OutZone_Main
+    Path: event:/AMB/AMB_SpecialZone/AMB_SZ_OutZone/AMB_SZ_OutZone_TrigEnter
   Event: 
   EventPlayTrigger: 3
   EventStopTrigger: 0
@@ -613,7 +613,7 @@ MonoBehaviour:
       Data2: 1179683817
       Data3: -1710192503
       Data4: 1040067601
-    Path: event:/AMB/AMB_SpecialZone/AMB_SZ_OutZone/AMB_SZ_OutZone_Exit
+    Path: event:/AMB/AMB_SpecialZone/AMB_SZ_OutZone/AMB_SZ_OutZone_TrigExit
   Event: 
   EventPlayTrigger: 3
   EventStopTrigger: 0
@@ -863,7 +863,7 @@ MonoBehaviour:
       Data2: 1179683817
       Data3: -1710192503
       Data4: 1040067601
-    Path: event:/AMB/AMB_SpecialZone/AMB_SZ_OutZone/AMB_SZ_OutZone_Exit
+    Path: event:/AMB/AMB_SpecialZone/AMB_SZ_OutZone/AMB_SZ_OutZone_TrigExit
   Event: 
   EventPlayTrigger: 3
   EventStopTrigger: 0
@@ -1455,7 +1455,7 @@ MonoBehaviour:
       Data2: 1179683817
       Data3: -1710192503
       Data4: 1040067601
-    Path: event:/AMB/AMB_SpecialZone/AMB_SZ_OutZone/AMB_SZ_OutZone_Exit
+    Path: event:/AMB/AMB_SpecialZone/AMB_SZ_OutZone/AMB_SZ_OutZone_TrigExit
   Event: 
   EventPlayTrigger: 3
   EventStopTrigger: 0
@@ -1702,7 +1702,7 @@ MonoBehaviour:
       Data2: 1179683817
       Data3: -1710192503
       Data4: 1040067601
-    Path: event:/AMB/AMB_SpecialZone/AMB_SZ_OutZone/AMB_SZ_OutZone_Exit
+    Path: event:/AMB/AMB_SpecialZone/AMB_SZ_OutZone/AMB_SZ_OutZone_TrigExit
   Event: 
   EventPlayTrigger: 3
   EventStopTrigger: 0
@@ -1874,7 +1874,7 @@ MonoBehaviour:
       Data2: 1179683817
       Data3: -1710192503
       Data4: 1040067601
-    Path: event:/AMB/AMB_SpecialZone/AMB_SZ_OutZone/AMB_SZ_OutZone_Exit
+    Path: event:/AMB/AMB_SpecialZone/AMB_SZ_OutZone/AMB_SZ_OutZone_TrigExit
   Event: 
   EventPlayTrigger: 3
   EventStopTrigger: 0
@@ -2046,7 +2046,7 @@ MonoBehaviour:
       Data2: 1179683817
       Data3: -1710192503
       Data4: 1040067601
-    Path: event:/AMB/AMB_SpecialZone/AMB_SZ_OutZone/AMB_SZ_OutZone_Exit
+    Path: event:/AMB/AMB_SpecialZone/AMB_SZ_OutZone/AMB_SZ_OutZone_TrigExit
   Event: 
   EventPlayTrigger: 3
   EventStopTrigger: 0
