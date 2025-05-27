@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     
     [Header("UI Animations")]
     [SerializeField] private Animator moveAnimation;
+    [SerializeField] private UiAnimations uiAnimations;
     
 
     private float unitTimer;
@@ -164,6 +165,7 @@ public class Player : MonoBehaviour
                 child.gameObject.SetActive(false);
             }
             
+            uiAnimations.ResumeAnimations();
             EnableMeshRenderer(false);
         }
         // Player stop moving
@@ -174,7 +176,7 @@ public class Player : MonoBehaviour
             //FMODUnity.RuntimeManager.PlayOneShot("event:/AMB/AMB_InGame/AMB_IG_SystemStop");
             //FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/SFX_InGame/SFX_IG_BordStop");
         }
-
+        
         isMoving = newMovingValue;
     }
 
@@ -186,6 +188,7 @@ public class Player : MonoBehaviour
             Debug.Log("Wall hit");
             this.transform.position -= currentDirection;
             gameManager.WallsHit++;
+            uiAnimations.PauseAnimations();
             FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/SFX_InGame/SFX_IG_BoardImpact");
         }
         // Player hit landmark   
