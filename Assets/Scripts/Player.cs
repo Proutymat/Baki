@@ -201,6 +201,7 @@ public class Player : MonoBehaviour
             gameManager.EnterLandmark();
             EnableMeshRenderer(true);
         }
+        
         SetIsMoving(false);
     }
     
@@ -265,12 +266,14 @@ public class Player : MonoBehaviour
         {
             speed = secondPerUnitSpecialZone;
             UpdateSpecialZoneDetection();
+            uiAnimations.SetShaderSpeed(1);
         }
         // Exit special zone
         else if (!newInSpecialZone && isMoving)
         {
             speed = secondPerUnit;
             StopSpecialZoneSound();
+            uiAnimations.SetShaderSpeed(0.8f);
         }
         
         inSpecialZone = newInSpecialZone;

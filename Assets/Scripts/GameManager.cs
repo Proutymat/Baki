@@ -261,6 +261,8 @@ public class GameManager : SerializedMonoBehaviour
 
     public void EnterLandmark()
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/MX/MX_Interest_Point1");
+        
         if (dilemmes.Count < 1)
         {
             Debug.Log("No more landmark questions available.");

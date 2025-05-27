@@ -1,11 +1,17 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.UI;
+using DG.Tweening;
 
 public class UiAnimations : MonoBehaviour
 {
     [SerializeField] private List<Animator> animators;
     [SerializeField] private List<int> animationsOn; // 0 = off, 1 = on
-
+    [SerializeField] private Image shaderImage;
+    [SerializeField] private float shaderSpeed = 0.8f;
+    
+    private float shaderValue;
+    
     void Start()
     {
         animationsOn = new List<int>();
@@ -16,6 +22,14 @@ public class UiAnimations : MonoBehaviour
         
         animators[0].SetTrigger("trigger");
         animators[1].SetTrigger("trigger");
+        
+        Initialize();
+    }
+
+    void Initialize()
+    {
+        shaderSpeed = 0f;
+        shaderImage.material.SetFloat("_vitesse", shaderSpeed);
     }
 
     public void SetAnimation(int index)
@@ -31,21 +45,42 @@ public class UiAnimations : MonoBehaviour
         animators[randomIndex].SetTrigger("trigger");
         animationsOn[randomIndex] = 1;
     }
+    
+    public void SetShaderSpeed(float speed)
+    {
+        shaderSpeed = speed;
+        
+        DOTween.To(() => shaderValue, x => {
+            shaderValue = x;
+            shaderImage.material.SetFloat("_vitesse", shaderValue);
+        }, shaderSpeed, 0.5f);
+    }
 
     public void PauseAnimations()
     {
         foreach (var animator in animators)
             animator.speed = 0;
+        
+        DOTween.To(() => shaderValue, x => {
+            shaderValue = x;
+            shaderImage.material.SetFloat("_vitesse", shaderValue);
+        }, 0f, 0.5f);
     }
     
     public void ResumeAnimations()
     {
         foreach (var animator in animators)
             animator.speed = 1;
+        
+        DOTween.To(() => shaderValue, x => {
+            shaderValue = x;
+            shaderImage.material.SetFloat("_vitesse", shaderValue);
+        }, shaderSpeed, 0.5f);
     }
     
     void Update()
     {
         //Debug.Log("Animations On: " + animationsOn[0] + ", " + animationsOn[1] + ", " + animationsOn[2] + ", " + animationsOn[3]);
+        Debug.Log("");
     }
 }

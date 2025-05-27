@@ -19,12 +19,21 @@ public class LandmarkDetection : MonoBehaviour
     [SerializeField] private float _maxDetectionDistance = 100f;
 
     private void Awake()
+    { 
+        CalculateLandmarks();
+    }
+    
+    // TO CHANGE :
+    public void CalculateLandmarks()
     {
+        _landmarks.Clear();
         _landmarks.AddRange(GameObject.FindGameObjectsWithTag("Landmark"));
     }
 
     private void Update()
     {
+        CalculateLandmarks();
+        
         _landmarks.Sort((GameObject a, GameObject b) =>
         {
             float distanceA = Vector3.Distance(_playerTransform.position, a.transform.position);
