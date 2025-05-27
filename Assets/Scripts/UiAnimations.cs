@@ -49,19 +49,15 @@ public class UiAnimations : MonoBehaviour
     public void SetShaderSpeed(float speed)
     {
         shaderSpeed = speed;
-        
-        DOTween.To(() => shaderValue, x => {
-            shaderValue = x;
-            shaderImage.material.SetFloat("_vitesse", shaderValue);
-        }, shaderSpeed, 3f);
+        PlayShader();
     }
     
-    public void StopShader()
+    public void StopShader(float stopSpeed = 3f)
     {
         DOTween.To(() => shaderValue, x => {
             shaderValue = x;
             shaderImage.material.SetFloat("_vitesse", shaderValue);
-        }, 0f, 3f);
+        }, 0f, stopSpeed);
     }
     
     public void PlayShader()
@@ -70,6 +66,8 @@ public class UiAnimations : MonoBehaviour
             shaderValue = x;
             shaderImage.material.SetFloat("_vitesse", shaderValue);
         }, shaderSpeed, 3f);
+        
+        Debug.Log("Playing shader with speed: " + shaderSpeed);
     }
 
     public void PauseAnimations()
@@ -82,6 +80,7 @@ public class UiAnimations : MonoBehaviour
     {
         foreach (var animator in animators)
             animator.speed = 1;
+        Debug.Log("Resuming animations and shader");
         
         PlayShader();
     }

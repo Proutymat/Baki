@@ -173,7 +173,6 @@ public class Player : MonoBehaviour
         else if (!newMovingValue && isMoving)
         {
             gameManager.UpdateArrowButtonsSprite("stop");
-            uiAnimations.StopShader();
             StopSpecialZoneSound();
             //FMODUnity.RuntimeManager.PlayOneShot("event:/AMB/AMB_InGame/AMB_IG_SystemStop");
             //FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/SFX_InGame/SFX_IG_BordStop");
@@ -191,6 +190,7 @@ public class Player : MonoBehaviour
             this.transform.position -= currentDirection;
             gameManager.WallsHit++;
             uiAnimations.PauseAnimations();
+            uiAnimations.StopShader(3);
             FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/SFX_InGame/SFX_IG_BoardImpact");
         }
         // Player hit landmark   

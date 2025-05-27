@@ -56,6 +56,8 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("setObjectsInInspector")] private Image uiBackground;
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject endingCanvas;
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject directionnalArrows;
+    [SerializeField, ShowIf("setObjectsInInspector")] private UiAnimations uiAnimations;
+
     
     [Header("PROTOTYPE THINGS")]
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject normalBackground;
@@ -564,6 +566,8 @@ public class GameManager : SerializedMonoBehaviour
             PrintAreaPlayer();
             player.EnableMeshRenderer(true);
             ShowHideQuestionArea(false);
+            uiAnimations.StopShader(1.5f);
+
             
             // Active all children of the directional arrows
             foreach (Transform child in directionnalArrows.transform)
