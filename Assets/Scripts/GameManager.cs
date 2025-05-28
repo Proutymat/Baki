@@ -21,6 +21,8 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("setObjectsInInspector")] public Material materialLandmarksC;
     [SerializeField, ShowIf("setObjectsInInspector")] public Material materialLandmarksD;
     [SerializeField, ShowIf("setObjectsInInspector")] public Material materialLandmarksE;
+    [SerializeField, ShowIf("setObjectsInInspector")] public Material materialSpecialZoneIn;
+    [SerializeField, ShowIf("setObjectsInInspector")] public Material materialSpecialZoneOut;
     [Header("UI text"), ShowIf("setObjectsInInspector")]
     [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI questionText;
     [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer1Text;

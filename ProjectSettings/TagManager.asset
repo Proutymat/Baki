@@ -7,6 +7,8 @@ TagManager:
   - PlayerStart
   - Wall
   - Landmark
+  - SpecialZoneIn
+  - SpecialZoneOut
   layers:
   - Default
   - TransparentFX

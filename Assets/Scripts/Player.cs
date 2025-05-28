@@ -172,7 +172,7 @@ public class Player : MonoBehaviour
         else if (!newMovingValue && isMoving)
         {
             gameManager.UpdateArrowButtonsSprite("stop");
-            StopSpecialZoneSound();
+            if (inSpecialZone) StopSpecialZoneSound();
             //FMODUnity.RuntimeManager.PlayOneShot("event:/AMB/AMB_InGame/AMB_IG_SystemStop");
             //FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/SFX_InGame/SFX_IG_BordStop");
         }
@@ -191,6 +191,7 @@ public class Player : MonoBehaviour
             uiAnimations.PauseAnimations();
             uiAnimations.StopShader(3);
             FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/SFX_InGame/SFX_IG_BoardImpact");
+            SetIsMoving(false);
         }
         // Player hit landmark   
         else if (collider.tag == "Landmark")
@@ -201,9 +202,26 @@ public class Player : MonoBehaviour
             gameManager.PrintAreaPlayer();
             gameManager.EnterLandmark();
             EnableMeshRenderer(true);
+            SetIsMoving(false);
         }
-        
-        SetIsMoving(false);
+        // Player hit special zone in   
+        else if (collider.tag == "SpecialZoneIn" && !inSpecialZone)
+        {
+            Debug.Log("Entering special zone");
+            inSpecialZone = true;
+            UpdateSpecialZoneDetection();
+            speed = secondPerUnitSpecialZone;
+            FMODUnity.RuntimeManager.PlayOneShot("event:/AMB/AMB_SpecialZone/AMB_SZ_OutZone/AMB_SZ_OutZone_TrigEnter");
+        }
+        else if (collider.tag == "SpecialZoneOut" && inSpecialZone)
+        {
+            Debug.Log("Exiting special zone");
+            inSpecialZone = false;
+            StopSpecialZoneSound();
+            speed = secondPerUnit;
+            //FMODUnity.RuntimeManager.PlayOneShot("event:/AMB/AMB_InGame/AMB_IG_SystemMove");
+            FMODUnity.RuntimeManager.PlayOneShot("event:/AMB/AMB_SpecialZone/AMB_SZ_OutZone/AMB_SZ_OutZone_TrigExit");
+        }
     }
     
     public void ChangeDirection(string direction)
@@ -282,6 +300,7 @@ public class Player : MonoBehaviour
     
     void UpdateSpecialZoneDetection()
     {
+        Debug.Log("Updating special zone detection");
         foreach (SpecialZoneDetector detector in specialZoneDetectors)
             detector.CheckCollision(); 
         
