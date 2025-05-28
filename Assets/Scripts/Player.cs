@@ -46,19 +46,6 @@ public class Player : MonoBehaviour
     private BoxCollider szBox_B; // Backward
     private BoxCollider szBox_BR; // Backward right
     private BoxCollider szBox_BB; // Backward backward
-
-    private bool FFOn;
-    private bool FLOn;
-    private bool FOn;
-    private bool FROn;
-    private bool LLOn;
-    private bool LOn;
-    private bool ROn;
-    private bool RROn;
-    private bool BLOn;
-    private bool BOn;
-    private bool BROn;
-    private bool BBOn;
     
     //Instance Fmod event
 
@@ -124,20 +111,6 @@ public class Player : MonoBehaviour
         midSoundPlayed = false;
         hasMovedOnce = false;
         speed = secondPerUnit;
-        
-        // Reset special zones
-        FFOn = false;
-        FLOn = false;
-        FOn = false;
-        FROn = false;
-        LLOn = false;
-        LOn = false;
-        ROn = false;
-        RROn = false;
-        BLOn = false;
-        BOn = false;
-        BROn = false;
-        BBOn = false;
     }
 
     public void EnableMeshRenderer(bool enable)
@@ -300,7 +273,6 @@ public class Player : MonoBehaviour
     
     void UpdateSpecialZoneDetection()
     {
-        Debug.Log("Updating special zone detection");
         foreach (SpecialZoneDetector detector in specialZoneDetectors)
             detector.CheckCollision(); 
         
