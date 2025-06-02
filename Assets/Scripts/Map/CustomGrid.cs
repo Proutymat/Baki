@@ -69,10 +69,13 @@ public class CustomGrid : MonoBehaviour
          groundCell.Init(0 + _ySize / 2f, 0, 0 + _xSize / 2f, _cellSize, _mesh, 2);
          
         GameObject walls = new GameObject("WALLS");
-        walls.AddComponent<MeshFilter>();
-        walls.AddComponent<MeshRenderer>();
-        walls.GetComponent<MeshRenderer>().material = GameManager.Instance.materialWall;
         walls.transform.parent = this.transform;
+        GameObject landmarks = new GameObject("LANDMARKS");
+        landmarks.transform.parent = this.transform;
+        GameObject specialZonesIn = new GameObject("SPECIAL_ZONES_IN");
+        specialZonesIn.transform.parent = this.transform;
+        GameObject specialZonesOut = new GameObject("SPECIAL_ZONES_OUT");
+        specialZonesOut.transform.parent = this.transform;
          
         // Generate grid
         for (int x = 0; x < _ySize; x++)
@@ -93,7 +96,7 @@ public class CustomGrid : MonoBehaviour
                     int height = value % 10;
                     cellObject.transform.localScale = new Vector3(_cellSize * height, _cellSize, _cellSize * width);
                 }
-                // Walls and start
+                // Walls, start and special zones in/out
                 else
                 {
                     cellObject.transform.localScale = new Vector3(_cellSize, _cellSize, _cellSize);
@@ -105,27 +108,22 @@ public class CustomGrid : MonoBehaviour
                 {
                     cellObject.transform.parent = walls.transform;
                 }
+                else if (_wallsIndex[x * _xSize + z] == 9)
+                {
+                    cellObject.transform.parent = specialZonesIn.transform;
+                }
+                else if (_wallsIndex[x * _xSize + z] == 10)
+                {
+                    cellObject.transform.parent = specialZonesOut.transform;
+                }
+                else if (_wallsIndex[x * _xSize + z] >= 400)
+                {
+                    cellObject.transform.parent = landmarks.transform;
+                }
             }
         }
         
         Debug.Log("Grid successfully generated !");
-        
-        MeshFilter[] meshFilters = walls.GetComponentsInChildren<MeshFilter>();
-        CombineInstance[] instance = new CombineInstance[meshFilters.Length];
-        Debug.Log("Taille of meshFilters: " + meshFilters.Length);
-        for (int i = 0; i < meshFilters.Length; i++)
-        {
-            instance[i].mesh = meshFilters[i].sharedMesh;
-            instance[i].transform = meshFilters[i].transform.localToWorldMatrix;
-            meshFilters[i].gameObject.SetActive(false);
-        }
-        
-        Mesh combinedMesh = new Mesh();
-        combinedMesh.indexFormat = UnityEngine.Rendering.IndexFormat.UInt32; // ← AJOUT ICI
-        combinedMesh.CombineMeshes(instance, true, false);
-        walls.transform.GetComponent<MeshFilter>().mesh = combinedMesh;
-        walls.transform.gameObject.SetActive(true);
-        
     }
     
     void OnDrawGizmos()
@@ -199,6 +197,14 @@ public class CustomGrid : MonoBehaviour
                 else if (trimmed.StartsWith("X"))
                 {
                     mappedValue = 3;
+                }
+                else if (trimmed.StartsWith("I"))
+                {
+                    mappedValue = 9; // In special zone
+                }
+                else if (trimmed.StartsWith("O"))
+                {
+                    mappedValue = 10; // Out special zone
                 }
                 else
                 {

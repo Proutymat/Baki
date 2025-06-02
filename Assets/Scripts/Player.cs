@@ -46,19 +46,6 @@ public class Player : MonoBehaviour
     private BoxCollider szBox_B; // Backward
     private BoxCollider szBox_BR; // Backward right
     private BoxCollider szBox_BB; // Backward backward
-
-    private bool FFOn;
-    private bool FLOn;
-    private bool FOn;
-    private bool FROn;
-    private bool LLOn;
-    private bool LOn;
-    private bool ROn;
-    private bool RROn;
-    private bool BLOn;
-    private bool BOn;
-    private bool BROn;
-    private bool BBOn;
     
     //Instance Fmod event
 
@@ -91,7 +78,6 @@ public class Player : MonoBehaviour
         meshRenderer = GetComponent<MeshRenderer>();
         
         //FMOD Instance start
-        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/SFX_SpecialZone/SFX_SZ_OutZone/SFX_SZ_OZ_BoardAppraoch/SFX_SZ_OZ_BA_Start");
         FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_StartGame");
         
         BA_C_Instance = FMODUnity.RuntimeManager.CreateInstance(BA_C);
@@ -125,20 +111,6 @@ public class Player : MonoBehaviour
         midSoundPlayed = false;
         hasMovedOnce = false;
         speed = secondPerUnit;
-        
-        // Reset special zones
-        FFOn = false;
-        FLOn = false;
-        FOn = false;
-        FROn = false;
-        LLOn = false;
-        LOn = false;
-        ROn = false;
-        RROn = false;
-        BLOn = false;
-        BOn = false;
-        BROn = false;
-        BBOn = false;
     }
 
     public void EnableMeshRenderer(bool enable)
@@ -173,8 +145,7 @@ public class Player : MonoBehaviour
         else if (!newMovingValue && isMoving)
         {
             gameManager.UpdateArrowButtonsSprite("stop");
-            uiAnimations.StopShader();
-            StopSpecialZoneSound();
+            if (inSpecialZone) StopSpecialZoneSound();
             //FMODUnity.RuntimeManager.PlayOneShot("event:/AMB/AMB_InGame/AMB_IG_SystemStop");
             //FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/SFX_InGame/SFX_IG_BordStop");
         }
@@ -191,7 +162,9 @@ public class Player : MonoBehaviour
             this.transform.position -= currentDirection;
             gameManager.WallsHit++;
             uiAnimations.PauseAnimations();
+            uiAnimations.StopShader(3);
             FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/SFX_InGame/SFX_IG_BoardImpact");
+            SetIsMoving(false);
         }
         // Player hit landmark   
         else if (collider.tag == "Landmark")
@@ -202,9 +175,26 @@ public class Player : MonoBehaviour
             gameManager.PrintAreaPlayer();
             gameManager.EnterLandmark();
             EnableMeshRenderer(true);
+            SetIsMoving(false);
         }
-        
-        SetIsMoving(false);
+        // Player hit special zone in   
+        else if (collider.tag == "SpecialZoneIn" && !inSpecialZone)
+        {
+            Debug.Log("Entering special zone");
+            inSpecialZone = true;
+            UpdateSpecialZoneDetection();
+            speed = secondPerUnitSpecialZone;
+            FMODUnity.RuntimeManager.PlayOneShot("event:/AMB/AMB_SpecialZone/AMB_SZ_OutZone/AMB_SZ_OutZone_TrigEnter");
+        }
+        else if (collider.tag == "SpecialZoneOut" && inSpecialZone)
+        {
+            Debug.Log("Exiting special zone");
+            inSpecialZone = false;
+            StopSpecialZoneSound();
+            speed = secondPerUnit;
+            //FMODUnity.RuntimeManager.PlayOneShot("event:/AMB/AMB_InGame/AMB_IG_SystemMove");
+            FMODUnity.RuntimeManager.PlayOneShot("event:/AMB/AMB_SpecialZone/AMB_SZ_OutZone/AMB_SZ_OutZone_TrigExit");
+        }
     }
     
     public void ChangeDirection(string direction)

@@ -25,7 +25,7 @@ public class SpecialZoneDetector : MonoBehaviour
         {
             if (collider.CompareTag("Wall"))
             {
-                Debug.Log("Collision with wall detected in " + zoneName);
+                //Debug.Log("Collision with wall detected in " + zoneName);
                 return isOn = true;
             }
         }

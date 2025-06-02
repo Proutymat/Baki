@@ -21,6 +21,8 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("setObjectsInInspector")] public Material materialLandmarksC;
     [SerializeField, ShowIf("setObjectsInInspector")] public Material materialLandmarksD;
     [SerializeField, ShowIf("setObjectsInInspector")] public Material materialLandmarksE;
+    [SerializeField, ShowIf("setObjectsInInspector")] public Material materialSpecialZoneIn;
+    [SerializeField, ShowIf("setObjectsInInspector")] public Material materialSpecialZoneOut;
     [Header("UI text"), ShowIf("setObjectsInInspector")]
     [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI questionText;
     [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer1Text;
@@ -56,6 +58,8 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("setObjectsInInspector")] private Image uiBackground;
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject endingCanvas;
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject directionnalArrows;
+    [SerializeField, ShowIf("setObjectsInInspector")] private UiAnimations uiAnimations;
+
     
     [Header("PROTOTYPE THINGS")]
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject normalBackground;
@@ -262,6 +266,7 @@ public class GameManager : SerializedMonoBehaviour
     public void EnterLandmark()
     {
         FMODUnity.RuntimeManager.PlayOneShot("event:/MX/MX_Interest_Point1");
+        FMODUnity.RuntimeManager.PlayOneShot("event:/MX/MX_Trig/MX_TrigIP1_Start");
         
         if (dilemmes.Count < 1)
         {
@@ -299,6 +304,7 @@ public class GameManager : SerializedMonoBehaviour
     public void ExitLandmark(int answerIndex)
     {
         FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_QuestionRespondClick");
+        FMODUnity.RuntimeManager.PlayOneShot("event:/MX/MX_Trig/MX_TrigIP1_Stop");
         
         inLandmark = false;
         progressBar.gameObject.SetActive(true);
@@ -447,7 +453,7 @@ public class GameManager : SerializedMonoBehaviour
     
     private void Update()
     {
-        if (isGameOver || !unboardingStep2) return;
+        if (isGameOver || !unboardingStep2 || inLandmark) return;
         
         // Update game time
         gameTimer -= Time.deltaTime;
@@ -564,6 +570,8 @@ public class GameManager : SerializedMonoBehaviour
             PrintAreaPlayer();
             player.EnableMeshRenderer(true);
             ShowHideQuestionArea(false);
+            uiAnimations.StopShader(1.5f);
+
             
             // Active all children of the directional arrows
             foreach (Transform child in directionnalArrows.transform)
