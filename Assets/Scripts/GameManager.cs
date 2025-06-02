@@ -59,6 +59,7 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject endingCanvas;
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject directionnalArrows;
     [SerializeField, ShowIf("setObjectsInInspector")] private UiAnimations uiAnimations;
+    [SerializeField, ShowIf("setObjectsInInspector")] private PDFPrinter pdfPrinter;
 
     
     [Header("PROTOTYPE THINGS")]
@@ -233,7 +234,8 @@ public class GameManager : SerializedMonoBehaviour
         Debug.Log("Law cursors created : " + lawCursors.Count);
         
         NextQuestion();
-        PrintAreaPlayer();
+        playerCamera.transform.position = new Vector3(player.transform.position.x, playerCamera.transform.position.y, player.transform.position.z);
+
         
         // DEBUG FRESQUE : Create log file
         string folderPath = Application.dataPath + "/Logs";
@@ -261,7 +263,8 @@ public class GameManager : SerializedMonoBehaviour
     public void PrintAreaPlayer()
     {
         playerCamera.transform.position = new Vector3(player.transform.position.x, playerCamera.transform.position.y, player.transform.position.z);
-    }
+    	pdfPrinter.Print();
+	}
 
     public void EnterLandmark()
     {
@@ -567,7 +570,6 @@ public class GameManager : SerializedMonoBehaviour
         {
             nbProgressBarFull++;
             player.SetIsMoving(false);
-            PrintAreaPlayer();
             player.EnableMeshRenderer(true);
             ShowHideQuestionArea(false);
             uiAnimations.StopShader(1.5f);
@@ -584,6 +586,8 @@ public class GameManager : SerializedMonoBehaviour
                 unboardingStep1 = true;
                 UnboardingStep1();
             }
+
+		PrintAreaPlayer();
         }
 
         // The two laws to update with their increments
