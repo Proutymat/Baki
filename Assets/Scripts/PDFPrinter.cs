@@ -11,16 +11,18 @@ public class PDFPrinter : MonoBehaviour
 {
     [SerializeField] private Camera camera;
     [SerializeField] private string fileName = "receipt.pdf";
-    [SerializeField] private string pdfPath = @"C:\Users\Acer\Documents\";
-    private string sumatraPath = @"C:\Users\Acer\AppData\Local\SumatraPDF\SumatraPDF.exe";
+    [SerializeField] private string pdfPath;
+    private string sumatraPath = @"C:\Users\ELE66defb67b315c\AppData\Local\SumatraPDF";
     private string printerName = "EPSON TM-T20 Receipt";
     private string folderPath;
 
     void Start()
     {
         folderPath = Application.dataPath + "/Logs";
+        pdfPath = Application.dataPath + "/Logs/";
+        sumatraPath = @"C:\Users\ELE66defb67b315c\AppData\Local\SumatraPDF\SumatraPDF.exe";
     }
-    
+
     private string GetUniqueImagePath()
     {
         int counter = 0;
