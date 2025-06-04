@@ -265,7 +265,7 @@ public class GameManager : SerializedMonoBehaviour
     public void PrintAreaPlayer()
     {
         playerCamera.transform.position = new Vector3(player.transform.position.x, playerCamera.transform.position.y, player.transform.position.z);
-    	pdfPrinter.Print();
+    	StartCoroutine(pdfPrinter.Print());
 	}
 
     private void NextQuetionLandmark()
