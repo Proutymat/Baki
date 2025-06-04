@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 778fe052ea062fc43a96d7c4f734cca6, type: 3}
   m_Name: dilemme_16
   m_EditorClassIdentifier: 
-  question: Qu'est-ce que l'attente pour toi ?
-  answer1: Une pause
-  answer2: Une illusion
-  answer3: Une promesse
-  answer4: "Un pi\xE8ge\r"
+  question: "Si tu devais offrir une couleur \xE0 l\u2019aube, laquelle choisirais-tu
+    ?"
+  answer1: "L\u2019or p\xE2le"
+  answer2: Le bleu infini
+  answer3: Le rose fragile
+  answer4: "Le gris doux\r"
   nbAnswer1: 0
   nbAnswer2: 0
   nbAnswer3: 0

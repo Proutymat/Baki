@@ -58,9 +58,10 @@ public class LandmarkDetection : MonoBehaviour
                 _currentArrows.Add(obj);
             }
             GameObject arrow = _currentArrows[i];
+            
             Vector3 dir = Vector3.ProjectOnPlane((landmark.transform.position - _playerTransform.position), Vector3.up).normalized;
             arrow.transform.position = _playerTransform.position + dir * _distanceArrow + Vector3.up * 3;
-            arrow.transform.rotation = Quaternion.LookRotation(dir, Vector3.up) * Quaternion.Euler(-90, 0, 0);   
+            /*arrow.transform.rotation = Quaternion.LookRotation(dir, Vector3.up) * Quaternion.Euler(-90, 0, 0);  */ 
             
             // Calcul de la taille selon la distance (inversement proportionnelle)
             float t = Mathf.Clamp01(distance / _maxDetectionDistance);

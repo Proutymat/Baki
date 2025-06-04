@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 778fe052ea062fc43a96d7c4f734cca6, type: 3}
   m_Name: dilemme_11
   m_EditorClassIdentifier: 
-  question: "Une erreur a \xE9t\xE9 rencontr\xE9e, que faire ?"
-  answer1: Corriger
-  answer2: Ignorer
-  answer3: Demander de l'aide
-  answer4: "Fuir\r"
+  question: "De quel bord politique te consid\xE8res-tu ?"
+  answer1: Gauche
+  answer2: Droite
+  answer3: Centre
+  answer4: "Apolitique\r"
   nbAnswer1: 0
   nbAnswer2: 0
   nbAnswer3: 0

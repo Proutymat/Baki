@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 778fe052ea062fc43a96d7c4f734cca6, type: 3}
   m_Name: dilemme_18
   m_EditorClassIdentifier: 
-  question: "Que r\xE9pr\xE9sente l'humour pour toi ?"
-  answer1: Un masque
-  answer2: "Une \xE9chappatoire"
-  answer3: "Un rem\xE8de"
-  answer4: "Une futilit\xE9\r"
+  question: "Quel est ton \xE9tape du deuil pr\xE9f\xE9r\xE9e ?"
+  answer1: "Le d\xE9ni"
+  answer2: "La col\xE8re"
+  answer3: Le marchandage
+  answer4: "La d\xE9pression\r"
   nbAnswer1: 0
   nbAnswer2: 0
   nbAnswer3: 0

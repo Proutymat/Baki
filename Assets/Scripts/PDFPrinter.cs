@@ -4,6 +4,8 @@ using Sirenix.OdinInspector;
 using PdfSharp.Pdf;
 using PdfSharp.Drawing;
 using System.IO;
+using System.Collections;
+
 
 
 
@@ -11,16 +13,18 @@ public class PDFPrinter : MonoBehaviour
 {
     [SerializeField] private Camera camera;
     [SerializeField] private string fileName = "receipt.pdf";
-    [SerializeField] private string pdfPath = @"C:\Users\Acer\Documents\";
-    private string sumatraPath = @"C:\Users\Acer\AppData\Local\SumatraPDF\SumatraPDF.exe";
+    [SerializeField] private string pdfPath;
+    private string sumatraPath = @"C:\Users\ELE66e033cdbc70f\AppData\Local\SumatraPDF";
     private string printerName = "EPSON TM-T20 Receipt";
     private string folderPath;
 
     void Start()
     {
         folderPath = Application.dataPath + "/Logs";
+        pdfPath = Application.dataPath + "/Logs/";
+        sumatraPath = @"C:\Users\ELE66e033cdbc70f\AppData\Local\SumatraPDF\SumatraPDF.exe";
     }
-    
+
     private string GetUniqueImagePath()
     {
         int counter = 0;
@@ -108,8 +112,9 @@ public class PDFPrinter : MonoBehaviour
     }
     
     [Button]
-    public void Print()
+    public IEnumerator Print()
     {
+        yield return new WaitForEndOfFrame();
         const int size = 512; // ou 1024 selon ta qualité
         Texture2D square = CaptureCameraSquare(camera, size);
         CreatePDFWithImage(square);
