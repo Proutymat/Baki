@@ -200,7 +200,6 @@ public class Player : MonoBehaviour
     public void ChangeDirection(string direction)
     {
         gameManager.ButtonsPressed++;
-        SetIsMoving(true);
         FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_DirectionClick");
         
         // If the direction is the same as the previous one, skip
@@ -237,6 +236,14 @@ public class Player : MonoBehaviour
             FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/SFX_InGame/SFX_IG_DirectionalRotate_SPAT/SFX_IG_DirectionalRotate_L");
             Debug.Log("Moving left");
         }
+
+        // Move the player
+        if (!isMoving)
+        {
+            Move();
+        }
+        
+        SetIsMoving(true);
     }
 
     private void StopSpecialZoneSound()
@@ -326,6 +333,31 @@ public class Player : MonoBehaviour
             BA_B_Instance.setParameterByName("BordDistance", 4);
     }
 
+    private void Move()
+    {
+        moveAnimation.SetTrigger("Move");
+            
+        unitTimer = 0f;
+        this.transform.position += currentDirection;
+        gameManager.DistanceTraveled++;
+        midSoundPlayed = false;
+        if (inSpecialZone)
+            UpdateSpecialZoneDetection();
+            
+        // Forward sound
+        if (currentDirection == Vector3.left * gridCellSize)
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/SFX_InGame/SFX_IG_DirectionalInfo_SPAT/SFX_IG_DirectionalInfo_C");
+        // Backward sound
+        else if (currentDirection == Vector3.right * gridCellSize)
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/SFX_InGame/SFX_IG_DirectionalInfo_SPAT/SFX_IG_DirectionalInfo_B");
+        // Left sound
+        else if (currentDirection == Vector3.back * gridCellSize)
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/SFX_InGame/SFX_IG_DirectionalInfo_SPAT/SFX_IG_DirectionalInfo_L");
+        // Right sound
+        else if (currentDirection == Vector3.forward * gridCellSize)
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/SFX_InGame/SFX_IG_DirectionalInfo_SPAT/SFX_IG_DirectionalInfo_R");
+    }
+
     void Update() 
     {
         if (!isMoving) return;
@@ -357,27 +389,7 @@ public class Player : MonoBehaviour
         // Move the player to next unit
         if (unitTimer >= speed)
         {
-            moveAnimation.SetTrigger("Move");
-            
-            unitTimer = 0f;
-            this.transform.position += currentDirection;
-            gameManager.DistanceTraveled++;
-            midSoundPlayed = false;
-            if (inSpecialZone)
-                UpdateSpecialZoneDetection();
-            
-            // Forward sound
-            if (currentDirection == Vector3.left * gridCellSize)
-                FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/SFX_InGame/SFX_IG_DirectionalInfo_SPAT/SFX_IG_DirectionalInfo_C");
-            // Backward sound
-            else if (currentDirection == Vector3.right * gridCellSize)
-                FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/SFX_InGame/SFX_IG_DirectionalInfo_SPAT/SFX_IG_DirectionalInfo_B");
-            // Left sound
-            else if (currentDirection == Vector3.back * gridCellSize)
-                FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/SFX_InGame/SFX_IG_DirectionalInfo_SPAT/SFX_IG_DirectionalInfo_L");
-            // Right sound
-            else if (currentDirection == Vector3.forward * gridCellSize)
-                FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/SFX_InGame/SFX_IG_DirectionalInfo_SPAT/SFX_IG_DirectionalInfo_R");
+            Move();
         }
     }
     
