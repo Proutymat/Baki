@@ -104,6 +104,7 @@ public class GameManager : SerializedMonoBehaviour
     private bool isGameOver = false;
     private bool inLandmark;
     private Dilemme currentDilemme;
+    private int nbLandmarkQuestions;
     
     // Stats
     private int nbUnitTraveled;
@@ -205,6 +206,7 @@ public class GameManager : SerializedMonoBehaviour
         nbProgressBarFull = 0;
         shortestTimeBetweenQuestions = float.MaxValue;
         longestTimeBetweenQuestions = float.MinValue;
+        nbLandmarkQuestions = 0;
  
         questionTimer = 0;
         
@@ -266,10 +268,9 @@ public class GameManager : SerializedMonoBehaviour
     	pdfPrinter.Print();
 	}
 
-    public void EnterLandmark()
+    private void NextQuetionLandmark()
     {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/MX/MX_Interest_Point1");
-        FMODUnity.RuntimeManager.PlayOneShot("event:/MX/MX_Trig/MX_TrigIP1_Start");
+        nbLandmarkQuestions += 1;
         
         if (dilemmes.Count < 1)
         {
@@ -304,8 +305,23 @@ public class GameManager : SerializedMonoBehaviour
         answer4DilemmeText.text = currentDilemme.answer4;
     }
 
+    public void EnterLandmark()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/MX/MX_Interest_Point1");
+        FMODUnity.RuntimeManager.PlayOneShot("event:/MX/MX_Trig/MX_TrigIP1_Start");
+        
+        NextQuetionLandmark();
+    }
+
     public void ExitLandmark(int answerIndex)
     {
+        if (nbLandmarkQuestions < 3)
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_QuestionRespondClick");
+            NextQuetionLandmark();
+            return;
+        }
+        
         FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_QuestionRespondClick");
         FMODUnity.RuntimeManager.PlayOneShot("event:/MX/MX_Trig/MX_TrigIP1_Stop");
         
@@ -316,6 +332,7 @@ public class GameManager : SerializedMonoBehaviour
         normalBackground.SetActive(true);
         deco.SetActive(true);
         questionTimer = 0;
+        nbLandmarkQuestions = 0;
         
         dilemmeBackground.SetActive(false);
         dilemmeText.transform.parent.transform.parent.gameObject.SetActive(false);

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 778fe052ea062fc43a96d7c4f734cca6, type: 3}
   m_Name: dilemme_13
   m_EditorClassIdentifier: 
-  question: "Ta plus grande qualit\xE9 ?"
-  answer1: La patiente
-  answer2: L'empathie
-  answer3: L'intelligence
-  answer4: "L'hon\xEAtet\xE9\r"
+  question: "Quel bruit te repr\xE9sente le mieux ?"
+  answer1: Un grincement de chaise
+  answer2: Un soupir long
+  answer3: "Un cri \xE9touff\xE9"
+  answer4: "Un silence sourd\r"
   nbAnswer1: 0
   nbAnswer2: 0
   nbAnswer3: 0

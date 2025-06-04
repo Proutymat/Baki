@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 778fe052ea062fc43a96d7c4f734cca6, type: 3}
   m_Name: dilemme_12
   m_EditorClassIdentifier: 
-  question: "De quel bord politique te consid\xE8res-tu ?"
-  answer1: Gauche
-  answer2: Droite
-  answer3: Centre
-  answer4: "Apolitique\r"
+  question: "Ta plus grande qualit\xE9 ?"
+  answer1: La patiente
+  answer2: L'empathie
+  answer3: L'intelligence
+  answer4: "L'hon\xEAtet\xE9\r"
   nbAnswer1: 0
   nbAnswer2: 0
   nbAnswer3: 0

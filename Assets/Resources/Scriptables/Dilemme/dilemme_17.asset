@@ -12,12 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 778fe052ea062fc43a96d7c4f734cca6, type: 3}
   m_Name: dilemme_17
   m_EditorClassIdentifier: 
-  question: "Si tu devais offrir une couleur \xE0 l\u2019aube, laquelle choisirais-tu
-    ?"
-  answer1: "L\u2019or p\xE2le"
-  answer2: Le bleu infini
-  answer3: Le rose fragile
-  answer4: "Le gris doux\r"
+  question: "Que r\xE9pr\xE9sente l'humour pour toi ?"
+  answer1: Un masque
+  answer2: "Une \xE9chappatoire"
+  answer3: "Un rem\xE8de"
+  answer4: "Une futilit\xE9\r"
   nbAnswer1: 0
   nbAnswer2: 0
   nbAnswer3: 0

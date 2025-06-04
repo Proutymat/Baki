@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 778fe052ea062fc43a96d7c4f734cca6, type: 3}
   m_Name: dilemme_15
   m_EditorClassIdentifier: 
-  question: "Quel mot t\u2019agresse le plus ?"
-  answer1: Normal
-  answer2: Toujours
-  answer3: Rien
-  answer4: "Pourquoi\r"
+  question: Qu'est-ce que l'attente pour toi ?
+  answer1: Une pause
+  answer2: Une illusion
+  answer3: Une promesse
+  answer4: "Un pi\xE8ge\r"
   nbAnswer1: 0
   nbAnswer2: 0
   nbAnswer3: 0
