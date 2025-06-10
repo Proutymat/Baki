@@ -12,74 +12,63 @@ using System.Collections;
 public class PDFPrinter : MonoBehaviour
 {
     [SerializeField] private Camera camera;
-    [SerializeField] private string fileName = "receipt.pdf";
-    [SerializeField] private string pdfPath;
-    private string sumatraPath = @"C:\Users\ELE66e033cdbc70f\AppData\Local\SumatraPDF";
+    
+    private GameManager gameManager;
     private string printerName = "EPSON TM-T20 Receipt";
-    private string folderPath;
+    private string pdfFileName = "map.pdf";
+    private string pdfPath = Application.dataPath + "/Logs/";
+    private string sumatraPath = Application.dataPath + "/StreamingAssets/SumatraPDF/SumatraPDF.exe";
+    private int imageCounter;
 
     void Start()
     {
-        folderPath = Application.dataPath + "/Logs";
-        pdfPath = Application.dataPath + "/Logs/";
-        sumatraPath = @"C:\Users\ELE66e033cdbc70f\AppData\Local\SumatraPDF\SumatraPDF.exe";
+        gameManager = GameManager.Instance;
+        Initialize();
     }
 
-    private string GetUniqueImagePath()
+    private void Initialize()
     {
-        int counter = 0;
-        string tempImagePath;
-
-        do
-        {
-            tempImagePath = Path.Combine(folderPath, $"capture_{counter}.png");
-            counter++;
-        } while (File.Exists(tempImagePath));
-
-        return tempImagePath;
+        imageCounter = 0;
     }
 
-    private void CreatePDFWithImage(Texture2D tex)
+    private void CreatePDFWithImage(Texture2D texture)
     {
-        // Obtenir un nom de fichier unique
-        string tempImagePath = GetUniqueImagePath();
+        string imageName = Path.Combine(gameManager.LogFolderPath, $"map_{imageCounter}.png");
+        imageCounter++;
+        
+        byte[] bytes = texture.EncodeToPNG();
 
-        // Convertir Texture2D en PNG
-        byte[] bytes = tex.EncodeToPNG();
-
-        // Sauvegarder l’image en fichier
-        using (FileStream fs = new FileStream(tempImagePath, FileMode.Create, FileAccess.Write, FileShare.None))
+        // Save the image to a file
+        using (FileStream fs = new FileStream(imageName, FileMode.Create, FileAccess.Write, FileShare.None))
         {
             fs.Write(bytes, 0, bytes.Length);
         }
 
-        System.Threading.Thread.Sleep(100); // Attendre un peu pour éviter les conflits
+        System.Threading.Thread.Sleep(100); // Wait for the file to be written
 
-        // Créer le document PDF
+        // Create the PDF document
         PdfDocument document = new PdfDocument();
         PdfPage page = document.AddPage();
         page.Width = XUnit.FromCentimeter(8);
         page.Height = XUnit.FromCentimeter(29.7);
 
         XGraphics gfx = XGraphics.FromPdfPage(page);
-        XImage image = XImage.FromFile(tempImagePath);
+        XImage image = XImage.FromFile(imageName);
 
         double imageWidth = page.Width.Point;
         double imageHeight = imageWidth;
         gfx.DrawImage(image, 0, 0, imageWidth, imageHeight);
 
-        string outputPath = Path.Combine(pdfPath, fileName);
+        string outputPath = Path.Combine(pdfPath, pdfFileName);
         document.Save(outputPath);
-        UnityEngine.Debug.Log("PDF généré à : " + outputPath);
-
-        // Image non supprimée (tu peux ajouter un bouton de nettoyage si besoin)
+        UnityEngine.Debug.Log("PDF generated at : " + outputPath);
     }
 
 
     
     public Texture2D CaptureCameraSquare(Camera cam, int size)
     {
-        // Crée un RenderTexture carré
+        // Create a square RenderTexture
         RenderTexture rt = new RenderTexture(size, size, 24);
         cam.targetTexture = rt;
 
@@ -97,13 +86,12 @@ public class PDFPrinter : MonoBehaviour
         return result;
     }
     
-	[Button]
     public void PrintPDF()
     {
         var startInfo = new System.Diagnostics.ProcessStartInfo
         {
             FileName = sumatraPath,
-            Arguments = $"-print-to \"{printerName}\" -print-settings \"fit\" \"{pdfPath + fileName}\"",
+            Arguments = $"-print-to \"{printerName}\" -print-settings \"fit\" \"{pdfPath + pdfFileName}\"",
             CreateNoWindow = true,
             UseShellExecute = false
         };

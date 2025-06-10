@@ -99,6 +99,7 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("debug")] private List<int> lawsQueuePriority;
     [SerializeField, ShowIf("debug")] private float gameTimer;
     [SerializeField, ShowIf("debug")] private int lastPrintedPercent = 0;
+    private string logFolderPath; // DEBUG FRESQUE : Path to the log folder
     private string fresqueLogFilePath; // DEBUG FRESQUE : Path to the log folder
     private string answersLogFilePath; // DEBUG QUESTIONS : Path to the log folder
     private bool isGameOver = false;
@@ -151,6 +152,11 @@ public class GameManager : SerializedMonoBehaviour
     {
         get { return nbButtonsPressed; }
         set { nbButtonsPressed = value; }
+    }
+    
+    public string LogFolderPath
+    {
+        get { return logFolderPath; }
     }
 
 
@@ -239,17 +245,17 @@ public class GameManager : SerializedMonoBehaviour
         playerCamera.transform.position = new Vector3(player.transform.position.x, playerCamera.transform.position.y, player.transform.position.z);
 
         
-        // DEBUG FRESQUE : Create log file
-        string folderPath = Application.dataPath + "/Logs";
-        if (!System.IO.Directory.Exists(folderPath))
+        // DEBUG : Create log folder
+        logFolderPath = Application.dataPath + "/Logs";
+        if (!System.IO.Directory.Exists(logFolderPath))
         {
-            System.IO.Directory.CreateDirectory(folderPath);
+            System.IO.Directory.CreateDirectory(logFolderPath);
         }
 
-        folderPath += "/" + System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
-        System.IO.Directory.CreateDirectory(folderPath);
-        fresqueLogFilePath = $"{folderPath}/fresque.txt";
-        answersLogFilePath = $"{folderPath}/answers.txt";
+        logFolderPath += "/" + System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
+        System.IO.Directory.CreateDirectory(logFolderPath);
+        fresqueLogFilePath = $"{logFolderPath}/fresque.txt";
+        answersLogFilePath = $"{logFolderPath}/answers.txt";
     }
     
     private void Start()
