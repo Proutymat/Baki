@@ -313,8 +313,7 @@ public class GameManager : SerializedMonoBehaviour
 
     public void EnterLandmark()
     {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/MX/MX_Interest_Point1");
-        FMODUnity.RuntimeManager.PlayOneShot("event:/MX/MX_Trig/MX_TrigIP1_Start");
+        FMODUnity.RuntimeManager.PlayOneShot("event:/MX/MX_Trig/MX_Trig_Z1G/MX_Trig_Z1G_PI_Start");
         
         NextQuetionLandmark();
     }
@@ -328,8 +327,7 @@ public class GameManager : SerializedMonoBehaviour
             return;
         }
         
-        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_QuestionRespondClick");
-        FMODUnity.RuntimeManager.PlayOneShot("event:/MX/MX_Trig/MX_TrigIP1_Stop");
+        FMODUnity.RuntimeManager.PlayOneShot("event:/MX/MX_Trig/MX_Trig_Z1G/MX_Trig_Z1G_PI_Stop");
         
         inLandmark = false;
         progressBar.gameObject.SetActive(true);
