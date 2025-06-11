@@ -23,6 +23,7 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("setObjectsInInspector")] public Material materialLandmarksE;
     [SerializeField, ShowIf("setObjectsInInspector")] public Material materialSpecialZoneIn;
     [SerializeField, ShowIf("setObjectsInInspector")] public Material materialSpecialZoneOut;
+    
     [Header("UI text"), ShowIf("setObjectsInInspector")]
     [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI questionText;
     [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer1Text;
@@ -32,7 +33,8 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer2DilemmeText;
     [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer3DilemmeText;
     [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer4DilemmeText;
-    [Header("UI arrows"), ShowIf("setObjectsInInspector")]
+    
+    [Header("UI buttons arrows"), ShowIf("setObjectsInInspector")]
     [SerializeField, ShowIf("setObjectsInInspector")] private Sprite arrowUp;
     [SerializeField, ShowIf("setObjectsInInspector")] private Sprite arrowUpHovered;
     [SerializeField, ShowIf("setObjectsInInspector")] private Sprite arrowDown;
@@ -46,18 +48,21 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("setObjectsInInspector")] private Image buttonLeft;
     [SerializeField, ShowIf("setObjectsInInspector")] private Image buttonRight;
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject bottomArrowIndication;
-
-    [Header("Others"), ShowIf("setObjectsInInspector")] 
+    
+    [Header("UI Objects"), ShowIf("setObjectsInInspector")] 
+    [SerializeField, ShowIf("setObjectsInInspector")] private Image uiBackground;
+    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject buttonsArrows;
+    
     [SerializeField, ShowIf("setObjectsInInspector")] private Canvas mainCanvas;
     [SerializeField, ShowIf("setObjectsInInspector")] private Camera canvasCamera;
     [SerializeField, ShowIf("setObjectsInInspector")] private Camera playerCamera;
     [SerializeField, ShowIf("setObjectsInInspector")] private Canvas blackScreenCanvas;
-    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject arrows;
+    
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject questionsArea;
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject progressBarObject;
-    [SerializeField, ShowIf("setObjectsInInspector")] private Image uiBackground;
+    
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject endingCanvas;
-    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject directionnalArrows;
+    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject landmarksArrows;
     [SerializeField, ShowIf("setObjectsInInspector")] private UiAnimations uiAnimations;
     [SerializeField, ShowIf("setObjectsInInspector")] private PDFPrinter pdfPrinter;
 
@@ -106,6 +111,7 @@ public class GameManager : SerializedMonoBehaviour
     private bool inLandmark;
     private Dilemme currentDilemme;
     private int nbLandmarkQuestions;
+    private Landmark currentLandmark;
     
     // Stats
     private int nbUnitTraveled;
@@ -218,7 +224,7 @@ public class GameManager : SerializedMonoBehaviour
         
         // Unboarding
         progressBar.IsPaused = true;
-        arrows.SetActive(false);
+        buttonsArrows.SetActive(false);
         
         // Initialize game settings
         gameTimer = gameDuration;
@@ -297,7 +303,7 @@ public class GameManager : SerializedMonoBehaviour
         inLandmark = true;
         progressBar.gameObject.SetActive(false);
         questionsArea.SetActive(false);
-        arrows.SetActive(false);
+        buttonsArrows.SetActive(false);
         deco.SetActive(false);
         normalBackground.SetActive(false);
         dilemmeBackground.SetActive(true);
@@ -311,10 +317,9 @@ public class GameManager : SerializedMonoBehaviour
         answer4DilemmeText.text = currentDilemme.answer4;
     }
 
-    public void EnterLandmark()
+    public void EnterLandmark(Landmark landmark)
     {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/MX/MX_Trig/MX_Trig_Z1G/MX_Trig_Z1G_PI_Start");
-        
+        currentLandmark = landmark;
         NextQuetionLandmark();
     }
 
@@ -332,7 +337,7 @@ public class GameManager : SerializedMonoBehaviour
         inLandmark = false;
         progressBar.gameObject.SetActive(true);
         questionsArea.SetActive(true);
-        arrows.SetActive(true);
+        buttonsArrows.SetActive(true);
         normalBackground.SetActive(true);
         deco.SetActive(true);
         questionTimer = 0;
@@ -363,6 +368,9 @@ public class GameManager : SerializedMonoBehaviour
             writer.WriteLine(currentDilemme.question + " : " + answer);
             writer.WriteLine("------------------------");
         }
+        
+        PrintAreaPlayer();
+        currentLandmark.Exit();
     }
     
     private void WriteFinalStatsToFile()
@@ -452,21 +460,13 @@ public class GameManager : SerializedMonoBehaviour
     
     private void ShowHideQuestionArea(bool show)
     {
-        if (show)
-        {
-            questionsArea.SetActive(true);
-            progressBarObject.SetActive(true);
-        }
-        else
-        {
-            questionsArea.SetActive(false);
-            progressBarObject.SetActive(false);
-        }
+        questionsArea.SetActive(show);
+        progressBarObject.SetActive(show);
     }
 
     private void UnboardingStep1()
     {
-        arrows.SetActive(true);
+        buttonsArrows.SetActive(true);
         ShowHideQuestionArea(false);
     }
     
@@ -597,7 +597,7 @@ public class GameManager : SerializedMonoBehaviour
 
             
             // Active all children of the directional arrows
-            foreach (Transform child in directionnalArrows.transform)
+            foreach (Transform child in landmarksArrows.transform)
             {
                 child.gameObject.SetActive(true);
             }

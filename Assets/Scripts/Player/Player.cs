@@ -30,11 +30,9 @@ public class Player : MonoBehaviour
     private float speed;
     
     private MeshRenderer meshRenderer;
-    private PlayerColliders playerColliders;
+    private PlayerSpecialZone playerColliders;
     
-    
-    
-    public bool IsMoving { get { return isMoving; } set { isMoving = value; } }
+    public bool IsMoving { get { return isMoving; }}
     
     private void Start()
     {
@@ -42,7 +40,7 @@ public class Player : MonoBehaviour
         currentDirection = transform.forward * gridCellSize;
         startCellPosition = GameObject.FindGameObjectWithTag("PlayerStart").transform.position;
         gameManager = GameManager.Instance;
-        playerColliders = GetComponent<PlayerColliders>();
+        playerColliders = GetComponent<PlayerSpecialZone>();
         meshRenderer = GetComponent<MeshRenderer>();
         
         //FMOD Instance start
@@ -120,13 +118,12 @@ public class Player : MonoBehaviour
         else if (collider.tag == "Landmark")
         {
             Debug.Log("Landmark reached");
-            Destroy(collider.gameObject);
             gameManager.LandmarksReached++;
-            gameManager.PrintAreaPlayer();
-            gameManager.EnterLandmark();
+            gameManager.EnterLandmark(collider.GetComponent<Landmark>());
             EnableMeshRenderer(true);
             SetIsMoving(false);
         }
+        /*
         // Player hit special zone in   
         else if (collider.tag == "SpecialZoneIn" && !inSpecialZone)
         {
@@ -144,7 +141,7 @@ public class Player : MonoBehaviour
             speed = secondPerUnit;
             //FMODUnity.RuntimeManager.PlayOneShot("event:/AMB/AMB_InGame/AMB_IG_SystemMove");
             FMODUnity.RuntimeManager.PlayOneShot("event:/AMB/AMB_SpecialZone/AMB_SZ_OutZone/AMB_SZ_OutZone_TrigExit");
-        }
+        }*/
     }
     
     public void ChangeDirection(string direction)

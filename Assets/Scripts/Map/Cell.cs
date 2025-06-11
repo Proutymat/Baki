@@ -44,6 +44,7 @@ public class Cell : MonoBehaviour
             int widthOffset = ((type % 100) / 10) / 2;
             int heightOffset = (type % 10) / 2;
             transform.position = new Vector3((x + heightOffset) * cellSize, y - cellSize / 2, (z + widthOffset) * cellSize);
+            gameObject.AddComponent<Landmark>().Init(_type - 4);
         }
 
         // Create the mesh

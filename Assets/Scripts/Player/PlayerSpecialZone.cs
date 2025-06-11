@@ -2,7 +2,7 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
 
-public class PlayerColliders : MonoBehaviour
+public class PlayerSpecialZone : MonoBehaviour
 {
     
     private Player player;
