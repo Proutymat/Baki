@@ -26,7 +26,7 @@ public class UiAnimations : MonoBehaviour
         Initialize();
     }
 
-    void Initialize()
+    public void Initialize()
     {
         shaderImage.material.SetFloat("_vitesse", 0);
         shaderSpeed = 0.8f;

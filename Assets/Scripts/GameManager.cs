@@ -11,8 +11,12 @@ using UnityEngine.UI;
 
 public class GameManager : SerializedMonoBehaviour
 {
+    // ------------------------------------
+    //             ATTRIBUTES
+    // ------------------------------------
+    
     [SerializeField] private bool setObjectsInInspector = false;
-    [Header("Materials"), ShowIf("setObjectsInInspector")] 
+    [Header("------- MATERIALS -------"), ShowIf("setObjectsInInspector")] 
     [SerializeField, ShowIf("setObjectsInInspector")] public Material materialGround;
     [SerializeField, ShowIf("setObjectsInInspector")] public Material materialWall;
     [SerializeField, ShowIf("setObjectsInInspector")] public Material materialStart;
@@ -23,18 +27,8 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("setObjectsInInspector")] public Material materialLandmarksE;
     [SerializeField, ShowIf("setObjectsInInspector")] public Material materialSpecialZoneIn;
     [SerializeField, ShowIf("setObjectsInInspector")] public Material materialSpecialZoneOut;
-    
-    [Header("UI text"), ShowIf("setObjectsInInspector")]
-    [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI questionText;
-    [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer1Text;
-    [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer2Text;
-    [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI dilemmeText;
-    [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer1DilemmeText;
-    [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer2DilemmeText;
-    [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer3DilemmeText;
-    [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer4DilemmeText;
-    
-    [Header("UI buttons arrows"), ShowIf("setObjectsInInspector")]
+
+    [Header("----- UI ARROW BUTTONS ----- "), ShowIf("setObjectsInInspector")]
     [SerializeField, ShowIf("setObjectsInInspector")] private Sprite arrowUp;
     [SerializeField, ShowIf("setObjectsInInspector")] private Sprite arrowUpHovered;
     [SerializeField, ShowIf("setObjectsInInspector")] private Sprite arrowDown;
@@ -47,56 +41,60 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("setObjectsInInspector")] private Image buttonDown;
     [SerializeField, ShowIf("setObjectsInInspector")] private Image buttonLeft;
     [SerializeField, ShowIf("setObjectsInInspector")] private Image buttonRight;
-    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject bottomArrowIndication;
-    
-    [Header("UI Objects"), ShowIf("setObjectsInInspector")] 
-    [SerializeField, ShowIf("setObjectsInInspector")] private Image uiBackground;
-    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject buttonsArrows;
-    
+    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject buttonsArrowsObject;
+
+    [Header("----- UI INTERFACE -----"), ShowIf("setObjectsInInspector")]
     [SerializeField, ShowIf("setObjectsInInspector")] private Canvas mainCanvas;
     [SerializeField, ShowIf("setObjectsInInspector")] private Camera canvasCamera;
-    [SerializeField, ShowIf("setObjectsInInspector")] private Camera playerCamera;
-    [SerializeField, ShowIf("setObjectsInInspector")] private Canvas blackScreenCanvas;
+    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject endingCanvas;
     
+    [Header("--- UI INTERFACE QUESTION ---"), ShowIf("setObjectsInInspector")]
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject questionsArea;
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject progressBarObject;
+    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject bottomArrowIndication;
+    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject animations;
+    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject background;
+    [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI questionText;
+    [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer1Text;
+    [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer2Text;
+    [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI dilemmeText;
     
-    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject endingCanvas;
+    [Header("--- UI INTERFACE LANDMARK ---"), ShowIf("setObjectsInInspector")]
+    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject landmarkBackground;
+    [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer1DilemmeText;
+    [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer2DilemmeText;
+    [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer3DilemmeText;
+    [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer4DilemmeText;
+    
+    [Header("----- MAP PRINTER -----"), ShowIf("setObjectsInInspector")]
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject landmarksArrows;
-    [SerializeField, ShowIf("setObjectsInInspector")] private UiAnimations uiAnimations;
-    [SerializeField, ShowIf("setObjectsInInspector")] private PDFPrinter pdfPrinter;
-
+    [SerializeField, ShowIf("setObjectsInInspector")] private Camera playerCamera;
     
-    [Header("PROTOTYPE THINGS")]
-    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject normalBackground;
-    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject dilemmeBackground;
-    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject deco;
-
-    [Header("Game Settings")]
+    [Header("------- INSTANCES -------")]
+    private static GameManager _instance;
+    [SerializeField, ShowIf("setObjectsInInspector")] private Player player;
+    [SerializeField, ShowIf("setObjectsInInspector")] private ProgressBar progressBar;
+    [SerializeField, ShowIf("setObjectsInInspector")] private PDFPrinter pdfPrinter;
+    [SerializeField, ShowIf("setObjectsInInspector")] private UiAnimations uiAnimations;
+    
+    [Header("GAME SETTINGS")]
     [SerializeField] private float gameDuration = 600;
     [SerializeField] private int printIntervalsInPercent;
     [SerializeField] private int maxLawsInterval = 5;
-    [SerializeField] private string questionsFileName;
-    [SerializeField] private string lawsFileName;
-    [SerializeField] private string dilemmeFileName;
-    
-    
-    private static GameManager _instance;
-    [SerializeField] private Player player;
-    private ProgressBar progressBar;
+    [SerializeField] private int intervalBetweenTutorials = 3;
 
     private bool unboardingStep1 = false;
     private bool unboardingStep2 = false;
     
-
+    [Header("DEBUGS")]
     [SerializeField] private bool debug = false;
     
-    [Header("Static lists (not used in game)")]
+    [Header("STATIC LISTS (not used in runtime)")]
     [SerializeField, ShowIf("debug")] private List<Question> questions;
     [SerializeField, ShowIf("debug")] private List<Value> laws;
     [SerializeField, ShowIf("debug")] private List<Dilemme> dilemmes;
     
-    [Header("Working values")]
+    [Header("WORKING VALUES (used in runtime)")]
     [SerializeField, ShowIf("debug")] private List<Question> runtimeQuestions;
     [SerializeField, ShowIf("debug")] private Question currentQuestion;
     [SerializeField, ShowIf("debug")] private List<LawCursor> lawCursors;
@@ -104,14 +102,17 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("debug")] private List<int> lawsQueuePriority;
     [SerializeField, ShowIf("debug")] private float gameTimer;
     [SerializeField, ShowIf("debug")] private int lastPrintedPercent = 0;
-    private string logFolderPath; // DEBUG FRESQUE : Path to the log folder
-    private string fresqueLogFilePath; // DEBUG FRESQUE : Path to the log folder
-    private string answersLogFilePath; // DEBUG QUESTIONS : Path to the log folder
+    private string logFolderPath;
+    private string charteLogFilePath;
+    private string answersLogFilePath;
     private bool isGameOver = false;
     private bool inLandmark;
     private Dilemme currentDilemme;
     private int nbLandmarkQuestions;
     private Landmark currentLandmark;
+    
+    
+    // ----------- GAME STATS -------------
     
     // Stats
     private int nbUnitTraveled;
@@ -127,45 +128,22 @@ public class GameManager : SerializedMonoBehaviour
     private float shortestTimeBetweenQuestions;
     private float longestTimeBetweenQuestions;
     private int nbProgressBarFull;
-
+    
+    // Working values
     private float questionTimer;
 
-    public int DistanceTraveled
-    {
-        get { return nbUnitTraveled; }
-        set { nbUnitTraveled = value; }
-    }
+    public int DistanceTraveled { get { return nbUnitTraveled; } set { nbUnitTraveled = value; } }
+    public int LandmarksReached { get { return nbLandmarksReached; } set { nbLandmarksReached = value; } }
+    public int WallsHit { get { return nbWallsHit; } set { nbWallsHit = value; } }
+    public int DirectionChanges { get { return nbDirectionChanges; } set { nbDirectionChanges = value; } }
+    public int ButtonsPressed { get { return nbButtonsPressed; } set { nbButtonsPressed = value; } }
+    public string LogFolderPath { get { return logFolderPath; } }
 
-    public int LandmarksReached
-    {
-        get { return nbLandmarksReached; }
-        set { nbLandmarksReached = value; }
-    }
 
-    public int WallsHit
-    {
-        get { return nbWallsHit; }
-        set { nbWallsHit = value; }
-    }
-
-    public int DirectionChanges
-    {
-        get { return nbDirectionChanges; }
-        set { nbDirectionChanges = value; }
-    }
-
-    public int ButtonsPressed
-    {
-        get { return nbButtonsPressed; }
-        set { nbButtonsPressed = value; }
-    }
+    // --------------------------------------------
+    //               INITIALIZATION
+    // --------------------------------------------
     
-    public string LogFolderPath
-    {
-        get { return logFolderPath; }
-    }
-
-
     public static GameManager Instance
     {
         get
@@ -202,8 +180,6 @@ public class GameManager : SerializedMonoBehaviour
 
     private void InitializeGame()
     {
-        player.Initialize();
-        
         // Initialize game stats
         nbUnitTraveled = 0;
         nbLandmarksReached = 0;
@@ -224,7 +200,7 @@ public class GameManager : SerializedMonoBehaviour
         
         // Unboarding
         progressBar.IsPaused = true;
-        buttonsArrows.SetActive(false);
+        buttonsArrowsObject.SetActive(false);
         
         // Initialize game settings
         gameTimer = gameDuration;
@@ -232,12 +208,11 @@ public class GameManager : SerializedMonoBehaviour
         lastPrintedPercent = 0;
         isGameOver = false;
         
-        // Load questions in working list
+        // Load working lists
         runtimeQuestions = new List<Question>(questions);
         
-        lawCursors.Clear();
-        
         // Create law cursors
+        lawCursors.Clear();
         lawCursors = new List<LawCursor>();
         for (int i = 0; i < laws.Count; i++)
         {
@@ -260,20 +235,29 @@ public class GameManager : SerializedMonoBehaviour
 
         logFolderPath += "/" + System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
         System.IO.Directory.CreateDirectory(logFolderPath);
-        fresqueLogFilePath = $"{logFolderPath}/fresque.txt";
+        charteLogFilePath = $"{logFolderPath}/charte.txt";
         answersLogFilePath = $"{logFolderPath}/answers.txt";
+        
+        // Initialize instances 
+        player.Initialize();
+        pdfPrinter.Initialize();
+        uiAnimations.Initialize();
     }
     
     private void Start()
     {
         player = FindFirstObjectByType<Player>();
-        progressBar = FindFirstObjectByType<ProgressBar>();
         runtimeQuestions = new List<Question>();
         lawCursors = new List<LawCursor>();
         InitializeGame();
     }
+    
+    
+    
+    // --------------------------------------------
+    //               INITIALIZATION
+    // --------------------------------------------
 
-    [Button("Update Cam")]
     public void PrintAreaPlayer()
     {
         playerCamera.transform.position = new Vector3(player.transform.position.x, playerCamera.transform.position.y, player.transform.position.z);
@@ -303,10 +287,10 @@ public class GameManager : SerializedMonoBehaviour
         inLandmark = true;
         progressBar.gameObject.SetActive(false);
         questionsArea.SetActive(false);
-        buttonsArrows.SetActive(false);
-        deco.SetActive(false);
-        normalBackground.SetActive(false);
-        dilemmeBackground.SetActive(true);
+        buttonsArrowsObject.SetActive(false);
+        animations.SetActive(false);
+        background.SetActive(false);
+        landmarkBackground.SetActive(true);
         dilemmeText.transform.parent.transform.parent.gameObject.SetActive(true);
         
         // Display the question and answers
@@ -337,13 +321,13 @@ public class GameManager : SerializedMonoBehaviour
         inLandmark = false;
         progressBar.gameObject.SetActive(true);
         questionsArea.SetActive(true);
-        buttonsArrows.SetActive(true);
-        normalBackground.SetActive(true);
-        deco.SetActive(true);
+        buttonsArrowsObject.SetActive(true);
+        background.SetActive(true);
+        animations.SetActive(true);
         questionTimer = 0;
         nbLandmarkQuestions = 0;
         
-        dilemmeBackground.SetActive(false);
+        landmarkBackground.SetActive(false);
         dilemmeText.transform.parent.transform.parent.gameObject.SetActive(false);
         
         // Save answers to file
@@ -375,13 +359,13 @@ public class GameManager : SerializedMonoBehaviour
     
     private void WriteFinalStatsToFile()
     {
-        if (string.IsNullOrEmpty(fresqueLogFilePath))
+        if (string.IsNullOrEmpty(charteLogFilePath))
         {
             Debug.LogError("Log file path not initialized.");
             return;
         }
 
-        using (System.IO.StreamWriter writer = new System.IO.StreamWriter(fresqueLogFilePath, true))
+        using (System.IO.StreamWriter writer = new System.IO.StreamWriter(charteLogFilePath, true))
         {
             writer.WriteLine("======== FIN DE PARTIE ========");
             writer.WriteLine($"Temps total : {gameDuration:F2} secondes");
@@ -466,7 +450,7 @@ public class GameManager : SerializedMonoBehaviour
 
     private void UnboardingStep1()
     {
-        buttonsArrows.SetActive(true);
+        buttonsArrowsObject.SetActive(true);
         ShowHideQuestionArea(false);
     }
     
@@ -512,7 +496,7 @@ public class GameManager : SerializedMonoBehaviour
 
     private void PrintLawsQueue()
     {
-        if (string.IsNullOrEmpty(fresqueLogFilePath))
+        if (string.IsNullOrEmpty(charteLogFilePath))
         {
             Debug.LogError("Log file path not initialized.");
             return;
@@ -520,7 +504,7 @@ public class GameManager : SerializedMonoBehaviour
 
 
         // Append to file (true = append mode)
-        using (System.IO.StreamWriter writer = new System.IO.StreamWriter(fresqueLogFilePath, true))
+        using (System.IO.StreamWriter writer = new System.IO.StreamWriter(charteLogFilePath, true))
         {
             writer.WriteLine("------------------------");
             writer.WriteLine($"   SALVE DE LOIS " + lastPrintedPercent + "%");
@@ -695,6 +679,12 @@ public class GameManager : SerializedMonoBehaviour
     }
 
 #if UNITY_EDITOR
+    
+    [Header("CSV INFOS")]
+    [SerializeField] private string questionsFileName;
+    [SerializeField] private string lawsFileName;
+    [SerializeField] private string dilemmeFileName;
+    
     [Button, DisableInPlayMode]
     private void LoadDilemme()
     {

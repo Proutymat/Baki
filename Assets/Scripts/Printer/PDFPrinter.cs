@@ -27,7 +27,7 @@ public class PDFPrinter : MonoBehaviour
         Initialize();
     }
 
-    private void Initialize()
+    public void Initialize()
     {
         imageCounter = 0;
     }
@@ -65,8 +65,6 @@ public class PDFPrinter : MonoBehaviour
         document.Save(outputPath);
         UnityEngine.Debug.Log("PDF generated at : " + outputPath);
     }
-
-
     
     public Texture2D CaptureCameraSquare(Camera cam, int size)
     {
@@ -93,7 +91,7 @@ public class PDFPrinter : MonoBehaviour
         var startInfo = new System.Diagnostics.ProcessStartInfo
         {
             FileName = sumatraPath,
-            Arguments = $"-print-to \"{printerName}\" -print-settings \"fit,bin=B_BOTH,margins=small\" \"{pdfPath + fileName}\"",
+            Arguments = $"-print-to \"{printerName}\" -print-settings \"fit,bin=B_BOTH\" \"{pdfPath + fileName}\"",
             CreateNoWindow = true,
             UseShellExecute = false
         };
