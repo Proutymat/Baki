@@ -304,6 +304,7 @@ public class GameManager : SerializedMonoBehaviour
     public void EnterLandmark(Landmark landmark)
     {
         currentLandmark = landmark;
+        pdfPrinter.PrintLandmarkPDF(Mathf.FloorToInt(100 * (1 - (gameTimer / gameDuration))));
         NextQuetionLandmark();
     }
 
@@ -319,8 +320,8 @@ public class GameManager : SerializedMonoBehaviour
         FMODUnity.RuntimeManager.PlayOneShot("event:/MX/MX_Trig/MX_Trig_Z1G/MX_Trig_Z1G_PI_Stop");
         
         inLandmark = false;
-        progressBar.gameObject.SetActive(true);
-        questionsArea.SetActive(true);
+        progressBar.gameObject.SetActive(false);
+        questionsArea.SetActive(false);
         buttonsArrowsObject.SetActive(true);
         background.SetActive(true);
         animations.SetActive(true);
