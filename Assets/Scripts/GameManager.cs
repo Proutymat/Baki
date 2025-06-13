@@ -619,10 +619,8 @@ public class GameManager : SerializedMonoBehaviour
         // Progress bar is full
         if (progressBar.IncreaseProgressBar())
         {
-            Debug.Log("WOUUUHOUUU ! Progress bar is full !");
             nbProgressBarFull++;
             player.SetIsMoving(false);
-            player.EnableMeshRenderer(true);
             ShowHideQuestionArea(false);
             uiAnimations.StopShader(1.5f);
 

@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float secondPerUnitSpecialZone = 2f;
     [SerializeField] private Vector3 currentDirection;
     [SerializeField] private GameObject directionnalArrows;
+    [SerializeField] private GameObject avatarArrow;
     
     [Header("UI Animations")]
     [SerializeField] private Animator moveAnimation;
@@ -29,7 +30,6 @@ public class Player : MonoBehaviour
     private bool hasMovedOnce;
     private float speed;
     
-    private MeshRenderer meshRenderer;
     private PlayerSpecialZone playerColliders;
     
     public bool IsMoving { get { return isMoving; }}
@@ -41,7 +41,6 @@ public class Player : MonoBehaviour
         startCellPosition = GameObject.FindGameObjectWithTag("PlayerStart").transform.position;
         gameManager = GameManager.Instance;
         playerColliders = GetComponent<PlayerSpecialZone>();
-        meshRenderer = GetComponent<MeshRenderer>();
         
         //FMOD Instance start
         FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_StartGame");
@@ -59,11 +58,6 @@ public class Player : MonoBehaviour
         midSoundPlayed = false;
         hasMovedOnce = false;
         speed = secondPerUnit;
-    }
-
-    public void EnableMeshRenderer(bool enable)
-    {
-        meshRenderer.enabled = enable;
     }
     
     public void SetIsMoving(bool newMovingValue)
@@ -87,7 +81,6 @@ public class Player : MonoBehaviour
             }
             
             uiAnimations.ResumeAnimationsAndShader();
-            EnableMeshRenderer(false);
         }
         // Player stop moving
         else if (!newMovingValue && isMoving)
@@ -120,7 +113,6 @@ public class Player : MonoBehaviour
             Debug.Log("Landmark reached");
             gameManager.LandmarksReached++;
             gameManager.EnterLandmark(collider.GetComponent<Landmark>());
-            EnableMeshRenderer(true);
             SetIsMoving(false);
         }
         /*
@@ -162,24 +154,28 @@ public class Player : MonoBehaviour
         if (direction == "foreward")
         {
             currentDirection = Vector3.left * gridCellSize;
+            avatarArrow.transform.rotation = Quaternion.Euler(90, -90, 0);
             FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/SFX_InGame/SFX_IG_DirectionalRotate_SPAT/SFX_IG_DirectionalRotate_C");
             Debug.Log("Moving foreward");
         }
         else if (direction == "backward")
         {
             currentDirection = Vector3.right * gridCellSize;
+            avatarArrow.transform.rotation = Quaternion.Euler(90, 90, 0);
             FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/SFX_InGame/SFX_IG_DirectionalRotate_SPAT/SFX_IG_DirectionalRotate_B");
             Debug.Log("Moving backward");
         }
         else if (direction == "right")
         {
             currentDirection = Vector3.forward * gridCellSize;
+            avatarArrow.transform.rotation = Quaternion.Euler(90, 0, 0);
             FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/SFX_InGame/SFX_IG_DirectionalRotate_SPAT/SFX_IG_DirectionalRotate_R");
             Debug.Log("Moving right");
         }
         else if (direction == "left")
         {
             currentDirection = Vector3.back * gridCellSize;
+            avatarArrow.transform.rotation = Quaternion.Euler(90, 180, 0);
             FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/SFX_InGame/SFX_IG_DirectionalRotate_SPAT/SFX_IG_DirectionalRotate_L");
             Debug.Log("Moving left");
         }

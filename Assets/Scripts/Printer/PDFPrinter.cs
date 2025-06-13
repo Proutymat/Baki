@@ -36,7 +36,7 @@ public class PDFPrinter : MonoBehaviour
     {
         string imageName = Path.Combine(gameManager.LogFolderPath, $"map_{imageCounter}.png");
         imageCounter++;
-        
+
         byte[] bytes = texture.EncodeToPNG();
 
         // Save the image to a file
@@ -51,21 +51,45 @@ public class PDFPrinter : MonoBehaviour
         PdfDocument document = new PdfDocument();
         PdfPage page = document.AddPage();
         page.Width = XUnit.FromCentimeter(8);
-        
         page.Height = XUnit.FromCentimeter(longTicket ? 327.6 : 29.7);
 
         XGraphics gfx = XGraphics.FromPdfPage(page);
-        XImage image = XImage.FromFile(imageName);
+        double currentY = 0;
 
+        // --- Image d'en-tête
+        string headerPath = Path.Combine(Application.dataPath, "Map/LIGNE_SUPERIEURE.png"); // <-- ton image ici
+        if (File.Exists(headerPath))
+        {
+            XImage headerImage = XImage.FromFile(headerPath);
+            double maxWidth = page.Width;
+            double ratio = headerImage.PixelHeight / (double)headerImage.PixelWidth;
+            double height = maxWidth * ratio;
+
+            gfx.DrawImage(headerImage, 0, currentY, maxWidth, height);
+            currentY += height;
+
+            // Optionnel : espace sous le header
+            currentY += XUnit.FromCentimeter(0.5).Point;
+        }
+        else
+        {
+            Debug.LogWarning("Image d'en-tête introuvable : " + headerPath);
+        }
+
+        // --- Image de la caméra
+        XImage textureImage = XImage.FromFile(imageName);
         double imageWidth = page.Width.Point;
-        double imageHeight = imageWidth;
-        gfx.DrawImage(image, 0, 0, imageWidth, imageHeight);
+        double imageHeight = textureImage.PixelHeight * (imageWidth / textureImage.PixelWidth);
 
+        gfx.DrawImage(textureImage, 0, currentY, imageWidth, imageHeight);
+        currentY += imageHeight;
+
+        // --- Sauvegarde
         string outputPath = Path.Combine(pdfPath, pdfFileName);
         document.Save(outputPath);
-        UnityEngine.Debug.Log("PDF generated at : " + outputPath);
+        Debug.Log("PDF avec image + texture généré : " + outputPath);
     }
-    
+
     public Texture2D CaptureCameraSquare(Camera cam, int size)
     {
         // Create a square RenderTexture
@@ -120,7 +144,7 @@ public class PDFPrinter : MonoBehaviour
 
         double currentY = 0;
         
-        // --- Deuxième image
+        // --- Première image
         string secondPath = Path.Combine(Application.streamingAssetsPath, "separation.png");
         if (!File.Exists(secondPath))
         {
