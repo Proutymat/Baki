@@ -5,69 +5,74 @@ using System.Collections.Generic;
 
 public static class LoadCSV
 {
-    static void ClearDilemmeFolder()
+    static void ClearFolder(string name)
     {
-        string folderPath = "Assets/Resources/Scriptables/Dilemme";
+        string folderPath = "Assets/Resources/Scriptables/" + name;
         // If the folder doesn't exist, create it
         if (!UnityEditor.AssetDatabase.IsValidFolder(folderPath))
         {
-            UnityEditor.AssetDatabase.CreateFolder("Assets/Resources/Scriptables", "Dilemme");
+            UnityEditor.AssetDatabase.CreateFolder("Assets/Resources/Scriptables", name);
         }
 
         // Delete all existing Dilemme assets in the folder
-        string[] guids = UnityEditor.AssetDatabase.FindAssets("t:Dilemme", new[] { folderPath });
+        string[] guids = UnityEditor.AssetDatabase.FindAssets("t:" + name, new[] { folderPath });
         foreach (string guid in guids)
         {
             string assetPath = UnityEditor.AssetDatabase.GUIDToAssetPath(guid);
             UnityEditor.AssetDatabase.DeleteAsset(assetPath);
         }
         
-        Debug.Log("Dilemme folder cleared.");
+        Debug.Log(name + "folder cleared.");
     }
 
-    static void ClearLawsFolder()
+    public static List<Question> LoadTutorialsCSV(string tutorialsFileName)
     {
-        string folderPath = "Assets/Resources/Scriptables/Laws";
-        // If the folder doesn't exist, create it
-        if (!UnityEditor.AssetDatabase.IsValidFolder(folderPath))
+        ClearFolder("Tutorials");
+        List<Question> tutorials = new List<Question>();
+        
+        // Check if the file exists
+        TextAsset csvFile = Resources.Load<TextAsset>(tutorialsFileName);
+        if (csvFile == null)
         {
-            UnityEditor.AssetDatabase.CreateFolder("Assets/Resources/Scriptables", "Laws");
+            Debug.LogError($"CSV file '{tutorialsFileName}.csv' not found in Resources folder.");
+            return tutorials;
         }
         
-        // Delete all existing Law assets in the folder
-        string[] guids = UnityEditor.AssetDatabase.FindAssets("t:Value", new[] { folderPath });
-        foreach (string guid in guids)
-        {
-            string assetPath = UnityEditor.AssetDatabase.GUIDToAssetPath(guid);
-            UnityEditor.AssetDatabase.DeleteAsset(assetPath);
-        }
-        
-        Debug.Log("Laws folder cleared.");
-    }
+        string[] lines = csvFile.text.Split(new[] { '\n' }, System.StringSplitOptions.RemoveEmptyEntries);
 
-    static void ClearQuestionsFolder()
-    {
-        string folderPath = "Assets/Resources/Scriptables/Questions";
-        // If the folder doesn't exist, create it
-        if (!UnityEditor.AssetDatabase.IsValidFolder(folderPath))
+        for (int i = 1; i < lines.Length; i++)
         {
-            UnityEditor.AssetDatabase.CreateFolder("Assets/Resources/Scriptables", "Questions");
+            string line = lines[i];
+            string[] fields = line.Split(';');
+
+            if (fields.Length < 2)
+            {
+                Debug.LogWarning("Malformed line skipped: " + line);
+                continue;
+            }
+
+            Question scriptable = ScriptableObject.CreateInstance<Question>();
+            scriptable.question = fields[0];
+            scriptable.answer1 = fields[1];
+            scriptable.answer2 = fields[2];
+
+
+            // Sauvegarde du ScriptableObject dans le projet (dans un dossier "Assets/Resources/Questions")
+            string assetPath = $"Assets/Resources/Scriptables/Tutorials/tutorial_" + i + ".asset";
+            UnityEditor.AssetDatabase.CreateAsset(scriptable, assetPath);
+            UnityEditor.AssetDatabase.SaveAssets();
+
+            tutorials.Add(scriptable);
+
+            Debug.Log("Tutorials imported successfully : " + tutorials.Count);
         }
 
-        // Delete all existing Question assets in the folder
-        string[] guids = UnityEditor.AssetDatabase.FindAssets("t:Question", new[] { folderPath });
-        foreach (string guid in guids)
-        {
-            string assetPath = UnityEditor.AssetDatabase.GUIDToAssetPath(guid);
-            UnityEditor.AssetDatabase.DeleteAsset(assetPath);
-        }
-        
-        Debug.Log("Questions folder cleared.");
+        return tutorials;
     }
 
     public static List<Dilemme> LoadDilemmeCSV(string dilemmeFileName)
     {
-        ClearDilemmeFolder();
+        ClearFolder("Dilemme");
         List<Dilemme> dilemmes = new List<Dilemme>();
 
         // Check if the file exists
@@ -114,7 +119,7 @@ public static class LoadCSV
 
     public static List<Value> LoadLawsCSV(string valuesFileName)
     {
-        ClearLawsFolder();
+        ClearFolder("Laws");
         List<Value> laws = new List<Value>();
 
         // Check if the file exists
@@ -185,7 +190,7 @@ public static class LoadCSV
 
     public  static List<Question> LoadQuestionsCSV(string questionsFileName, List<Value> laws)
     {
-        ClearQuestionsFolder();
+        ClearFolder("Questions");
         List<Question> questions = new List<Question>();
 
         // Check if the file exists
@@ -239,9 +244,10 @@ public static class LoadCSV
 
     public static void ClearScriptables()
     {
-        ClearQuestionsFolder();
-        ClearLawsFolder();
-        ClearDilemmeFolder();
+        ClearFolder("Tutorials");
+        ClearFolder("Dilemme");
+        ClearFolder("Laws");
+        ClearFolder("Questions");
     }
 }
 #endif

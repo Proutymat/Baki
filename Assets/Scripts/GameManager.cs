@@ -90,11 +90,13 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField] private bool debug = false;
     
     [Header("STATIC LISTS (not used in runtime)")]
+    [SerializeField, ShowIf("debug")] private List<Question> tutorials;
     [SerializeField, ShowIf("debug")] private List<Question> questions;
     [SerializeField, ShowIf("debug")] private List<Value> laws;
     [SerializeField, ShowIf("debug")] private List<Dilemme> dilemmes;
     
     [Header("WORKING VALUES (used in runtime)")]
+    [SerializeField, ShowIf("debug")] private List<Question> runtimeTutorials;
     [SerializeField, ShowIf("debug")] private List<Question> runtimeQuestions;
     [SerializeField, ShowIf("debug")] private Question currentQuestion;
     [SerializeField, ShowIf("debug")] private List<LawCursor> lawCursors;
@@ -107,6 +109,7 @@ public class GameManager : SerializedMonoBehaviour
     private string answersLogFilePath;
     private bool isGameOver = false;
     private bool inLandmark;
+    private bool isTutorialQuestion;
     private Dilemme currentDilemme;
     private int nbLandmarkQuestions;
     private Landmark currentLandmark;
@@ -209,7 +212,10 @@ public class GameManager : SerializedMonoBehaviour
         isGameOver = false;
         
         // Load working lists
+        runtimeTutorials = new List<Question>(tutorials);
         runtimeQuestions = new List<Question>(questions);
+
+        isTutorialQuestion = false;
         
         // Create law cursors
         lawCursors.Clear();
@@ -255,7 +261,7 @@ public class GameManager : SerializedMonoBehaviour
     
     
     // --------------------------------------------
-    //               INITIALIZATION
+    //                  QUESTIONS
     // --------------------------------------------
 
     public void PrintAreaPlayer()
@@ -320,7 +326,7 @@ public class GameManager : SerializedMonoBehaviour
         FMODUnity.RuntimeManager.PlayOneShot("event:/MX/MX_Trig/MX_Trig_Z1G/MX_Trig_Z1G_PI_Stop");
         
         inLandmark = false;
-        progressBar.gameObject.SetActive(false);
+        progressBar.gameObject.SetActive(true);
         questionsArea.SetActive(false);
         buttonsArrowsObject.SetActive(true);
         background.SetActive(true);
@@ -574,6 +580,7 @@ public class GameManager : SerializedMonoBehaviour
         // Progress bar is full
         if (progressBar.IncreaseProgressBar())
         {
+            Debug.Log("WOUUUHOUUU ! Progress bar is full !");
             nbProgressBarFull++;
             player.SetIsMoving(false);
             player.EnableMeshRenderer(true);
@@ -654,37 +661,55 @@ public class GameManager : SerializedMonoBehaviour
             return;
         }
         
-        
-        // Choose a random number between 0 and the number of values
-        int questionIndex = UnityEngine.Random.Range(0, runtimeQuestions.Count);
-
-        // Change and delete the question if both law values are fully checked
-        if (runtimeQuestions[questionIndex].answer1Type1 >= 0 && lawCursors[runtimeQuestions[questionIndex].answer1Type1].LawsFullyChecked
-            && runtimeQuestions[questionIndex].answer2Type1 >=0 && lawCursors[runtimeQuestions[questionIndex].answer2Type1].LawsFullyChecked)
+        // Tutorial questions
+        if (runtimeTutorials.Count > 0 && nbQuestionsAnswered > 8 && nbQuestionsAnswered % intervalBetweenTutorials == 0)
         {
-            Debug.Log("Question skipped : " + runtimeQuestions[questionIndex].answer1Type1 + "and " + runtimeQuestions[questionIndex].answer2Type1 + " are fully checked.");
-            runtimeQuestions.RemoveAt(questionIndex);
-            NextQuestion();
-            return;
+            currentQuestion = runtimeTutorials[0];
+            runtimeTutorials.RemoveAt(0);
+            isTutorialQuestion = true;
         }
+        // Normal questions
+        else
+        {
+            // Choose a random number between 0 and the number of values
+            int questionIndex = UnityEngine.Random.Range(0, runtimeQuestions.Count);
+
+            // Change and delete the question if both law values are fully checked
+            if (runtimeQuestions[questionIndex].answer1Type1 >= 0 && lawCursors[runtimeQuestions[questionIndex].answer1Type1].LawsFullyChecked
+                                                                  && runtimeQuestions[questionIndex].answer2Type1 >=0 && lawCursors[runtimeQuestions[questionIndex].answer2Type1].LawsFullyChecked)
+            {
+                Debug.Log("Question skipped : " + runtimeQuestions[questionIndex].answer1Type1 + "and " + runtimeQuestions[questionIndex].answer2Type1 + " are fully checked.");
+                runtimeQuestions.RemoveAt(questionIndex);
+                NextQuestion();
+                return;
+            }
         
-        currentQuestion = runtimeQuestions[questionIndex];
+            currentQuestion = runtimeQuestions[questionIndex];
+            runtimeQuestions.RemoveAt(questionIndex);
+            isTutorialQuestion = false;
+        }
         
         // Display the question and answers
         questionText.text = currentQuestion.question;
         answer1Text.text = currentQuestion.answer1;
         answer2Text.text = currentQuestion.answer2;
-        
-        // Remove the question from the list
-        runtimeQuestions.RemoveAt(questionIndex);
     }
 
 #if UNITY_EDITOR
     
     [Header("CSV INFOS")]
+    [SerializeField] private string tutorialsFileName;
     [SerializeField] private string questionsFileName;
     [SerializeField] private string lawsFileName;
     [SerializeField] private string dilemmeFileName;
+    
+    [Button, DisableInPlayMode]
+    private void LoadTutorials()
+    {
+        tutorials.Clear();
+        tutorials = LoadCSV.LoadTutorialsCSV(tutorialsFileName);
+        Debug.Log("Tutorials loaded : " + tutorials.Count);
+    }
     
     [Button, DisableInPlayMode]
     private void LoadDilemme()
