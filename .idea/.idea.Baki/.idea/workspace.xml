@@ -5,7 +5,50 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="73781b9b-5c78-4d1f-a1a2-b07d1229386b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Baki/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Baki/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Dilemme.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Dilemme/dilemme_1.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Dilemme/dilemme_1.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Dilemme/dilemme_10.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Dilemme/dilemme_10.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Dilemme/dilemme_11.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Dilemme/dilemme_11.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Dilemme/dilemme_12.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Dilemme/dilemme_12.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Dilemme/dilemme_13.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Dilemme/dilemme_13.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Dilemme/dilemme_14.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Dilemme/dilemme_14.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Dilemme/dilemme_15.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Dilemme/dilemme_15.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Dilemme/dilemme_16.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Dilemme/dilemme_16.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Dilemme/dilemme_17.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Dilemme/dilemme_17.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Dilemme/dilemme_18.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Dilemme/dilemme_18.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Dilemme/dilemme_2.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Dilemme/dilemme_2.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Dilemme/dilemme_3.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Dilemme/dilemme_3.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Dilemme/dilemme_4.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Dilemme/dilemme_4.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Dilemme/dilemme_5.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Dilemme/dilemme_5.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Dilemme/dilemme_6.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Dilemme/dilemme_6.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Dilemme/dilemme_7.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Dilemme/dilemme_7.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Dilemme/dilemme_8.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Dilemme/dilemme_8.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Dilemme/dilemme_9.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Dilemme/dilemme_9.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/landmarks.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/landmarks.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/landmarks.csv.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/landmarks.csv.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ProtoDigital.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ProtoDigital.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LoadCSV.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LoadCSV.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Map/Landmark.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Map/Landmark.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,7 +194,7 @@
       <workItem from="1748991030491" duration="974000" />
       <workItem from="1749560654454" duration="8089000" />
       <workItem from="1749644688399" duration="11449000" />
-      <workItem from="1749777971306" duration="6323000" />
+      <workItem from="1749777971306" duration="15101000" />
     </task>
     <servers />
   </component>

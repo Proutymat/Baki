@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8c8072d2125b034db50ac10816f2018, type: 3}
+  m_Name: landmark_3
+  m_EditorClassIdentifier: 
+  text1: placeholder 1
+  text2: placeholder 2
+  text3: placeholder 3
+  text4: placeholder 4
+  text5: placeholder 5
+  text6: placeholder 6
+  answer1: "placeholder r\xE9ponse 1"
+  answer2: "placeholder r\xE9ponse 2"
+  type: 2
+  nbTexts: 5

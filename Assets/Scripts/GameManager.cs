@@ -57,14 +57,12 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI questionText;
     [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer1Text;
     [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer2Text;
-    [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI dilemmeText;
     
     [Header("--- UI INTERFACE LANDMARK ---"), ShowIf("setObjectsInInspector")]
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject landmarkBackground;
-    [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer1DilemmeText;
-    [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer2DilemmeText;
-    [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer3DilemmeText;
-    [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer4DilemmeText;
+    [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI landmarkText;
+    [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer1landmarkText;
+    [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer2landmarkText;
     
     [Header("----- MAP PRINTER -----"), ShowIf("setObjectsInInspector")]
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject landmarksArrows;
@@ -92,13 +90,21 @@ public class GameManager : SerializedMonoBehaviour
     [Header("STATIC LISTS (not used in runtime)")]
     [SerializeField, ShowIf("debug")] private List<Question> tutorials;
     [SerializeField, ShowIf("debug")] private List<Question> questions;
+    [SerializeField, ShowIf("debug")] private List<LandmarkQuestion> landmarksTypeA;
+    [SerializeField, ShowIf("debug")] private List<LandmarkQuestion> landmarksTypeB;
+    [SerializeField, ShowIf("debug")] private List<LandmarkQuestion> landmarksTypeC;
+    [SerializeField, ShowIf("debug")] private List<LandmarkQuestion> landmarksTypeD;
     [SerializeField, ShowIf("debug")] private List<Value> laws;
-    [SerializeField, ShowIf("debug")] private List<Dilemme> dilemmes;
     
     [Header("WORKING VALUES (used in runtime)")]
     [SerializeField, ShowIf("debug")] private List<Question> runtimeTutorials;
     [SerializeField, ShowIf("debug")] private List<Question> runtimeQuestions;
+    [SerializeField, ShowIf("debug")] private List<LandmarkQuestion> runtimeLandmarksTypeA;
+    [SerializeField, ShowIf("debug")] private List<LandmarkQuestion> runtimeLandmarksTypeB;
+    [SerializeField, ShowIf("debug")] private List<LandmarkQuestion> runtimeLandmarksTypeC;
+    [SerializeField, ShowIf("debug")] private List<LandmarkQuestion> runtimeLandmarksTypeD;
     [SerializeField, ShowIf("debug")] private Question currentQuestion;
+    [SerializeField, ShowIf("debug")] private LandmarkQuestion currentLandmarkQuestion;
     [SerializeField, ShowIf("debug")] private List<LawCursor> lawCursors;
     [SerializeField, ShowIf("debug")] private List<string> lawsQueue;
     [SerializeField, ShowIf("debug")] private List<int> lawsQueuePriority;
@@ -110,7 +116,6 @@ public class GameManager : SerializedMonoBehaviour
     private bool isGameOver = false;
     private bool inLandmark;
     private bool isTutorialQuestion;
-    private Dilemme currentDilemme;
     private int nbLandmarkQuestions;
     private Landmark currentLandmark;
     
@@ -214,6 +219,10 @@ public class GameManager : SerializedMonoBehaviour
         // Load working lists
         runtimeTutorials = new List<Question>(tutorials);
         runtimeQuestions = new List<Question>(questions);
+        runtimeLandmarksTypeA = new List<LandmarkQuestion>(landmarksTypeA);
+        runtimeLandmarksTypeB = new List<LandmarkQuestion>(landmarksTypeB);
+        runtimeLandmarksTypeC = new List<LandmarkQuestion>(landmarksTypeC);
+        runtimeLandmarksTypeD = new List<LandmarkQuestion>(landmarksTypeD);
 
         isTutorialQuestion = false;
         
@@ -270,25 +279,78 @@ public class GameManager : SerializedMonoBehaviour
     	StartCoroutine(pdfPrinter.Print());
 	}
 
-    private void NextQuetionLandmark()
+    public void NextLandmarkQuestion(int buttonIndex)
     {
         nbLandmarkQuestions += 1;
-        
-        if (dilemmes.Count < 1)
+        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_QuestionRespondClick");
+
+        // Landmark finished
+        if (nbLandmarkQuestions > currentLandmarkQuestion.nbTexts)
         {
-            Debug.Log("No more landmark questions available.");
-            dilemmeText.text = "No more landmark questions available.";
-            answer1DilemmeText.text = "BAKI";
-            answer2DilemmeText.text = "BAKI";
-            answer3DilemmeText.text = "BAKI";
-            answer4DilemmeText.text = "BAKI";
+            nbLandmarkQuestions = 0;
+            answer2landmarkText.gameObject.SetActive(false);
+            ExitLandmark(buttonIndex);
             return;
+
         }
+        // Last text
+        else if (nbLandmarkQuestions == currentLandmarkQuestion.nbTexts)
+        {
+            answer2landmarkText.gameObject.transform.parent.gameObject.SetActive(true);
+            answer1landmarkText.text = currentLandmarkQuestion.answer1;
+            answer2landmarkText.text = currentLandmarkQuestion.answer2;
+        }
+        // Next text
+        else
+        {
+            answer1landmarkText.text = "Suivant";
+        }
+
+        if (nbLandmarkQuestions == 1)
+            landmarkText.text = currentLandmarkQuestion.text2;
+        else if (nbLandmarkQuestions == 2)
+            landmarkText.text = currentLandmarkQuestion.text3;
+        else if (nbLandmarkQuestions == 3)
+            landmarkText.text = currentLandmarkQuestion.text4;
+        else if (nbLandmarkQuestions == 4)
+            landmarkText.text = currentLandmarkQuestion.text5;
+        else if (nbLandmarkQuestions == 5)
+                landmarkText.text = currentLandmarkQuestion.text6;
+    }
+
+    public void EnterLandmark(Landmark landmark)
+    {
+        answer2landmarkText.gameObject.transform.parent.gameObject.SetActive(false);
         
-        // Chose a random dilemme
-        int index = UnityEngine.Random.Range(0, dilemmes.Count);
-        currentDilemme = dilemmes[index];
-        dilemmes.RemoveAt(index);
+        currentLandmark = landmark;
+        pdfPrinter.PrintLandmarkPDF(Mathf.FloorToInt(100 * (1 - (gameTimer / gameDuration))));
+        
+        int landmarkIndex = currentLandmark.Type;
+        Debug.Log("Entering landmark of type: " + landmarkIndex);
+        if (landmarkIndex == 0)
+        {
+            int index = UnityEngine.Random.Range(0, runtimeLandmarksTypeA.Count);
+            currentLandmarkQuestion = runtimeLandmarksTypeA[index];
+            runtimeLandmarksTypeA.RemoveAt(index);
+        }
+        else if (landmarkIndex == 1)
+        {
+            int index = UnityEngine.Random.Range(0, runtimeLandmarksTypeB.Count);
+            currentLandmarkQuestion = runtimeLandmarksTypeB[index];
+            runtimeLandmarksTypeB.RemoveAt(index);
+        }
+        else if (landmarkIndex == 2)
+        {
+            int index = UnityEngine.Random.Range(0, runtimeLandmarksTypeC.Count);
+            currentLandmarkQuestion = runtimeLandmarksTypeC[index];
+            runtimeLandmarksTypeC.RemoveAt(index);
+        }
+        else if (landmarkIndex == 3)
+        {
+            int index = UnityEngine.Random.Range(0, runtimeLandmarksTypeD.Count);
+            currentLandmarkQuestion = runtimeLandmarksTypeD[index];
+            runtimeLandmarksTypeD.RemoveAt(index);
+        }
         
         inLandmark = true;
         progressBar.gameObject.SetActive(false);
@@ -297,34 +359,15 @@ public class GameManager : SerializedMonoBehaviour
         animations.SetActive(false);
         background.SetActive(false);
         landmarkBackground.SetActive(true);
-        dilemmeText.transform.parent.transform.parent.gameObject.SetActive(true);
+        landmarkText.transform.parent.transform.parent.gameObject.SetActive(true);
         
         // Display the question and answers
-        dilemmeText.text = currentDilemme.question;
-        answer1DilemmeText.text = currentDilemme.answer1;
-        answer2DilemmeText.text = currentDilemme.answer2;
-        answer3DilemmeText.text = currentDilemme.answer3;
-        answer4DilemmeText.text = currentDilemme.answer4;
+        landmarkText.text = currentLandmarkQuestion.text1;
+        answer1landmarkText.text = "Suivant";
     }
 
-    public void EnterLandmark(Landmark landmark)
+    public void ExitLandmark(int buttonIndex)
     {
-        currentLandmark = landmark;
-        pdfPrinter.PrintLandmarkPDF(Mathf.FloorToInt(100 * (1 - (gameTimer / gameDuration))));
-        NextQuetionLandmark();
-    }
-
-    public void ExitLandmark(int answerIndex)
-    {
-        if (nbLandmarkQuestions < 3)
-        {
-            FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_QuestionRespondClick");
-            NextQuetionLandmark();
-            return;
-        }
-        
-        FMODUnity.RuntimeManager.PlayOneShot("event:/MX/MX_Trig/MX_Trig_Z1G/MX_Trig_Z1G_PI_Stop");
-        
         inLandmark = false;
         progressBar.gameObject.SetActive(true);
         questionsArea.SetActive(false);
@@ -335,7 +378,7 @@ public class GameManager : SerializedMonoBehaviour
         nbLandmarkQuestions = 0;
         
         landmarkBackground.SetActive(false);
-        dilemmeText.transform.parent.transform.parent.gameObject.SetActive(false);
+        landmarkText.transform.parent.transform.parent.gameObject.SetActive(false);
         
         // Save answers to file
         if (string.IsNullOrEmpty(answersLogFilePath))
@@ -346,17 +389,13 @@ public class GameManager : SerializedMonoBehaviour
         using (System.IO.StreamWriter writer = new System.IO.StreamWriter(answersLogFilePath, true))
         {
             string answer = "";
-            if (answerIndex == 1)
-                answer = currentDilemme.answer1;
-            else if (answerIndex == 2)
-                answer = currentDilemme.answer2;
-            else if (answerIndex == 3)
-                answer = currentDilemme.answer3;
-            else if (answerIndex == 4)
-                answer = currentDilemme.answer4;
+            if (buttonIndex == 1)
+                answer = currentLandmarkQuestion.answer1;
+            else if (buttonIndex == 2)
+                answer = currentLandmarkQuestion.answer2;
             
             writer.WriteLine("------------------------");
-            writer.WriteLine(currentDilemme.question + " : " + answer);
+            writer.WriteLine(currentLandmarkQuestion.text1 + " : " + answer);
             writer.WriteLine("------------------------");
         }
         
@@ -700,8 +739,8 @@ public class GameManager : SerializedMonoBehaviour
     [Header("CSV INFOS")]
     [SerializeField] private string tutorialsFileName;
     [SerializeField] private string questionsFileName;
+    [SerializeField] private string landmarkQuestionsFileName;
     [SerializeField] private string lawsFileName;
-    [SerializeField] private string dilemmeFileName;
     
     [Button, DisableInPlayMode]
     private void LoadTutorials()
@@ -712,11 +751,21 @@ public class GameManager : SerializedMonoBehaviour
     }
     
     [Button, DisableInPlayMode]
-    private void LoadDilemme()
+    private void LoadLandmarkQuestions()
     {
-        dilemmes.Clear();
-        dilemmes = LoadCSV.LoadDilemmeCSV(dilemmeFileName);
-        Debug.Log("Dilemmes loaded : " + dilemmes.Count);
+        landmarksTypeA.Clear();
+        landmarksTypeB.Clear();
+        landmarksTypeC.Clear();
+        landmarksTypeD.Clear();
+        
+        List<List<LandmarkQuestion>> landmarkQuestions = LoadCSV.LoadLandmarksCSV(landmarkQuestionsFileName);
+        
+        landmarksTypeA = landmarkQuestions[0];
+        landmarksTypeB = landmarkQuestions[1];
+        landmarksTypeC = landmarkQuestions[2];
+        landmarksTypeD = landmarkQuestions[3];
+        
+        Debug.Log("Landmark questions loaded : " + landmarkQuestions.Count);
     }
     
     [Button, DisableInPlayMode]
@@ -737,7 +786,10 @@ public class GameManager : SerializedMonoBehaviour
     [Button, DisableInPlayMode]
     private void ClearAllScriptables()
     {
-        dilemmes.Clear();
+        landmarksTypeA.Clear();
+        landmarksTypeB.Clear();
+        landmarksTypeC.Clear();
+        landmarksTypeD.Clear();
         questions.Clear();
         laws.Clear();
         LoadCSV.ClearScriptables();

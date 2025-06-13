@@ -70,17 +70,21 @@ public static class LoadCSV
         return tutorials;
     }
 
-    public static List<Dilemme> LoadDilemmeCSV(string dilemmeFileName)
+    public static List<List<LandmarkQuestion>> LoadLandmarksCSV(string landmarksFileName)
     {
-        ClearFolder("Dilemme");
-        List<Dilemme> dilemmes = new List<Dilemme>();
+        ClearFolder("Landmarks");
+        List<List<LandmarkQuestion>> landmarks = new List<List<LandmarkQuestion>>();
+        List<LandmarkQuestion> landmarksTypeA = new List<LandmarkQuestion>();
+        List<LandmarkQuestion> landmarksTypeB = new List<LandmarkQuestion>();
+        List<LandmarkQuestion> landmarksTypeC = new List<LandmarkQuestion>();
+        List<LandmarkQuestion> landmarksTypeD = new List<LandmarkQuestion>();
 
         // Check if the file exists
-        TextAsset csvFile = Resources.Load<TextAsset>(dilemmeFileName);
+        TextAsset csvFile = Resources.Load<TextAsset>(landmarksFileName);
         if (csvFile == null)
         {
-            Debug.LogError($"CSV file '{dilemmeFileName}.csv' not found in Resources folder.");
-            return dilemmes;
+            Debug.LogError($"CSV file '{landmarksFileName}.csv' not found in Resources folder.");
+            return landmarks;
         }
 
         string[] lines = csvFile.text.Split(new[] { '\n' }, System.StringSplitOptions.RemoveEmptyEntries);
@@ -96,25 +100,52 @@ public static class LoadCSV
                 continue;
             }
 
-            Dilemme scriptable = ScriptableObject.CreateInstance<Dilemme>();
-            scriptable.question = fields[0];
-            scriptable.answer1 = fields[1];
-            scriptable.answer2 = fields[2];
-            scriptable.answer3 = fields[3];
-            scriptable.answer4 = fields[4];
+            LandmarkQuestion scriptable = ScriptableObject.CreateInstance<LandmarkQuestion>();
+            scriptable.text1 = fields[0];
+            scriptable.text2 = fields[1];
+            scriptable.text3 = fields[2];
+            scriptable.text4 = fields[3];
+            scriptable.text5 = fields[4];
+            scriptable.text6 = fields[5];
+            scriptable.answer1 = fields[6];
+            scriptable.answer2 = fields[7];
+            scriptable.type = int.Parse(fields[8]);
+            
+            int nbTexts = 0;
+            for (int k = 1; k < 6; k++)
+            {
+                if (fields[k] != "")
+                    nbTexts++;
+            }
+            scriptable.nbTexts = nbTexts;
 
 
-            // Sauvegarde du ScriptableObject dans le projet (dans un dossier "Assets/Resources/Questions")
-            string assetPath = $"Assets/Resources/Scriptables/Dilemme/dilemme_" + i + ".asset";
+            // Sauvegarde du ScriptableObject dans le projet (dans un dossier "Assets/Resources/Landmarks")
+            string assetPath = $"Assets/Resources/Scriptables/Landmarks/landmark_" + i + ".asset";
             UnityEditor.AssetDatabase.CreateAsset(scriptable, assetPath);
             UnityEditor.AssetDatabase.SaveAssets();
 
-            dilemmes.Add(scriptable);
+            if (scriptable.type == 0)
+            {
+                landmarksTypeA.Add(scriptable);
+            }
+            else if (scriptable.type == 1)
+                landmarksTypeB.Add(scriptable);
+            else if (scriptable.type == 2)
+                landmarksTypeC.Add(scriptable);
+            else if (scriptable.type == 3)
+                landmarksTypeD.Add(scriptable);
+            else
+                Debug.LogWarning("Unknown landmark type: " + scriptable.type);
 
-            Debug.Log("Dilemmes imported successfully : " + dilemmes.Count);
         }
+        Debug.Log("AAA : " + landmarksTypeA.Count);
 
-        return dilemmes;
+        landmarks.Add(landmarksTypeA);
+        landmarks.Add(landmarksTypeB);
+        landmarks.Add(landmarksTypeC);
+        landmarks.Add(landmarksTypeD);
+        return landmarks;
     }
 
     public static List<Value> LoadLawsCSV(string valuesFileName)
@@ -245,7 +276,7 @@ public static class LoadCSV
     public static void ClearScriptables()
     {
         ClearFolder("Tutorials");
-        ClearFolder("Dilemme");
+        ClearFolder("Landmarks");
         ClearFolder("Laws");
         ClearFolder("Questions");
     }
