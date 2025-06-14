@@ -49,17 +49,16 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject endingCanvas;
     
     [Header("--- UI INTERFACE QUESTION ---"), ShowIf("setObjectsInInspector")]
+    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject questionsInterface;
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject questionsArea;
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject progressBarObject;
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject bottomArrowIndication;
-    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject animations;
-    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject background;
     [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI questionText;
     [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer1Text;
     [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer2Text;
     
     [Header("--- UI INTERFACE LANDMARK ---"), ShowIf("setObjectsInInspector")]
-    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject landmarkBackground;
+    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject landmarksInterface;
     [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI landmarkText;
     [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer1landmarkText;
     [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer2landmarkText;
@@ -353,15 +352,10 @@ public class GameManager : SerializedMonoBehaviour
         }
         
         inLandmark = true;
-        progressBar.gameObject.SetActive(false);
-        questionsArea.SetActive(false);
-        buttonsArrowsObject.SetActive(false);
-        animations.SetActive(false);
-        background.SetActive(false);
-        landmarkBackground.SetActive(true);
-        landmarkText.transform.parent.transform.parent.gameObject.SetActive(true);
+        questionsInterface.SetActive(false);
+        landmarksInterface.SetActive(true);
         
-        // Display the question and answers
+        // Display the question and next button
         landmarkText.text = currentLandmarkQuestion.text1;
         answer1landmarkText.text = "Suivant";
     }
@@ -369,16 +363,11 @@ public class GameManager : SerializedMonoBehaviour
     public void ExitLandmark(int buttonIndex)
     {
         inLandmark = false;
-        progressBar.gameObject.SetActive(true);
-        questionsArea.SetActive(false);
-        buttonsArrowsObject.SetActive(true);
-        background.SetActive(true);
-        animations.SetActive(true);
         questionTimer = 0;
         nbLandmarkQuestions = 0;
-        
-        landmarkBackground.SetActive(false);
-        landmarkText.transform.parent.transform.parent.gameObject.SetActive(false);
+        questionsInterface.SetActive(true);
+        questionsArea.SetActive(false);
+        landmarksInterface.SetActive(false);
         
         // Save answers to file
         if (string.IsNullOrEmpty(answersLogFilePath))
@@ -492,6 +481,8 @@ public class GameManager : SerializedMonoBehaviour
     {
         questionsArea.SetActive(show);
         progressBarObject.SetActive(show);
+        Debug.Log("Question area " + (show ? "shown" : "hidden"));
+
     }
 
     private void UnboardingStep1()
