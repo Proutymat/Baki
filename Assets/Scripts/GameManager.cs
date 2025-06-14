@@ -7,6 +7,7 @@ using Sirenix.Serialization;
 using TMPro;
 using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 
 public class GameManager : SerializedMonoBehaviour
@@ -47,6 +48,9 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("setObjectsInInspector")] private Canvas mainCanvas;
     [SerializeField, ShowIf("setObjectsInInspector")] private Camera canvasCamera;
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject endingCanvas;
+    [SerializeField, ShowIf("setObjectsInInspector")] private VideoPlayer videoPlayer;
+    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject introInterface;
+    
     
     [Header("--- UI INTERFACE QUESTION ---"), ShowIf("setObjectsInInspector")]
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject questionsInterface;
@@ -93,6 +97,7 @@ public class GameManager : SerializedMonoBehaviour
     
     [Header("DEBUGS")]
     [SerializeField] private bool debug = false;
+    [SerializeField] private bool skipIntro = false;
     
     [Header("STATIC LISTS (not used in runtime)")]
     [SerializeField, ShowIf("debug")] private List<Question> tutorials;
@@ -264,6 +269,19 @@ public class GameManager : SerializedMonoBehaviour
         player.Initialize();
         pdfPrinter.Initialize();
         uiAnimations.Initialize();
+
+        if (skipIntro)
+        {
+            introInterface.SetActive(false);
+            questionsInterface.SetActive(true);
+            landmarksInterface.SetActive(false); 
+        }
+        else
+        {
+            introInterface.SetActive(true);
+            questionsInterface.SetActive(false);
+            landmarksInterface.SetActive(false);
+        }
     }
     
     private void Start()
@@ -274,6 +292,18 @@ public class GameManager : SerializedMonoBehaviour
         InitializeGame();
     }
     
+    private void OnVideoEnd(VideoPlayer vp)
+    {
+        videoPlayer.gameObject.SetActive(false);
+        questionsInterface.SetActive(true);
+    }
+
+    public void LaunchGame()
+    {
+        introInterface.SetActive(false);
+        videoPlayer.loopPointReached += OnVideoEnd;
+        videoPlayer.Play();
+    }
     
     
     // --------------------------------------------
