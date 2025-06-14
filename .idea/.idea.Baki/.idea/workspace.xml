@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="73781b9b-5c78-4d1f-a1a2-b07d1229386b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Baki/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Baki/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Prototype/Canvas.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Prototype/Canvas.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sam/INTERFACE_FIXE.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sam/INTERFACE_FIXE.png.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/ProtoDigital.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ProtoDigital.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
     </list>
@@ -157,7 +157,7 @@
       <workItem from="1749644688399" duration="11449000" />
       <workItem from="1749777971306" duration="15101000" />
       <workItem from="1749833070615" duration="4363000" />
-      <workItem from="1749908949192" duration="2628000" />
+      <workItem from="1749908949192" duration="13631000" />
     </task>
     <servers />
   </component>

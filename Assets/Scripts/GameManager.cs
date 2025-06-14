@@ -50,6 +50,10 @@ public class GameManager : SerializedMonoBehaviour
     
     [Header("--- UI INTERFACE QUESTION ---"), ShowIf("setObjectsInInspector")]
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject questionsInterface;
+    [SerializeField, ShowIf("setObjectsInInspector")] private Button arrowButtonForeward;
+    [SerializeField, ShowIf("setObjectsInInspector")] private Button arrowButtonLeft;
+    [SerializeField, ShowIf("setObjectsInInspector")] private Button arrowButtonRight;
+    [SerializeField, ShowIf("setObjectsInInspector")] private Button arrowButtonBackward;
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject questionsArea;
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject progressBarObject;
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject bottomArrowIndication;
@@ -59,9 +63,13 @@ public class GameManager : SerializedMonoBehaviour
     
     [Header("--- UI INTERFACE LANDMARK ---"), ShowIf("setObjectsInInspector")]
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject landmarksInterface;
+    [SerializeField, ShowIf("setObjectsInInspector")] private List<Image> bubblePages;
+    [SerializeField, ShowIf("setObjectsInInspector")] private Sprite emptyBubbleSprite;
+    [SerializeField, ShowIf("setObjectsInInspector")] private Sprite filledBubbleSprite;
     [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI landmarkText;
-    [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer1landmarkText;
-    [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer2landmarkText;
+    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject nextButton;
+    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject landmarkAnswer1Button;
+    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject landmarkAnswer2Button;
     
     [Header("----- MAP PRINTER -----"), ShowIf("setObjectsInInspector")]
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject landmarksArrows;
@@ -278,31 +286,23 @@ public class GameManager : SerializedMonoBehaviour
     	StartCoroutine(pdfPrinter.Print());
 	}
 
-    public void NextLandmarkQuestion(int buttonIndex)
+    public void NextLandmarkQuestion()
     {
         nbLandmarkQuestions += 1;
         FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_QuestionRespondClick");
+        
+        // Update bubble pages sprite
+        bubblePages[nbLandmarkQuestions - 1].sprite = emptyBubbleSprite;
+        bubblePages[nbLandmarkQuestions].sprite = filledBubbleSprite;
 
-        // Landmark finished
-        if (nbLandmarkQuestions > currentLandmarkQuestion.nbTexts)
-        {
-            nbLandmarkQuestions = 0;
-            answer2landmarkText.gameObject.SetActive(false);
-            ExitLandmark(buttonIndex);
-            return;
-
-        }
         // Last text
-        else if (nbLandmarkQuestions == currentLandmarkQuestion.nbTexts)
+        if (nbLandmarkQuestions == currentLandmarkQuestion.nbTexts)
         {
-            answer2landmarkText.gameObject.transform.parent.gameObject.SetActive(true);
-            answer1landmarkText.text = currentLandmarkQuestion.answer1;
-            answer2landmarkText.text = currentLandmarkQuestion.answer2;
-        }
-        // Next text
-        else
-        {
-            answer1landmarkText.text = "Suivant";
+            nextButton.SetActive(false);
+            landmarkAnswer1Button.SetActive(true);
+            landmarkAnswer2Button.SetActive(true);
+            landmarkAnswer1Button.GetComponentInChildren<TextMeshProUGUI>().text = currentLandmarkQuestion.answer1;
+            landmarkAnswer2Button.GetComponentInChildren<TextMeshProUGUI>().text = currentLandmarkQuestion.answer2;
         }
 
         if (nbLandmarkQuestions == 1)
@@ -319,8 +319,6 @@ public class GameManager : SerializedMonoBehaviour
 
     public void EnterLandmark(Landmark landmark)
     {
-        answer2landmarkText.gameObject.transform.parent.gameObject.SetActive(false);
-        
         currentLandmark = landmark;
         pdfPrinter.PrintLandmarkPDF(Mathf.FloorToInt(100 * (1 - (gameTimer / gameDuration))));
         
@@ -352,22 +350,35 @@ public class GameManager : SerializedMonoBehaviour
         }
         
         inLandmark = true;
+        
+        // Change interface
         questionsInterface.SetActive(false);
         landmarksInterface.SetActive(true);
         
-        // Display the question and next button
-        landmarkText.text = currentLandmarkQuestion.text1;
-        answer1landmarkText.text = "Suivant";
+        landmarkText.text = currentLandmarkQuestion.text1; // Display text
+
+        // Set ui bubble pages
+        for (int i = 0; i < bubblePages.Count; i++)
+        {
+            bubblePages[i].gameObject.SetActive(i <= currentLandmarkQuestion.nbTexts);
+            bubblePages[i].sprite = emptyBubbleSprite;
+        }
+        bubblePages[0].sprite = filledBubbleSprite;
     }
 
     public void ExitLandmark(int buttonIndex)
     {
+        nextButton.SetActive(true);
+        landmarkAnswer1Button.SetActive(false);
+        landmarkAnswer2Button.SetActive(false);
+        
         inLandmark = false;
         questionTimer = 0;
         nbLandmarkQuestions = 0;
         questionsInterface.SetActive(true);
         questionsArea.SetActive(false);
         landmarksInterface.SetActive(false);
+        uiAnimations.StopShader(0);
         
         // Save answers to file
         if (string.IsNullOrEmpty(answersLogFilePath))
@@ -426,11 +437,17 @@ public class GameManager : SerializedMonoBehaviour
     {
         if (direction == "foreward")
         {
+            // Update sprites
             buttonUp.sprite = arrowUpHovered;
             buttonDown.sprite = arrowDown;
             buttonLeft.sprite = arrowLeft;
             buttonRight.sprite = arrowRight;
-            
+
+            // Update button states
+            arrowButtonForeward.enabled = false;
+            arrowButtonLeft.enabled = true;
+            arrowButtonRight.enabled = true;
+            arrowButtonBackward.enabled = true;
             bottomArrowIndication.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
         else if (direction == "backward")
@@ -440,6 +457,10 @@ public class GameManager : SerializedMonoBehaviour
             buttonLeft.sprite = arrowLeft;
             buttonRight.sprite = arrowRight;
             
+            arrowButtonForeward.enabled = true;
+            arrowButtonLeft.enabled = true;
+            arrowButtonRight.enabled = true;
+            arrowButtonBackward.enabled = false;
             bottomArrowIndication.transform.rotation = Quaternion.Euler(0, 0, 180);
         }
         else if (direction == "left")
@@ -449,6 +470,10 @@ public class GameManager : SerializedMonoBehaviour
             buttonLeft.sprite = arrowLeftHovered;
             buttonRight.sprite = arrowRight;
             
+            arrowButtonForeward.enabled = true;
+            arrowButtonLeft.enabled = false;
+            arrowButtonRight.enabled = true;
+            arrowButtonBackward.enabled = true;
             bottomArrowIndication.transform.rotation = Quaternion.Euler(0, 0, 90);
         }
         else if (direction == "right")
@@ -458,6 +483,11 @@ public class GameManager : SerializedMonoBehaviour
             buttonLeft.sprite = arrowLeft;
             buttonRight.sprite = arrowRightHovered;
             
+            arrowButtonForeward.enabled = true;
+            arrowButtonLeft.enabled = true;
+            arrowButtonRight.enabled = false;
+            arrowButtonBackward.enabled = true;
+            
             bottomArrowIndication.transform.rotation = Quaternion.Euler(0, 0, -90);
         }
         else
@@ -466,6 +496,11 @@ public class GameManager : SerializedMonoBehaviour
             buttonDown.sprite = arrowDown;
             buttonLeft.sprite = arrowLeft;
             buttonRight.sprite = arrowRight;
+            
+            arrowButtonForeward.enabled = true;
+            arrowButtonLeft.enabled = true;
+            arrowButtonRight.enabled = true;
+            arrowButtonBackward.enabled = true;
         }
 
         if (!unboardingStep2)
