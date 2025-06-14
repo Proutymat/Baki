@@ -292,17 +292,28 @@ public class GameManager : SerializedMonoBehaviour
         InitializeGame();
     }
     
+    private void OnVideoPrepared(VideoPlayer vp)
+    {
+        videoPlayer.Play();
+        Invoke(nameof(DisableIntroInterface), 0.2f);    
+    }
+    
     private void OnVideoEnd(VideoPlayer vp)
     {
         videoPlayer.gameObject.SetActive(false);
         questionsInterface.SetActive(true);
     }
-
-    public void LaunchGame()
+    
+    void DisableIntroInterface()
     {
         introInterface.SetActive(false);
+    }
+    
+    public void LaunchGame()
+    {
         videoPlayer.loopPointReached += OnVideoEnd;
-        videoPlayer.Play();
+        videoPlayer.prepareCompleted += OnVideoPrepared;
+        videoPlayer.Prepare();
     }
     
     
