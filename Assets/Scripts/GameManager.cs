@@ -3,7 +3,7 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using System.Linq;
-using Sirenix.Serialization;
+using DG.Tweening;
 using TMPro;
 using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.UI;
@@ -64,6 +64,8 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI questionText;
     [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer1Text;
     [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer2Text;
+    private float beatingArrowTimer;
+    private float beatingValue = 1;
     
     [Header("--- UI INTERFACE LANDMARK ---"), ShowIf("setObjectsInInspector")]
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject landmarksInterface;
@@ -215,7 +217,9 @@ public class GameManager : SerializedMonoBehaviour
         shortestTimeBetweenQuestions = float.MaxValue;
         longestTimeBetweenQuestions = float.MinValue;
         nbLandmarkQuestions = 0;
- 
+
+        beatingValue = 1;
+        beatingArrowTimer = 0;
         questionTimer = 0;
         
         // Unboarding
@@ -557,7 +561,6 @@ public class GameManager : SerializedMonoBehaviour
     {
         questionsArea.SetActive(show);
         progressBarObject.SetActive(show);
-        Debug.Log("Question area " + (show ? "shown" : "hidden"));
 
     }
 
@@ -587,6 +590,37 @@ public class GameManager : SerializedMonoBehaviour
             PrintLawsQueue();
             
             Debug.Log("" + lastPrintedPercent + "% of the game elapsed");
+        }
+        
+        // Update arrow beating movement
+        if (player.IsMoving)
+        {
+            DOTween.To(() => beatingValue, x => {
+                beatingValue = x;
+                buttonsArrowsObject.transform.localScale = new Vector3(beatingValue, beatingValue, 1f);
+            }, 1f, 0.5f);
+        }
+        else
+        {
+            beatingArrowTimer += Time.deltaTime;
+            if (beatingArrowTimer >= 0.5f)
+            {
+                if (beatingValue >= 1)
+                {
+                    DOTween.To(() => beatingValue, x => {
+                        beatingValue = x;
+                        buttonsArrowsObject.transform.localScale = new Vector3(beatingValue, beatingValue, 1f);
+                    }, 0.9f, 1f);
+                }
+                else
+                {
+                    DOTween.To(() => beatingValue, x => {
+                        beatingValue = x;
+                        buttonsArrowsObject.transform.localScale = new Vector3(beatingValue, beatingValue, 1f);
+                    }, 1.02f, 1f);
+                }
+                beatingArrowTimer = 0f;
+            }
         }
         
         // End game logic
