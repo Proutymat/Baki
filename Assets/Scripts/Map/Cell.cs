@@ -44,6 +44,7 @@ public class Cell : MonoBehaviour
             int widthOffset = ((type % 100) / 10) / 2;
             int heightOffset = (type % 10) / 2;
             transform.position = new Vector3((x + heightOffset) * cellSize, y - cellSize / 2, (z + widthOffset) * cellSize);
+            Debug.Log("Landmark Created with type : " + _type);
             gameObject.AddComponent<Landmark>().Init(_type - 4);
         }
 
@@ -51,13 +52,14 @@ public class Cell : MonoBehaviour
         MeshFilter meshFilter = gameObject.AddComponent<MeshFilter>();
         meshFilter.mesh = mesh;
 
+        /*
         if (_type == 2)
         {
             MeshRenderer meshRenderer = gameObject.AddComponent<MeshRenderer>();
             meshRenderer.material = GameManager.Instance.materialGround;
-        }
+        }*/
         
-        /*
+        
         // Create the renderer
         var GM = GameManager.Instance;
         MeshRenderer meshRenderer = gameObject.AddComponent<MeshRenderer>();
@@ -75,7 +77,6 @@ public class Cell : MonoBehaviour
             10 => GM.materialSpecialZoneOut,
             _ => null
         };
-*/
         
     }
 }
