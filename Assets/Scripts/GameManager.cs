@@ -561,7 +561,6 @@ public class GameManager : SerializedMonoBehaviour
     {
         questionsArea.SetActive(show);
         progressBarObject.SetActive(show);
-        Debug.Log("Question area " + (show ? "shown" : "hidden"));
 
     }
 
@@ -620,7 +619,6 @@ public class GameManager : SerializedMonoBehaviour
                         buttonsArrowsObject.transform.localScale = new Vector3(beatingValue, beatingValue, 1f);
                     }, 1.02f, 1f);
                 }
-                Debug.Log("Beating arrow value : " + beatingValue);
                 beatingArrowTimer = 0f;
             }
         }
