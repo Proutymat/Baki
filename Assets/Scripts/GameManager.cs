@@ -187,17 +187,6 @@ public class GameManager : SerializedMonoBehaviour
         {
             _instance = this;
         }
-        
-        // Activate the second display if available
-        if(Display.displays.Length > 1)
-        {
-            Display.displays[1].Activate();
-            Debug.Log("Display 2 activated");
-        }
-        else
-        {
-            Debug.Log("Display 2 not found");
-        }
     }
 
     private void InitializeGame()
@@ -365,7 +354,6 @@ public class GameManager : SerializedMonoBehaviour
     public void EnterLandmark(Landmark landmark)
     {
         currentLandmark = landmark;
-        pdfPrinter.PrintLandmarkPDF(Mathf.FloorToInt(100 * (1 - (gameTimer / gameDuration))));
         
         int landmarkIndex = currentLandmark.Type;
         Debug.Log("Entering landmark of type: " + landmarkIndex);
@@ -409,6 +397,8 @@ public class GameManager : SerializedMonoBehaviour
             bubblePages[i].sprite = emptyBubbleSprite;
         }
         bubblePages[0].sprite = filledBubbleSprite;
+        
+        //pdfPrinter.PrintLandmarkPDF(Mathf.FloorToInt(100 * (1 - (gameTimer / gameDuration))));
     }
 
     public void ExitLandmark(int buttonIndex)
