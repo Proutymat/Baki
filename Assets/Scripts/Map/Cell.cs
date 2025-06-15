@@ -50,7 +50,14 @@ public class Cell : MonoBehaviour
         // Create the mesh
         MeshFilter meshFilter = gameObject.AddComponent<MeshFilter>();
         meshFilter.mesh = mesh;
+
+        if (_type == 2)
+        {
+            MeshRenderer meshRenderer = gameObject.AddComponent<MeshRenderer>();
+            meshRenderer.material = GameManager.Instance.materialGround;
+        }
         
+        /*
         // Create the renderer
         var GM = GameManager.Instance;
         MeshRenderer meshRenderer = gameObject.AddComponent<MeshRenderer>();
@@ -68,7 +75,7 @@ public class Cell : MonoBehaviour
             10 => GM.materialSpecialZoneOut,
             _ => null
         };
-
+*/
         
     }
 }

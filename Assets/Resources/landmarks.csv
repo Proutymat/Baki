@@ -1,19 +1,7 @@
-Question;Réponse 1;Réponse 2;Réponse 3;Réponse 4
-Si tu dois absolument tuer quelqu'un qui choisis-tu ?;Un ami;Membre familial;Toi-même;500 inconnus
-"Que représente pour toi le mot ""Gnarfouche"" ?";La joie;L'amour;La haine;La tristesse
-B.A.K.I ?;Binary;Answer;Knowledge;Interface
-Si tu devais ne plus jamais ressentir une émotion, laquelle choisirais-tu ?;La joie;L'amour;La haine;La tristesse
-La personne qui a eu le plus d'influence sur toi ?;Un professeur;Un inconnu;Un personnage fictif;Un enfant
-Qu'est-ce qui t'empêche de le faire ?;Mes objectifs;Mes proches;La société;Rien
-Qu'est-ce qui t'effraie le plus ?;La mort;L'inconnu;Le temps;L'infini
-Quelle est ta fleur préférée ?;Le pissenlit;La passiflore;La tulipe;Le tournesol
-Le fait que je te tutoie te déranges ?;Tu ne me dérange pas;Tu me dérange;Vous ne me dérangez pas;Vous me dérangez
-De quoi vas-tu rêver cette nuit ?;L'actualité;BAKI;Tes proches;Ton quotidien
-De quel bord politique te considères-tu ?;Gauche;Droite;Centre;Apolitique
-Ta plus grande qualité ?;La patiente;L'empathie;L'intelligence;L'honêteté
-Quel bruit te représente le mieux ?;Un grincement de chaise;Un soupir long;Un cri étouffé;Un silence sourd
-Quel mot t’agresse le plus ?;Normal;Toujours;Rien;Pourquoi
-Qu'est-ce que l'attente pour toi ?;Une pause;Une illusion;Une promesse;Un piège
-Si tu devais offrir une couleur à l’aube, laquelle choisirais-tu ?;L’or pâle;Le bleu infini;Le rose fragile;Le gris doux
-Que réprésente l'humour pour toi ?;Un masque;Une échappatoire;Un remède;Une futilité
-Quel est ton étape du deuil préférée ?;Le déni;La colère;Le marchandage;La dépression
+Phrase 1;Phrase 2;Phrase 3;Phrase 4;Phrase 5;Phrase 6;Réponse 1;Réponse 2;Type
+placeholder 1;placeholder 2;placeholder 3;placeholder 4;placeholder 5;placeholder 6;placeholder réponse 1;placeholder réponse 2;0
+placeholder 1;placeholder 2;placeholder 3;placeholder 4;placeholder 5;placeholder 6;placeholder réponse 1;placeholder réponse 2;1
+placeholder 1;placeholder 2;placeholder 3;placeholder 4;placeholder 5;placeholder 6;placeholder réponse 1;placeholder réponse 2;2
+placeholder 1;placeholder 2;placeholder 3;placeholder 4;placeholder 5;placeholder 6;placeholder réponse 1;placeholder réponse 2;3
+placeholder 1;placeholder 2;placeholder 3;placeholder 4;placeholder 5;placeholder 6;placeholder réponse 1;placeholder réponse 2;0
+placeholder 1;placeholder 2;placeholder 3;placeholder 4;placeholder 5;placeholder 6;placeholder réponse 1;placeholder réponse 2;1

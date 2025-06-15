@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Landmark : MonoBehaviour
 {
-    private int type; 
+    private int type; public int Type { get { return type; } }
     
     public void Init(int type)
     {

@@ -5,77 +5,86 @@ using System.Collections.Generic;
 
 public static class LoadCSV
 {
-    static void ClearDilemmeFolder()
+    static void ClearFolder(string name)
     {
-        string folderPath = "Assets/Resources/Scriptables/Dilemme";
+        string folderPath = "Assets/Resources/Scriptables/" + name;
         // If the folder doesn't exist, create it
         if (!UnityEditor.AssetDatabase.IsValidFolder(folderPath))
         {
-            UnityEditor.AssetDatabase.CreateFolder("Assets/Resources/Scriptables", "Dilemme");
+            UnityEditor.AssetDatabase.CreateFolder("Assets/Resources/Scriptables", name);
         }
 
         // Delete all existing Dilemme assets in the folder
-        string[] guids = UnityEditor.AssetDatabase.FindAssets("t:Dilemme", new[] { folderPath });
+        string[] guids = UnityEditor.AssetDatabase.FindAssets("t:" + name, new[] { folderPath });
         foreach (string guid in guids)
         {
             string assetPath = UnityEditor.AssetDatabase.GUIDToAssetPath(guid);
             UnityEditor.AssetDatabase.DeleteAsset(assetPath);
         }
         
-        Debug.Log("Dilemme folder cleared.");
+        Debug.Log(name + "folder cleared.");
     }
 
-    static void ClearLawsFolder()
+    public static List<Question> LoadTutorialsCSV(string tutorialsFileName)
     {
-        string folderPath = "Assets/Resources/Scriptables/Laws";
-        // If the folder doesn't exist, create it
-        if (!UnityEditor.AssetDatabase.IsValidFolder(folderPath))
-        {
-            UnityEditor.AssetDatabase.CreateFolder("Assets/Resources/Scriptables", "Laws");
-        }
+        ClearFolder("Tutorials");
+        List<Question> tutorials = new List<Question>();
         
-        // Delete all existing Law assets in the folder
-        string[] guids = UnityEditor.AssetDatabase.FindAssets("t:Value", new[] { folderPath });
-        foreach (string guid in guids)
-        {
-            string assetPath = UnityEditor.AssetDatabase.GUIDToAssetPath(guid);
-            UnityEditor.AssetDatabase.DeleteAsset(assetPath);
-        }
-        
-        Debug.Log("Laws folder cleared.");
-    }
-
-    static void ClearQuestionsFolder()
-    {
-        string folderPath = "Assets/Resources/Scriptables/Questions";
-        // If the folder doesn't exist, create it
-        if (!UnityEditor.AssetDatabase.IsValidFolder(folderPath))
-        {
-            UnityEditor.AssetDatabase.CreateFolder("Assets/Resources/Scriptables", "Questions");
-        }
-
-        // Delete all existing Question assets in the folder
-        string[] guids = UnityEditor.AssetDatabase.FindAssets("t:Question", new[] { folderPath });
-        foreach (string guid in guids)
-        {
-            string assetPath = UnityEditor.AssetDatabase.GUIDToAssetPath(guid);
-            UnityEditor.AssetDatabase.DeleteAsset(assetPath);
-        }
-        
-        Debug.Log("Questions folder cleared.");
-    }
-
-    public static List<Dilemme> LoadDilemmeCSV(string dilemmeFileName)
-    {
-        ClearDilemmeFolder();
-        List<Dilemme> dilemmes = new List<Dilemme>();
-
         // Check if the file exists
-        TextAsset csvFile = Resources.Load<TextAsset>(dilemmeFileName);
+        TextAsset csvFile = Resources.Load<TextAsset>(tutorialsFileName);
         if (csvFile == null)
         {
-            Debug.LogError($"CSV file '{dilemmeFileName}.csv' not found in Resources folder.");
-            return dilemmes;
+            Debug.LogError($"CSV file '{tutorialsFileName}.csv' not found in Resources folder.");
+            return tutorials;
+        }
+        
+        string[] lines = csvFile.text.Split(new[] { '\n' }, System.StringSplitOptions.RemoveEmptyEntries);
+
+        for (int i = 1; i < lines.Length; i++)
+        {
+            string line = lines[i];
+            string[] fields = line.Split(';');
+
+            if (fields.Length < 2)
+            {
+                Debug.LogWarning("Malformed line skipped: " + line);
+                continue;
+            }
+
+            Question scriptable = ScriptableObject.CreateInstance<Question>();
+            scriptable.question = fields[0];
+            scriptable.answer1 = fields[1];
+            scriptable.answer2 = fields[2];
+
+
+            // Sauvegarde du ScriptableObject dans le projet (dans un dossier "Assets/Resources/Questions")
+            string assetPath = $"Assets/Resources/Scriptables/Tutorials/tutorial_" + i + ".asset";
+            UnityEditor.AssetDatabase.CreateAsset(scriptable, assetPath);
+            UnityEditor.AssetDatabase.SaveAssets();
+
+            tutorials.Add(scriptable);
+
+            Debug.Log("Tutorials imported successfully : " + tutorials.Count);
+        }
+
+        return tutorials;
+    }
+
+    public static List<List<LandmarkQuestion>> LoadLandmarksCSV(string landmarksFileName)
+    {
+        ClearFolder("Landmarks");
+        List<List<LandmarkQuestion>> landmarks = new List<List<LandmarkQuestion>>();
+        List<LandmarkQuestion> landmarksTypeA = new List<LandmarkQuestion>();
+        List<LandmarkQuestion> landmarksTypeB = new List<LandmarkQuestion>();
+        List<LandmarkQuestion> landmarksTypeC = new List<LandmarkQuestion>();
+        List<LandmarkQuestion> landmarksTypeD = new List<LandmarkQuestion>();
+
+        // Check if the file exists
+        TextAsset csvFile = Resources.Load<TextAsset>(landmarksFileName);
+        if (csvFile == null)
+        {
+            Debug.LogError($"CSV file '{landmarksFileName}.csv' not found in Resources folder.");
+            return landmarks;
         }
 
         string[] lines = csvFile.text.Split(new[] { '\n' }, System.StringSplitOptions.RemoveEmptyEntries);
@@ -91,30 +100,57 @@ public static class LoadCSV
                 continue;
             }
 
-            Dilemme scriptable = ScriptableObject.CreateInstance<Dilemme>();
-            scriptable.question = fields[0];
-            scriptable.answer1 = fields[1];
-            scriptable.answer2 = fields[2];
-            scriptable.answer3 = fields[3];
-            scriptable.answer4 = fields[4];
+            LandmarkQuestion scriptable = ScriptableObject.CreateInstance<LandmarkQuestion>();
+            scriptable.text1 = fields[0];
+            scriptable.text2 = fields[1];
+            scriptable.text3 = fields[2];
+            scriptable.text4 = fields[3];
+            scriptable.text5 = fields[4];
+            scriptable.text6 = fields[5];
+            scriptable.answer1 = fields[6];
+            scriptable.answer2 = fields[7];
+            scriptable.type = int.Parse(fields[8]);
+            
+            int nbTexts = 0;
+            for (int k = 1; k < 6; k++)
+            {
+                if (fields[k] != "")
+                    nbTexts++;
+            }
+            scriptable.nbTexts = nbTexts;
 
 
-            // Sauvegarde du ScriptableObject dans le projet (dans un dossier "Assets/Resources/Questions")
-            string assetPath = $"Assets/Resources/Scriptables/Dilemme/dilemme_" + i + ".asset";
+            // Sauvegarde du ScriptableObject dans le projet (dans un dossier "Assets/Resources/Landmarks")
+            string assetPath = $"Assets/Resources/Scriptables/Landmarks/landmark_" + i + ".asset";
             UnityEditor.AssetDatabase.CreateAsset(scriptable, assetPath);
             UnityEditor.AssetDatabase.SaveAssets();
 
-            dilemmes.Add(scriptable);
+            if (scriptable.type == 0)
+            {
+                landmarksTypeA.Add(scriptable);
+            }
+            else if (scriptable.type == 1)
+                landmarksTypeB.Add(scriptable);
+            else if (scriptable.type == 2)
+                landmarksTypeC.Add(scriptable);
+            else if (scriptable.type == 3)
+                landmarksTypeD.Add(scriptable);
+            else
+                Debug.LogWarning("Unknown landmark type: " + scriptable.type);
 
-            Debug.Log("Dilemmes imported successfully : " + dilemmes.Count);
         }
+        Debug.Log("AAA : " + landmarksTypeA.Count);
 
-        return dilemmes;
+        landmarks.Add(landmarksTypeA);
+        landmarks.Add(landmarksTypeB);
+        landmarks.Add(landmarksTypeC);
+        landmarks.Add(landmarksTypeD);
+        return landmarks;
     }
 
     public static List<Value> LoadLawsCSV(string valuesFileName)
     {
-        ClearLawsFolder();
+        ClearFolder("Laws");
         List<Value> laws = new List<Value>();
 
         // Check if the file exists
@@ -185,7 +221,7 @@ public static class LoadCSV
 
     public  static List<Question> LoadQuestionsCSV(string questionsFileName, List<Value> laws)
     {
-        ClearQuestionsFolder();
+        ClearFolder("Questions");
         List<Question> questions = new List<Question>();
 
         // Check if the file exists
@@ -239,9 +275,10 @@ public static class LoadCSV
 
     public static void ClearScriptables()
     {
-        ClearQuestionsFolder();
-        ClearLawsFolder();
-        ClearDilemmeFolder();
+        ClearFolder("Tutorials");
+        ClearFolder("Landmarks");
+        ClearFolder("Laws");
+        ClearFolder("Questions");
     }
 }
 #endif
