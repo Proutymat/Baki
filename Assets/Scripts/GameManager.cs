@@ -398,7 +398,7 @@ public class GameManager : SerializedMonoBehaviour
         }
         bubblePages[0].sprite = filledBubbleSprite;
         
-        pdfPrinter.PrintLandmarkPDF(Mathf.FloorToInt(100 * (1 - (gameTimer / gameDuration))));
+        //pdfPrinter.PrintLandmarkPDF(Mathf.FloorToInt(100 * (1 - (gameTimer / gameDuration))));
     }
 
     public void ExitLandmark(int buttonIndex)
