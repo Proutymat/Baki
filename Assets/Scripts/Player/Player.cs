@@ -13,7 +13,6 @@ public class Player : MonoBehaviour
     [SerializeField] private float secondPerUnit = 3f;
     [SerializeField] private float secondPerUnitSpecialZone = 2f;
     [SerializeField] private Vector3 currentDirection;
-    [SerializeField] private GameObject directionnalArrows;
     [SerializeField] private GameObject avatarArrow;
     
     [Header("UI Animations")]
@@ -72,12 +71,6 @@ public class Player : MonoBehaviour
             {
                 FMODUnity.RuntimeManager.PlayOneShot("event:/AMB/AMB_InGame/AMB_IG_Start");
                 hasMovedOnce = true;
-            }
-            
-            // Hide all children of directionnal arrows
-            foreach (Transform child in directionnalArrows.transform)
-            {
-                child.gameObject.SetActive(false);
             }
             
             uiAnimations.ResumeAnimationsAndShader();

@@ -403,6 +403,8 @@ public class GameManager : SerializedMonoBehaviour
 
     public void ExitLandmark(int buttonIndex)
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_QuestionRespondClick");
+        
         nextButton.SetActive(true);
         landmarkAnswer1Button.SetActive(false);
         landmarkAnswer2Button.SetActive(false);
@@ -716,7 +718,7 @@ public class GameManager : SerializedMonoBehaviour
             uiAnimations.StopShader(1.5f);
 
             
-            // Active all children of the directional arrows
+            // Active all children of the landmark arrows
             foreach (Transform child in landmarksArrows.transform)
             {
                 child.gameObject.SetActive(true);
