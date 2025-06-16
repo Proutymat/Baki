@@ -12,13 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8c8072d2125b034db50ac10816f2018, type: 3}
   m_Name: landmark_3
   m_EditorClassIdentifier: 
-  text1: placeholder 1
-  text2: placeholder 2
-  text3: placeholder 3
-  text4: placeholder 4
-  text5: placeholder 5
-  text6: placeholder 6
-  answer1: "placeholder r\xE9ponse 1"
-  answer2: "placeholder r\xE9ponse 2"
-  type: 2
-  nbTexts: 5
+  text1: En arrivant dans un lieu inconnu, tu es accueilli.e par deux personnes se
+    proposant comme guide.
+  text2: "Iels ont une apparence similaire, mais tandis que l'ombre du premier guide
+    ne s'arr\xEAte jamais de se mouvoir"
+  text3: "L'ombre du second reste parfaitement immobile m\xEAme quand le guide se
+    d\xE9place"
+  text4: "Tu ne peux suivre qu'un guide pour d\xE9couvrir les lieux, lequel choisis-tu
+    ?"
+  text5: 
+  text6: 
+  answer1: Immobile
+  answer2: En mouvement
+  type: 0
+  nbTexts: 3

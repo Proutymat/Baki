@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: tutorial_2
   m_EditorClassIdentifier: 
-  question: "Tu te d\xE9placement en baptement"
-  answer1: Vrai
-  answer2: "Faux\r"
+  question: "Tu es conscient que tu t'arr\xEAte parfois"
+  answer1: Oui
+  answer2: "Non\r"
   answer1Type1: 0
   answer1Type1ADD: 0
   answer2Type1: 0

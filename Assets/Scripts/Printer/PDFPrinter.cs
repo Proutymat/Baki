@@ -5,6 +5,7 @@ using PdfSharp.Pdf;
 using PdfSharp.Drawing;
 using System.IO;
 using System.Collections;
+using System.Collections.Generic;
 using Debug = UnityEngine.Debug;
 
 
@@ -30,6 +31,26 @@ public class PDFPrinter : MonoBehaviour
     public void Initialize()
     {
         imageCounter = 0;
+    }
+    
+    public Texture2D CaptureCameraSquare(Camera cam, int size)
+    {
+        // Create a square RenderTexture
+        RenderTexture rt = new RenderTexture(size, size, 24);
+        cam.targetTexture = rt;
+
+        Texture2D result = new Texture2D(size, size, TextureFormat.RGB24, false);
+        cam.Render();
+
+        RenderTexture.active = rt;
+        result.ReadPixels(new Rect(0, 0, size, size), 0, 0);
+        result.Apply();
+
+        cam.targetTexture = null;
+        RenderTexture.active = null;
+        DestroyImmediate(rt);
+
+        return result;
     }
 
     private void CreatePDFWithImage(Texture2D texture, bool longTicket)
@@ -89,49 +110,6 @@ public class PDFPrinter : MonoBehaviour
         document.Save(outputPath);
         Debug.Log("PDF avec image + texture généré : " + outputPath);
     }
-
-    public Texture2D CaptureCameraSquare(Camera cam, int size)
-    {
-        // Create a square RenderTexture
-        RenderTexture rt = new RenderTexture(size, size, 24);
-        cam.targetTexture = rt;
-
-        Texture2D result = new Texture2D(size, size, TextureFormat.RGB24, false);
-        cam.Render();
-
-        RenderTexture.active = rt;
-        result.ReadPixels(new Rect(0, 0, size, size), 0, 0);
-        result.Apply();
-
-        cam.targetTexture = null;
-        RenderTexture.active = null;
-        DestroyImmediate(rt);
-
-        return result;
-    }
-    
-    public void PrintPDF(string fileName, string printerName)
-    {
-        var startInfo = new System.Diagnostics.ProcessStartInfo
-        {
-            FileName = sumatraPath,
-            Arguments = $"-print-to \"{printerName}\" -print-settings \"fit,bin=B_BOTH\" \"{pdfPath + fileName}\"",
-            CreateNoWindow = true,
-            UseShellExecute = false
-        };
-
-        System.Diagnostics.Process.Start(startInfo);
-        Debug.Log("Printing PDF: " + fileName + " to printer: " + printerName);
-    }
-
-    [Button]
-    public void PrintLandmarkPDF(int percentage)
-    {
-        //PrintPDF("baki_wallpaper.pdf", printer2Name);
-        CreatePDFWithLogoAndText(percentage);
-        PrintPDF(pdfFileName, printer2Name);
-    }
-    
     
     private void CreatePDFWithLogoAndText(int percentage)
     {
@@ -215,7 +193,95 @@ public class PDFPrinter : MonoBehaviour
         Debug.Log("PDF avec deux images généré : " + outputPath);
     }
 
+    private void CreatePDFWithText(List<string> laws)
+    {
+        PdfDocument document = new PdfDocument();
+        PdfPage page = document.AddPage();
+        page.Width = XUnit.FromCentimeter(8);
+        page.Height = XUnit.FromCentimeter(327.6); // Long format ticket
 
+        XGraphics gfx = XGraphics.FromPdfPage(page);
+        XFont font = new XFont("Arial", 16, XFontStyle.Bold);
+    
+        double currentY = 0;
+
+        // --- Logo en haut
+        string logoPath = Path.Combine(Application.streamingAssetsPath, "logo.png");
+        if (File.Exists(logoPath))
+        {
+            XImage logo = XImage.FromFile(logoPath);
+            double maxWidth = page.Width;
+            double ratio = logo.PixelHeight / (double)logo.PixelWidth;
+            double height = maxWidth * ratio;
+
+            gfx.DrawImage(logo, 0, currentY, maxWidth, height);
+            currentY += height;
+
+            // Marge sous le logo
+            currentY += XUnit.FromCentimeter(1).Point;
+        }
+        else
+        {
+            Debug.LogWarning("Logo introuvable à : " + logoPath);
+        }
+
+        // --- Texte centré
+        double lineSpacing = font.GetHeight(gfx) + XUnit.FromCentimeter(0.5).Point;
+
+        foreach (string law in laws)
+        {
+            if (currentY + lineSpacing > page.Height)
+            {
+                // Nouvelle page
+                page = document.AddPage();
+                page.Width = XUnit.FromCentimeter(8);
+                page.Height = XUnit.FromCentimeter(327.6);
+                gfx = XGraphics.FromPdfPage(page);
+                currentY = XUnit.FromCentimeter(1).Point; // Marge en haut
+            }
+
+            XSize textSize = gfx.MeasureString(law, font);
+            double x = (page.Width - textSize.Width) / 2;
+            gfx.DrawString(law, font, XBrushes.Black, new XPoint(x, currentY));
+            currentY += lineSpacing;
+        }
+
+        // --- Sauvegarde
+        string outputPath = Path.Combine(pdfPath, pdfFileName);
+        document.Save(outputPath);
+        Debug.Log("PDF avec logo et texte centré généré : " + outputPath);
+    }
+
+
+
+    
+    public void PrintPDF(string fileName, string printerName)
+    {
+        var startInfo = new System.Diagnostics.ProcessStartInfo
+        {
+            FileName = sumatraPath,
+            Arguments = $"-print-to \"{printerName}\" -print-settings \"fit,bin=B_BOTH\" \"{pdfPath + fileName}\"",
+            CreateNoWindow = true,
+            UseShellExecute = false
+        };
+
+        System.Diagnostics.Process.Start(startInfo);
+        Debug.Log("Printing PDF: " + fileName + " to printer: " + printerName);
+    }
+
+    [Button]
+    public void PrintLandmarkPDF(int percentage)
+    {
+        //PrintPDF("baki_wallpaper.pdf", printer2Name);
+        CreatePDFWithLogoAndText(percentage);
+        PrintPDF(pdfFileName, printer2Name);
+    }
+    
+    public void PrintLawsPDF(List<string> laws)
+    {
+        CreatePDFWithText(laws);
+        PrintPDF(pdfFileName, printer2Name);
+    }
 
     public IEnumerator Print(bool longTicket = false)
     {
@@ -227,10 +293,15 @@ public class PDFPrinter : MonoBehaviour
     }
     
     [Button]
-    public void PrintDebug()
+    public void PrintDebug(int printerIndex = 1)
     {
-        const int size = 512; // ou 1024 selon ta qualité
-        Texture2D square = CaptureCameraSquare(camera, size);
-        PrintPDF(pdfFileNameDebug, printer1Name);
+        if (printerIndex == 1)
+        {
+            PrintPDF(pdfFileNameDebug, printer1Name);
+        }
+        else if (printerIndex == 2)
+        {
+            PrintPDF(pdfFileNameDebug, printer2Name);
+        }
     }
 }

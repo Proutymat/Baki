@@ -398,7 +398,7 @@ public class GameManager : SerializedMonoBehaviour
         }
         bubblePages[0].sprite = filledBubbleSprite;
         
-        //pdfPrinter.PrintLandmarkPDF(Mathf.FloorToInt(100 * (1 - (gameTimer / gameDuration))));
+        pdfPrinter.PrintLandmarkPDF(Mathf.FloorToInt(100 * (1 - (gameTimer / gameDuration))));
     }
 
     public void ExitLandmark(int buttonIndex)
@@ -635,6 +635,8 @@ public class GameManager : SerializedMonoBehaviour
 
     private void PrintLawsQueue()
     {
+        pdfPrinter.PrintLawsPDF(lawsQueue);
+        
         if (string.IsNullOrEmpty(charteLogFilePath))
         {
             Debug.LogError("Log file path not initialized.");
@@ -856,7 +858,7 @@ public class GameManager : SerializedMonoBehaviour
         landmarksTypeC = landmarkQuestions[2];
         landmarksTypeD = landmarkQuestions[3];
         
-        Debug.Log("Landmark questions loaded : " + landmarkQuestions.Count);
+        Debug.Log("Landmark questions loaded : " + (landmarksTypeA.Count + landmarksTypeB.Count + landmarksTypeC.Count + landmarksTypeD.Count));
     }
     
     [Button, DisableInPlayMode]

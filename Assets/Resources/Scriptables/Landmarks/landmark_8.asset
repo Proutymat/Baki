@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8c8072d2125b034db50ac10816f2018, type: 3}
+  m_Name: landmark_8
+  m_EditorClassIdentifier: 
+  text1: "Tu tombes sur un livre dont les pages semblent raconter exactement ce que
+    tu as pens\xE9 jusqu'\xE0 aujourd'hui, sauf deux pages"
+  text2: "La premi\xE8re raconte une trahison que tu as v\xE9cu sans le savoir"
+  text3: "La deuxi\xE8me d\xE9crit un avenir possible dont tu ne veux pas"
+  text4: Tu ne peux lire qu'une seule page, laquelle choisis-tu ?
+  text5: 
+  text6: 
+  answer1: Trahison
+  answer2: Avenir
+  type: 0
+  nbTexts: 3
