@@ -12,13 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8c8072d2125b034db50ac10816f2018, type: 3}
   m_Name: landmark_6
   m_EditorClassIdentifier: 
-  text1: placeholder 1
-  text2: placeholder 2
-  text3: placeholder 3
-  text4: placeholder 4
-  text5: placeholder 5
-  text6: placeholder 6
-  answer1: "placeholder r\xE9ponse 1"
-  answer2: "placeholder r\xE9ponse 2"
+  text1: "Si on pouvait mettre le temps en pause et qu'on \xE9tait omniscient"
+  text2: 'On pourrait alors tout savoir sur tout, comme la composition et la vitesse
+    d''un objet '
+  text3: "Mais \xE9galement voir les chemin neuronaux s'activer chez une personne
+    en pleine conversation"
+  text4: "Si on assemblait toutes les donn\xE9es prises, est-ce qu'on pourrait alors
+    anticiper ce qu'il va se passer dans la seconde qui arrive ?"
+  text5: 
+  text6: 
+  answer1: Oui
+  answer2: Non
   type: 1
-  nbTexts: 5
+  nbTexts: 3

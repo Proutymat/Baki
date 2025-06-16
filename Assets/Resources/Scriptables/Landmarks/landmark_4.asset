@@ -12,13 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8c8072d2125b034db50ac10816f2018, type: 3}
   m_Name: landmark_4
   m_EditorClassIdentifier: 
-  text1: placeholder 1
-  text2: placeholder 2
-  text3: placeholder 3
-  text4: placeholder 4
-  text5: placeholder 5
-  text6: placeholder 6
-  answer1: "placeholder r\xE9ponse 1"
-  answer2: "placeholder r\xE9ponse 2"
-  type: 3
-  nbTexts: 5
+  text1: Si tu te concentre tu peux t'imaginer dans un lieu de paix
+  text2: "Un lieu pour toi seul.e qui n'\xE9voque que le bien \xEAtre."
+  text3: "Tu marches dans ce lieu et tombe nez \xE0 nez avec un coucher de soleil
+    au dessus d'un champ de fleur."
+  text4: "Au milieu du champ se trouve une personne extr\xEAmement importante pour
+    toi"
+  text5: Les fleurs du champ lui ressemblent. Est-ce que c'est une champ de tournesol
+    ou de violette ?
+  text6: 
+  answer1: Tournesol
+  answer2: Viollette
+  type: 0
+  nbTexts: 4

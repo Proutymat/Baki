@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_88
   m_EditorClassIdentifier: 
-  question: "\"Qu'est-ce qui est une plus grosse \"\"tromperie\"\" : une connexion
-    \xE9motionelle ou une aventure physique ?\""
-  answer1: Emtionel
+  question: "Qu'est-ce qui est une plus grosse \u2018tromperie\u2019 : une connexion
+    \xE9motionelle ou une aventure physique ?"
+  answer1: Emotionnelle
   answer2: Physique
   answer1Type1: -1
   answer1Type1ADD: 0

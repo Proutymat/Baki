@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8c8072d2125b034db50ac10816f2018, type: 3}
+  m_Name: landmark_7
+  m_EditorClassIdentifier: 
+  text1: "La physique quantique affirme qu' \xE0 petite \xE9chelle une chose peut
+    avoir deux caract\xE9ristiques en simultan\xE9"
+  text2: "Comme la lumi\xE8re qui est particule et onde \xE0 la fois"
+  text3: "A plus grande \xE9chelle cela pourrait dire que deux choses oppos\xE9es
+    pourrait \xEAtre vraies en m\xEAme temps"
+  text4: "Ou bien que deux r\xE9ponses peuvent \xEAtre \xE0 la fois diff\xE9rentes
+    et toutes les deux vraies"
+  text5: 
+  text6: 
+  answer1: J'y crois
+  answer2: Je n'y crois pas
+  type: 1
+  nbTexts: 3

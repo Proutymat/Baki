@@ -64,9 +64,9 @@ public static class LoadCSV
 
             tutorials.Add(scriptable);
 
-            Debug.Log("Tutorials imported successfully : " + tutorials.Count);
+            
         }
-
+        Debug.Log("Tutorials imported successfully : " + tutorials.Count);
         return tutorials;
     }
 
@@ -139,7 +139,6 @@ public static class LoadCSV
                 Debug.LogWarning("Unknown landmark type: " + scriptable.type);
 
         }
-        Debug.Log("AAA : " + landmarksTypeA.Count);
 
         landmarks.Add(landmarksTypeA);
         landmarks.Add(landmarksTypeB);
