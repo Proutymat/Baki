@@ -3,6 +3,16 @@ using UnityEngine;
 public class Landmark : MonoBehaviour
 {
     [SerializeField] private int type; public int Type { get { return type; } }
+    [SerializeField] private GameObject landmarkCheckedPrefab;
+
+    void Start()
+    {
+        landmarkCheckedPrefab = Resources.Load<GameObject>("Prefabs/LandmarkChecked");
+        if (landmarkCheckedPrefab == null)
+        {
+            Debug.LogError("Landmark checked prefab not found!");
+        }
+    }
     
     public void Init(int type)
     {
@@ -40,6 +50,12 @@ public class Landmark : MonoBehaviour
             FMODUnity.RuntimeManager.PlayOneShot("event:/MX/MX_Trig/MX_Trig_Z2P/MX_Trig_Z2P_PI_Stop");
         if (type == 3)
             FMODUnity.RuntimeManager.PlayOneShot("event:/MX/MX_Trig/MX_Trig_Z4H/MX_Trig_Z4H_PI_Stop");
+        
+        // Instantiate the checked landmark prefab
+        GameObject checkedLandmark = Instantiate(landmarkCheckedPrefab, transform.position, Quaternion.identity);
+        checkedLandmark.transform.localScale = transform.localScale;
+        checkedLandmark.transform.rotation = transform.rotation;
+        checkedLandmark.transform.parent = transform.parent;
         
         Destroy(this.gameObject);
     }

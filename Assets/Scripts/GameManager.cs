@@ -21,11 +21,8 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("setObjectsInInspector")] public Material materialGround;
     [SerializeField, ShowIf("setObjectsInInspector")] public Material materialWall;
     [SerializeField, ShowIf("setObjectsInInspector")] public Material materialStart;
-    [SerializeField, ShowIf("setObjectsInInspector")] public Material materialLandmarksA;
-    [SerializeField, ShowIf("setObjectsInInspector")] public Material materialLandmarksB;
-    [SerializeField, ShowIf("setObjectsInInspector")] public Material materialLandmarksC;
-    [SerializeField, ShowIf("setObjectsInInspector")] public Material materialLandmarksD;
-    [SerializeField, ShowIf("setObjectsInInspector")] public Material materialLandmarksE;
+    [SerializeField, ShowIf("setObjectsInInspector")] public Material materialLandmark;
+    [SerializeField, ShowIf("setObjectsInInspector")] public Material materialLandmarkChecked;
     [SerializeField, ShowIf("setObjectsInInspector")] public Material materialSpecialZoneIn;
     [SerializeField, ShowIf("setObjectsInInspector")] public Material materialSpecialZoneOut;
 
