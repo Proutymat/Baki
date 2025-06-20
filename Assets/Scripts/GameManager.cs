@@ -97,6 +97,7 @@ public class GameManager : SerializedMonoBehaviour
     [Header("DEBUGS")]
     [SerializeField] private bool debug = false;
     [SerializeField] private bool skipIntro = false;
+    [SerializeField] private bool enablePrinters = true;
     
     [Header("STATIC LISTS (not used in runtime)")]
     [SerializeField, ShowIf("debug")] private List<Question> tutorials;
@@ -316,7 +317,7 @@ public class GameManager : SerializedMonoBehaviour
     public void PrintAreaPlayer()
     {
         playerCamera.transform.position = new Vector3(player.transform.position.x, playerCamera.transform.position.y, player.transform.position.z);
-    	StartCoroutine(pdfPrinter.Print());
+        if (enablePrinters) StartCoroutine(pdfPrinter.Print());
 	}
 
     public void NextLandmarkQuestion()
@@ -398,7 +399,7 @@ public class GameManager : SerializedMonoBehaviour
         }
         bubblePages[0].sprite = filledBubbleSprite;
         
-        //pdfPrinter.PrintLandmarkPDF(Mathf.FloorToInt(100 * (1 - (gameTimer / gameDuration))));
+        if (enablePrinters) pdfPrinter.PrintLandmarkPDF(Mathf.FloorToInt(100 * (1 - (gameTimer / gameDuration))));
     }
 
     public void ExitLandmark(int buttonIndex)
@@ -635,7 +636,7 @@ public class GameManager : SerializedMonoBehaviour
 
     private void PrintLawsQueue()
     {
-        pdfPrinter.PrintLawsPDF(lawsQueue);
+        if (enablePrinters) pdfPrinter.PrintLawsPDF(lawsQueue);
         
         if (string.IsNullOrEmpty(charteLogFilePath))
         {
