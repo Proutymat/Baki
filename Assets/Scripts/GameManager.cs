@@ -288,7 +288,8 @@ public class GameManager : SerializedMonoBehaviour
     private void OnVideoPrepared(VideoPlayer vp)
     {
         videoPlayer.Play();
-        Invoke(nameof(DisableIntroInterface), 0.2f);    
+        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_Menu/UI_M_Intro");
+        Invoke(nameof(DisableIntroInterface), 0.2f);
     }
     
     private void OnVideoEnd(VideoPlayer vp)
@@ -304,6 +305,7 @@ public class GameManager : SerializedMonoBehaviour
     
     public void LaunchGame()
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_Menu/UI_M_Click");
         videoPlayer.loopPointReached += OnVideoEnd;
         videoPlayer.prepareCompleted += OnVideoPrepared;
         videoPlayer.Prepare();
@@ -337,6 +339,7 @@ public class GameManager : SerializedMonoBehaviour
             landmarkAnswer2Button.SetActive(true);
             landmarkAnswer1Button.GetComponentInChildren<TextMeshProUGUI>().text = currentLandmarkQuestion.answer1;
             landmarkAnswer2Button.GetComponentInChildren<TextMeshProUGUI>().text = currentLandmarkQuestion.answer2;
+            FMODUnity.RuntimeManager.PlayOneShot("event:/MX/MX_Trig/MX_Trig_Question");
         }
 
         if (nbLandmarkQuestions == 1)
@@ -398,7 +401,7 @@ public class GameManager : SerializedMonoBehaviour
         }
         bubblePages[0].sprite = filledBubbleSprite;
         
-        pdfPrinter.PrintLandmarkPDF(Mathf.FloorToInt(100 * (1 - (gameTimer / gameDuration))));
+        //pdfPrinter.PrintLandmarkPDF(Mathf.FloorToInt(100 * (1 - (gameTimer / gameDuration))));
     }
 
     public void ExitLandmark(int buttonIndex)
