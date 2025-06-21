@@ -68,15 +68,20 @@ public class Cell : MonoBehaviour
             1 => GM.materialStart,
             2 => GM.materialGround,
             3 => GM.materialWall,
-            4 => GM.materialLandmarksA,
-            5 => GM.materialLandmarksB,
-            6 => GM.materialLandmarksC,
-            7 => GM.materialLandmarksD,
-            8 => GM.materialLandmarksE,
+            4 => GM.materialLandmark,
+            5 => GM.materialLandmark,
+            6 => GM.materialLandmark,
+            7 => GM.materialLandmark,
+            8 => GM.materialLandmark,
             9 => GM.materialSpecialZoneIn,
             10 => GM.materialSpecialZoneOut,
             _ => null
         };
+
+        if (_type >= 4 && _type <= 8)
+        {
+            this.transform.rotation = Quaternion.Euler(0, 90, 0);
+        }
         
     }
 }

@@ -21,11 +21,8 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("setObjectsInInspector")] public Material materialGround;
     [SerializeField, ShowIf("setObjectsInInspector")] public Material materialWall;
     [SerializeField, ShowIf("setObjectsInInspector")] public Material materialStart;
-    [SerializeField, ShowIf("setObjectsInInspector")] public Material materialLandmarksA;
-    [SerializeField, ShowIf("setObjectsInInspector")] public Material materialLandmarksB;
-    [SerializeField, ShowIf("setObjectsInInspector")] public Material materialLandmarksC;
-    [SerializeField, ShowIf("setObjectsInInspector")] public Material materialLandmarksD;
-    [SerializeField, ShowIf("setObjectsInInspector")] public Material materialLandmarksE;
+    [SerializeField, ShowIf("setObjectsInInspector")] public Material materialLandmark;
+    [SerializeField, ShowIf("setObjectsInInspector")] public Material materialLandmarkChecked;
     [SerializeField, ShowIf("setObjectsInInspector")] public Material materialSpecialZoneIn;
     [SerializeField, ShowIf("setObjectsInInspector")] public Material materialSpecialZoneOut;
 
@@ -100,6 +97,7 @@ public class GameManager : SerializedMonoBehaviour
     [Header("DEBUGS")]
     [SerializeField] private bool debug = false;
     [SerializeField] private bool skipIntro = false;
+    [SerializeField] private bool enablePrinters = true;
     
     [Header("STATIC LISTS (not used in runtime)")]
     [SerializeField, ShowIf("debug")] private List<Question> tutorials;
@@ -288,7 +286,8 @@ public class GameManager : SerializedMonoBehaviour
     private void OnVideoPrepared(VideoPlayer vp)
     {
         videoPlayer.Play();
-        Invoke(nameof(DisableIntroInterface), 0.2f);    
+        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_Menu/UI_M_Intro");
+        Invoke(nameof(DisableIntroInterface), 0.2f);
     }
     
     private void OnVideoEnd(VideoPlayer vp)
@@ -304,6 +303,7 @@ public class GameManager : SerializedMonoBehaviour
     
     public void LaunchGame()
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_Menu/UI_M_Click");
         videoPlayer.loopPointReached += OnVideoEnd;
         videoPlayer.prepareCompleted += OnVideoPrepared;
         videoPlayer.Prepare();
@@ -317,7 +317,7 @@ public class GameManager : SerializedMonoBehaviour
     public void PrintAreaPlayer()
     {
         playerCamera.transform.position = new Vector3(player.transform.position.x, playerCamera.transform.position.y, player.transform.position.z);
-    	StartCoroutine(pdfPrinter.Print());
+        if (enablePrinters) StartCoroutine(pdfPrinter.Print());
 	}
 
     public void NextLandmarkQuestion()
@@ -337,6 +337,7 @@ public class GameManager : SerializedMonoBehaviour
             landmarkAnswer2Button.SetActive(true);
             landmarkAnswer1Button.GetComponentInChildren<TextMeshProUGUI>().text = currentLandmarkQuestion.answer1;
             landmarkAnswer2Button.GetComponentInChildren<TextMeshProUGUI>().text = currentLandmarkQuestion.answer2;
+            FMODUnity.RuntimeManager.PlayOneShot("event:/MX/MX_Trig/MX_Trig_Question");
         }
 
         if (nbLandmarkQuestions == 1)
@@ -398,7 +399,7 @@ public class GameManager : SerializedMonoBehaviour
         }
         bubblePages[0].sprite = filledBubbleSprite;
         
-        pdfPrinter.PrintLandmarkPDF(Mathf.FloorToInt(100 * (1 - (gameTimer / gameDuration))));
+        if (enablePrinters) pdfPrinter.PrintLandmarkPDF(Mathf.FloorToInt(100 * (1 - (gameTimer / gameDuration))));
     }
 
     public void ExitLandmark(int buttonIndex)
@@ -635,7 +636,7 @@ public class GameManager : SerializedMonoBehaviour
 
     private void PrintLawsQueue()
     {
-        pdfPrinter.PrintLawsPDF(lawsQueue);
+        if (enablePrinters) pdfPrinter.PrintLawsPDF(lawsQueue);
         
         if (string.IsNullOrEmpty(charteLogFilePath))
         {
