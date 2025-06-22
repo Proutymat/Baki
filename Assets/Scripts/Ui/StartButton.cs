@@ -7,7 +7,6 @@ public class StartButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 {
     [SerializeField] private float beatingCooldown = 1;
     private bool isBeating;
-    
     private Sequence beatingSequence;
     
     void Start()

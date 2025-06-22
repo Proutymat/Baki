@@ -41,9 +41,6 @@ public class Player : MonoBehaviour
         gameManager = GameManager.Instance;
         playerColliders = GetComponent<PlayerSpecialZone>();
         
-        //FMOD Instance start
-        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_StartGame");
-        
         Initialize();
     }
 

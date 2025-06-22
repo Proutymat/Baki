@@ -294,6 +294,7 @@ public class GameManager : SerializedMonoBehaviour
     {
         videoPlayer.gameObject.SetActive(false);
         questionsInterface.SetActive(true);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_StartGame");
     }
     
     void DisableIntroInterface()
@@ -679,7 +680,8 @@ public class GameManager : SerializedMonoBehaviour
 
     public void AnsweringQuestion(int answerIndex)
     {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_QuestionRespondClick");
+        if (answerIndex == 1) FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_QuestionRespondClick");
+        if (answerIndex == 2) FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_QuestionRespondClick_NAN");
         
         // Save answers to file
         if (string.IsNullOrEmpty(answersLogFilePath))
