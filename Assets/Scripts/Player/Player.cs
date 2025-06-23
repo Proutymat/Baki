@@ -201,7 +201,7 @@ public class Player : MonoBehaviour
 
     private void Move()
     {
-        moveAnimation.SetTrigger("Move");
+        moveAnimation.SetTrigger("trigger");
             
         unitTimer = 0f;
         this.transform.position += currentDirection;
