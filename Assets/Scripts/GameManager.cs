@@ -283,33 +283,6 @@ public class GameManager : SerializedMonoBehaviour
         InitializeGame();
     }
     
-    private void OnVideoPrepared(VideoPlayer vp)
-    {
-        videoPlayer.Play();
-        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_Menu/UI_M_Intro");
-        Invoke(nameof(DisableIntroInterface), 0.2f);
-    }
-    
-    private void OnVideoEnd(VideoPlayer vp)
-    {
-        videoPlayer.gameObject.SetActive(false);
-        questionsInterface.SetActive(true);
-        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_StartGame");
-    }
-    
-    void DisableIntroInterface()
-    {
-        introInterface.SetActive(false);
-    }
-    
-    public void LaunchGame()
-    {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_Menu/UI_M_Click");
-        videoPlayer.loopPointReached += OnVideoEnd;
-        videoPlayer.prepareCompleted += OnVideoPrepared;
-        videoPlayer.Prepare();
-    }
-    
     
     // --------------------------------------------
     //                  QUESTIONS
