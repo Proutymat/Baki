@@ -18,8 +18,8 @@ public class StartButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     private bool isBeating;
     private Sequence beatingSequence;
     private bool hasBeenClicked = false;
-    
-    void Start()
+
+    public void Initialize()
     {
         FMODUnity.RuntimeManager.PlayOneShot("event:/AMB/AMB_Menu/AMB_M");
         isBeating = false;

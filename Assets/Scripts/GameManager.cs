@@ -41,12 +41,13 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("setObjectsInInspector")] private Image buttonRight;
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject buttonsArrowsObject;
 
-    [Header("----- UI INTERFACE -----"), ShowIf("setObjectsInInspector")]
+    [Header("----- UI INTERFACE INTRO -----"), ShowIf("setObjectsInInspector")]
     [SerializeField, ShowIf("setObjectsInInspector")] private Canvas mainCanvas;
     [SerializeField, ShowIf("setObjectsInInspector")] private Camera canvasCamera;
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject endingCanvas;
     [SerializeField, ShowIf("setObjectsInInspector")] private VideoPlayer videoPlayer;
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject introInterface;
+    [SerializeField, ShowIf("setObjectsInInspector")] private Button startButton;
     
     
     [Header("--- UI INTERFACE QUESTION ---"), ShowIf("setObjectsInInspector")]
@@ -71,6 +72,7 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("setObjectsInInspector")] private Sprite filledBubbleSprite;
     [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI landmarkText;
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject nextButton;
+    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject backButton;
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject landmarkAnswer1Button;
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject landmarkAnswer2Button;
     
@@ -269,6 +271,7 @@ public class GameManager : SerializedMonoBehaviour
         }
         else
         {
+            startButton.GetComponent<StartButton>().Initialize();
             introInterface.SetActive(true);
             questionsInterface.SetActive(false);
             landmarksInterface.SetActive(false);
@@ -294,6 +297,32 @@ public class GameManager : SerializedMonoBehaviour
         if (enablePrinters) StartCoroutine(pdfPrinter.Print());
 	}
 
+    public void PreviousLandmarkQuestion()
+    {
+        // Cannot go back if it's the first question
+        if (nbLandmarkQuestions <= 0)
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_QuestionRespondClick");
+            return;
+        }
+        
+        nbLandmarkQuestions -= 1;
+        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_QuestionRespondClick");
+        
+        // Update bubble pages sprite
+        bubblePages[nbLandmarkQuestions + 1].sprite = emptyBubbleSprite;
+        bubblePages[nbLandmarkQuestions].sprite = filledBubbleSprite;
+        
+        if (nbLandmarkQuestions == 1)
+            landmarkText.text = currentLandmarkQuestion.text2;
+        else if (nbLandmarkQuestions == 2)
+            landmarkText.text = currentLandmarkQuestion.text3;
+        else if (nbLandmarkQuestions == 3)
+            landmarkText.text = currentLandmarkQuestion.text4;
+        else if (nbLandmarkQuestions == 4)
+            landmarkText.text = currentLandmarkQuestion.text5;
+    }
+
     public void NextLandmarkQuestion()
     {
         nbLandmarkQuestions += 1;
@@ -307,6 +336,7 @@ public class GameManager : SerializedMonoBehaviour
         if (nbLandmarkQuestions == currentLandmarkQuestion.nbTexts)
         {
             nextButton.SetActive(false);
+            backButton.SetActive(false);
             landmarkAnswer1Button.SetActive(true);
             landmarkAnswer2Button.SetActive(true);
             landmarkAnswer1Button.GetComponentInChildren<TextMeshProUGUI>().text = currentLandmarkQuestion.answer1;
@@ -381,6 +411,7 @@ public class GameManager : SerializedMonoBehaviour
         FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_QuestionRespondClick");
         
         nextButton.SetActive(true);
+        backButton.SetActive(true);
         landmarkAnswer1Button.SetActive(false);
         landmarkAnswer2Button.SetActive(false);
         
