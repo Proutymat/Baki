@@ -313,7 +313,10 @@ public class GameManager : SerializedMonoBehaviour
         bubblePages[nbLandmarkQuestions + 1].sprite = emptyBubbleSprite;
         bubblePages[nbLandmarkQuestions].sprite = filledBubbleSprite;
         
-        if (nbLandmarkQuestions == 1)
+        // Update text
+        if (nbLandmarkQuestions == 0)
+            landmarkText.text = currentLandmarkQuestion.text1;
+        else if (nbLandmarkQuestions == 1)
             landmarkText.text = currentLandmarkQuestion.text2;
         else if (nbLandmarkQuestions == 2)
             landmarkText.text = currentLandmarkQuestion.text3;
@@ -344,6 +347,7 @@ public class GameManager : SerializedMonoBehaviour
             FMODUnity.RuntimeManager.PlayOneShot("event:/MX/MX_Trig/MX_Trig_Question");
         }
 
+        // Update text
         if (nbLandmarkQuestions == 1)
             landmarkText.text = currentLandmarkQuestion.text2;
         else if (nbLandmarkQuestions == 2)
