@@ -6,36 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="73781b9b-5c78-4d1f-a1a2-b07d1229386b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Baki/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Baki/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Map.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Map/AVATAR.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Map/AVATAR.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Map/CARTEV2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Map/CARTEV2.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Map/DottedLine.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Map/DottedLine.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Map/DottedLineCurved.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Map/DottedLineCurved.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Map/FLECHE.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Map/FLECHE.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Map/LIGNE_SUPERIEURE.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Map/LIGNE_SUPERIEURE.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Map/Landmark.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Map/Landmark.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Map/LandmarkChecked.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Map/LandmarkChecked.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Map/Map.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Map/Map.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Map/PT_INTERET.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Map/PT_INTERET.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Map/PT_INTERET_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Map/PT_INTERET_2.png.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/ProtoDigital.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ProtoDigital.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Printer/PDFPrinter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Printer/PDFPrinter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/PC_RPAsset.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/PC_RPAsset.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/UniversalRenderPipelineGlobalSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/UniversalRenderPipelineGlobalSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,7 +158,7 @@
       <workItem from="1749908949192" duration="17428000" />
       <workItem from="1750045449239" duration="3849000" />
       <workItem from="1750706724853" duration="1803000" />
-      <workItem from="1750774570171" duration="13804000" />
+      <workItem from="1750774570171" duration="14801000" />
     </task>
     <servers />
   </component>
