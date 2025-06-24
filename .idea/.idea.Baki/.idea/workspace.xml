@@ -5,14 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="73781b9b-5c78-4d1f-a1a2-b07d1229386b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Baki/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Baki/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Map/DOTTED_LINE.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Map/DOTTED_LINE.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Map/DOTTED_LINE_CURVED.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Map/DOTTED_LINE_CURVED.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ProtoDigital.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ProtoDigital.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Animations/Movement.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/Animations/Movement.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Animations/Movement.controller.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/Animations/Movement.controller.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Animations/MovementAnimation.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Animations/MovementAnimation.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Deplacement/ANIM_DEPLACEMENT_00000.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/Sprites/Deplacement/ANIM_DEPLACEMENT_00000.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Deplacement/ANIM_DEPLACEMENT_00035.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Deplacement/ANIM_DEPLACEMENT_00035.png.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

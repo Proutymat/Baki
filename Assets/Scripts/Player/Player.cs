@@ -13,12 +13,17 @@ public class Player : MonoBehaviour
     [SerializeField] private float secondPerUnit = 3f;
     [SerializeField] private float secondPerUnitSpecialZone = 2f;
     [SerializeField] private Vector3 currentDirection;
+    [SerializeField] private Vector3 previousDirectionVector;
     [SerializeField] private GameObject avatarArrow;
     
     [Header("UI Animations")]
     [SerializeField] private Animator moveAnimation;
     [SerializeField] private UiAnimations uiAnimations;
     
+    [Header("MAP STUFF")]
+    [SerializeField] private GameObject dottedLinePrefab;
+    [SerializeField] private GameObject dottedLineCurvedPrefab;
+    [SerializeField] private GameObject PlayerPathDottedLineParent;
 
     private float unitTimer;
     private float gridCellSize;
@@ -54,6 +59,8 @@ public class Player : MonoBehaviour
         midSoundPlayed = false;
         hasMovedOnce = false;
         speed = secondPerUnit;
+        previousDirectionVector = currentDirection;
+        currentDirection = transform.forward * gridCellSize;
     }
     
     public void SetIsMoving(bool newMovingValue)
@@ -199,10 +206,54 @@ public class Player : MonoBehaviour
         inSpecialZone = newInSpecialZone;
     }
 
+    bool IsHorizontal(Vector3 direction)
+    {
+        return direction == Vector3.left * gridCellSize || direction == Vector3.right * gridCellSize;
+    }
+
+    bool IsVertical(Vector3 direction)
+    {
+        return direction == Vector3.forward * gridCellSize || direction == Vector3.back * gridCellSize;
+    }
+    
+    void InstantiateDottedLine(GameObject prefab, Quaternion rotation)
+    {
+        GameObject line = Instantiate(prefab, transform.position, rotation);
+        line.transform.position = new Vector3(transform.position.x, 2, transform.position.z);
+        line.transform.parent = PlayerPathDottedLineParent.transform;
+    }
+
     private void Move()
     {
-        moveAnimation.SetTrigger("trigger");
+        bool sameAxis = (IsHorizontal(previousDirectionVector) && IsHorizontal(currentDirection)) ||
+                        (IsVertical(previousDirectionVector) && IsVertical(currentDirection));
+
+        // Straight Dotted line
+        if (sameAxis)
+        {
+            Quaternion rotation = IsHorizontal(previousDirectionVector)
+                ? Quaternion.Euler(90, 0, 0)
+                : Quaternion.Euler(90, 90, 0);
+            InstantiateDottedLine(dottedLinePrefab, rotation);
+        }
+        // Curved dotted line
+        else
+        {
+            Quaternion rotation;
+
+            if (previousDirectionVector == Vector3.back * gridCellSize)
+                rotation = currentDirection == Vector3.left * gridCellSize ? Quaternion.Euler(90, 180, 0) : Quaternion.Euler(90, -90, 0);
+            else if (previousDirectionVector == Vector3.forward * gridCellSize) 
+                rotation = currentDirection == Vector3.left * gridCellSize ? Quaternion.Euler(90, 90, 0) : Quaternion.Euler(90, 0, 0);
+            else if (previousDirectionVector == Vector3.left * gridCellSize)
+                rotation = currentDirection == Vector3.forward * gridCellSize ? Quaternion.Euler(90, -90, 0) : Quaternion.Euler(90, 0, 0);
+            else
+                rotation = currentDirection == Vector3.forward * gridCellSize ? Quaternion.Euler(90, 180, 0) : Quaternion.Euler(90, 90, 0);
             
+            InstantiateDottedLine(dottedLineCurvedPrefab, rotation);
+        }
+        
+        moveAnimation.SetTrigger("trigger");
         unitTimer = 0f;
         this.transform.position += currentDirection;
         gameManager.DistanceTraveled++;
@@ -222,6 +273,8 @@ public class Player : MonoBehaviour
         // Right sound
         else if (currentDirection == Vector3.forward * gridCellSize)
             FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/SFX_InGame/SFX_IG_DirectionalInfo_SPAT/SFX_IG_DirectionalInfo_R");
+        
+        previousDirectionVector = currentDirection;
     }
 
     void Update() 
