@@ -291,9 +291,10 @@ public class GameManager : SerializedMonoBehaviour
     //                  QUESTIONS
     // --------------------------------------------
 
-    public void PrintAreaPlayer()
+    public void PrintAreaPlayer(bool showAllLandmarkArrows = false)
     {
         playerCamera.transform.position = new Vector3(player.transform.position.x, playerCamera.transform.position.y, player.transform.position.z);
+        landmarksArrows.GetComponent<LandmarkDetection>().UpdateLandmarkArrows(showAllLandmarkArrows);
         if (enablePrinters) StartCoroutine(pdfPrinter.Print());
 	}
 
@@ -446,8 +447,8 @@ public class GameManager : SerializedMonoBehaviour
             writer.WriteLine("------------------------");
         }
         
-        PrintAreaPlayer();
         currentLandmark.Exit();
+        PrintAreaPlayer(true);
     }
     
     private void WriteFinalStatsToFile()
