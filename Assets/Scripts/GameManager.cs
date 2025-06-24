@@ -85,6 +85,7 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("setObjectsInInspector")] private Player player;
     [SerializeField, ShowIf("setObjectsInInspector")] private ProgressBar progressBar;
     [SerializeField, ShowIf("setObjectsInInspector")] private PDFPrinter pdfPrinter;
+    [SerializeField, ShowIf("setObjectsInInspector")] private PNGPrinter pngPrinter;
     [SerializeField, ShowIf("setObjectsInInspector")] private UiAnimations uiAnimations;
     
     [Header("GAME SETTINGS")]
@@ -124,7 +125,7 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("debug")] private List<int> lawsQueuePriority;
     [SerializeField, ShowIf("debug")] private float gameTimer;
     [SerializeField, ShowIf("debug")] private int lastPrintedPercent = 0;
-    private string logFolderPath;
+    private string currentGameLogFolder;
     private string charteLogFilePath;
     private string answersLogFilePath;
     private bool isGameOver = false;
@@ -159,7 +160,7 @@ public class GameManager : SerializedMonoBehaviour
     public int WallsHit { get { return nbWallsHit; } set { nbWallsHit = value; } }
     public int DirectionChanges { get { return nbDirectionChanges; } set { nbDirectionChanges = value; } }
     public int ButtonsPressed { get { return nbButtonsPressed; } set { nbButtonsPressed = value; } }
-    public string LogFolderPath { get { return logFolderPath; } }
+    public string CurrentGameLogFolder { get { return currentGameLogFolder; } }
 
 
     // --------------------------------------------
@@ -247,16 +248,16 @@ public class GameManager : SerializedMonoBehaviour
 
         
         // DEBUG : Create log folder
-        logFolderPath = Application.dataPath + "/Logs";
-        if (!System.IO.Directory.Exists(logFolderPath))
+        currentGameLogFolder = Application.dataPath + "/Logs";
+        if (!System.IO.Directory.Exists(currentGameLogFolder))
         {
-            System.IO.Directory.CreateDirectory(logFolderPath);
+            System.IO.Directory.CreateDirectory(currentGameLogFolder);
         }
 
-        logFolderPath += "/" + System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
-        System.IO.Directory.CreateDirectory(logFolderPath);
-        charteLogFilePath = $"{logFolderPath}/charte.txt";
-        answersLogFilePath = $"{logFolderPath}/answers.txt";
+        currentGameLogFolder += "/" + System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
+        System.IO.Directory.CreateDirectory(currentGameLogFolder);
+        charteLogFilePath = $"{currentGameLogFolder}/charte.txt";
+        answersLogFilePath = $"{currentGameLogFolder}/answers.txt";
         
         // Initialize instances 
         player.Initialize();
@@ -295,7 +296,7 @@ public class GameManager : SerializedMonoBehaviour
     {
         playerCamera.transform.position = new Vector3(player.transform.position.x, playerCamera.transform.position.y, player.transform.position.z);
         landmarksArrows.GetComponent<LandmarkDetection>().UpdateLandmarkArrows(showAllLandmarkArrows);
-        if (enablePrinters) StartCoroutine(pdfPrinter.Print());
+        if (enablePrinters) StartCoroutine(pngPrinter.PrintMapTicket());
 	}
 
     public void PreviousLandmarkQuestion()
@@ -408,7 +409,8 @@ public class GameManager : SerializedMonoBehaviour
         }
         bubblePages[0].sprite = filledBubbleSprite;
         
-        if (enablePrinters) pdfPrinter.PrintLandmarkPDF(Mathf.FloorToInt(100 * (1 - (gameTimer / gameDuration))));
+        Debug.Log("enablePrinters: " + enablePrinters);
+        if (enablePrinters) pngPrinter.PrintLandmarkTicket(Mathf.FloorToInt(100 * (1 - (gameTimer / gameDuration))));
     }
 
     public void ExitLandmark(int buttonIndex)
