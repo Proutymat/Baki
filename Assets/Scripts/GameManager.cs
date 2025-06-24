@@ -44,7 +44,6 @@ public class GameManager : SerializedMonoBehaviour
     [Header("----- UI INTERFACE INTRO -----"), ShowIf("setObjectsInInspector")]
     [SerializeField, ShowIf("setObjectsInInspector")] private Canvas mainCanvas;
     [SerializeField, ShowIf("setObjectsInInspector")] private Camera canvasCamera;
-    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject endingCanvas;
     [SerializeField, ShowIf("setObjectsInInspector")] private VideoPlayer videoPlayer;
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject introInterface;
     [SerializeField, ShowIf("setObjectsInInspector")] private Button startButton;
@@ -75,6 +74,12 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject backButton;
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject landmarkAnswer1Button;
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject landmarkAnswer2Button;
+    
+    [Header("----- UI INTERFACE ENDING -----"), ShowIf("setObjectsInInspector")]
+    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject endingInterface;
+
+
+
     
     [Header("----- MAP PRINTER -----"), ShowIf("setObjectsInInspector")]
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject landmarksArrows;
@@ -269,6 +274,7 @@ public class GameManager : SerializedMonoBehaviour
             introInterface.SetActive(false);
             questionsInterface.SetActive(true);
             landmarksInterface.SetActive(false); 
+            endingInterface.SetActive(false);
         }
         else
         {
@@ -276,6 +282,7 @@ public class GameManager : SerializedMonoBehaviour
             introInterface.SetActive(true);
             questionsInterface.SetActive(false);
             landmarksInterface.SetActive(false);
+            endingInterface.SetActive(false);
         }
     }
     
@@ -634,8 +641,10 @@ public class GameManager : SerializedMonoBehaviour
             player.SetIsMoving(false);
             WriteFinalStatsToFile();
             isGameOver = true;
-            endingCanvas.SetActive(true);
-            mainCanvas.gameObject.SetActive(false);
+            questionsInterface.SetActive(false);
+            endingInterface.SetActive(true);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/StopAll");
+            FMODUnity.RuntimeManager.PlayOneShot("event:/END");
         }
         
         // Update stats

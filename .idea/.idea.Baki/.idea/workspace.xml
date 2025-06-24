@@ -6,30 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="73781b9b-5c78-4d1f-a1a2-b07d1229386b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Baki/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Baki/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PrinterAssets/Map.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PrinterAssets/Map/AVATAR.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PrinterAssets/Map/AVATAR.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PrinterAssets/Map/CARTEV2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PrinterAssets/Map/CARTEV2.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PrinterAssets/Map/DottedLine.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PrinterAssets/Map/DottedLine.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PrinterAssets/Map/DottedLineCurved.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PrinterAssets/Map/DottedLineCurved.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PrinterAssets/Map/FLECHE.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PrinterAssets/Map/FLECHE.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PrinterAssets/Map/Landmark.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PrinterAssets/Map/Landmark.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PrinterAssets/Map/LandmarkChecked.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PrinterAssets/Map/LandmarkChecked.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PrinterAssets/Map/Map.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PrinterAssets/Map/Map.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PrinterAssets/Map/PT_INTERET.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PrinterAssets/Map/PT_INTERET.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PrinterAssets/Map/PT_INTERET_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PrinterAssets/Map/PT_INTERET_2.png.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/ProtoDigital.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ProtoDigital.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/PrinterAssets/LIGNE_SUPERIEURE.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/PrinterAssets/LIGNE_SUPERIEURE.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/PrinterAssets/LIGNE_SUPERIEURE.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/PrinterAssets/LIGNE_SUPERIEURE.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,7 +158,7 @@
       <workItem from="1749908949192" duration="17428000" />
       <workItem from="1750045449239" duration="3849000" />
       <workItem from="1750706724853" duration="1803000" />
-      <workItem from="1750774570171" duration="15787000" />
+      <workItem from="1750774570171" duration="16418000" />
     </task>
     <servers />
   </component>
