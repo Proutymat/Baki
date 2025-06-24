@@ -41,12 +41,13 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("setObjectsInInspector")] private Image buttonRight;
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject buttonsArrowsObject;
 
-    [Header("----- UI INTERFACE -----"), ShowIf("setObjectsInInspector")]
+    [Header("----- UI INTERFACE INTRO -----"), ShowIf("setObjectsInInspector")]
     [SerializeField, ShowIf("setObjectsInInspector")] private Canvas mainCanvas;
     [SerializeField, ShowIf("setObjectsInInspector")] private Camera canvasCamera;
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject endingCanvas;
     [SerializeField, ShowIf("setObjectsInInspector")] private VideoPlayer videoPlayer;
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject introInterface;
+    [SerializeField, ShowIf("setObjectsInInspector")] private Button startButton;
     
     
     [Header("--- UI INTERFACE QUESTION ---"), ShowIf("setObjectsInInspector")]
@@ -71,6 +72,7 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("setObjectsInInspector")] private Sprite filledBubbleSprite;
     [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI landmarkText;
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject nextButton;
+    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject backButton;
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject landmarkAnswer1Button;
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject landmarkAnswer2Button;
     
@@ -83,6 +85,7 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("setObjectsInInspector")] private Player player;
     [SerializeField, ShowIf("setObjectsInInspector")] private ProgressBar progressBar;
     [SerializeField, ShowIf("setObjectsInInspector")] private PDFPrinter pdfPrinter;
+    [SerializeField, ShowIf("setObjectsInInspector")] private PNGPrinter pngPrinter;
     [SerializeField, ShowIf("setObjectsInInspector")] private UiAnimations uiAnimations;
     
     [Header("GAME SETTINGS")]
@@ -122,7 +125,7 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("debug")] private List<int> lawsQueuePriority;
     [SerializeField, ShowIf("debug")] private float gameTimer;
     [SerializeField, ShowIf("debug")] private int lastPrintedPercent = 0;
-    private string logFolderPath;
+    private string currentGameLogFolder;
     private string charteLogFilePath;
     private string answersLogFilePath;
     private bool isGameOver = false;
@@ -157,7 +160,7 @@ public class GameManager : SerializedMonoBehaviour
     public int WallsHit { get { return nbWallsHit; } set { nbWallsHit = value; } }
     public int DirectionChanges { get { return nbDirectionChanges; } set { nbDirectionChanges = value; } }
     public int ButtonsPressed { get { return nbButtonsPressed; } set { nbButtonsPressed = value; } }
-    public string LogFolderPath { get { return logFolderPath; } }
+    public string CurrentGameLogFolder { get { return currentGameLogFolder; } }
 
 
     // --------------------------------------------
@@ -245,16 +248,16 @@ public class GameManager : SerializedMonoBehaviour
 
         
         // DEBUG : Create log folder
-        logFolderPath = Application.dataPath + "/Logs";
-        if (!System.IO.Directory.Exists(logFolderPath))
+        currentGameLogFolder = Application.dataPath + "/Logs";
+        if (!System.IO.Directory.Exists(currentGameLogFolder))
         {
-            System.IO.Directory.CreateDirectory(logFolderPath);
+            System.IO.Directory.CreateDirectory(currentGameLogFolder);
         }
 
-        logFolderPath += "/" + System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
-        System.IO.Directory.CreateDirectory(logFolderPath);
-        charteLogFilePath = $"{logFolderPath}/charte.txt";
-        answersLogFilePath = $"{logFolderPath}/answers.txt";
+        currentGameLogFolder += "/" + System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
+        System.IO.Directory.CreateDirectory(currentGameLogFolder);
+        charteLogFilePath = $"{currentGameLogFolder}/charte.txt";
+        answersLogFilePath = $"{currentGameLogFolder}/answers.txt";
         
         // Initialize instances 
         player.Initialize();
@@ -269,6 +272,7 @@ public class GameManager : SerializedMonoBehaviour
         }
         else
         {
+            startButton.GetComponent<StartButton>().Initialize();
             introInterface.SetActive(true);
             questionsInterface.SetActive(false);
             landmarksInterface.SetActive(false);
@@ -283,43 +287,46 @@ public class GameManager : SerializedMonoBehaviour
         InitializeGame();
     }
     
-    private void OnVideoPrepared(VideoPlayer vp)
-    {
-        videoPlayer.Play();
-        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_Menu/UI_M_Intro");
-        Invoke(nameof(DisableIntroInterface), 0.2f);
-    }
-    
-    private void OnVideoEnd(VideoPlayer vp)
-    {
-        videoPlayer.gameObject.SetActive(false);
-        questionsInterface.SetActive(true);
-        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_StartGame");
-    }
-    
-    void DisableIntroInterface()
-    {
-        introInterface.SetActive(false);
-    }
-    
-    public void LaunchGame()
-    {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_Menu/UI_M_Click");
-        videoPlayer.loopPointReached += OnVideoEnd;
-        videoPlayer.prepareCompleted += OnVideoPrepared;
-        videoPlayer.Prepare();
-    }
-    
     
     // --------------------------------------------
     //                  QUESTIONS
     // --------------------------------------------
 
-    public void PrintAreaPlayer()
+    public void PrintAreaPlayer(bool showAllLandmarkArrows = false)
     {
         playerCamera.transform.position = new Vector3(player.transform.position.x, playerCamera.transform.position.y, player.transform.position.z);
-        if (enablePrinters) StartCoroutine(pdfPrinter.Print());
+        landmarksArrows.GetComponent<LandmarkDetection>().UpdateLandmarkArrows(showAllLandmarkArrows);
+        if (enablePrinters) StartCoroutine(pngPrinter.PrintMapTicket());
 	}
+
+    public void PreviousLandmarkQuestion()
+    {
+        // Cannot go back if it's the first question
+        if (nbLandmarkQuestions <= 0)
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_QuestionRespondClick");
+            return;
+        }
+        
+        nbLandmarkQuestions -= 1;
+        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_QuestionRespondClick");
+        
+        // Update bubble pages sprite
+        bubblePages[nbLandmarkQuestions + 1].sprite = emptyBubbleSprite;
+        bubblePages[nbLandmarkQuestions].sprite = filledBubbleSprite;
+        
+        // Update text
+        if (nbLandmarkQuestions == 0)
+            landmarkText.text = currentLandmarkQuestion.text1;
+        else if (nbLandmarkQuestions == 1)
+            landmarkText.text = currentLandmarkQuestion.text2;
+        else if (nbLandmarkQuestions == 2)
+            landmarkText.text = currentLandmarkQuestion.text3;
+        else if (nbLandmarkQuestions == 3)
+            landmarkText.text = currentLandmarkQuestion.text4;
+        else if (nbLandmarkQuestions == 4)
+            landmarkText.text = currentLandmarkQuestion.text5;
+    }
 
     public void NextLandmarkQuestion()
     {
@@ -334,6 +341,7 @@ public class GameManager : SerializedMonoBehaviour
         if (nbLandmarkQuestions == currentLandmarkQuestion.nbTexts)
         {
             nextButton.SetActive(false);
+            backButton.SetActive(false);
             landmarkAnswer1Button.SetActive(true);
             landmarkAnswer2Button.SetActive(true);
             landmarkAnswer1Button.GetComponentInChildren<TextMeshProUGUI>().text = currentLandmarkQuestion.answer1;
@@ -341,6 +349,7 @@ public class GameManager : SerializedMonoBehaviour
             FMODUnity.RuntimeManager.PlayOneShot("event:/MX/MX_Trig/MX_Trig_Question");
         }
 
+        // Update text
         if (nbLandmarkQuestions == 1)
             landmarkText.text = currentLandmarkQuestion.text2;
         else if (nbLandmarkQuestions == 2)
@@ -400,7 +409,8 @@ public class GameManager : SerializedMonoBehaviour
         }
         bubblePages[0].sprite = filledBubbleSprite;
         
-        if (enablePrinters) pdfPrinter.PrintLandmarkPDF(Mathf.FloorToInt(100 * (1 - (gameTimer / gameDuration))));
+        Debug.Log("enablePrinters: " + enablePrinters);
+        if (enablePrinters) pngPrinter.PrintLandmarkTicket(Mathf.FloorToInt(100 * (1 - (gameTimer / gameDuration))));
     }
 
     public void ExitLandmark(int buttonIndex)
@@ -408,6 +418,7 @@ public class GameManager : SerializedMonoBehaviour
         FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_QuestionRespondClick");
         
         nextButton.SetActive(true);
+        backButton.SetActive(true);
         landmarkAnswer1Button.SetActive(false);
         landmarkAnswer2Button.SetActive(false);
         
@@ -438,8 +449,8 @@ public class GameManager : SerializedMonoBehaviour
             writer.WriteLine("------------------------");
         }
         
-        PrintAreaPlayer();
         currentLandmark.Exit();
+        PrintAreaPlayer(true);
     }
     
     private void WriteFinalStatsToFile()

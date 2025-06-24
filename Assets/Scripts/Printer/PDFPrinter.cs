@@ -55,7 +55,7 @@ public class PDFPrinter : MonoBehaviour
 
     private void CreatePDFWithImage(Texture2D texture, bool longTicket)
     {
-        string imageName = Path.Combine(gameManager.LogFolderPath, $"map_{imageCounter}.png");
+        string imageName = Path.Combine(gameManager.CurrentGameLogFolder, $"map_{imageCounter}.png");
         imageCounter++;
 
         byte[] bytes = texture.EncodeToPNG();
