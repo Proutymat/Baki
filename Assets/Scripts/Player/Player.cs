@@ -228,8 +228,13 @@ public class Player : MonoBehaviour
         bool sameAxis = (IsHorizontal(previousDirectionVector) && IsHorizontal(currentDirection)) ||
                         (IsVertical(previousDirectionVector) && IsVertical(currentDirection));
 
-        // Straight Dotted line
-        if (sameAxis)
+        // First move
+        if (!hasMovedOnce)
+        {
+            InstantiateDottedLine(dottedLinePrefab, Quaternion.Euler(90, 0, 0));
+        }
+        // Straight dotted line
+        else if (sameAxis)
         {
             Quaternion rotation = IsHorizontal(previousDirectionVector)
                 ? Quaternion.Euler(90, 0, 0)
