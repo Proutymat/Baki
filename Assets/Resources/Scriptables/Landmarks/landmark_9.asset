@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8c8072d2125b034db50ac10816f2018, type: 3}
+  m_Name: landmark_9
+  m_EditorClassIdentifier: 
+  text1: "Tu t'asseois dans une salle sombre, face \xE0 un grand \xE9cran. Les gens
+    autour de toi sont bruyant et attendent le d\xE9but du film."
+  text2: "\xC0 c\xF4t\xE9 de toi sont assis tes proches, c'est eux qui t'ont conseill\xE9s
+    d'aller voir ce film."
+  text3: "Les discussions s'estompent et le g\xE9n\xE9rique commence."
+  text4: "Mais \xE0 la place du film pr\xE9vu, un documentaire sur ta vie est diffus\xE9e,
+    les hauts, les bas, les trahision, les rires, tout y est."
+  text5: "Est-ce que tu d\xE9cides de regarder le film ou de couper la projection
+    ?"
+  text6: 
+  answer1: Couper
+  answer2: Regarder
+  type: 1
+  nbTexts: 4

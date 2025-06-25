@@ -12,16 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8c8072d2125b034db50ac10816f2018, type: 3}
   m_Name: landmark_6
   m_EditorClassIdentifier: 
-  text1: "Si on pouvait mettre le temps en pause et qu'on \xE9tait omniscient"
-  text2: 'On pourrait alors tout savoir sur tout, comme la composition et la vitesse
-    d''un objet '
-  text3: "Mais \xE9galement voir les chemin neuronaux s'activer chez une personne
-    en pleine conversation"
-  text4: "Si on assemblait toutes les donn\xE9es prises, est-ce qu'on pourrait alors
-    anticiper ce qu'il va se passer dans la seconde qui arrive ?"
+  text1: "Tu tombes sur un livre dont les pages semblent raconter exactement ce que
+    tu as pens\xE9 jusqu'\xE0 aujourd'hui, sauf deux pages"
+  text2: "La premi\xE8re raconte une trahison que tu as v\xE9cu sans le savoir"
+  text3: "La deuxi\xE8me d\xE9crit un avenir possible dont tu ne veux pas"
+  text4: Tu ne peux lire qu'une seule page, laquelle choisis-tu ?
   text5: 
   text6: 
-  answer1: Oui
-  answer2: Non
+  answer1: Trahison
+  answer2: Avenir
   type: 1
   nbTexts: 3

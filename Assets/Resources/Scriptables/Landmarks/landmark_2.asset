@@ -23,5 +23,5 @@ MonoBehaviour:
   text6: 
   answer1: Oui
   answer2: Non
-  type: 0
+  type: 2
   nbTexts: 3
