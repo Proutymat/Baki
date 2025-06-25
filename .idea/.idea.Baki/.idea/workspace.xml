@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="73781b9b-5c78-4d1f-a1a2-b07d1229386b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Baki/.idea/.name" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Baki/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Baki/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Printer/PNGPrinter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Printer/PNGPrinter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Deplacement/ANIM_DEPLACEMENT_00000bis.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/Sprites/Deplacement/ANIM_DEPLACEMENT_00000bis.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/MOUSE_CURSOR.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/MOUSE_CURSOR.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/MOUSE_CURSOR.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/MOUSE_CURSOR.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,36 +63,27 @@
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/../../PROTO_BAKI_WINDOWS_font2\Baki.exe" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../../PROTO_BAKI\BAKI.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="C:\Users\ELE66defb67b315c\Desktop\BUILDS" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
-      <option name="ENV_FILE_PATHS" value="" />
-      <option name="REDIRECT_INPUT_PATH" value="" />
-      <option name="PTY_MODE" value="Auto" />
       <method v="2" />
     </configuration>
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.42f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="D:\Unity\6000.0.42f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\ELE66defb67b315c\Desktop\GithubDesktop\Baki -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\ELE66defb67b315c\Desktop\GithubDesktop\Baki" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
-      <option name="ENV_FILE_PATHS" value="" />
-      <option name="REDIRECT_INPUT_PATH" value="" />
-      <option name="PTY_MODE" value="Auto" />
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.42f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="D:\Unity\6000.0.42f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Users\ELE66defb67b315c\Desktop\GithubDesktop\Baki -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\ELE66defb67b315c\Desktop\GithubDesktop\Baki" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
-      <option name="ENV_FILE_PATHS" value="" />
-      <option name="REDIRECT_INPUT_PATH" value="" />
-      <option name="PTY_MODE" value="Auto" />
       <method v="2" />
     </configuration>
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -106,7 +97,6 @@
       <option name="selectedOptions">
         <list />
       </option>
-      <option name="useMixedMode" value="false" />
       <method v="2" />
     </configuration>
     <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -120,7 +110,6 @@
       <option name="selectedOptions">
         <list />
       </option>
-      <option name="useMixedMode" value="false" />
       <method v="2" />
     </configuration>
   </component>
@@ -173,6 +162,7 @@
       <workItem from="1750774570171" duration="18684000" />
       <workItem from="1750855066477" duration="14003000" />
       <workItem from="1750876547598" duration="72000" />
+      <workItem from="1750888784088" duration="741000" />
     </task>
     <servers />
   </component>
