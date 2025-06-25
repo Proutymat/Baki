@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8c8072d2125b034db50ac10816f2018, type: 3}
+  m_Name: landmark_11
+  m_EditorClassIdentifier: 
+  text1: "Tu essayes un tout nouveau dispositif de t\xE9l\xE9portation"
+  text2: "Il fabrique un corps identique au tiens \xE0 ta destination et d\xE9truit
+    celui du point de d\xE9part. "
+  text3: "dans le corps d'arriv\xE9 se trouve une conscience identique \xE0 la tienne.
+    M\xEAme personnalit\xE9 m\xEAme souvenirs."
+  text4: "Tu vois un message d'erreur devant toi. Tu es \xE0 ton lieu de d\xE9part
+    mais la copie de toi est l\xE0 aussi. Tu n'as pas boug\xE9 et ton corps n'a pas
+    \xE9t\xE9 d\xE9truit"
+  text5: "Elle est vivante et partage les m\xEAmes souvenirs que toi jusq'\xE0 il
+    y a quelques secondes. Il y a un instant, l'un de vous deux n'existait pas "
+  text6: "Vous \xEAtes donc persuad\xE9s tous les deux d'\xEAtre le toi d'origine.
+    Est-ce que tu sais comment prouver qui est le vrai toi ?"
+  answer1: Oui
+  answer2: Non
+  type: 2
+  nbTexts: 5

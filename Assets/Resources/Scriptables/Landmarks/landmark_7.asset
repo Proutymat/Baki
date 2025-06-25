@@ -12,16 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8c8072d2125b034db50ac10816f2018, type: 3}
   m_Name: landmark_7
   m_EditorClassIdentifier: 
-  text1: "La physique quantique affirme qu' \xE0 petite \xE9chelle une chose peut
-    avoir deux caract\xE9ristiques en simultan\xE9"
-  text2: "Comme la lumi\xE8re qui est particule et onde \xE0 la fois"
-  text3: "A plus grande \xE9chelle cela pourrait dire que deux choses oppos\xE9es
-    pourrait \xEAtre vraies en m\xEAme temps"
-  text4: "Ou bien que deux r\xE9ponses peuvent \xEAtre \xE0 la fois diff\xE9rentes
-    et toutes les deux vraies"
-  text5: 
+  text1: "Chaque jour tu bois, tu manges, tu respires, tu fais le man\xE8ge, tu r\xE9p\xE8tes
+    les choses du quotidien sans m\xEAme y penser."
+  text2: "Mais tu d\xE9couvres aussi de nouvelles choses et rencontres des nouvelles
+    personnes."
+  text3: "Des gens que tu ne reverra peut-\xEAtre jamais ou au contraire de futur
+    amis."
+  text4: Ce soir tu iras te coucher dans ton lit, confortablement sous ta couverture.
+  text5: "Tu fermes les yeux et tu t'endors. Est-ce que tu r\xEAves de ton quotidien
+    ou de tes d\xE9couvertes ?"
   text6: 
-  answer1: J'y crois
-  answer2: Je n'y crois pas
+  answer1: Quotiien
+  answer2: "D\xE9couverte"
   type: 1
-  nbTexts: 3
+  nbTexts: 4

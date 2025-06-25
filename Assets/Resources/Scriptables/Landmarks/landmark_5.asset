@@ -12,17 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8c8072d2125b034db50ac10816f2018, type: 3}
   m_Name: landmark_5
   m_EditorClassIdentifier: 
-  text1: "Le vent te rappelle chaque centim\xE8tre carr\xE9 de ta peau"
-  text2: "La soif t'emp\xEAche d'oublier ta bouche, le froid fais trembler chacun
-    de tes muscles."
-  text3: Pourtant, certaines personnes affirment que nous vivons toustes dans une
-    simulation informatique
-  text4: "Nous n'existerions alors pas vraiment et serions l'oeuvre d'un programme
-    ultra sophistiqu\xE9."
-  text5: "Si tu n'\xE9tais qu'un bout d'algorithme, est-ce que tu souhaiterais savoir
-    que tu vis dans une simulation ?"
+  text1: "Si on pouvait mettre le temps en pause et qu'on \xE9tait omniscient"
+  text2: 'On pourrait alors tout savoir sur tout, comme la composition et la vitesse
+    d''un objet '
+  text3: "Mais aussi voir tous les neurones agir en cha\xEEne lors de chaque prise
+    de d\xE9cision de toustes"
+  text4: "Si on assemblait toutes les donn\xE9es prises, est-ce qu'on pourrait alors
+    anticiper ce qu'il va se passer dans l'instant qui arrive ?"
+  text5: 
   text6: 
   answer1: Oui
   answer2: Non
-  type: 1
-  nbTexts: 4
+  type: 2
+  nbTexts: 3

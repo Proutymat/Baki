@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8c8072d2125b034db50ac10816f2018, type: 3}
+  m_Name: landmark_15
+  m_EditorClassIdentifier: 
+  text1: "En g\xE9n\xE9ral quand on rencontre quelqu'un "
+  text2: on lui demande d'abord son nom
+  text3: puis on lui demande ce qu'iel fait dans la vie.
+  text4: "Le travail qu'on fait est une des plus grandes partie de notre identit\xE9"
+  text5: "Pourtant, de plus en plus de personnes sont sans emplois, et le progr\xE8s
+    technique pourrait empirer ce ph\xE9nom\xE8ne."
+  text6: "Est-ce que le fait qu'on s'identifie par notre fonction en soci\xE9t\xE9
+    te d\xE9ranges ?"
+  answer1: Oui
+  answer2: Non
+  type: 1
+  nbTexts: 5

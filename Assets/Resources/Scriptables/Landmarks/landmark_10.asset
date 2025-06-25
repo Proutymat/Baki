@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8c8072d2125b034db50ac10816f2018, type: 3}
+  m_Name: landmark_10
+  m_EditorClassIdentifier: 
+  text1: "Ca ne devait pas se passer comme \xE7a. "
+  text2: "Tu n'avais jamais pr\xE9vu d'en arriver l\xE0."
+  text3: "Tu ne t'ai m\xEAme pas vu en arriver l\xE0."
+  text4: "Tu n'as pas le temps de penser \xE0 tout \xE7a. Personne ne t'as vu, pour
+    l'instant personne ne sait rien."
+  text5: "Tu peux encore agir. O\xF9 est-ce que tu caches le cadavre ?"
+  text6: 
+  answer1: Tu l'enterres
+  answer2: "Tu le jette \xE0 l'eau"
+  type: 3
+  nbTexts: 4

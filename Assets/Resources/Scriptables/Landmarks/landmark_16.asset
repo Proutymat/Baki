@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8c8072d2125b034db50ac10816f2018, type: 3}
+  m_Name: landmark_16
+  m_EditorClassIdentifier: 
+  text1: Si Mozart, enfant, prenait conscience de son potentiel
+  text2: S'il savait qu'en pratiquant le piano il deviendrait un prodige
+  text3: "Mais qu'il pr\xE9f\xE9rait passer ses apr\xE8s midis \xE0 sortir jouer
+    dehors avec ses amis"
+  text4: "Et qu'\xE0 vrai dire il n'avait pas pour intention de commencer le piano"
+  text5: "Est-ce que l'on pourrait consid\xE9rer \xE7a comme immoral de sa part ?"
+  text6: 
+  answer1: 'Oui '
+  answer2: Non
+  type: 0
+  nbTexts: 4

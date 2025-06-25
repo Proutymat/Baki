@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8c8072d2125b034db50ac10816f2018, type: 3}
+  m_Name: landmark_14
+  m_EditorClassIdentifier: 
+  text1: "Le pouvoir de remonter dans le temps est souvent fantasm\xE9"
+  text2: "Imagine pouvoir revivre n'importe quel moment \xE0 ta guise, ou bien pouvoir
+    r\xE9essayer en boucle jusqu'\xE0 r\xE9ussir"
+  text3: Ne plus pouvoir perdre de temps... Cela voudrait aussi dire devenir potentiellement
+    obsessionnel
+  text4: "Peut-\xEAtre que tu pourrais faire encore mieux, il suffit de revenir en
+    arri\xE8re pour le savoir. Est-ce que tu saurais encore profiter ?"
+  text5: " Et serais tu encore moral s'il suffit de revenir en arri\xE8re quand tu
+    fais quelque chose de mal, ou m\xEAme seulement quand tu te fais attraper "
+  text6: Finalement ce pouvoir... Serait-il vraiment une chance ?
+  answer1: Oui
+  answer2: Non
+  type: 3
+  nbTexts: 5
