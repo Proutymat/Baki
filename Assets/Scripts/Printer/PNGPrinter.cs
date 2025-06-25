@@ -28,6 +28,9 @@ public class PNGPrinter : MonoBehaviour
     private const int dpi = 300;
     private const float cmToInch = 0.393701f;
     
+    private int lawIncrement = 0;
+    private int illustrationIncrement = 0;
+    
     void Start()
     {
         gameManager = GameManager.Instance;
@@ -38,6 +41,8 @@ public class PNGPrinter : MonoBehaviour
     {
         imageCounter = 0;
         ticketPath = Path.Combine(gameManager.CurrentGameLogFolder, $"ticket.png");
+        lawIncrement = 0;
+        illustrationIncrement = 0;
     }
     
     private Texture2D ResizeTexture(Texture2D source, int newWidth, int newHeight)
@@ -317,17 +322,17 @@ public class PNGPrinter : MonoBehaviour
         y = DrawTexture(finalTexture, "Assets/CHARTE/FOND_FIN.png", imageWidth, y);
     }
     
-    private void DrawBorders(Texture2D finalTexture, int imageWidth, int height)
+    private void DrawBorders(Texture2D finalTexture, int imageWidth, int height, int page)
     {
         int y = height;
         string borderPath = "Assets/CHARTE/BORDURES/";
         
-        y = DrawTexture(finalTexture, Path.Combine(borderPath, "1_BORDURE_DEBUT.png"), imageWidth, y);
+        y = DrawTexture(finalTexture, Path.Combine(borderPath, $"{page + 1}_BORDURE_DEBUT.png"), imageWidth, y);
         for (int i = 0; i < 5; i++)
         {
-            y = DrawTexture(finalTexture, Path.Combine(borderPath, "1_BORDURE_MILIEU.png"), imageWidth, y);
+            y = DrawTexture(finalTexture, Path.Combine(borderPath, $"{page + 1}_BORDURE_MILIEU.png"), imageWidth, y);
         }
-        y = DrawTexture(finalTexture, Path.Combine(borderPath, "1_BORDURE_FIN.png"), imageWidth, y);
+        y = DrawTexture(finalTexture, Path.Combine(borderPath, $"{page + 1}_BORDURE_FIN.png"), imageWidth, y);
         
     }
 
@@ -338,10 +343,15 @@ public class PNGPrinter : MonoBehaviour
         string gauche = "Assets/CHARTE/ILLUS_GAUCHE/";
         string droite = "Assets/CHARTE/ILLUS_DROITE/";
 
-        for (int i = 0; i < 3; i++)
+        int i = 0;
+        while (i < 3)
         {
-            string path = (i % 2 == 0 ? gauche : droite) + illustrations[i] + ".png";
+            Debug.Log("ILLUS = " + illustrationIncrement + " / " + illustrations.Count);
+            if (illustrationIncrement >= illustrations.Count) break; // Si pas assez d'illustrations, on arrête
+            string path = (i % 2 == 0 ? gauche : droite) + illustrations[illustrationIncrement] + ".png";
             y = DrawTexture(finalTexture, path, imageWidth, y);
+            i++;
+            illustrationIncrement++;
         }
     }
     
@@ -349,24 +359,29 @@ public class PNGPrinter : MonoBehaviour
     {
         int y = height - 400;
         string path = "Assets/CHARTE/LOIS/";
-        
-        for (int i = 0; i < 5; i++)
+
+        int i = 0;
+        while (i < 5)
         {
-            y = DrawTexture(finalTexture, path + laws[i] + ".png", imageWidth, y);
+            if (lawIncrement >= laws.Count) break; // Si pas assez de lois, on arrête
+            y = DrawTexture(finalTexture, path + laws[lawIncrement] + ".png", imageWidth, y);
+            lawIncrement++;
+            i++;
         }
+        
     }
     
-    private void DrawFrames(Texture2D finalTexture, int imageWidth, int height)
+    private void DrawFrames(Texture2D finalTexture, int imageWidth, int height, int page)
     {
         string framePath = "Assets/CHARTE/CADRES/";
         int y = height;
         
-        y = DrawTexture(finalTexture, Path.Combine(framePath, "1_CADRE_DEBUT.png"), imageWidth, y);
+        y = DrawTexture(finalTexture, Path.Combine(framePath, $"{page + 1}_CADRE_DEBUT.png"), imageWidth, y);
         for (int i = 0; i < 5; i++)
         {
-            y = DrawTexture(finalTexture, Path.Combine(framePath, "1_CADRE_MILIEU.png"), imageWidth, y);
+            y = DrawTexture(finalTexture, Path.Combine(framePath, $"{page + 1}_CADRE_MILIEU.png"), imageWidth, y);
         }
-        y = DrawTexture(finalTexture, Path.Combine(framePath, "1_CADRE_FIN.png"), imageWidth, y);
+        y = DrawTexture(finalTexture, Path.Combine(framePath, $"{page + 1}_CADRE_FIN.png"), imageWidth, y);
     }
     
     private void GenerateCharteTicket(List<string> laws, List<string> illustrations)
@@ -389,10 +404,10 @@ public class PNGPrinter : MonoBehaviour
             finalTexture.SetPixels32(whiteFill);
             
             DrawBackgrounds(finalTexture, imageWidth, height); // Backgrounds
-            DrawBorders(finalTexture, imageWidth, height); // Borders
+            DrawBorders(finalTexture, imageWidth, height, i); // Borders
             DrawIllustrations(finalTexture, imageWidth, height, illustrations); // Illustrations
             DrawLaws(finalTexture, imageWidth, height, laws); // Laws
-            DrawFrames(finalTexture, imageWidth, height); // Frames
+            DrawFrames(finalTexture, imageWidth, height, i); // Frames
             if (i == 0)
                 DrawTexture(finalTexture, "Assets/CHARTE/DEBUT_CHARTE.png", imageWidth, height); // Charte header
             if (i == 2)
@@ -478,6 +493,9 @@ public class PNGPrinter : MonoBehaviour
     [Button]
     public void PrintCharteTicket(List<string> laws, List<string> illustrations)
     {
+        lawIncrement = 0;
+        illustrationIncrement = 0;
+        
         laws = new List<string>();
         illustrations = new List<string>();
         laws.Add("ART_1");
@@ -487,9 +505,19 @@ public class PNGPrinter : MonoBehaviour
         laws.Add("ART_5");
         laws.Add("ART_6");
         laws.Add("EGO_1");
+        laws.Add("EGO_2");
+        laws.Add("EGO_3");
+        laws.Add("EGO_4");
+        laws.Add("EGO_5");
+        laws.Add("EGO_6");
         illustrations.Add("POULE");
         illustrations.Add("ROUE");
         illustrations.Add("CYGNE");
+        illustrations.Add("BATEAU");
+        illustrations.Add("LAMPADAIRE");
+        illustrations.Add("ARBRE");
+        illustrations.Add("BALANCE");
+        illustrations.Add("BOWLING");
         
         GenerateCharteTicket(laws, illustrations);
         
@@ -505,6 +533,7 @@ public class PNGPrinter : MonoBehaviour
         string outputPath = logsFolder + "charte_finale.png";
         MergePNGChunks(chunks, outputPath); */
         
+        /*
         // Editor
         if (gameManager == null)
         {
@@ -519,6 +548,7 @@ public class PNGPrinter : MonoBehaviour
             PrintPNG(gameManager.CurrentGameLogFolder + "/charte1.png", printer1Name);
             PrintPNG(gameManager.CurrentGameLogFolder + "/charte2.png", printer1Name);
         }
+        */
     }
 
     [Button]
