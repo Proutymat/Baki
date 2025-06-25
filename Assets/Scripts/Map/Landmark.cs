@@ -33,21 +33,21 @@ public class Landmark : MonoBehaviour
         if (type == 0)
             FMODUnity.RuntimeManager.PlayOneShot("event:/MX/MX_Trig/MX_Trig_Z1G/MX_Trig_Z1G_PI_Start");
         else if (type == 1)
-            FMODUnity.RuntimeManager.PlayOneShot("event:/MX/MX_Trig/MX_Trig_Z3B/MX_Trig_Z3B_PI_Start");
-        else if (type == 2)
             FMODUnity.RuntimeManager.PlayOneShot("event:/MX/MX_Trig/MX_Trig_Z2P/MX_Trig_Z2P_PI_Start");
+        else if (type == 2)
+            FMODUnity.RuntimeManager.PlayOneShot("event:/MX/MX_Trig/MX_Trig_Z3B/MX_Trig_Z3B_PI_Start");
         else if (type == 3)
             FMODUnity.RuntimeManager.PlayOneShot("event:/MX/MX_Trig/MX_Trig_Z4H/MX_Trig_Z4H_PI_Start");
     }
-    
+
     public void Exit()
     {
         if (type == 0)
             FMODUnity.RuntimeManager.PlayOneShot("event:/MX/MX_Trig/MX_Trig_Z1G/MX_Trig_Z1G_PI_Stop");
         if (type == 1)
-            FMODUnity.RuntimeManager.PlayOneShot("event:/MX/MX_Trig/MX_Trig_Z3B/MX_Trig_Z3B_PI_Stop");
-        if (type == 2)
             FMODUnity.RuntimeManager.PlayOneShot("event:/MX/MX_Trig/MX_Trig_Z2P/MX_Trig_Z2P_PI_Stop");
+        if (type == 2)
+            FMODUnity.RuntimeManager.PlayOneShot("event:/MX/MX_Trig/MX_Trig_Z3B/MX_Trig_Z3B_PI_Stop");
         if (type == 3)
             FMODUnity.RuntimeManager.PlayOneShot("event:/MX/MX_Trig/MX_Trig_Z4H/MX_Trig_Z4H_PI_Stop");
         
