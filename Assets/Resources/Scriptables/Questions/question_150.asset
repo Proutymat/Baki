@@ -15,11 +15,15 @@ MonoBehaviour:
   question: "Les relations internationales sont r\xE9gies par la loi de la jungle"
   answer1: Oui
   answer2: Non
-  answer1Type1: 3
+  answer1Type1: 2
   answer1Type1ADD: -10
-  answer2Type1: 3
+  answer2Type1: 2
   answer2Type1ADD: 10
-  answer1Type2: 15
+  answer1Type2: 14
   answer1Type2ADD: 10
-  answer2Type2: 15
+  answer2Type2: 14
   answer2Type2ADD: -10
+  answer1Illustration: 
+  answer1IllustrationPriority: 0
+  answer2Illustration: 
+  answer2IllustrationPriority: 0

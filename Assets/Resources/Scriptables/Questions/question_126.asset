@@ -15,11 +15,15 @@ MonoBehaviour:
   question: "L'\xE9cole sert \xE0 d\xE9couvrir sa passion"
   answer1: Oui
   answer2: Non
-  answer1Type1: 11
+  answer1Type1: 10
   answer1Type1ADD: 10
-  answer2Type1: 11
+  answer2Type1: 10
   answer2Type1ADD: -10
   answer1Type2: -1
   answer1Type2ADD: 0
   answer2Type2: -1
   answer2Type2ADD: 0
+  answer1Illustration: 
+  answer1IllustrationPriority: 0
+  answer2Illustration: 
+  answer2IllustrationPriority: 0

@@ -15,11 +15,15 @@ MonoBehaviour:
   question: Tout le monde est capable de changer
   answer1: Oui
   answer2: Non
-  answer1Type1: 6
+  answer1Type1: 5
   answer1Type1ADD: 10
-  answer2Type1: 6
+  answer2Type1: 5
   answer2Type1ADD: -10
-  answer1Type2: 18
+  answer1Type2: 17
   answer1Type2ADD: -10
-  answer2Type2: 18
+  answer2Type2: 17
   answer2Type2ADD: 10
+  answer1Illustration: 
+  answer1IllustrationPriority: 0
+  answer2Illustration: 
+  answer2IllustrationPriority: 0

@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25fcf42d6da222a42af08651a160d415, type: 3}
   m_Name: law_15
   m_EditorClassIdentifier: 
-  valueName: roleCitoyen
-  law1: Loi -3 RoleCitoyen
+  valueName: cartesien
+  law1: CARTESIEN_1
   law1Priority: 3
-  law2: Loi -2 RoleCitoyen
+  law2: CARTESIEN_2
   law2Priority: 2
-  law3: Loi -1 RoleCitoyen
+  law3: CARTESIEN_3
   law3Priority: 1
-  law4: Loi 1 RoleCitoyen
+  law4: CARTESIEN_4
   law4Priority: 1
-  law5: Loi 2 RoleCitoyen
+  law5: CARTESIEN_5
   law5Priority: 2
-  law6: Loi 3 RoleCitoyen
+  law6: CARTESIEN_6
   law6Priority: 3

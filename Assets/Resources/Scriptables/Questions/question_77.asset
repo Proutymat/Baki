@@ -15,7 +15,7 @@ MonoBehaviour:
   question: "Est-ce tu penses \xEAtre suffisamment objectif \xE0 propos de toi ?"
   answer1: Oui
   answer2: Non
-  answer1Type1: 5
+  answer1Type1: 4
   answer1Type1ADD: 10
   answer2Type1: -1
   answer2Type1ADD: 0
@@ -23,3 +23,7 @@ MonoBehaviour:
   answer1Type2ADD: 0
   answer2Type2: -1
   answer2Type2ADD: 0
+  answer1Illustration: 
+  answer1IllustrationPriority: 0
+  answer2Illustration: 
+  answer2IllustrationPriority: 0

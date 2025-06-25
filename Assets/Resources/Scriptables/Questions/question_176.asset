@@ -16,11 +16,15 @@ MonoBehaviour:
     perd ?"
   answer1: Qu'on acquiert
   answer2: Qu'on perd
-  answer1Type1: 1
+  answer1Type1: 0
   answer1Type1ADD: -10
-  answer2Type1: 1
+  answer2Type1: 0
   answer2Type1ADD: 10
   answer1Type2: -1
   answer1Type2ADD: 0
   answer2Type2: -1
   answer2Type2ADD: 0
+  answer1Illustration: 
+  answer1IllustrationPriority: 0
+  answer2Illustration: 
+  answer2IllustrationPriority: 0

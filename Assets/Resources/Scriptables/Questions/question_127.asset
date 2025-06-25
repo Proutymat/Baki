@@ -15,11 +15,15 @@ MonoBehaviour:
   question: "Certains enfants ne sont pas faits pour l'\xE9cole"
   answer1: Oui
   answer2: Non
-  answer1Type1: 9
+  answer1Type1: 8
   answer1Type1ADD: 10
-  answer2Type1: 9
+  answer2Type1: 8
   answer2Type1ADD: -10
-  answer1Type2: 6
+  answer1Type2: 5
   answer1Type2ADD: -10
-  answer2Type2: 6
+  answer2Type2: 5
   answer2Type2ADD: 10
+  answer1Illustration: 
+  answer1IllustrationPriority: 0
+  answer2Illustration: 
+  answer2IllustrationPriority: 0

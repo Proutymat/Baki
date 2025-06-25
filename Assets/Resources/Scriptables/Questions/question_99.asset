@@ -15,11 +15,15 @@ MonoBehaviour:
   question: "Tu aimerais vivre sans aucune responsabilit\xE9 ?"
   answer1: Oui
   answer2: Non
-  answer1Type1: 10
+  answer1Type1: 9
   answer1Type1ADD: 10
-  answer2Type1: 10
+  answer2Type1: 9
   answer2Type1ADD: -10
-  answer1Type2: 19
+  answer1Type2: 18
   answer1Type2ADD: 10
-  answer2Type2: 19
+  answer2Type2: 18
   answer2Type2ADD: -10
+  answer1Illustration: 
+  answer1IllustrationPriority: 0
+  answer2Illustration: 
+  answer2IllustrationPriority: 0

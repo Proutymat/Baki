@@ -20,7 +20,11 @@ MonoBehaviour:
   answer1Type1ADD: 0
   answer2Type1: -1
   answer2Type1ADD: 0
-  answer1Type2: 14
+  answer1Type2: 13
   answer1Type2ADD: 5
-  answer2Type2: 14
+  answer2Type2: 13
   answer2Type2ADD: 10
+  answer1Illustration: 
+  answer1IllustrationPriority: 0
+  answer2Illustration: 
+  answer2IllustrationPriority: 0

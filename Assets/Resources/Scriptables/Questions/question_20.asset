@@ -15,11 +15,15 @@ MonoBehaviour:
   question: Chien ou chat ?
   answer1: Chien
   answer2: Chat
-  answer1Type1: 1
+  answer1Type1: 0
   answer1Type1ADD: 5
-  answer2Type1: 19
+  answer2Type1: 18
   answer2Type1ADD: 5
   answer1Type2: -1
   answer1Type2ADD: 0
   answer2Type2: -1
   answer2Type2ADD: 0
+  answer1Illustration: 
+  answer1IllustrationPriority: 0
+  answer2Illustration: 
+  answer2IllustrationPriority: 0

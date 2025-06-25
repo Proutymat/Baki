@@ -15,11 +15,15 @@ MonoBehaviour:
   question: "Si une chose est populaire, \xE7a veut dire qu'elle est bien"
   answer1: Oui
   answer2: Non
-  answer1Type1: 7
+  answer1Type1: 6
   answer1Type1ADD: -5
-  answer2Type1: 7
+  answer2Type1: 6
   answer2Type1ADD: 10
   answer1Type2: -1
   answer1Type2ADD: 0
   answer2Type2: -1
   answer2Type2ADD: 0
+  answer1Illustration: 
+  answer1IllustrationPriority: 0
+  answer2Illustration: 
+  answer2IllustrationPriority: 0

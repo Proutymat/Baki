@@ -15,11 +15,15 @@ MonoBehaviour:
   question: "Tes meilleures ann\xE9es sont derri\xE8re toi"
   answer1: Oui
   answer2: Non
-  answer1Type1: 10
+  answer1Type1: 9
   answer1Type1ADD: -10
-  answer2Type1: 10
+  answer2Type1: 9
   answer2Type1ADD: 10
-  answer1Type2: 6
+  answer1Type2: 5
   answer1Type2ADD: -10
-  answer2Type2: 6
+  answer2Type2: 5
   answer2Type2ADD: 10
+  answer1Illustration: 
+  answer1IllustrationPriority: 0
+  answer2Illustration: 
+  answer2IllustrationPriority: 0

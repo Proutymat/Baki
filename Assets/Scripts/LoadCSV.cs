@@ -218,6 +218,12 @@ public static class LoadCSV
         return -1;
     }
 
+    static int ParseSafe(string s)
+    {
+        int value;
+        return int.TryParse(s.Trim(), out value) ? value : 0;
+    }
+    
     public  static List<Question> LoadQuestionsCSV(string questionsFileName, List<Value> laws)
     {
         ClearFolder("Questions");
@@ -257,6 +263,10 @@ public static class LoadCSV
             scriptable.answer1Type2ADD = int.Parse(fields[8]);
             scriptable.answer2Type2 = LawsStringToInt(fields[9], laws);
             scriptable.answer2Type2ADD = int.Parse(fields[10]);
+            scriptable.answer1Illustration = fields[11];
+            scriptable.answer1IllustrationPriority = ParseSafe(fields[12]);
+            scriptable.answer2Illustration = fields[13];
+            scriptable.answer2IllustrationPriority = ParseSafe(fields[14]);
 
 
             // Sauvegarde du ScriptableObject dans le projet (dans un dossier "Assets/Resources/Questions")

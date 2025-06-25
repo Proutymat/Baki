@@ -15,11 +15,15 @@ MonoBehaviour:
   question: "Faire aveugl\xE9ment confiance \xE0 la science rel\xE8ve de la croyance"
   answer1: Oui
   answer2: Non
-  answer1Type1: 15
+  answer1Type1: 14
   answer1Type1ADD: -10
-  answer2Type1: 15
+  answer2Type1: 14
   answer2Type1ADD: 10
   answer1Type2: -1
   answer1Type2ADD: 0
   answer2Type2: -1
   answer2Type2ADD: 0
+  answer1Illustration: 
+  answer1IllustrationPriority: 0
+  answer2Illustration: 
+  answer2IllustrationPriority: 0

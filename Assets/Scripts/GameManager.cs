@@ -126,6 +126,8 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("debug")] private List<LawCursor> lawCursors;
     [SerializeField, ShowIf("debug")] private List<string> lawsQueue;
     [SerializeField, ShowIf("debug")] private List<int> lawsQueuePriority;
+    [SerializeField, ShowIf("debug")] private List<string> illusQueue;
+    [SerializeField, ShowIf("debug")] private List<int> illusQueuePriority;
     [SerializeField, ShowIf("debug")] private float gameTimer;
     [SerializeField, ShowIf("debug")] private int lastPrintedPercent = 0;
     private string currentGameLogFolder;
@@ -301,7 +303,7 @@ public class GameManager : SerializedMonoBehaviour
     {
         playerCamera.transform.position = new Vector3(player.transform.position.x, playerCamera.transform.position.y, player.transform.position.z);
         landmarksArrows.GetComponent<LandmarkDetection>().UpdateLandmarkArrows(showAllLandmarkArrows);
-        if (enablePrinters) StartCoroutine(pngPrinter.PrintMapTicket());
+        //if (enablePrinters) StartCoroutine(pngPrinter.PrintMapTicket());
 	}
 
     public void PreviousLandmarkQuestion()
@@ -591,6 +593,20 @@ public class GameManager : SerializedMonoBehaviour
         // Update game time
         gameTimer -= Time.deltaTime;
         
+        // End game logic
+        if (gameTimer <= 0)
+        {
+            player.SetIsMoving(false);
+            WriteFinalStatsToFile();
+            isGameOver = true;
+            questionsInterface.SetActive(false);
+            endingInterface.SetActive(true);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/StopAll");
+            FMODUnity.RuntimeManager.PlayOneShot("event:/END");
+            UnlockIllustrations();
+            if (enablePrinters) pngPrinter.PrintCharteTicket(lawsQueue, illusQueue);
+        }
+        
         // Update fresque
         int percentElapsed = Mathf.FloorToInt(100 * (1 - (gameTimer / gameDuration)));
         if (percentElapsed >= lastPrintedPercent + printIntervalsInPercent)
@@ -632,29 +648,74 @@ public class GameManager : SerializedMonoBehaviour
             }
         }
         
-        // End game logic
-        if (gameTimer <= 0)
-        {
-            player.SetIsMoving(false);
-            WriteFinalStatsToFile();
-            isGameOver = true;
-            questionsInterface.SetActive(false);
-            endingInterface.SetActive(true);
-            FMODUnity.RuntimeManager.PlayOneShot("event:/StopAll");
-            FMODUnity.RuntimeManager.PlayOneShot("event:/END");
-        }
-        
         // Update stats
         if (player.IsMoving)
             timeSpentMoving += Time.deltaTime;
         questionTimer += Time.deltaTime;
     }
-    
-    
+
+    private void UnlockIllustrations()
+    {
+        // Number of landmarks reached
+        if (nbLandmarksReached >= 4)
+        {
+            illusQueue.Add("BATONSOURCIER");
+        }
+        else
+        {
+            illusQueue.Add("PHARE");
+        }
+        
+        // Longest time between questions
+        if (longestTimeBetweenQuestions > 30)
+        {
+            illusQueue.Add("YOYO");
+        }
+        
+        // Unit traveled
+        if (nbUnitTraveled <= 95)
+        {
+            illusQueue.Add("TONGS");
+        }
+        else if (nbUnitTraveled <= 155)
+        {
+            illusQueue.Add("CHAUSSURES");
+        }
+        else
+        {
+            illusQueue.Add("RANDO");
+        }
+        
+        // Nb of questions answered
+        if (nbQuestionsAnswered > 185)
+        {
+            illusQueue.Add("SABLIER");
+        }
+        else
+        {
+            illusQueue.Add("CHANDELIER");
+        }
+        
+        // Nb walls hit
+        if (nbWallsHit > 21)
+        {
+            illusQueue.Add("VAUTOUR");
+        }
+        else
+        {
+            illusQueue.Add("ROUE");
+        }
+        
+        // Nb of direction changes
+        if (nbDirectionChanges > 30)
+        {
+            illusQueue.Add("COMPAS");
+        }
+    }
 
     private void PrintLawsQueue()
     {
-        if (enablePrinters) pngPrinter.PrintCharteTicket(lawsQueue);
+        //if (enablePrinters) pngPrinter.PrintCharteTicket(lawsQueue, lawsQueue);
         
         if (string.IsNullOrEmpty(charteLogFilePath))
         {
@@ -766,6 +827,11 @@ public class GameManager : SerializedMonoBehaviour
             law2Type = currentQuestion.answer1Type2;
             lawIncrement1 = currentQuestion.answer1Type1ADD;
             lawIncrement2 = currentQuestion.answer1Type2ADD;
+            if (currentQuestion.answer1Illustration != "")
+            {
+                illusQueue.Add(currentQuestion.answer1Illustration);
+                illusQueuePriority.Add(currentQuestion.answer1IllustrationPriority);
+            }
         }
         // Right button
         else
@@ -774,6 +840,11 @@ public class GameManager : SerializedMonoBehaviour
             law2Type = currentQuestion.answer2Type2;
             lawIncrement1 = currentQuestion.answer2Type1ADD;
             lawIncrement2 = currentQuestion.answer2Type2ADD;
+            if (currentQuestion.answer2Illustration != "")
+            {
+                illusQueue.Add(currentQuestion.answer2Illustration);
+                illusQueuePriority.Add(currentQuestion.answer2IllustrationPriority);
+            }
         }
         
         // Update laws if it has a type (!= sansCategorie)

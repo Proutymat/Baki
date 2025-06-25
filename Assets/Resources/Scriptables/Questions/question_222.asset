@@ -23,3 +23,7 @@ MonoBehaviour:
   answer1Type2ADD: 0
   answer2Type2: -1
   answer2Type2ADD: 0
+  answer1Illustration: LAMPADAIRE
+  answer1IllustrationPriority: 1
+  answer2Illustration: BOWLING
+  answer2IllustrationPriority: 1

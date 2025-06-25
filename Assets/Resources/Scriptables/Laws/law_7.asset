@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25fcf42d6da222a42af08651a160d415, type: 3}
   m_Name: law_7
   m_EditorClassIdentifier: 
-  valueName: tradiProgres
-  law1: Loi -3 Traditions
+  valueName: art
+  law1: ART_1
   law1Priority: 3
-  law2: Loi -2 Traditions
+  law2: ART_2
   law2Priority: 2
-  law3: Loi -1 Traditions
+  law3: ART_3
   law3Priority: 1
-  law4: Loi 1 Traditions
+  law4: ART_4
   law4Priority: 1
-  law5: Loi 2 Traditions
+  law5: ART_5
   law5Priority: 2
-  law6: Loi 3 Traditions
+  law6: ART_6
   law6Priority: 3

@@ -15,4 +15,8 @@ public class Question : ScriptableObject
     public int answer1Type2ADD;
     public int answer2Type2;
     public int answer2Type2ADD;
+    public string answer1Illustration;
+    public int answer1IllustrationPriority;
+    public string answer2Illustration;
+    public int answer2IllustrationPriority;
 }

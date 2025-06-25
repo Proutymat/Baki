@@ -15,11 +15,15 @@ MonoBehaviour:
   question: "Les cam\xE9ras dans la rue te font sentir plus en s\xE9curit\xE9"
   answer1: Oui
   answer2: Non
-  answer1Type1: 17
+  answer1Type1: 16
   answer1Type1ADD: 10
-  answer2Type1: 17
+  answer2Type1: 16
   answer2Type1ADD: -10
   answer1Type2: -1
   answer1Type2ADD: 0
   answer2Type2: -1
   answer2Type2ADD: 0
+  answer1Illustration: 
+  answer1IllustrationPriority: 0
+  answer2Illustration: 
+  answer2IllustrationPriority: 0
