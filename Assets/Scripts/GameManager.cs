@@ -711,6 +711,16 @@ public class GameManager : SerializedMonoBehaviour
         {
             illusQueue.Add("COMPAS");
         }
+        
+        // Nb of left answers
+        if (nbLeftAnswers > nbRightAnswers)
+        {
+            illusQueue.Add("FIGUE");
+        }
+        else
+        {
+            illusQueue.Add("POMME");
+        }
     }
 
     private void PrintLawsQueue()
