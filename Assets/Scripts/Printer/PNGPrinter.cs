@@ -4,18 +4,23 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using Debug = UnityEngine.Debug;
 
 
 public class PNGPrinter : MonoBehaviour
 {
-    [SerializeField] private Camera camera;
+    [SerializeField] private Camera playerCamera;
+    [SerializeField] private Camera textCamera;
+    [SerializeField] private TextMeshProUGUI percentageText;
     [SerializeField] private string pngFileNameDebug;
     
     private GameManager gameManager;
     private string printer1Name = "EPSON TM-T20 Receipt";
     private string printer2Name = "EPSON TM-T20 Receipt5";
     private string logsFolder = Application.dataPath + "/Logs/";
+    [SerializeField] private string ticketPath = Path.Combine(Application.dataPath + "/Logs/", $"ticket.png");
     private string sumatraPath = Application.dataPath + "/StreamingAssets/SumatraPDF/SumatraPDF.exe";
     private int imageCounter;
 
@@ -28,6 +33,7 @@ public class PNGPrinter : MonoBehaviour
     public void Initialize()
     {
         imageCounter = 0;
+        ticketPath = Path.Combine(gameManager.CurrentGameLogFolder, $"ticket.png");
     }
     
     private Texture2D ResizeTexture(Texture2D source, int newWidth, int newHeight)
@@ -63,8 +69,8 @@ public class PNGPrinter : MonoBehaviour
     // -------------------------------------------
     //             GENERATE MAP TICKET
     // -------------------------------------------
-    
-    private Texture2D CaptureCameraSquare(Camera cam, int size)
+
+    private void CaptureMapCamera(Camera cam, int size)
     {
         // Create a square RenderTexture
         RenderTexture rt = new RenderTexture(size, size, 24);
@@ -81,15 +87,13 @@ public class PNGPrinter : MonoBehaviour
         RenderTexture.active = null;
         DestroyImmediate(rt);
 
-        return result;
-    }
-    
-    private void TextureToPNG(Texture2D texture)
-    {
+        // Texture to PNG
         string imageName = Path.Combine(gameManager.CurrentGameLogFolder, $"map_{imageCounter}.png");
-        byte[] bytes = texture.EncodeToPNG();
+        byte[] bytes = result.EncodeToPNG();
         string filePath = Path.Combine(logsFolder, imageName);
         File.WriteAllBytes(filePath, bytes);
+
+        imageCounter++;
     }
 
     private void GenerateMapTicket()
@@ -126,35 +130,55 @@ public class PNGPrinter : MonoBehaviour
         Texture2D resizedHeader = ResizeTexture(headerTex, imageWidth, headerH);
         finalTexture.SetPixels(0, currentY, imageWidth, headerH, resizedHeader.GetPixels());
     
-        currentY -= 75; // Add a small margin after the header
+        currentY -= 75; // Add a space
         
-        // Draw camera image
+        // Draw map image
         int camH = Mathf.RoundToInt(cameraTex.height * (imageWidth / (float)cameraTex.width));
         currentY -= camH;
         Texture2D resizedCam = ResizeTexture(cameraTex, imageWidth, camH);
         finalTexture.SetPixels(0, currentY, imageWidth, camH, resizedCam.GetPixels());
     
         finalTexture.Apply();
-    
-        string outputPath = Path.Combine(gameManager.CurrentGameLogFolder, $"ticket.png");
-        File.WriteAllBytes(outputPath, finalTexture.EncodeToPNG());
+        File.WriteAllBytes(ticketPath, finalTexture.EncodeToPNG());
     }
     
     public IEnumerator PrintMapTicket(bool longTicket = false)
     {
         yield return new WaitForEndOfFrame();
         const int size = 512;
-        Texture2D mapScreen = CaptureCameraSquare(camera, size);
-        TextureToPNG(mapScreen);
+        CaptureMapCamera(playerCamera, size);
         GenerateMapTicket();
-        imageCounter++;
-        PrintPNG((Path.Combine(gameManager.CurrentGameLogFolder, $"ticket.png")), printer1Name);
+        PrintPNG(ticketPath, printer1Name);
     }
     
     // -------------------------------------------
     //          GENERATE LANDMARK TICKET
     // -------------------------------------------
+    
+    private void CaptureTextCamera(int width, int height)
+    {
+        RenderTexture rt = new RenderTexture(width, height, 24);
+        textCamera.targetTexture = rt;
 
+        Texture2D result = new Texture2D(width, height, TextureFormat.RGB24, false);
+
+        // Important si tu modifies le texte juste avant
+        Canvas.ForceUpdateCanvases();
+
+        textCamera.Render();
+
+        RenderTexture.active = rt;
+        result.ReadPixels(new Rect(0, 0, width, height), 0, 0);
+        result.Apply();
+
+        textCamera.targetTexture = null;
+        RenderTexture.active = null;
+        DestroyImmediate(rt);
+
+        byte[] bytes = result.EncodeToPNG();
+        File.WriteAllBytes(ticketPath, bytes);
+    }
+    
     private void GenerateLandmarkTicket(int percentage)
     {
         // Ticket dimensions
@@ -171,14 +195,70 @@ public class PNGPrinter : MonoBehaviour
         for (int i = 0; i < whiteFill.Length; i++) whiteFill[i] = Color.white;
         finalTexture.SetPixels32(whiteFill);
         
-        // To complete
+        // Load the header
+        string headerPath = Path.Combine(Application.streamingAssetsPath, "PrinterAssets/DEBUT_POURCENTAGE.png");
+        Texture2D headerTex = new Texture2D(2, 2);
+        headerTex.LoadImage(File.ReadAllBytes(headerPath));
+        
+        // Capture the text camera
+        percentageText.text = $"{percentage}%";
+        CaptureTextCamera(512, 512/4);
+        
+        // Load the footer
+        string footerPath = Path.Combine(Application.streamingAssetsPath, "PrinterAssets/FIN_POURCENTAGE.png");
+        Texture2D footerTex = new Texture2D(2, 2);
+        footerTex.LoadImage(File.ReadAllBytes(footerPath));
+        
+        int currentY = height;
+        
+        // Draw header
+        int headerH = Mathf.RoundToInt(headerTex.height * (imageWidth / (float)headerTex.width));
+        currentY -= headerH;
+        Texture2D resizedHeader = ResizeTexture(headerTex, imageWidth, headerH);
+        finalTexture.SetPixels(0, currentY, imageWidth, headerH, resizedHeader.GetPixels());
+        
+        // Load the text image
+        string cameraImagePath = ticketPath;
+        Texture2D cameraTex = new Texture2D(2, 2);
+        cameraTex.LoadImage(File.ReadAllBytes(cameraImagePath));
+        
+        // Draw map image
+        int camH = Mathf.RoundToInt(cameraTex.height * (imageWidth / (float)cameraTex.width));
+        currentY -= camH;
+        Texture2D resizedCam = ResizeTexture(cameraTex, imageWidth, camH);
+        finalTexture.SetPixels(0, currentY, imageWidth, camH, resizedCam.GetPixels());
+        
+        // Draw header
+        int footerH = Mathf.RoundToInt(footerTex.height * (imageWidth / (float)footerTex.width));
+        currentY -= footerH;
+        Texture2D resizedFooter = ResizeTexture(footerTex, imageWidth, footerH);
+        finalTexture.SetPixels(0, currentY, imageWidth, footerH, resizedFooter.GetPixels());
+
+        // Add final space
+        currentY -= 75; // Add a space
+        Color32[] finalFill = new Color32[fullWidth * currentY];
+        for (int i = 0; i < finalFill.Length; i++) finalFill[i] = Color.white;
+        finalTexture.SetPixels32(0, 0, fullWidth, currentY, finalFill);
+        
+        finalTexture.Apply();
+        File.WriteAllBytes(ticketPath, finalTexture.EncodeToPNG());
     }
     
-    public IEnumerator PrintLandmarkTicket(int percentage)
+    [Button]
+    public void PrintLandmarkTicket(int percentage)
     {
-        yield return new WaitForEndOfFrame();
         GenerateLandmarkTicket(percentage);
-        imageCounter++;
-        PrintPNG((Path.Combine(gameManager.CurrentGameLogFolder, $"ticket.png")), printer2Name);
+        PrintPNG(ticketPath, printer1Name);
+    }
+    
+    
+    // -------------------------------------------
+    //          GENERATE CHARTE TICKET
+    // -------------------------------------------
+    
+    
+    public void PrintCharteTicket(List<string> laws)
+    {
+        // Placeholder for PDF generation logic
     }
 }

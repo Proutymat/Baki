@@ -22,7 +22,6 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("setObjectsInInspector")] public Material materialWall;
     [SerializeField, ShowIf("setObjectsInInspector")] public Material materialStart;
     [SerializeField, ShowIf("setObjectsInInspector")] public Material materialLandmark;
-    [SerializeField, ShowIf("setObjectsInInspector")] public Material materialLandmarkChecked;
     [SerializeField, ShowIf("setObjectsInInspector")] public Material materialSpecialZoneIn;
     [SerializeField, ShowIf("setObjectsInInspector")] public Material materialSpecialZoneOut;
 
@@ -89,7 +88,6 @@ public class GameManager : SerializedMonoBehaviour
     private static GameManager _instance;
     [SerializeField, ShowIf("setObjectsInInspector")] private Player player;
     [SerializeField, ShowIf("setObjectsInInspector")] private ProgressBar progressBar;
-    [SerializeField, ShowIf("setObjectsInInspector")] private PDFPrinter pdfPrinter;
     [SerializeField, ShowIf("setObjectsInInspector")] private PNGPrinter pngPrinter;
     [SerializeField, ShowIf("setObjectsInInspector")] private UiAnimations uiAnimations;
     
@@ -266,7 +264,7 @@ public class GameManager : SerializedMonoBehaviour
         
         // Initialize instances 
         player.Initialize();
-        pdfPrinter.Initialize();
+        pngPrinter.Initialize();
         uiAnimations.Initialize();
 
         if (skipIntro)
@@ -416,7 +414,6 @@ public class GameManager : SerializedMonoBehaviour
         }
         bubblePages[0].sprite = filledBubbleSprite;
         
-        Debug.Log("enablePrinters: " + enablePrinters);
         if (enablePrinters) pngPrinter.PrintLandmarkTicket(Mathf.FloorToInt(100 * (1 - (gameTimer / gameDuration))));
     }
 
@@ -657,7 +654,7 @@ public class GameManager : SerializedMonoBehaviour
 
     private void PrintLawsQueue()
     {
-        if (enablePrinters) pdfPrinter.PrintLawsPDF(lawsQueue);
+        if (enablePrinters) pngPrinter.PrintCharteTicket(lawsQueue);
         
         if (string.IsNullOrEmpty(charteLogFilePath))
         {
