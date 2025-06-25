@@ -6,67 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="73781b9b-5c78-4d1f-a1a2-b07d1229386b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Baki/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Baki/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/ARBRE.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/ARBRE.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/BALANCE.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/BALANCE.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/BATEAU.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/BATEAU.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/BATONSOURCIER.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/BATONSOURCIER.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/BOWLING.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/BOWLING.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/CALISSE.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/CALISSE.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/CELLULE.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/CELLULE.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/CHAINE.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/CHAINE.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/CHAMPIGNONS.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/CHAMPIGNONS.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/CHANDELIER.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/CHANDELIER.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/CHATAIGNE.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/CHATAIGNE.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/CHAUSSURES.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/CHAUSSURES.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/CHAUVESOURIS.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/CHAUVESOURIS.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/CHRYSALIDE.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/CHRYSALIDE.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/COLONNE.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/COLONNE.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/COMPAS.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/COMPAS.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/CORAIL.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/CORAIL.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/CORDEAU.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/CORDEAU.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/CORNEABONDANCE.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/CORNEABONDANCE.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/CRAPAUD.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/CRAPAUD.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/CYGNE.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/CYGNE.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/DAGUE.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/DAGUE.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/DENTS.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/DENTS.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/DICE.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/DICE.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/ESTOMAC.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/ESTOMAC.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/EVENTAIL.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/EVENTAIL.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/FIGUE.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/FIGUE.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/FOSSILE.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/FOSSILE.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/GANTS.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/GANTS.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/HAMECON.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/HAMECON.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/LAMPADAIRE.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/LAMPADAIRE.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/LEZARD.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/LEZARD.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/LYRE.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/LYRE.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/NARCISSES.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/NARCISSES.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/NENUPHAR.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/NENUPHAR.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/OISEAU.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/OISEAU.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/OLIVIER.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/OLIVIER.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/PAPILLON.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/PAPILLON.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/PEIGNE.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/PEIGNE.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/PHARE.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/PHARE.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/PIEUVRE.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/PIEUVRE.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/PILLS.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/PILLS.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/POISSON.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/POISSON.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/POMME.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/POMME.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/RANDO.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/RANDO.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/ROUE.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/ROUE.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/RUCHE.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/RUCHE.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/SABLIER.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/SABLIER.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/SCARABE.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/SCARABE.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/SERPE.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/SERPE.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/SERPENT.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/SERPENT.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/SOLEIL.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/SOLEIL.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/TIQUE.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/TIQUE.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/TONGS.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/TONGS.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/TRIDENT.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/TRIDENT.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/VAJRA.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/VAJRA.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/VASE.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/VASE.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/VAUTOUR.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/VAUTOUR.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/YOYO.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CHARTE/ILLUS_DROITE/YOYO.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ProtoDigital.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ProtoDigital.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Printer/PDFPrinter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Printer/PDFPrinter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Printer/PNGPrinter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Printer/PNGPrinter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/capture_0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/capture_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/capture_2.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -218,6 +162,7 @@
       <workItem from="1750045449239" duration="3849000" />
       <workItem from="1750706724853" duration="1803000" />
       <workItem from="1750774570171" duration="18684000" />
+      <workItem from="1750855066477" duration="11674000" />
     </task>
     <servers />
   </component>

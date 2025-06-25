@@ -22,6 +22,7 @@ public class PNGPrinter : MonoBehaviour
     private string logsFolder = Application.dataPath + "/Logs/";
     [SerializeField] private string ticketPath = Path.Combine(Application.dataPath + "/Logs/", $"ticket.png");
     private string sumatraPath = Application.dataPath + "/StreamingAssets/SumatraPDF/SumatraPDF.exe";
+    private string imageMagikPath = Application.dataPath + "/StreamingAssets/ImageMagick/magick.exe";
     private int imageCounter;
 
     private const int dpi = 300;
@@ -66,7 +67,7 @@ public class PNGPrinter : MonoBehaviour
         };
 
         Process.Start(startInfo);
-        Debug.Log("Printing PNG : " + fileName + " to printer: " + printerName);
+        //Debug.Log("Printing PNG : " + fileName + " to printer: " + printerName);
     }
     
     // -------------------------------------------
@@ -309,7 +310,7 @@ public class PNGPrinter : MonoBehaviour
         int y = height;
 
         y = DrawTexture(finalTexture, "Assets/CHARTE/FOND_DEBUT.png", imageWidth, y);
-        for (int i = 0; i < 1; i++)
+        for (int i = 0; i < 5; i++)
         {
             y = DrawTexture(finalTexture, "Assets/CHARTE/FOND_MILIEU.png", imageWidth, y);
         }
@@ -322,13 +323,12 @@ public class PNGPrinter : MonoBehaviour
         string borderPath = "Assets/CHARTE/BORDURES/";
         
         y = DrawTexture(finalTexture, Path.Combine(borderPath, "1_BORDURE_DEBUT.png"), imageWidth, y);
-        for (int i = 0; i < 1; i++)
+        for (int i = 0; i < 5; i++)
         {
             y = DrawTexture(finalTexture, Path.Combine(borderPath, "1_BORDURE_MILIEU.png"), imageWidth, y);
         }
         y = DrawTexture(finalTexture, Path.Combine(borderPath, "1_BORDURE_FIN.png"), imageWidth, y);
         
-        Debug.Log("y position after borders: " + y);
     }
 
     private void DrawIllustrations(Texture2D finalTexture, int imageWidth, int height, List<string> illustrations)
@@ -338,10 +338,9 @@ public class PNGPrinter : MonoBehaviour
         string gauche = "Assets/CHARTE/ILLUS_GAUCHE/";
         string droite = "Assets/CHARTE/ILLUS_DROITE/";
 
-        for (int i = 0; i < illustrations.Count; i++)
+        for (int i = 0; i < 3; i++)
         {
             string path = (i % 2 == 0 ? gauche : droite) + illustrations[i] + ".png";
-            Debug.Log("Drawing illustration: " + illustrations[i]);
             y = DrawTexture(finalTexture, path, imageWidth, y);
         }
     }
@@ -351,9 +350,8 @@ public class PNGPrinter : MonoBehaviour
         int y = height - 400;
         string path = "Assets/CHARTE/LOIS/";
         
-        for (int i = 0; i < laws.Count; i++)
+        for (int i = 0; i < 5; i++)
         {
-            Debug.Log("Drawing law: " + laws[i]);
             y = DrawTexture(finalTexture, path + laws[i] + ".png", imageWidth, y);
         }
     }
@@ -364,7 +362,7 @@ public class PNGPrinter : MonoBehaviour
         int y = height;
         
         y = DrawTexture(finalTexture, Path.Combine(framePath, "1_CADRE_DEBUT.png"), imageWidth, y);
-        for (int i = 0; i < 1; i++)
+        for (int i = 0; i < 5; i++)
         {
             y = DrawTexture(finalTexture, Path.Combine(framePath, "1_CADRE_MILIEU.png"), imageWidth, y);
         }
@@ -379,43 +377,160 @@ public class PNGPrinter : MonoBehaviour
         int imageWidth = fullWidth - borderRight;                 // ~827 px
         int height = Mathf.RoundToInt(29.7f * cmToInch * dpi);     // ~3508 px
         
+        
+
+        for (int i = 0; i < 3; i++)
+        {
+            Debug.Log("Generating charte ticket chunk: " + i);
+            // Create the texture
+            Texture2D finalTexture = new Texture2D(fullWidth, height, TextureFormat.RGBA32, false);
+            Color32[] whiteFill = new Color32[fullWidth * height];
+            for (int k = 0; k < whiteFill.Length; k++) whiteFill[k] = new Color32(255, 255, 255, 255);
+            finalTexture.SetPixels32(whiteFill);
+            
+            DrawBackgrounds(finalTexture, imageWidth, height); // Backgrounds
+            DrawBorders(finalTexture, imageWidth, height); // Borders
+            DrawIllustrations(finalTexture, imageWidth, height, illustrations); // Illustrations
+            DrawLaws(finalTexture, imageWidth, height, laws); // Laws
+            DrawFrames(finalTexture, imageWidth, height); // Frames
+            if (i == 0)
+                DrawTexture(finalTexture, "Assets/CHARTE/DEBUT_CHARTE.png", imageWidth, height); // Charte header
+            if (i == 2)
+                DrawTexture(finalTexture, "Assets/CHARTE/FIN_CHARTE.png", imageWidth, 150); // Charte header
+            
+            finalTexture.Apply();
+            
+            // Editor
+            if (gameManager == null)
+            {
+                Debug.Log("Saving charte ticket chunk to logs folder: " + logsFolder + $"/charte{i}.png");
+                File.WriteAllBytes(logsFolder + $"/charte{i}.png", finalTexture.EncodeToPNG());
+            }
+            // Runtime
+            else
+                File.WriteAllBytes(gameManager.CurrentGameLogFolder + $"/charte{i}.png", finalTexture.EncodeToPNG());
+        }
+    }
+
+    void GenerateWhitePNG()
+    {
+        // Ticket dimensions
+        int fullWidth = Mathf.RoundToInt(8f * cmToInch * dpi);     // ~945 px
+        int height = Mathf.RoundToInt(135f * cmToInch * dpi);     // ~3508 px
+
         // Create the texture
         Texture2D finalTexture = new Texture2D(fullWidth, height, TextureFormat.RGBA32, false);
         Color32[] whiteFill = new Color32[fullWidth * height];
         for (int i = 0; i < whiteFill.Length; i++) whiteFill[i] = new Color32(255, 255, 255, 255);
         finalTexture.SetPixels32(whiteFill);
-
-        DrawBackgrounds(finalTexture, imageWidth, height); // Backgrounds
-        DrawBorders(finalTexture, imageWidth, height); // Borders
-        DrawIllustrations(finalTexture, imageWidth, height, illustrations); // Illustrations
-        DrawLaws(finalTexture, imageWidth, height, laws); // Laws
-        DrawFrames(finalTexture, imageWidth, height); // Frames
-        DrawTexture(finalTexture, "Assets/CHARTE/DEBUT_CHARTE.png", imageWidth, height); // Charte header
-        DrawTexture(finalTexture, "Assets/CHARTE/FIN_CHARTE.png", imageWidth, 150); // Charte header
         
         finalTexture.Apply();
         
-        // Editor
-        if (gameManager == null)
-            File.WriteAllBytes(logsFolder + "charte.png", finalTexture.EncodeToPNG());
-        // Runtime
-        else
-            File.WriteAllBytes(gameManager.CurrentGameLogFolder + "/charte.png", finalTexture.EncodeToPNG());
+        File.WriteAllBytes(logsFolder + "charte2.png", finalTexture.EncodeToPNG());
+    }
+    
+    void GenerateWhitePNG2()
+    {
+        // Ticket dimensions
+        int fullWidth = Mathf.RoundToInt(8f * cmToInch * dpi);     // ~945 px
+        int height = Mathf.RoundToInt(57.6f * cmToInch * dpi);     // ~3508 px
 
+        // Create the texture
+        Texture2D finalTexture = new Texture2D(fullWidth, height, TextureFormat.RGBA32, false);
+        Color32[] whiteFill = new Color32[fullWidth * height];
+        for (int i = 0; i < whiteFill.Length; i++) whiteFill[i] = new Color32(255, 255, 255, 255);
+        finalTexture.SetPixels32(whiteFill);
+        
+        finalTexture.Apply();
+        
+        File.WriteAllBytes(logsFolder + "charte3.png", finalTexture.EncodeToPNG());
+    }
+    
+    void MergePNGChunks(List<string> chunkPaths, string outputPath)
+    {
+        string args = "";
+        foreach (var path in chunkPaths)
+        {
+            args += $"\"{path}\" ";
+        }
+        args += $"-append "; // Append vertically
+        
+        args += $"\"{outputPath}\"";
+
+        ProcessStartInfo psi = new ProcessStartInfo
+        {
+            FileName = imageMagikPath,
+            Arguments = args,
+            CreateNoWindow = true,
+            UseShellExecute = false,
+            RedirectStandardError = true,
+            RedirectStandardOutput = true
+        };
+
+        using (Process process = Process.Start(psi))
+        {
+            process.WaitForExit();
+            Debug.Log("ImageMagick output: " + process.StandardOutput.ReadToEnd());
+            Debug.LogError("ImageMagick errors: " + process.StandardError.ReadToEnd());
+        }
     }
     
     [Button]
     public void PrintCharteTicket(List<string> laws, List<string> illustrations)
     {
-        Debug.Log("Printing charte ticket with laws: " + string.Join(", ", laws) + " and illustrations: " + string.Join(", ", illustrations));
+        laws = new List<string>();
+        illustrations = new List<string>();
+        laws.Add("ART_1");
+        laws.Add("ART_2");
+        laws.Add("ART_3");
+        laws.Add("ART_4");
+        laws.Add("ART_5");
+        laws.Add("ART_6");
+        laws.Add("EGO_1");
+        illustrations.Add("POULE");
+        illustrations.Add("ROUE");
+        illustrations.Add("CYGNE");
+        
         GenerateCharteTicket(laws, illustrations);
+        
+        /*
+        GenerateWhitePNG();
+        GenerateWhitePNG2();
+        List<string> chunks = new List<string>
+        {
+            logsFolder + "charte.png",
+            logsFolder + "charte2.png",
+            logsFolder + "charte3.png"
+        };
+        string outputPath = logsFolder + "charte_finale.png";
+        MergePNGChunks(chunks, outputPath); */
         
         // Editor
         if (gameManager == null)
-            PrintPNG(logsFolder + "charte.png", printer1Name);
+        {
+            PrintPNG(logsFolder + "charte0.png", printer1Name);
+            PrintPNG(logsFolder + "charte1.png", printer1Name);
+            PrintPNG(logsFolder + "charte2.png", printer1Name);
+        }
         // Runtime
         else
-            PrintPNG(gameManager.CurrentGameLogFolder + "/charte.png", printer1Name);
+        {
+            PrintPNG(gameManager.CurrentGameLogFolder + "/charte0.png", printer1Name);
+            PrintPNG(gameManager.CurrentGameLogFolder + "/charte1.png", printer1Name);
+            PrintPNG(gameManager.CurrentGameLogFolder + "/charte2.png", printer1Name);
+        }
+    }
 
+    [Button]
+    void Test()
+    {
+        List<string> chunks = new List<string>
+        {
+            Path.GetFullPath(Path.Combine(logsFolder, "charte.png")),
+            Path.GetFullPath(Path.Combine(logsFolder, "charte2.png")),
+        };
+        string outputPath = logsFolder + "charte_finale.png";
+        PrintPNG(logsFolder + "charte_finale.png", printer1Name);
+        //MergePNGChunks(chunks, outputPath);
     }
 }
