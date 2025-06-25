@@ -92,8 +92,6 @@ public class PNGPrinter : MonoBehaviour
         byte[] bytes = result.EncodeToPNG();
         string filePath = Path.Combine(logsFolder, imageName);
         File.WriteAllBytes(filePath, bytes);
-
-        imageCounter++;
     }
 
     private void GenerateMapTicket()
@@ -149,6 +147,7 @@ public class PNGPrinter : MonoBehaviour
         CaptureMapCamera(playerCamera, size);
         GenerateMapTicket();
         PrintPNG(ticketPath, printer1Name);
+        imageCounter++;
     }
     
     // -------------------------------------------
