@@ -303,7 +303,7 @@ public class GameManager : SerializedMonoBehaviour
     {
         playerCamera.transform.position = new Vector3(player.transform.position.x, playerCamera.transform.position.y, player.transform.position.z);
         landmarksArrows.GetComponent<LandmarkDetection>().UpdateLandmarkArrows(showAllLandmarkArrows);
-        //if (enablePrinters) StartCoroutine(pngPrinter.PrintMapTicket());
+        if (enablePrinters) StartCoroutine(pngPrinter.PrintMapTicket());
 	}
 
     public void PreviousLandmarkQuestion()
