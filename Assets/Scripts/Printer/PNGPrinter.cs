@@ -250,7 +250,7 @@ public class PNGPrinter : MonoBehaviour
     public void PrintLandmarkTicket(int percentage)
     {
         GenerateLandmarkTicket(percentage);
-        PrintPNG(ticketPath, printer1Name);
+        PrintPNG(ticketPath, printer2Name);
     }
     
     
@@ -533,22 +533,21 @@ public class PNGPrinter : MonoBehaviour
         string outputPath = logsFolder + "charte_finale.png";
         MergePNGChunks(chunks, outputPath); */
         
-        /*
+        
         // Editor
         if (gameManager == null)
         {
-            PrintPNG(logsFolder + "charte0.png", printer1Name);
-            PrintPNG(logsFolder + "charte1.png", printer1Name);
-            PrintPNG(logsFolder + "charte2.png", printer1Name);
+            PrintPNG(logsFolder + "charte0.png", printer2Name);
+            PrintPNG(logsFolder + "charte1.png", printer2Name);
+            PrintPNG(logsFolder + "charte2.png", printer2Name);
         }
         // Runtime
         else
         {
-            PrintPNG(gameManager.CurrentGameLogFolder + "/charte0.png", printer1Name);
-            PrintPNG(gameManager.CurrentGameLogFolder + "/charte1.png", printer1Name);
-            PrintPNG(gameManager.CurrentGameLogFolder + "/charte2.png", printer1Name);
+            PrintPNG(gameManager.CurrentGameLogFolder + "/charte0.png", printer2Name);
+            PrintPNG(gameManager.CurrentGameLogFolder + "/charte1.png", printer2Name);
+            PrintPNG(gameManager.CurrentGameLogFolder + "/charte2.png", printer2Name);
         }
-        */
     }
 
     [Button]
