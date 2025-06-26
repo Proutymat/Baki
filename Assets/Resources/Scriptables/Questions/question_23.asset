@@ -23,7 +23,7 @@ MonoBehaviour:
   answer1Type2ADD: 0
   answer2Type2: -1
   answer2Type2ADD: 0
-  answer1Illustration: 
-  answer1IllustrationPriority: 0
-  answer2Illustration: 
-  answer2IllustrationPriority: 0
+  answer1Illustration: NARCISSES
+  answer1IllustrationPriority: 1
+  answer2Illustration: NENUPHAR
+  answer2IllustrationPriority: 1

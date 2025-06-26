@@ -138,6 +138,12 @@ public class GameManager : SerializedMonoBehaviour
     private bool isTutorialQuestion;
     private int nbLandmarkQuestions;
     private Landmark currentLandmark;
+
+    private List<string> illusLandmarkA;
+    private List<string> illusLandmarkB;
+    private List<string> illusLandmarkC;
+    private List<string> illusLandmarkD;
+    private List<string> illustrations;
     
     
     // ----------- GAME STATS -------------
@@ -197,6 +203,45 @@ public class GameManager : SerializedMonoBehaviour
 
     private void InitializeGame()
     {
+        illustrations = new List<string>();
+        illusLandmarkA = new List<string>();
+        illusLandmarkB = new List<string>();
+        illusLandmarkC = new List<string>();
+        illusLandmarkD = new List<string>();
+        
+        illusLandmarkA.Add("PAPILLON");
+        illusLandmarkA.Add("LEZARD");
+        illusLandmarkA.Add("BATEAU");
+        illusLandmarkA.Add("COLONNE");
+        
+        illusLandmarkB.Add("VASE");
+        illusLandmarkB.Add("VAJRA");
+        illusLandmarkB.Add("PEIGNE");
+        illusLandmarkB.Add("EVENTAIL");
+        
+        illusLandmarkC.Add("CORAIL");
+        illusLandmarkC.Add("CHAMPIGNONS");
+        illusLandmarkC.Add("CRAPAUD");
+        illusLandmarkC.Add("PIEUVRE");
+        
+        illusLandmarkD.Add("CHATAIGNE");
+        illusLandmarkD.Add("DENTS");
+        illusLandmarkD.Add("CHAINE");
+        illusLandmarkD.Add("DAGUE");
+        
+        illustrations.Add("LYRE");
+        illustrations.Add("CHAUVESOURIS");
+        illustrations.Add("CHRYSALIDE");
+        illustrations.Add("BALANCE");
+        illustrations.Add("CALISSE");
+        illustrations.Add("CORDEAU");
+        illustrations.Add("RUCHE");
+        illustrations.Add("SERPENT");
+        illustrations.Add("GANTS");
+        illustrations.Add("SCARABE");
+        illustrations.Add("CORNEABONDANCE");
+        illustrations.Add("POISSON");
+        
         // Initialize game stats
         nbUnitTraveled = 0;
         nbLandmarksReached = 0;
@@ -422,6 +467,35 @@ public class GameManager : SerializedMonoBehaviour
     public void ExitLandmark(int buttonIndex)
     {
         FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_QuestionRespondClick");
+
+        if (currentLandmark.Type == 0 && illusLandmarkA.Count > 0)
+        {
+            int index = UnityEngine.Random.Range(0, illusLandmarkA.Count);
+            illusQueue.Add(illusLandmarkA[index]);
+            illusQueuePriority.Add(1);
+            illusLandmarkA.RemoveAt(index);
+        }
+        else if (currentLandmark.Type == 1 && illusLandmarkB.Count > 0)
+        {
+            int index = UnityEngine.Random.Range(0, illusLandmarkB.Count);
+            illusQueue.Add(illusLandmarkB[index]);
+            illusQueuePriority.Add(1);
+            illusLandmarkB.RemoveAt(index);
+        }
+        else if (currentLandmark.Type == 2 && illusLandmarkC.Count > 0)
+        {
+            int index = UnityEngine.Random.Range(0, illusLandmarkC.Count);
+            illusQueue.Add(illusLandmarkC[index]);
+            illusQueuePriority.Add(1);
+            illusLandmarkC.RemoveAt(index);
+        }
+        else if (currentLandmark.Type == 3 && illusLandmarkD.Count > 0)
+        {
+            int index = UnityEngine.Random.Range(0, illusLandmarkD.Count);
+            illusQueue.Add(illusLandmarkD[index]);
+            illusQueuePriority.Add(1);
+            illusLandmarkD.RemoveAt(index);
+        }
         
         nextButton.SetActive(true);
         backButton.SetActive(true);
@@ -604,7 +678,17 @@ public class GameManager : SerializedMonoBehaviour
             FMODUnity.RuntimeManager.PlayOneShot("event:/StopAll");
             FMODUnity.RuntimeManager.PlayOneShot("event:/END");
             UnlockIllustrations();
-            if (enablePrinters) pngPrinter.PrintCharteTicket(lawsQueue, illusQueue);
+            
+            // Add illustrations if not enough
+            while (Mathf.RoundToInt(lawsQueue.Count / 5f) > Mathf.RoundToInt(illusQueue.Count / 3f) && illustrations.Count > 0)
+            {
+                int index = UnityEngine.Random.Range(0, illustrations.Count);
+                string illu = illustrations[index];
+                illusQueue.Add(illu);
+                illustrations.RemoveAt(index);
+            }
+
+            if (enablePrinters) StartCoroutine(pngPrinter.PrintCharteTicket(lawsQueue, illusQueue));
         }
         
         // Update fresque
@@ -712,8 +796,13 @@ public class GameManager : SerializedMonoBehaviour
             illusQueue.Add("COMPAS");
         }
         
+            
         // Nb of left answers
-        if (nbLeftAnswers > nbRightAnswers)
+        if (nbLeftAnswers == nbRightAnswers)
+        {
+            illusQueue.Add("DICE");
+        }
+        else if (nbLeftAnswers > nbRightAnswers)
         {
             illusQueue.Add("FIGUE");
         }
@@ -721,6 +810,7 @@ public class GameManager : SerializedMonoBehaviour
         {
             illusQueue.Add("POMME");
         }
+        
     }
 
     private void PrintLawsQueue()
