@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_5
   m_EditorClassIdentifier: 
-  question: "Se t\xE9l\xE9porter ou lire dans les pens\xE9es ?"
+  question: "Se t\xE9l\xE9porter ou lire dans les pens\xE9es"
   answer1: "Se t\xE9l\xE9porter"
   answer2: "Lire dans les pens\xE9es"
   answer1Type1: -1

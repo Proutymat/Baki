@@ -14,13 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text1: "Dans ta vie, tu as v\xE9cu plusieurs fois des choses pour leur derni\xE8re
     fois sans en avoir conscience."
-  text2: "Il y a eu une derni\xE8re nuit que tu as pass\xE9 avec ta peluche par exemple."
+  text2: "Il y a eu une derni\xE8re nuit que tu as pass\xE9e avec ta peluche par
+    exemple."
   text3: "Ou bien un dernier jour o\xF9 tu as eu besoin d'aide pour tes lacets."
-  text4: "certaines premi\xE8res fois sont aussi faites innocemment, sans savoir
-    qu'elle ne seront que premi\xE8re fois parmis d'autres "
+  text4: "Certaines premi\xE8res fois sont aussi faites innocemment, sans savoir
+    qu'elles ne seront que premi\xE8res fois parmis d'autres."
   text5: "Il y a eu la premi\xE8re fois o\xF9 tu as vu la mer, ou peut-\xEAtre une
-    premi\xE8re cigarette"
-  text6: "Qu'est ce qui serait suceptible de te rendre le plus heureux demain ? Une
+    premi\xE8re cigarette."
+  text6: "Qu'est ce qui serait suceptible de te rendre le plus heureux demain, une
     premi\xE8re ou une derni\xE8re fois ?"
   answer1: "Premi\xE8re fois"
   answer2: "Derni\xE8re fois"

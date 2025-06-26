@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: question_94
   m_EditorClassIdentifier: 
   question: Selon toi, il y a plus d'astres dans la galaxie ou de grains de sable
-    sur terre ?
+    sur terre
   answer1: Galaxie
   answer2: Sable
   answer1Type1: -1

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8c8072d2125b034db50ac10816f2018, type: 3}
   m_Name: landmark_15
   m_EditorClassIdentifier: 
-  text1: "En g\xE9n\xE9ral quand on rencontre quelqu'un "
+  text1: "En g\xE9n\xE9ral, quand on rencontre quelqu'un"
   text2: on lui demande d'abord son nom
   text3: puis on lui demande ce qu'iel fait dans la vie.
   text4: "Le travail qu'on fait est une des plus grandes partie de notre identit\xE9"

@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_209
   m_EditorClassIdentifier: 
-  question: "\"Est-ce que le mot \"\"toxique\"\" est sur-utilis\xE9 ? \""
+  question: "Quelqu'un qui rit du malheur des autres fait forc\xE9ment de cette personne
+    quelqu'un d'immoral "
   answer1: Oui
   answer2: Non
-  answer1Type1: 5
-  answer1Type1ADD: -5
-  answer2Type1: 5
-  answer2Type1ADD: 5
+  answer1Type1: 7
+  answer1Type1ADD: 5
+  answer2Type1: 7
+  answer2Type1ADD: -5
   answer1Type2: -1
   answer1Type2ADD: 0
   answer2Type2: -1

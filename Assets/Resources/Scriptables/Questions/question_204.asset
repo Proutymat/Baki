@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_204
   m_EditorClassIdentifier: 
-  question: "Savoir raconter les histoires est plus important qu'en avoir des bonnes
-    \xE0 raconter"
+  question: Dans une chanson, la musique est plus importante que les paroles
   answer1: Oui
   answer2: Non
   answer1Type1: 6

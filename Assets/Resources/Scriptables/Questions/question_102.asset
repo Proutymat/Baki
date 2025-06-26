@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_102
   m_EditorClassIdentifier: 
-  question: "Tout le monde m\xE9rite une deuxi\xE8me chance ?"
+  question: "Tout le monde m\xE9rite une deuxi\xE8me chance"
   answer1: Oui
   answer2: Non
   answer1Type1: 12

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_9
   m_EditorClassIdentifier: 
-  question: Est-ce que tu me fais confiance ?
+  question: Est-ce que tu me fais confiance
   answer1: Oui
   answer2: Non
   answer1Type1: 14
@@ -23,7 +23,7 @@ MonoBehaviour:
   answer1Type2ADD: 0
   answer2Type2: -1
   answer2Type2ADD: 0
-  answer1Illustration: 
-  answer1IllustrationPriority: 0
-  answer2Illustration: 
-  answer2IllustrationPriority: 0
+  answer1Illustration: SOLEIL
+  answer1IllustrationPriority: 1
+  answer2Illustration: PILLS
+  answer2IllustrationPriority: 1

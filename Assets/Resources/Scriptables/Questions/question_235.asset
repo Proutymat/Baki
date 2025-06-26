@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_235
   m_EditorClassIdentifier: 
-  question: "Certains tests de personnalit\xE9s sont fiables"
-  answer1: 'Oui '
-  answer2: Non
+  question: "Si tu \xE9tais une cha\xEEne de t\xE9l\xE9vision tu serais une cha\xEEne
+    priv\xE9e ou publique"
+  answer1: "Priv\xE9e"
+  answer2: Publique
   answer1Type1: -1
   answer1Type1ADD: 0
   answer2Type1: -1

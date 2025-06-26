@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_207
   m_EditorClassIdentifier: 
-  question: "La maturit\xE9 est uniquement une question d'\xE2ge"
+  question: "Les douleurs \xE9motionnelles sont souvent plus violentes que les douleurs
+    physiques "
   answer1: Oui
   answer2: Non
   answer1Type1: -1

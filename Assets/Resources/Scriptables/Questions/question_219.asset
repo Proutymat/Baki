@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_219
   m_EditorClassIdentifier: 
-  question: "Le temps peut gu\xE9rir toutes les blessures"
-  answer1: Oui
-  answer2: Non
-  answer1Type1: 9
-  answer1Type1ADD: 10
-  answer2Type1: 9
-  answer2Type1ADD: -10
+  question: "De mani\xE8re g\xE9n\xE9rale tu privil\xE9gies plut\xF4t la fr\xE9quence
+    ou l'intensit\xE9"
+  answer1: "Fr\xE9quence"
+  answer2: "Intensit\xE9"
+  answer1Type1: -1
+  answer1Type1ADD: 0
+  answer2Type1: -1
+  answer2Type1ADD: 0
   answer1Type2: -1
   answer1Type2ADD: 0
   answer2Type2: -1

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_116
   m_EditorClassIdentifier: 
-  question: "Tu pr\xE8f\xE8res savoir comment tu va mourir ou savoir quand tu va
-    mourir ?"
+  question: "Tu pr\xE9f\xE8res savoir comment tu vas mourir ou savoir quand tu vas
+    mourir"
   answer1: Comment
   answer2: Quand
   answer1Type1: -1

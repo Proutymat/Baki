@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_20
   m_EditorClassIdentifier: 
-  question: Chien ou chat ?
+  question: Chien ou chat
   answer1: Chien
   answer2: Chat
   answer1Type1: 0

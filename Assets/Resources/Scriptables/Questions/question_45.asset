@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_45
   m_EditorClassIdentifier: 
-  question: "Tu pr\xE9f\xE8res conna\xEEtre le grand amour ou devenir ultra riche
-    ?"
+  question: "Tu pr\xE9f\xE8res conna\xEEtre le grand amour ou devenir ultra riche"
   answer1: Grand amour
   answer2: Richesse
   answer1Type1: -1

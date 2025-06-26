@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_189
   m_EditorClassIdentifier: 
-  question: Certaines formes de douleurs sont bonnes
+  question: "Chaque sensation corporelle est un message sens\xE9 et interpr\xE9table"
   answer1: Oui
   answer2: Non
-  answer1Type1: 3
-  answer1Type1ADD: 5
-  answer2Type1: 3
-  answer2Type1ADD: -5
+  answer1Type1: 14
+  answer1Type1ADD: 10
+  answer2Type1: 14
+  answer2Type1ADD: -10
   answer1Type2: -1
   answer1Type2ADD: 0
   answer2Type2: -1

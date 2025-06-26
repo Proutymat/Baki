@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_203
   m_EditorClassIdentifier: 
-  question: "C'est quand on s'ennuie que viennent les id\xE9es"
+  question: "Savoir raconter les histoires est plus important qu'en avoir des bonnes
+    \xE0 raconter"
   answer1: Oui
   answer2: Non
-  answer1Type1: 18
-  answer1Type1ADD: 10
-  answer2Type1: 18
-  answer2Type1ADD: -5
+  answer1Type1: 6
+  answer1Type1ADD: -5
+  answer2Type1: 6
+  answer2Type1ADD: 5
   answer1Type2: -1
   answer1Type2ADD: 0
   answer2Type2: -1

@@ -12,14 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_170
   m_EditorClassIdentifier: 
-  question: "Tu trouverais amusant de r\xE9aliser aujourd'hui que tu ne per\xE7ois
-    pas le monde mat\xE9riel comme les autres"
+  question: "La propri\xE9t\xE9 priv\xE9e est un droit fondamental"
   answer1: Oui
   answer2: Non
-  answer1Type1: -1
-  answer1Type1ADD: 0
-  answer2Type1: -1
-  answer2Type1ADD: 0
+  answer1Type1: 15
+  answer1Type1ADD: 10
+  answer2Type1: 15
+  answer2Type1ADD: -10
   answer1Type2: -1
   answer1Type2ADD: 0
   answer2Type2: -1

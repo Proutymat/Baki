@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_10
   m_EditorClassIdentifier: 
-  question: Quel est le pire, remord ou regret ?
+  question: Quel est le pire, remords ou regret
   answer1: Remord
   answer2: Regret
   answer1Type1: -1

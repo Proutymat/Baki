@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: question_49
   m_EditorClassIdentifier: 
   question: "Tu pr\xE9f\xE8res perdre tous les souvenirs que tu as des gens que tu
-    aimes ou qu'ils perdent tous leurs souvenirs de toi ?"
+    aimes ou qu'ils perdent tous leurs souvenirs de toi"
   answer1: Tu perds tes souvenirs
   answer2: Les autres t'oublient
   answer1Type1: -1

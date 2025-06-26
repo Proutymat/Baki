@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_8
   m_EditorClassIdentifier: 
-  question: "On poss\xE8de un \xE2me"
+  question: "On poss\xE8de une \xE2me"
   answer1: Oui
   answer2: Non
   answer1Type1: 3

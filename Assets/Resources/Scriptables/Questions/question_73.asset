@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: question_73
   m_EditorClassIdentifier: 
   question: "Est-ce que le monde irait mieux si tout le monde \xE9tait exactement
-    comme toi ?"
+    comme toi"
   answer1: Oui
   answer2: Non
   answer1Type1: 1

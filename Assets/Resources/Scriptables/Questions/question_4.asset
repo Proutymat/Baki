@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_4
   m_EditorClassIdentifier: 
-  question: "Sauver un adulte ou un b\xE9b\xE9 ?"
+  question: "Sauver un adulte ou un b\xE9b\xE9"
   answer1: Adulte
   answer2: "B\xE9b\xE9"
   answer1Type1: 5

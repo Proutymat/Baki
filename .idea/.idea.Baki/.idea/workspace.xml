@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="73781b9b-5c78-4d1f-a1a2-b07d1229386b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Baki/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Baki/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/MOUSE_CURSOR.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/MOUSE_CURSOR.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/MOUSE_CURSOR.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/MOUSE_CURSOR.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,7 +159,7 @@
       <workItem from="1750774570171" duration="18684000" />
       <workItem from="1750855066477" duration="14003000" />
       <workItem from="1750876547598" duration="72000" />
-      <workItem from="1750888784088" duration="741000" />
+      <workItem from="1750888784088" duration="1968000" />
     </task>
     <servers />
   </component>

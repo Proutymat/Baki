@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_136
   m_EditorClassIdentifier: 
-  question: "Les adolescents se sp\xE9cialisent trop t\xF4t"
+  question: "Ne pas avoir de passion est un d\xE9saventage en soci\xE9t\xE9"
   answer1: Oui
   answer2: Non
   answer1Type1: 13
-  answer1Type1ADD: -10
+  answer1Type1ADD: 10
   answer2Type1: 13
-  answer2Type1ADD: 10
+  answer2Type1ADD: -10
   answer1Type2: -1
   answer1Type2ADD: 0
   answer2Type2: -1

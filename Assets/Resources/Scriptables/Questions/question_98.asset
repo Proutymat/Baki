@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_98
   m_EditorClassIdentifier: 
-  question: "Tu pr\xE9f\xE8res mourir br\xFBl\xE9.e ou en te noyant ?"
+  question: "Tu pr\xE9f\xE8res mourir br\xFBl\xE9.e ou en te noyant"
   answer1: "Brul\xE9.e"
   answer2: Noyade
   answer1Type1: -1

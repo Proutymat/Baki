@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_129
   m_EditorClassIdentifier: 
-  question: "Les enfants qui font un bloquage sur des mati\xE8res scolaires ont eu
-    de mauvais profs"
+  question: "Les enfants qui font un blocage sur des mati\xE8res scolaires ont eu
+    de mauvais professeurs"
   answer1: Oui
   answer2: Non
   answer1Type1: 2

@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_216
   m_EditorClassIdentifier: 
-  question: "Tu pr\xE9ferais te r\xE9incarner en humain ou en animal ?"
-  answer1: En humain
-  answer2: En animal
-  answer1Type1: 3
-  answer1Type1ADD: -5
-  answer2Type1: 3
-  answer2Type1ADD: 10
+  question: "Quel est le plus aga\xE7ant entre quelqu'un qui parle \xE9norm\xE9ment
+    ou quelqu'un qui parle tr\xE8s peu"
+  answer1: "Enorm\xE9ment"
+  answer2: "Tr\xE8s peu"
+  answer1Type1: -1
+  answer1Type1ADD: 0
+  answer2Type1: -1
+  answer2Type1ADD: 0
   answer1Type2: -1
   answer1Type2ADD: 0
   answer2Type2: -1

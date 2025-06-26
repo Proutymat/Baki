@@ -12,17 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_140
   m_EditorClassIdentifier: 
-  question: 'Le hasard existe '
+  question: "L'\xE9cole sensibilise suffisamment \xE0 l'importance de la politique
+    en d\xE9mocratie"
   answer1: Oui
   answer2: Non
   answer1Type1: -1
   answer1Type1ADD: 0
-  answer2Type1: 14
-  answer2Type1ADD: 10
-  answer1Type2: -1
-  answer1Type2ADD: 0
-  answer2Type2: -1
-  answer2Type2ADD: 0
+  answer2Type1: -1
+  answer2Type1ADD: 0
+  answer1Type2: 13
+  answer1Type2ADD: 5
+  answer2Type2: 13
+  answer2Type2ADD: 10
   answer1Illustration: 
   answer1IllustrationPriority: 0
   answer2Illustration: 

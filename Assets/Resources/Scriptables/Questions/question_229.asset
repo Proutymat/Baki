@@ -12,18 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_229
   m_EditorClassIdentifier: 
-  question: "Quel est le plus d\xE9sagr\xE9able : avoir trop chaud ou avoir trop
-    froid"
-  answer1: Trop chaud
-  answer2: Trop froid
-  answer1Type1: -1
-  answer1Type1ADD: 0
-  answer2Type1: -1
-  answer2Type1ADD: 0
-  answer1Type2: -1
-  answer1Type2ADD: 0
-  answer2Type2: -1
-  answer2Type2ADD: 0
+  question: Tu sais ce qui te rend heureux
+  answer1: 'Oui '
+  answer2: Non
+  answer1Type1: 9
+  answer1Type1ADD: 10
+  answer2Type1: 9
+  answer2Type1ADD: -5
+  answer1Type2: 1
+  answer1Type2ADD: 10
+  answer2Type2: 1
+  answer2Type2ADD: -5
   answer1Illustration: 
   answer1IllustrationPriority: 0
   answer2Illustration: 

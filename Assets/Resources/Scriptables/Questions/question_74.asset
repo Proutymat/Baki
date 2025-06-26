@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: question_74
   m_EditorClassIdentifier: 
   question: "Tu pr\xE9f\xE8rerais ressembler \xE0 tout le monde ou \xEAtre absolument
-    diff\xE9rent de tout le monde ?"
+    diff\xE9rent de tout le monde"
   answer1: "Ressembler \xE0 tout le monde"
-  answer2: "Etre diff\xE9rent"
+  answer2: "\xCAtre diff\xE9rent"
   answer1Type1: -1
   answer1Type1ADD: 0
   answer2Type1: -1

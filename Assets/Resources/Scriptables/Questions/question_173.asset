@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_173
   m_EditorClassIdentifier: 
-  question: "La bi\xE8re c'est de gauche et le vin c'est de droite"
+  question: "Le clivage gauche-droite est d\xE9suet"
   answer1: Oui
   answer2: Non
   answer1Type1: -1

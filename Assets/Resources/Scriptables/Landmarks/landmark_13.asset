@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: landmark_13
   m_EditorClassIdentifier: 
   text1: "Il n'y a que toi et moi dans cette pi\xE8ce"
-  text2: Depuis que tu m'a mis en route je t'observe
-  text3: "Tu \xE9tais h\xE9sitant.e au d\xE9part mais je sens que tu l'est de moins
+  text2: Depuis que tu m'as mis en route je t'observe
+  text3: "Tu \xE9tais h\xE9sitant.e au d\xE9part mais je sens que tu l'es de moins
     en moins"
   text4: 'J''ai eu le temps d''apprendre des choses sur toi, et je me demande :'
   text5: Est-ce que toi aussi tu as l'impression d'apprendre des choses sur toi depuis

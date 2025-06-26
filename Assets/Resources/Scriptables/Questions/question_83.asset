@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_83
   m_EditorClassIdentifier: 
-  question: "Voyager dans le pass\xE9 ou dans le futur ?"
+  question: "Voyager dans le pass\xE9 ou dans le futur"
   answer1: "Pass\xE9"
   answer2: Futur
   answer1Type1: 5

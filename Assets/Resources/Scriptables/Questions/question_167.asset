@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_167
   m_EditorClassIdentifier: 
-  question: Tout est politique
+  question: On banalise trop le sexe
   answer1: Oui
   answer2: Non
   answer1Type1: -1

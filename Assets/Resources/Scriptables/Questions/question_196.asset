@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_196
   m_EditorClassIdentifier: 
-  question: Monter des escaliers fatigue plus que monter une pente
-  answer1: Oui
-  answer2: Non
+  question: Dans un trajet qu'est-ce qui passe le plus vite, l'aller ou le retour
+  answer1: L'aller
+  answer2: Le retour
   answer1Type1: -1
   answer1Type1ADD: 0
   answer2Type1: -1

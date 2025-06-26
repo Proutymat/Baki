@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: landmark_8
   m_EditorClassIdentifier: 
   text1: "Le paysage d\xE9file, des champs, des montagnes, parfois des villages,
-    la t\xEAte pos\xE9e contre la f\xEAn\xEAtre de la voiture."
-  text2: "Tu rentres d'un \xE9v\xE8nement avec des proches"
-  text3: "La voiture d\xE9croche de la route, et le temps s'arr\xEAte, quel est ton
+    la t\xEAte pos\xE9e contre la fen\xEAtre de la voiture."
+  text2: "Tu rentres d'un \xE9v\xE8nement avec des proches."
+  text3: "Le soleil se couche \xE0 l'horizon et la pluie caresse doucement la carrosserie."
+  text4: "La voiture d\xE9croche de la route, et le temps s'arr\xEAte, quel est ton
     dernier sentiment ?"
-  text4: 
   text5: 
   text6: 
   answer1: Regret
   answer2: Accomplissement
   type: 0
-  nbTexts: 2
+  nbTexts: 3

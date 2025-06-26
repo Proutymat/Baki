@@ -12,18 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_146
   m_EditorClassIdentifier: 
-  question: "Seul les crimes et non les d\xE9lits devraient emp\xEAcher l'exercice
-    de certains m\xE9tiers"
+  question: "Au vu de l'urgence \xE9cologique, le nucl\xE9aire est la meilleure solution"
   answer1: Oui
   answer2: Non
-  answer1Type1: 12
-  answer1Type1ADD: -10
-  answer2Type1: 12
-  answer2Type1ADD: 10
-  answer1Type2: 16
-  answer1Type2ADD: -10
-  answer2Type2: 16
-  answer2Type2ADD: 10
+  answer1Type1: -1
+  answer1Type1ADD: 0
+  answer2Type1: -1
+  answer2Type1ADD: 0
+  answer1Type2: -1
+  answer1Type2ADD: 0
+  answer2Type2: -1
+  answer2Type2ADD: 0
   answer1Illustration: 
   answer1IllustrationPriority: 0
   answer2Illustration: 

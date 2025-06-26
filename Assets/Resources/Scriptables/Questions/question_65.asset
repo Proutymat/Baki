@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_65
   m_EditorClassIdentifier: 
-  question: "L'Etat te prot\xE8ge"
+  question: "L'\xC9tat te prot\xE8ge"
   answer1: Oui
   answer2: Non
   answer1Type1: 16

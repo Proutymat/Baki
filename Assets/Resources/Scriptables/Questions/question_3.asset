@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_3
   m_EditorClassIdentifier: 
-  question: Mourir aujourd'hui ou mourir demain ?
+  question: Mourir aujourd'hui ou mourir demain
   answer1: Aujourd'hui
   answer2: Demain
   answer1Type1: -1

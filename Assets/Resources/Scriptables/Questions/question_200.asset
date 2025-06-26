@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_200
   m_EditorClassIdentifier: 
-  question: Ne plus jamais pouvoir respirer par la bouche ou par le nez ?
-  answer1: Par la bouche
-  answer2: Par le nez
+  question: Ne plus avoir de genoux ou ne plus avoir de coudes
+  answer1: Plus de genoux
+  answer2: Plus de coudes
   answer1Type1: -1
   answer1Type1ADD: 0
   answer2Type1: -1

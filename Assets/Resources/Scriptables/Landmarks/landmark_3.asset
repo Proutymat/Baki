@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8c8072d2125b034db50ac10816f2018, type: 3}
   m_Name: landmark_3
   m_EditorClassIdentifier: 
-  text1: Si tu te concentre tu peux t'imaginer dans un lieu de paix
-  text2: "Un lieu pour toi seul.e qui n'\xE9voque que le bien \xEAtre."
-  text3: "Tu marches dans ce lieu et tombe nez \xE0 nez avec un champ de fleur."
+  text1: Si tu te concentre tu peux t'imaginer dans un lieu de paix.
+  text2: "Un lieu pour toi seul.e qui n'\xE9voque que le bien-\xEAtre."
+  text3: "Tu marches dans ce lieu et tombes nez \xE0 nez avec un champ de fleurs."
   text4: "Au milieu du champ se trouve une personne extr\xEAmement importante pour
-    toi"
-  text5: Les fleurs du champ lui ressemblent. Est-ce que c'est un champ de tournesol
-    ou de violette ?
+    toi."
+  text5: Les fleurs du champ lui ressemblent. Est-ce que c'est un champ de tournesols
+    ou de violettes ?
   text6: 
-  answer1: Tournesol
-  answer2: Viollette
+  answer1: Tournesols
+  answer2: Viollettes
   type: 0
   nbTexts: 4

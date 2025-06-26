@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_222
   m_EditorClassIdentifier: 
-  question: Lampadaire ou boule de bowling ?
-  answer1: Lampadaire
-  answer2: Boule de bolwing
+  question: "Te souviens-tu de tes r\xEAves"
+  answer1: Oui
+  answer2: Non
   answer1Type1: -1
   answer1Type1ADD: 0
   answer2Type1: -1
@@ -23,7 +23,7 @@ MonoBehaviour:
   answer1Type2ADD: 0
   answer2Type2: -1
   answer2Type2ADD: 0
-  answer1Illustration: LAMPADAIRE
-  answer1IllustrationPriority: 1
-  answer2Illustration: BOWLING
-  answer2IllustrationPriority: 1
+  answer1Illustration: 
+  answer1IllustrationPriority: 0
+  answer2Illustration: 
+  answer2IllustrationPriority: 0

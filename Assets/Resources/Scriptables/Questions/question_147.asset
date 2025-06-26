@@ -12,17 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_147
   m_EditorClassIdentifier: 
-  question: "Au vu de l'urgence \xE9cologiqe, le nucl\xE9aire est la meilleure solution"
+  question: "Si tous les m\xE9tiers payaient autant, personne ne voudrait faire certains
+    m\xE9tiers"
   answer1: Oui
   answer2: Non
-  answer1Type1: -1
-  answer1Type1ADD: 0
-  answer2Type1: -1
-  answer2Type1ADD: 0
-  answer1Type2: -1
-  answer1Type2ADD: 0
-  answer2Type2: -1
-  answer2Type2ADD: 0
+  answer1Type1: 11
+  answer1Type1ADD: 10
+  answer2Type1: 11
+  answer2Type1ADD: -10
+  answer1Type2: 13
+  answer1Type2ADD: -10
+  answer2Type2: 13
+  answer2Type2ADD: 10
   answer1Illustration: 
   answer1IllustrationPriority: 0
   answer2Illustration: 

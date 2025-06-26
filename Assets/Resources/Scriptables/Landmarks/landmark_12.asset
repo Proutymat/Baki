@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8c8072d2125b034db50ac10816f2018, type: 3}
   m_Name: landmark_12
   m_EditorClassIdentifier: 
-  text1: "Si demain tu te r\xE9veillais dans le corps de la personne que tu d\xE9teste
-    le plus"
-  text2: Une personne que tu connais bien
+  text1: "Si demain tu te r\xE9veillais dans le corps de la personne que tu d\xE9testes
+    le plus."
+  text2: Une personne que tu connais bien.
   text3: "La personne qui t'ai fait le plus de mal qui t'ai caus\xE9 le plus de tort."
-  text4: Si demain tu te reveillais dans son corps pour 24h
+  text4: Si demain tu te reveillais dans son corps pour 24h.
   text5: "Tu chercherais \xE0 t'am\xE9liorer ou bien tu te ferais du mal ?"
   text6: 
   answer1: "S'am\xE9liorer "

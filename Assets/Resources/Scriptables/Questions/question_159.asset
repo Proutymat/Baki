@@ -12,19 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_159
   m_EditorClassIdentifier: 
-  question: "Vivre depuis assez longtemps dans un pays devrait syst\xE9matiquement
-    justifier l'obtention de la nationalit\xE9 de celui-ci"
+  question: "Les rues sont moins s\xFBres qu'avant"
   answer1: Oui
   answer2: Non
-  answer1Type1: 11
-  answer1Type1ADD: -10
-  answer2Type1: 11
-  answer2Type1ADD: 10
-  answer1Type2: 12
-  answer1Type2ADD: 10
-  answer2Type2: 12
-  answer2Type2ADD: -10
-  answer1Illustration: 
-  answer1IllustrationPriority: 0
+  answer1Type1: 16
+  answer1Type1ADD: 10
+  answer2Type1: 16
+  answer2Type1ADD: -10
+  answer1Type2: -1
+  answer1Type2ADD: 0
+  answer2Type2: -1
+  answer2Type2ADD: 0
+  answer1Illustration: TIQUE
+  answer1IllustrationPriority: 1
   answer2Illustration: 
   answer2IllustrationPriority: 0

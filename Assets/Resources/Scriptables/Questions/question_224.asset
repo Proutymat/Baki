@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_224
   m_EditorClassIdentifier: 
-  question: Qui fais-tu passer en premier ?
-  answer1: "Toi-m\xEAme"
-  answer2: Les autres
+  question: "Te sens tu en paix avec toi m\xEAme"
+  answer1: 'Oui '
+  answer2: Non
   answer1Type1: 1
   answer1Type1ADD: 10
   answer2Type1: 1
-  answer2Type1ADD: -5
+  answer2Type1ADD: -10
   answer1Type2: -1
   answer1Type2ADD: 0
   answer2Type2: -1

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_97
   m_EditorClassIdentifier: 
-  question: "Pour prendre une d\xE9cision, tu a tendance \xE0 suivre ton coeur ou
-    \xE0 suivre ta t\xEAte ?"
+  question: "Pour prendre une d\xE9cision, tu as tendance \xE0 suivre ton coeur ou
+    \xE0 suivre ta t\xEAte"
   answer1: Ton coeur
   answer2: "Ta t\xEAte"
   answer1Type1: -1

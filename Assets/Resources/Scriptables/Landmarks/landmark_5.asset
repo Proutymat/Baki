@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8c8072d2125b034db50ac10816f2018, type: 3}
   m_Name: landmark_5
   m_EditorClassIdentifier: 
-  text1: "Si on pouvait mettre le temps en pause et qu'on \xE9tait omniscient"
-  text2: 'On pourrait alors tout savoir sur tout, comme la composition et la vitesse
-    d''un objet '
+  text1: "Si on pouvait mettre le temps en pause, et qu'on \xE9tait omniscient."
+  text2: On pourrait alors tout savoir sur tout, comme la composition et la vitesse
+    d'un objet .
   text3: "Mais aussi voir tous les neurones agir en cha\xEEne lors de chaque prise
-    de d\xE9cision de toustes"
+    de d\xE9cision de toustes."
   text4: "Si on assemblait toutes les donn\xE9es prises, est-ce qu'on pourrait alors
     anticiper ce qu'il va se passer dans l'instant qui arrive ?"
   text5: 

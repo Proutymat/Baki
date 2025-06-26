@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_181
   m_EditorClassIdentifier: 
-  question: "Les fumeurs  tiennent moins \xE0 la vie que les non fumeurs"
+  question: "La consommation de viande ne pose probl\xE8me que parce qu'elle se fait
+    en masse"
   answer1: Oui
   answer2: Non
-  answer1Type1: -1
-  answer1Type1ADD: 0
-  answer2Type1: -1
-  answer2Type1ADD: 0
+  answer1Type1: 5
+  answer1Type1ADD: -10
+  answer2Type1: 5
+  answer2Type1ADD: 10
   answer1Type2: -1
   answer1Type2ADD: 0
   answer2Type2: -1

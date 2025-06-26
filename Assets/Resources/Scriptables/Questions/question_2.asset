@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_2
   m_EditorClassIdentifier: 
-  question: Devenir sourd ou devenir muet ?
+  question: Devenir sourd ou devenir muet
   answer1: Sourd
   answer2: Muet
   answer1Type1: -1

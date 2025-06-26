@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_85
   m_EditorClassIdentifier: 
-  question: "Est-ce que tu as un ou plusieurs secrets que tu n'a jamais dit \xE0
+  question: "Est-ce que tu as un ou plusieurs secrets que tu n'as jamais dit \xE0
     personne"
   answer1: Oui
   answer2: Non

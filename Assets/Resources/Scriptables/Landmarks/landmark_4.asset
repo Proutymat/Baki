@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8c8072d2125b034db50ac10816f2018, type: 3}
   m_Name: landmark_4
   m_EditorClassIdentifier: 
-  text1: "Le vent te rappelle chaque centim\xE8tre carr\xE9 de ta peau"
-  text2: "La soif t'emp\xEAche d'oublier ta bouche, le froid fais trembler chacun
+  text1: "Le vent te rappelle chaque centim\xE8tre carr\xE9 de ta peau."
+  text2: "La soif t'emp\xEAche d'oublier ta bouche, le froid fait trembler chacun
     de tes muscles."
   text3: Pourtant, certaines personnes affirment que nous vivons toustes dans une
-    simulation informatique
+    simulation informatique.
   text4: "Nous n'existerions alors pas vraiment et serions l'oeuvre d'un programme
     ultra sophistiqu\xE9."
   text5: "Si tu n'\xE9tais qu'un bout d'algorithme, est-ce que tu souhaiterais savoir

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_193
   m_EditorClassIdentifier: 
-  question: On peut rire de tout
+  question: "On peut d\xE9battre de tout"
   answer1: Oui
   answer2: Non
   answer1Type1: 7

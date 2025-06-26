@@ -12,18 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_231
   m_EditorClassIdentifier: 
-  question: "Tu pr\xE8f\xE8res partir seul.e \xE0 la destination de tes r\xEAves
-    ou rester en vacances dans ta ville avec tes proches ?"
-  answer1: Partir seul.e
-  answer2: Rester
-  answer1Type1: 1
-  answer1Type1ADD: 10
-  answer2Type1: 0
+  question: "Tu serais une moins bonne personne si tu \xE9tais riche"
+  answer1: 'Oui '
+  answer2: Non
+  answer1Type1: 2
+  answer1Type1ADD: -10
+  answer2Type1: 2
   answer2Type1ADD: 10
-  answer1Type2: -1
-  answer1Type2ADD: 0
-  answer2Type2: -1
-  answer2Type2ADD: 0
+  answer1Type2: 15
+  answer1Type2ADD: -10
+  answer2Type2: 15
+  answer2Type2ADD: 10
   answer1Illustration: 
   answer1IllustrationPriority: 0
   answer2Illustration: 

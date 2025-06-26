@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_52
   m_EditorClassIdentifier: 
-  question: Qui gagne entre un bouledog et un cheval ?
+  question: Qui gagne entre un bouledogue et un cheval
   answer1: Le bouledog
   answer2: Le cheval
   answer1Type1: -1

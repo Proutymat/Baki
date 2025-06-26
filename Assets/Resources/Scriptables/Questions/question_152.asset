@@ -12,17 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_152
   m_EditorClassIdentifier: 
-  question: La mondialisation agie plus au service de la paix que de la guerre
+  question: "Si certaines conditions se r\xE9unissent, tu serais pr\xEAt \xE0 prendre
+    les armes pour ton pays"
   answer1: Oui
   answer2: Non
-  answer1Type1: 15
-  answer1Type1ADD: 10
-  answer2Type1: 15
-  answer2Type1ADD: -10
-  answer1Type2: 14
-  answer1Type2ADD: 10
-  answer2Type2: 14
-  answer2Type2ADD: -10
+  answer1Type1: -1
+  answer1Type1ADD: 0
+  answer2Type1: -1
+  answer2Type1ADD: 0
+  answer1Type2: -1
+  answer1Type2ADD: 0
+  answer2Type2: -1
+  answer2Type2ADD: 0
   answer1Illustration: 
   answer1IllustrationPriority: 0
   answer2Illustration: 

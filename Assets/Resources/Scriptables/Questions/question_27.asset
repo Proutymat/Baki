@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_27
   m_EditorClassIdentifier: 
-  question: La famille ou les amis ?
+  question: La famille ou les amis
   answer1: La famille
   answer2: Les amis
   answer1Type1: -1

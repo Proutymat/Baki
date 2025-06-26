@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: landmark_9
   m_EditorClassIdentifier: 
   text1: "Tu t'asseois dans une salle sombre, face \xE0 un grand \xE9cran. Les gens
-    autour de toi sont bruyant et attendent le d\xE9but du film."
+    autour de toi sont bruyants et attendent le d\xE9but du film."
   text2: "\xC0 c\xF4t\xE9 de toi sont assis tes proches, c'est eux qui t'ont conseill\xE9s
     d'aller voir ce film."
   text3: "Les discussions s'estompent et le g\xE9n\xE9rique commence."
-  text4: "Mais \xE0 la place du film pr\xE9vu, un documentaire sur ta vie est diffus\xE9e,
-    les hauts, les bas, les trahision, les rires, tout y est."
+  text4: "Mais \xE0 la place du film pr\xE9vu, un documentaire sur ta vie est diffus\xE9
+    : les hauts, les bas, les trahisions, les rires, tout y est."
   text5: "Est-ce que tu d\xE9cides de regarder le film ou de couper la projection
     ?"
   text6: 
