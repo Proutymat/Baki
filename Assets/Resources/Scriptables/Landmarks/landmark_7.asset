@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8c8072d2125b034db50ac10816f2018, type: 3}
   m_Name: landmark_7
   m_EditorClassIdentifier: 
-  text1: "Chaque jour tu bois, tu manges, tu respires, tu fais le man\xE8ge, tu r\xE9p\xE8tes
+  text1: "Chaque jour tu bois, tu manges, tu respires, tu fais le m\xE9nage, tu r\xE9p\xE8tes
     les choses du quotidien sans m\xEAme y penser."
   text2: "Mais tu d\xE9couvres aussi de nouvelles choses et rencontres de nouvelles
     personnes."
