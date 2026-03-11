@@ -76,9 +76,6 @@ public class GameManager : SerializedMonoBehaviour
     
     [Header("----- UI INTERFACE ENDING -----"), ShowIf("setObjectsInInspector")]
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject endingInterface;
-
-
-
     
     [Header("----- MAP PRINTER -----"), ShowIf("setObjectsInInspector")]
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject landmarksArrows;
