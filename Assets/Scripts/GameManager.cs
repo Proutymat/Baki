@@ -88,7 +88,7 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("setObjectsInInspector")] private PNGPrinter pngPrinter;
     [SerializeField, ShowIf("setObjectsInInspector")] private UiAnimations uiAnimations;
     
-    [Header("GAME SETTINGS")]
+    [Title("Game Settings")]
     [SerializeField] private float gameDuration = 600;
     [SerializeField] private int printIntervalsInPercent;
     [SerializeField] private int maxLawsInterval = 5;
@@ -146,28 +146,12 @@ public class GameManager : SerializedMonoBehaviour
     // ----------- GAME STATS -------------
     
     // Stats
-    private int nbUnitTraveled;
-    private int nbLandmarksReached;
-    private int nbWallsHit;
-    private int nbDirectionChanges;
-    private int nbButtonsPressed;
-    private float timeSpentMoving;
-    private int nbQuestionsAnswered;
-    private int nbLeftAnswers;
-    private int nbRightAnswers;
-    private float timeBetweenQuestions;
-    private float shortestTimeBetweenQuestions;
-    private float longestTimeBetweenQuestions;
-    private int nbProgressBarFull;
+    Statistics m_stats;
+    public Statistics Statistics { get { return m_stats; } }
     
     // Working values
     private float questionTimer;
 
-    public int DistanceTraveled { get { return nbUnitTraveled; } set { nbUnitTraveled = value; } }
-    public int LandmarksReached { get { return nbLandmarksReached; } set { nbLandmarksReached = value; } }
-    public int WallsHit { get { return nbWallsHit; } set { nbWallsHit = value; } }
-    public int DirectionChanges { get { return nbDirectionChanges; } set { nbDirectionChanges = value; } }
-    public int ButtonsPressed { get { return nbButtonsPressed; } set { nbButtonsPressed = value; } }
     public string CurrentGameLogFolder { get { return currentGameLogFolder; } }
 
 
@@ -240,19 +224,7 @@ public class GameManager : SerializedMonoBehaviour
         illustrations.Add("POISSON");
         
         // Initialize game stats
-        nbUnitTraveled = 0;
-        nbLandmarksReached = 0;
-        nbWallsHit = 0;
-        nbDirectionChanges = 0;
-        nbButtonsPressed = 0;
-        timeSpentMoving = 0;
-        nbQuestionsAnswered = 0;
-        nbLeftAnswers = 0;
-        nbRightAnswers = 0;
-        timeBetweenQuestions = 0;
-        nbProgressBarFull = 0;
-        shortestTimeBetweenQuestions = float.MaxValue;
-        longestTimeBetweenQuestions = float.MinValue;
+        m_stats = new Statistics();
         nbLandmarkQuestions = 0;
 
         beatingValue = 1;
@@ -542,19 +514,19 @@ public class GameManager : SerializedMonoBehaviour
         {
             writer.WriteLine("======== FIN DE PARTIE ========");
             writer.WriteLine($"Temps total : {gameDuration:F2} secondes");
-            writer.WriteLine($"Temps passé en mouvement : {timeSpentMoving:F2} secondes");
-            writer.WriteLine($"Unités parcourues : {nbUnitTraveled}");
-            writer.WriteLine($"Points de repère atteints : {nbLandmarksReached}");
-            writer.WriteLine($"Murs percutés : {nbWallsHit}");
-            writer.WriteLine($"Changements de direction : {nbDirectionChanges}");
-            writer.WriteLine($"Boutons pressés : {nbButtonsPressed}");
-            writer.WriteLine($"Questions répondues : {nbQuestionsAnswered}");
-            writer.WriteLine($"Réponses gauche : {nbLeftAnswers}");
-            writer.WriteLine($"Réponses droite : {nbRightAnswers}");
-            writer.WriteLine($"Temps moyen entre les questions : {timeBetweenQuestions/nbQuestionsAnswered:F2} secondes");
-            writer.WriteLine($"Temps le plus court entre deux questions : {shortestTimeBetweenQuestions:F2} secondes");
-            writer.WriteLine($"Temps le plus long entre deux questions : {longestTimeBetweenQuestions:F2} secondes");
-            writer.WriteLine($"Barre de progression pleine : {nbProgressBarFull}");
+            writer.WriteLine($"Temps passé en mouvement : {m_stats.TimeSpentMoving:F2} secondes");
+            writer.WriteLine($"Unités parcourues : {m_stats.NbUnitTraveled}");
+            writer.WriteLine($"Points de repère atteints : {m_stats.NbLandmarksReached}");
+            writer.WriteLine($"Murs percutés : {m_stats.NbWallsHit}");
+            writer.WriteLine($"Changements de direction : {m_stats.NbDirectionChanges}");
+            writer.WriteLine($"Boutons pressés : {m_stats.NbButtonsPressed}");
+            writer.WriteLine($"Questions répondues : {m_stats.NbQuestionsAnswered}");
+            writer.WriteLine($"Réponses gauche : {m_stats.NbLeftAnswers}");
+            writer.WriteLine($"Réponses droite : {m_stats.NbRightAnswers}");
+            writer.WriteLine($"Temps moyen entre les questions : {m_stats.TimeBetweenQuestions/m_stats.NbQuestionsAnswered:F2} secondes");
+            writer.WriteLine($"Temps le plus court entre deux questions : {m_stats.ShortestTimeBetweenQuestions:F2} secondes");
+            writer.WriteLine($"Temps le plus long entre deux questions : {m_stats.LongestTimeBetweenQuestions:F2} secondes");
+            writer.WriteLine($"Barre de progression pleine : {m_stats.NbProgressBarFull}");
             writer.WriteLine("================================");
             writer.WriteLine();
         }
@@ -731,14 +703,14 @@ public class GameManager : SerializedMonoBehaviour
         
         // Update stats
         if (player.IsMoving)
-            timeSpentMoving += Time.deltaTime;
+            m_stats.TimeSpentMoving += Time.deltaTime;
         questionTimer += Time.deltaTime;
     }
 
     private void UnlockIllustrations()
     {
         // Number of landmarks reached
-        if (nbLandmarksReached >= 4)
+        if (m_stats.NbLandmarksReached >= 4)
         {
             illusQueue.Add("BATONSOURCIER");
         }
@@ -748,17 +720,17 @@ public class GameManager : SerializedMonoBehaviour
         }
         
         // Longest time between questions
-        if (longestTimeBetweenQuestions > 30)
+        if (m_stats.LongestTimeBetweenQuestions > 30)
         {
             illusQueue.Add("YOYO");
         }
         
         // Unit traveled
-        if (nbUnitTraveled <= 95)
+        if (m_stats.NbUnitTraveled <= 95)
         {
             illusQueue.Add("TONGS");
         }
-        else if (nbUnitTraveled <= 155)
+        else if (m_stats.NbUnitTraveled <= 155)
         {
             illusQueue.Add("CHAUSSURES");
         }
@@ -768,7 +740,7 @@ public class GameManager : SerializedMonoBehaviour
         }
         
         // Nb of questions answered
-        if (nbQuestionsAnswered > 185)
+        if (m_stats.NbQuestionsAnswered > 185)
         {
             illusQueue.Add("SABLIER");
         }
@@ -778,7 +750,7 @@ public class GameManager : SerializedMonoBehaviour
         }
         
         // Nb walls hit
-        if (nbWallsHit > 21)
+        if (m_stats.NbWallsHit > 21)
         {
             illusQueue.Add("VAUTOUR");
         }
@@ -788,18 +760,18 @@ public class GameManager : SerializedMonoBehaviour
         }
         
         // Nb of direction changes
-        if (nbDirectionChanges > 30)
+        if (m_stats.NbDirectionChanges > 30)
         {
             illusQueue.Add("COMPAS");
         }
         
             
         // Nb of left answers
-        if (nbLeftAnswers == nbRightAnswers)
+        if (m_stats.NbLeftAnswers == m_stats.NbRightAnswers)
         {
             illusQueue.Add("DICE");
         }
-        else if (nbLeftAnswers > nbRightAnswers)
+        else if (m_stats.NbLeftAnswers > m_stats.NbRightAnswers)
         {
             illusQueue.Add("FIGUE");
         }
@@ -871,28 +843,28 @@ public class GameManager : SerializedMonoBehaviour
         }
         
         // UPDATE STATS
-        nbQuestionsAnswered++;
+        m_stats.NbQuestionsAnswered++;
         if (answerIndex == 1)
-            nbLeftAnswers++;
+            m_stats.NbLeftAnswers++;
         else
-            nbRightAnswers++;
+            m_stats.NbRightAnswers++;
 
         // Update time between questions (if more than 5 questions answered)
-        if (nbQuestionsAnswered > 5)
+        if (m_stats.NbQuestionsAnswered > 5)
         {
-            if (questionTimer < shortestTimeBetweenQuestions)
-                shortestTimeBetweenQuestions = questionTimer;
-            if (questionTimer > longestTimeBetweenQuestions)
-                longestTimeBetweenQuestions = questionTimer;
+            if (questionTimer < m_stats.ShortestTimeBetweenQuestions)
+                m_stats.ShortestTimeBetweenQuestions = questionTimer;
+            if (questionTimer > m_stats.LongestTimeBetweenQuestions)
+                m_stats.LongestTimeBetweenQuestions = questionTimer;
         }
-        timeBetweenQuestions += questionTimer;
+        m_stats.TimeBetweenQuestions += questionTimer;
         questionTimer = 0;
         
         
         // Progress bar is full
         if (progressBar.IncreaseProgressBar())
         {
-            nbProgressBarFull++;
+            m_stats.NbProgressBarFull++;
             player.SetIsMoving(false);
             ShowHideQuestionArea(false);
             uiAnimations.StopShader(1.5f);
@@ -982,7 +954,7 @@ public class GameManager : SerializedMonoBehaviour
         }
         
         // Tutorial questions
-        if (runtimeTutorials.Count > 0 && nbQuestionsAnswered > 8 && nbQuestionsAnswered % intervalBetweenTutorials == 0)
+        if (runtimeTutorials.Count > 0 && m_stats.NbQuestionsAnswered > 8 && m_stats.NbQuestionsAnswered % intervalBetweenTutorials == 0)
         {
             currentQuestion = runtimeTutorials[0];
             runtimeTutorials.RemoveAt(0);

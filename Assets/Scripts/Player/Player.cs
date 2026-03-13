@@ -98,7 +98,7 @@ public class Player : MonoBehaviour
         {
             Debug.Log("Wall hit");
             this.transform.position -= currentDirection;
-            gameManager.WallsHit++;
+            gameManager.Statistics.NbWallsHit++;
             uiAnimations.PauseAnimations();
             uiAnimations.StopShader(3);
             FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/SFX_InGame/SFX_IG_BoardImpact");
@@ -108,7 +108,8 @@ public class Player : MonoBehaviour
         else if (collider.tag == "Landmark")
         {
             Debug.Log("Landmark reached");
-            gameManager.LandmarksReached++;
+            gameManager.Statistics.NbLandmarksReached++;
+            
             gameManager.EnterLandmark(collider.GetComponent<Landmark>());
             SetIsMoving(false);
         }
@@ -135,7 +136,7 @@ public class Player : MonoBehaviour
     
     public void ChangeDirection(string direction)
     {
-        gameManager.ButtonsPressed++;
+        gameManager.Statistics.NbButtonsPressed++;
         FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_DirectionClick");
         
         // If the direction is the same as the previous one, skip
@@ -145,7 +146,7 @@ public class Player : MonoBehaviour
         }
         
         previousDirection = direction;
-        gameManager.DirectionChanges++;
+        gameManager.Statistics.NbDirectionChanges++;
         
         // Direction are inverted because I fucked up the axis in map generation
         if (direction == "foreward")
@@ -261,7 +262,7 @@ public class Player : MonoBehaviour
         moveAnimation.SetTrigger("trigger");
         unitTimer = 0f;
         this.transform.position += currentDirection;
-        gameManager.DistanceTraveled++;
+        gameManager.Statistics.NbUnitTraveled++;
         midSoundPlayed = false;
         if (inSpecialZone)
             playerColliders.UpdateSpecialZoneDetection();
