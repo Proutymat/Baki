@@ -4,10 +4,6 @@ using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
-using TMPro;
-using UnityEngine.InputSystem.LowLevel;
-using UnityEngine.UI;
-using UnityEngine.Video;
 
 
 public class GameManager : SerializedMonoBehaviour
@@ -18,54 +14,10 @@ public class GameManager : SerializedMonoBehaviour
     
     [SerializeField] private bool setObjectsInInspector = false;
 
-    [Header("----- UI ARROW BUTTONS ----- "), ShowIf("setObjectsInInspector")]
-    [SerializeField, ShowIf("setObjectsInInspector")] private Sprite arrowUp;
-    [SerializeField, ShowIf("setObjectsInInspector")] private Sprite arrowUpHovered;
-    [SerializeField, ShowIf("setObjectsInInspector")] private Sprite arrowDown;
-    [SerializeField, ShowIf("setObjectsInInspector")] private Sprite arrowDownHovered;
-    [SerializeField, ShowIf("setObjectsInInspector")] private Sprite arrowLeft;
-    [SerializeField, ShowIf("setObjectsInInspector")] private Sprite arrowLeftHovered;
-    [SerializeField, ShowIf("setObjectsInInspector")] private Sprite arrowRight;
-    [SerializeField, ShowIf("setObjectsInInspector")] private Sprite arrowRightHovered;
-    [SerializeField, ShowIf("setObjectsInInspector")] private Image buttonUp;
-    [SerializeField, ShowIf("setObjectsInInspector")] private Image buttonDown;
-    [SerializeField, ShowIf("setObjectsInInspector")] private Image buttonLeft;
-    [SerializeField, ShowIf("setObjectsInInspector")] private Image buttonRight;
-    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject buttonsArrowsObject;
-
-    [Header("----- UI INTERFACE INTRO -----"), ShowIf("setObjectsInInspector")]
-    [SerializeField, ShowIf("setObjectsInInspector")] private Canvas mainCanvas;
-    [SerializeField, ShowIf("setObjectsInInspector")] private Camera canvasCamera;
-    [SerializeField, ShowIf("setObjectsInInspector")] private VideoPlayer videoPlayer;
-    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject introInterface;
-    [SerializeField, ShowIf("setObjectsInInspector")] private Button startButton;
     
     
-    [Header("--- UI INTERFACE QUESTION ---"), ShowIf("setObjectsInInspector")]
-    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject questionsInterface;
-    [SerializeField, ShowIf("setObjectsInInspector")] private Button arrowButtonForeward;
-    [SerializeField, ShowIf("setObjectsInInspector")] private Button arrowButtonLeft;
-    [SerializeField, ShowIf("setObjectsInInspector")] private Button arrowButtonRight;
-    [SerializeField, ShowIf("setObjectsInInspector")] private Button arrowButtonBackward;
-    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject questionsArea;
-    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject progressBarObject;
-    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject bottomArrowIndication;
-    [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI questionText;
-    [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer1Text;
-    [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI answer2Text;
     private float beatingArrowTimer;
     private float beatingValue = 1;
-    
-    [Header("--- UI INTERFACE LANDMARK ---"), ShowIf("setObjectsInInspector")]
-    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject landmarksInterface;
-    [SerializeField, ShowIf("setObjectsInInspector")] private List<Image> bubblePages;
-    [SerializeField, ShowIf("setObjectsInInspector")] private Sprite emptyBubbleSprite;
-    [SerializeField, ShowIf("setObjectsInInspector")] private Sprite filledBubbleSprite;
-    [SerializeField, ShowIf("setObjectsInInspector")] private TextMeshProUGUI landmarkText;
-    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject nextButton;
-    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject backButton;
-    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject landmarkAnswer1Button;
-    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject landmarkAnswer2Button;
     
     [Header("----- UI INTERFACE ENDING -----"), ShowIf("setObjectsInInspector")]
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject endingInterface;
@@ -85,7 +37,6 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField] private float gameDuration = 600;
     [SerializeField] private int printIntervalsInPercent;
     [SerializeField] private int maxLawsInterval = 5;
-    [SerializeField] private int intervalBetweenTutorials = 3;
 
     private bool unboardingStep1 = false;
     private bool unboardingStep2 = false;
@@ -95,25 +46,11 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField] private bool skipIntro = false;
     [SerializeField] private bool enablePrinters = true;
     
-    [Header("STATIC LISTS (not used in runtime)")]
-    [SerializeField, ShowIf("debug")] private List<Question> tutorials;
-    [SerializeField, ShowIf("debug")] private List<Question> questions;
-    [SerializeField, ShowIf("debug")] private List<LandmarkQuestion> landmarksTypeA;
-    [SerializeField, ShowIf("debug")] private List<LandmarkQuestion> landmarksTypeB;
-    [SerializeField, ShowIf("debug")] private List<LandmarkQuestion> landmarksTypeC;
-    [SerializeField, ShowIf("debug")] private List<LandmarkQuestion> landmarksTypeD;
-    [SerializeField, ShowIf("debug")] private List<Value> laws;
+    
+    [SerializeField, ShowIf("debug")] public List<Value> laws; // Should be private in chartemanager or something
     
     [Header("WORKING VALUES (used in runtime)")]
-    [SerializeField, ShowIf("debug")] private List<Question> runtimeTutorials;
-    [SerializeField, ShowIf("debug")] private List<Question> runtimeQuestions;
-    [SerializeField, ShowIf("debug")] private List<LandmarkQuestion> runtimeLandmarksTypeA;
-    [SerializeField, ShowIf("debug")] private List<LandmarkQuestion> runtimeLandmarksTypeB;
-    [SerializeField, ShowIf("debug")] private List<LandmarkQuestion> runtimeLandmarksTypeC;
-    [SerializeField, ShowIf("debug")] private List<LandmarkQuestion> runtimeLandmarksTypeD;
-    [SerializeField, ShowIf("debug")] private Question currentQuestion;
-    [SerializeField, ShowIf("debug")] private LandmarkQuestion currentLandmarkQuestion;
-    [SerializeField, ShowIf("debug")] private List<LawCursor> lawCursors;
+    [SerializeField, ShowIf("debug")] public List<LawCursor> lawCursors;
     [SerializeField, ShowIf("debug")] private List<string> lawsQueue;
     [SerializeField, ShowIf("debug")] private List<int> lawsQueuePriority;
     [SerializeField, ShowIf("debug")] private List<string> illusQueue;
@@ -125,8 +62,6 @@ public class GameManager : SerializedMonoBehaviour
     private string answersLogFilePath;
     private bool isGameOver = false;
     private bool inLandmark;
-    private bool isTutorialQuestion;
-    private int nbLandmarkQuestions;
     private Landmark currentLandmark;
 
     private List<string> illusLandmarkA;
@@ -135,15 +70,11 @@ public class GameManager : SerializedMonoBehaviour
     private List<string> illusLandmarkD;
     private List<string> illustrations;
     
+    // Managers
+    public StatsManager m_statsManager;
+    public PanelManager m_panelManager;
     
-    // ----------- GAME STATS -------------
-    
-    // Stats
-    Statistics m_stats;
-    public Statistics Statistics { get { return m_stats; } }
-    
-    // Working values
-    private float questionTimer;
+    public StatsManager Statistics { get { return m_statsManager; } }
 
     public string CurrentGameLogFolder { get { return currentGameLogFolder; } }
 
@@ -216,33 +147,21 @@ public class GameManager : SerializedMonoBehaviour
         illustrations.Add("CORNEABONDANCE");
         illustrations.Add("POISSON");
         
-        // Initialize game stats
-        m_stats = new Statistics();
-        nbLandmarkQuestions = 0;
+        // Initialize managers
+        m_statsManager = new StatsManager();
 
         beatingValue = 1;
         beatingArrowTimer = 0;
-        questionTimer = 0;
         
         // Unboarding
         progressBar.IsPaused = true;
-        buttonsArrowsObject.SetActive(false);
+        PanelManager.Instance.ShowDirectionalArrows(false);
         
         // Initialize game settings
         gameTimer = gameDuration;
         lawsQueue = new List<string>();
         lastPrintedPercent = 0;
         isGameOver = false;
-        
-        // Load working lists
-        runtimeTutorials = new List<Question>(tutorials);
-        runtimeQuestions = new List<Question>(questions);
-        runtimeLandmarksTypeA = new List<LandmarkQuestion>(landmarksTypeA);
-        runtimeLandmarksTypeB = new List<LandmarkQuestion>(landmarksTypeB);
-        runtimeLandmarksTypeC = new List<LandmarkQuestion>(landmarksTypeC);
-        runtimeLandmarksTypeD = new List<LandmarkQuestion>(landmarksTypeD);
-
-        isTutorialQuestion = false;
         
         // Create law cursors
         lawCursors.Clear();
@@ -255,7 +174,7 @@ public class GameManager : SerializedMonoBehaviour
         
         Debug.Log("Law cursors created : " + lawCursors.Count);
         
-        NextQuestion();
+        QuestionManager.Instance.NextQuestion();
         playerCamera.transform.position = new Vector3(player.transform.position.x, playerCamera.transform.position.y, player.transform.position.z);
 
         
@@ -278,25 +197,17 @@ public class GameManager : SerializedMonoBehaviour
 
         if (skipIntro)
         {
-            introInterface.SetActive(false);
-            questionsInterface.SetActive(true);
-            landmarksInterface.SetActive(false); 
-            endingInterface.SetActive(false);
+            m_panelManager.SetPanel(PanelManager.PanelState.Standard);
         }
         else
         {
-            startButton.GetComponent<StartButton>().Initialize();
-            introInterface.SetActive(true);
-            questionsInterface.SetActive(false);
-            landmarksInterface.SetActive(false);
-            endingInterface.SetActive(false);
+            m_panelManager.SetPanel(PanelManager.PanelState.Intro);
         }
     }
     
     private void Start()
     {
         player = FindFirstObjectByType<Player>();
-        runtimeQuestions = new List<Question>();
         lawCursors = new List<LawCursor>();
         InitializeGame();
     }
@@ -313,116 +224,12 @@ public class GameManager : SerializedMonoBehaviour
         if (enablePrinters) StartCoroutine(pngPrinter.PrintMapTicket());
 	}
 
-    public void PreviousLandmarkQuestion()
-    {
-        // Cannot go back if it's the first question
-        if (nbLandmarkQuestions <= 0)
-        {
-            FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_QuestionRespondClick");
-            return;
-        }
-        
-        nbLandmarkQuestions -= 1;
-        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_QuestionRespondClick");
-        
-        // Update bubble pages sprite
-        bubblePages[nbLandmarkQuestions + 1].sprite = emptyBubbleSprite;
-        bubblePages[nbLandmarkQuestions].sprite = filledBubbleSprite;
-        
-        // Update text
-        if (nbLandmarkQuestions == 0)
-            landmarkText.text = currentLandmarkQuestion.text1;
-        else if (nbLandmarkQuestions == 1)
-            landmarkText.text = currentLandmarkQuestion.text2;
-        else if (nbLandmarkQuestions == 2)
-            landmarkText.text = currentLandmarkQuestion.text3;
-        else if (nbLandmarkQuestions == 3)
-            landmarkText.text = currentLandmarkQuestion.text4;
-        else if (nbLandmarkQuestions == 4)
-            landmarkText.text = currentLandmarkQuestion.text5;
-    }
-
-    public void NextLandmarkQuestion()
-    {
-        nbLandmarkQuestions += 1;
-        FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_QuestionRespondClick");
-        
-        // Update bubble pages sprite
-        bubblePages[nbLandmarkQuestions - 1].sprite = emptyBubbleSprite;
-        bubblePages[nbLandmarkQuestions].sprite = filledBubbleSprite;
-
-        // Last text
-        if (nbLandmarkQuestions == currentLandmarkQuestion.nbTexts)
-        {
-            nextButton.SetActive(false);
-            backButton.SetActive(false);
-            landmarkAnswer1Button.SetActive(true);
-            landmarkAnswer2Button.SetActive(true);
-            landmarkAnswer1Button.GetComponentInChildren<TextMeshProUGUI>().text = currentLandmarkQuestion.answer1;
-            landmarkAnswer2Button.GetComponentInChildren<TextMeshProUGUI>().text = currentLandmarkQuestion.answer2;
-            FMODUnity.RuntimeManager.PlayOneShot("event:/MX/MX_Trig/MX_Trig_Question");
-        }
-
-        // Update text
-        if (nbLandmarkQuestions == 1)
-            landmarkText.text = currentLandmarkQuestion.text2;
-        else if (nbLandmarkQuestions == 2)
-            landmarkText.text = currentLandmarkQuestion.text3;
-        else if (nbLandmarkQuestions == 3)
-            landmarkText.text = currentLandmarkQuestion.text4;
-        else if (nbLandmarkQuestions == 4)
-            landmarkText.text = currentLandmarkQuestion.text5;
-        else if (nbLandmarkQuestions == 5)
-                landmarkText.text = currentLandmarkQuestion.text6;
-    }
-
     public void EnterLandmark(Landmark landmark)
     {
+        QuestionManager.Instance.EnterLandmark(currentLandmark.Type);
+        PanelManager.Instance.EnterLandmark();
         currentLandmark = landmark;
-        
-        int landmarkIndex = currentLandmark.Type;
-        Debug.Log("Entering landmark of type: " + landmarkIndex);
-        if (landmarkIndex == 0)
-        {
-            int index = UnityEngine.Random.Range(0, runtimeLandmarksTypeA.Count);
-            currentLandmarkQuestion = runtimeLandmarksTypeA[index];
-            runtimeLandmarksTypeA.RemoveAt(index);
-        }
-        else if (landmarkIndex == 1)
-        {
-            int index = UnityEngine.Random.Range(0, runtimeLandmarksTypeB.Count);
-            currentLandmarkQuestion = runtimeLandmarksTypeB[index];
-            runtimeLandmarksTypeB.RemoveAt(index);
-        }
-        else if (landmarkIndex == 2)
-        {
-            int index = UnityEngine.Random.Range(0, runtimeLandmarksTypeC.Count);
-            currentLandmarkQuestion = runtimeLandmarksTypeC[index];
-            runtimeLandmarksTypeC.RemoveAt(index);
-        }
-        else if (landmarkIndex == 3)
-        {
-            int index = UnityEngine.Random.Range(0, runtimeLandmarksTypeD.Count);
-            currentLandmarkQuestion = runtimeLandmarksTypeD[index];
-            runtimeLandmarksTypeD.RemoveAt(index);
-        }
-        
         inLandmark = true;
-        
-        // Change interface
-        questionsInterface.SetActive(false);
-        landmarksInterface.SetActive(true);
-        
-        landmarkText.text = currentLandmarkQuestion.text1; // Display text
-
-        // Set ui bubble pages
-        for (int i = 0; i < bubblePages.Count; i++)
-        {
-            bubblePages[i].gameObject.SetActive(i <= currentLandmarkQuestion.nbTexts);
-            bubblePages[i].sprite = emptyBubbleSprite;
-        }
-        bubblePages[0].sprite = filledBubbleSprite;
-        
         if (enablePrinters) pngPrinter.PrintLandmarkTicket(Mathf.FloorToInt(100 * (1 - (gameTimer / gameDuration))));
     }
 
@@ -459,17 +266,9 @@ public class GameManager : SerializedMonoBehaviour
             illusLandmarkD.RemoveAt(index);
         }
         
-        nextButton.SetActive(true);
-        backButton.SetActive(true);
-        landmarkAnswer1Button.SetActive(false);
-        landmarkAnswer2Button.SetActive(false);
-        
         inLandmark = false;
-        questionTimer = 0;
-        nbLandmarkQuestions = 0;
-        questionsInterface.SetActive(true);
-        questionsArea.SetActive(false);
-        landmarksInterface.SetActive(false);
+        m_panelManager.SetPanel(PanelManager.PanelState.Standard);
+        m_panelManager.ShowQuestionArea(false);
         uiAnimations.StopShader(0);
         
         // Save answers to file
@@ -482,12 +281,12 @@ public class GameManager : SerializedMonoBehaviour
         {
             string answer = "";
             if (buttonIndex == 1)
-                answer = currentLandmarkQuestion.answer1;
+                answer = QuestionManager.Instance.CurrentLandmarkQuestion.answer1;
             else if (buttonIndex == 2)
-                answer = currentLandmarkQuestion.answer2;
+                answer = QuestionManager.Instance.CurrentLandmarkQuestion.answer2;
             
             writer.WriteLine("------------------------");
-            writer.WriteLine(currentLandmarkQuestion.text1 + " : " + answer);
+            writer.WriteLine(QuestionManager.Instance.CurrentLandmarkQuestion.text1 + " : " + answer);
             writer.WriteLine("------------------------");
         }
         
@@ -507,19 +306,19 @@ public class GameManager : SerializedMonoBehaviour
         {
             writer.WriteLine("======== FIN DE PARTIE ========");
             writer.WriteLine($"Temps total : {gameDuration:F2} secondes");
-            writer.WriteLine($"Temps passé en mouvement : {m_stats.TimeSpentMoving:F2} secondes");
-            writer.WriteLine($"Unités parcourues : {m_stats.NbUnitTraveled}");
-            writer.WriteLine($"Points de repère atteints : {m_stats.NbLandmarksReached}");
-            writer.WriteLine($"Murs percutés : {m_stats.NbWallsHit}");
-            writer.WriteLine($"Changements de direction : {m_stats.NbDirectionChanges}");
-            writer.WriteLine($"Boutons pressés : {m_stats.NbButtonsPressed}");
-            writer.WriteLine($"Questions répondues : {m_stats.NbQuestionsAnswered}");
-            writer.WriteLine($"Réponses gauche : {m_stats.NbLeftAnswers}");
-            writer.WriteLine($"Réponses droite : {m_stats.NbRightAnswers}");
-            writer.WriteLine($"Temps moyen entre les questions : {m_stats.TimeBetweenQuestions/m_stats.NbQuestionsAnswered:F2} secondes");
-            writer.WriteLine($"Temps le plus court entre deux questions : {m_stats.ShortestTimeBetweenQuestions:F2} secondes");
-            writer.WriteLine($"Temps le plus long entre deux questions : {m_stats.LongestTimeBetweenQuestions:F2} secondes");
-            writer.WriteLine($"Barre de progression pleine : {m_stats.NbProgressBarFull}");
+            writer.WriteLine($"Temps passé en mouvement : {m_statsManager.TimeSpentMoving:F2} secondes");
+            writer.WriteLine($"Unités parcourues : {m_statsManager.NbUnitTraveled}");
+            writer.WriteLine($"Points de repère atteints : {m_statsManager.NbLandmarksReached}");
+            writer.WriteLine($"Murs percutés : {m_statsManager.NbWallsHit}");
+            writer.WriteLine($"Changements de direction : {m_statsManager.NbDirectionChanges}");
+            writer.WriteLine($"Boutons pressés : {m_statsManager.NbButtonsPressed}");
+            writer.WriteLine($"Questions répondues : {m_statsManager.NbQuestionsAnswered}");
+            writer.WriteLine($"Réponses gauche : {m_statsManager.NbLeftAnswers}");
+            writer.WriteLine($"Réponses droite : {m_statsManager.NbRightAnswers}");
+            writer.WriteLine($"Temps moyen entre les questions : {m_statsManager.TimeBetweenQuestions/m_statsManager.NbQuestionsAnswered:F2} secondes");
+            writer.WriteLine($"Temps le plus court entre deux questions : {m_statsManager.ShortestTimeBetweenQuestions:F2} secondes");
+            writer.WriteLine($"Temps le plus long entre deux questions : {m_statsManager.LongestTimeBetweenQuestions:F2} secondes");
+            writer.WriteLine($"Barre de progression pleine : {m_statsManager.NbProgressBarFull}");
             writer.WriteLine("================================");
             writer.WriteLine();
         }
@@ -527,94 +326,21 @@ public class GameManager : SerializedMonoBehaviour
 
     public void UpdateArrowButtonsSprite(string direction)
     {
-        if (direction == "foreward")
-        {
-            // Update sprites
-            buttonUp.sprite = arrowUpHovered;
-            buttonDown.sprite = arrowDown;
-            buttonLeft.sprite = arrowLeft;
-            buttonRight.sprite = arrowRight;
-
-            // Update button states
-            arrowButtonForeward.enabled = false;
-            arrowButtonLeft.enabled = true;
-            arrowButtonRight.enabled = true;
-            arrowButtonBackward.enabled = true;
-            bottomArrowIndication.transform.rotation = Quaternion.Euler(0, 0, 0);
-        }
-        else if (direction == "backward")
-        {
-            buttonUp.sprite = arrowUp;
-            buttonDown.sprite = arrowDownHovered;
-            buttonLeft.sprite = arrowLeft;
-            buttonRight.sprite = arrowRight;
-            
-            arrowButtonForeward.enabled = true;
-            arrowButtonLeft.enabled = true;
-            arrowButtonRight.enabled = true;
-            arrowButtonBackward.enabled = false;
-            bottomArrowIndication.transform.rotation = Quaternion.Euler(0, 0, 180);
-        }
-        else if (direction == "left")
-        {
-            buttonUp.sprite = arrowUp;
-            buttonDown.sprite = arrowDown;
-            buttonLeft.sprite = arrowLeftHovered;
-            buttonRight.sprite = arrowRight;
-            
-            arrowButtonForeward.enabled = true;
-            arrowButtonLeft.enabled = false;
-            arrowButtonRight.enabled = true;
-            arrowButtonBackward.enabled = true;
-            bottomArrowIndication.transform.rotation = Quaternion.Euler(0, 0, 90);
-        }
-        else if (direction == "right")
-        {
-            buttonUp.sprite = arrowUp;
-            buttonDown.sprite = arrowDown;
-            buttonLeft.sprite = arrowLeft;
-            buttonRight.sprite = arrowRightHovered;
-            
-            arrowButtonForeward.enabled = true;
-            arrowButtonLeft.enabled = true;
-            arrowButtonRight.enabled = false;
-            arrowButtonBackward.enabled = true;
-            
-            bottomArrowIndication.transform.rotation = Quaternion.Euler(0, 0, -90);
-        }
-        else
-        {
-            buttonUp.sprite = arrowUp;
-            buttonDown.sprite = arrowDown;
-            buttonLeft.sprite = arrowLeft;
-            buttonRight.sprite = arrowRight;
-            
-            arrowButtonForeward.enabled = true;
-            arrowButtonLeft.enabled = true;
-            arrowButtonRight.enabled = true;
-            arrowButtonBackward.enabled = true;
-        }
+        PanelManager.Instance.UpdateDirectionalArrow(direction);
 
         if (!unboardingStep2)
         {
             unboardingStep2 = true;
             UnboardingStep2();
         }
-        
-        ShowHideQuestionArea(true);
-    }
-    
-    private void ShowHideQuestionArea(bool show)
-    {
-        questionsArea.SetActive(show);
-        progressBarObject.SetActive(show);
 
+        m_panelManager.ShowQuestionArea(true);
     }
 
     private void UnboardingStep1()
     {
-        buttonsArrowsObject.SetActive(true);
-        ShowHideQuestionArea(false);
+        PanelManager.Instance.ShowDirectionalArrows(true);
+        m_panelManager.ShowQuestionArea(false);
     }
     
     private void UnboardingStep2()
@@ -635,7 +361,7 @@ public class GameManager : SerializedMonoBehaviour
             player.SetIsMoving(false);
             WriteFinalStatsToFile();
             isGameOver = true;
-            questionsInterface.SetActive(false);
+            m_panelManager.SetPanel(PanelManager.PanelState.End);
             endingInterface.SetActive(true);
             FMODUnity.RuntimeManager.PlayOneShot("event:/StopAll");
             FMODUnity.RuntimeManager.PlayOneShot("event:/END");
@@ -668,7 +394,7 @@ public class GameManager : SerializedMonoBehaviour
         {
             DOTween.To(() => beatingValue, x => {
                 beatingValue = x;
-                buttonsArrowsObject.transform.localScale = new Vector3(beatingValue, beatingValue, 1f);
+                PanelManager.Instance.DirectionalArrows.transform.localScale = new Vector3(beatingValue, beatingValue, 1f);
             }, 1f, 0.5f);
         }
         else
@@ -680,14 +406,14 @@ public class GameManager : SerializedMonoBehaviour
                 {
                     DOTween.To(() => beatingValue, x => {
                         beatingValue = x;
-                        buttonsArrowsObject.transform.localScale = new Vector3(beatingValue, beatingValue, 1f);
+                        PanelManager.Instance.DirectionalArrows.transform.localScale = new Vector3(beatingValue, beatingValue, 1f);
                     }, 0.9f, 1f);
                 }
                 else
                 {
                     DOTween.To(() => beatingValue, x => {
                         beatingValue = x;
-                        buttonsArrowsObject.transform.localScale = new Vector3(beatingValue, beatingValue, 1f);
+                        PanelManager.Instance.DirectionalArrows.transform.localScale = new Vector3(beatingValue, beatingValue, 1f);
                     }, 1.02f, 1f);
                 }
                 beatingArrowTimer = 0f;
@@ -696,14 +422,14 @@ public class GameManager : SerializedMonoBehaviour
         
         // Update stats
         if (player.IsMoving)
-            m_stats.TimeSpentMoving += Time.deltaTime;
-        questionTimer += Time.deltaTime;
+            m_statsManager.TimeSpentMoving += Time.deltaTime;
+        QuestionManager.Instance.Timer += Time.deltaTime;
     }
 
     private void UnlockIllustrations()
     {
         // Number of landmarks reached
-        if (m_stats.NbLandmarksReached >= 4)
+        if (m_statsManager.NbLandmarksReached >= 4)
         {
             illusQueue.Add("BATONSOURCIER");
         }
@@ -713,17 +439,17 @@ public class GameManager : SerializedMonoBehaviour
         }
         
         // Longest time between questions
-        if (m_stats.LongestTimeBetweenQuestions > 30)
+        if (m_statsManager.LongestTimeBetweenQuestions > 30)
         {
             illusQueue.Add("YOYO");
         }
         
         // Unit traveled
-        if (m_stats.NbUnitTraveled <= 95)
+        if (m_statsManager.NbUnitTraveled <= 95)
         {
             illusQueue.Add("TONGS");
         }
-        else if (m_stats.NbUnitTraveled <= 155)
+        else if (m_statsManager.NbUnitTraveled <= 155)
         {
             illusQueue.Add("CHAUSSURES");
         }
@@ -733,7 +459,7 @@ public class GameManager : SerializedMonoBehaviour
         }
         
         // Nb of questions answered
-        if (m_stats.NbQuestionsAnswered > 185)
+        if (m_statsManager.NbQuestionsAnswered > 185)
         {
             illusQueue.Add("SABLIER");
         }
@@ -743,7 +469,7 @@ public class GameManager : SerializedMonoBehaviour
         }
         
         // Nb walls hit
-        if (m_stats.NbWallsHit > 21)
+        if (m_statsManager.NbWallsHit > 21)
         {
             illusQueue.Add("VAUTOUR");
         }
@@ -753,18 +479,18 @@ public class GameManager : SerializedMonoBehaviour
         }
         
         // Nb of direction changes
-        if (m_stats.NbDirectionChanges > 30)
+        if (m_statsManager.NbDirectionChanges > 30)
         {
             illusQueue.Add("COMPAS");
         }
         
             
         // Nb of left answers
-        if (m_stats.NbLeftAnswers == m_stats.NbRightAnswers)
+        if (m_statsManager.NbLeftAnswers == m_statsManager.NbRightAnswers)
         {
             illusQueue.Add("DICE");
         }
-        else if (m_stats.NbLeftAnswers > m_stats.NbRightAnswers)
+        else if (m_statsManager.NbLeftAnswers > m_statsManager.NbRightAnswers)
         {
             illusQueue.Add("FIGUE");
         }
@@ -832,34 +558,34 @@ public class GameManager : SerializedMonoBehaviour
         using (System.IO.StreamWriter writer = new System.IO.StreamWriter(answersLogFilePath, true))
         {
             //Debug.Log("Writing to file : " + answersLogFilePath);
-            writer.WriteLine(currentQuestion.question + " : " + (answerIndex == 1 ? currentQuestion.answer1 : currentQuestion.answer2));
+            writer.WriteLine(QuestionManager.Instance.CurrentQuestion.question + " : " + (answerIndex == 1 ? QuestionManager.Instance.CurrentQuestion.answer1 : QuestionManager.Instance.CurrentQuestion.answer2));
         }
         
         // UPDATE STATS
-        m_stats.NbQuestionsAnswered++;
+        m_statsManager.NbQuestionsAnswered++;
         if (answerIndex == 1)
-            m_stats.NbLeftAnswers++;
+            m_statsManager.NbLeftAnswers++;
         else
-            m_stats.NbRightAnswers++;
+            m_statsManager.NbRightAnswers++;
 
         // Update time between questions (if more than 5 questions answered)
-        if (m_stats.NbQuestionsAnswered > 5)
+        if (m_statsManager.NbQuestionsAnswered > 5)
         {
-            if (questionTimer < m_stats.ShortestTimeBetweenQuestions)
-                m_stats.ShortestTimeBetweenQuestions = questionTimer;
-            if (questionTimer > m_stats.LongestTimeBetweenQuestions)
-                m_stats.LongestTimeBetweenQuestions = questionTimer;
+            if (QuestionManager.Instance.Timer < m_statsManager.ShortestTimeBetweenQuestions)
+                m_statsManager.ShortestTimeBetweenQuestions = QuestionManager.Instance.Timer;
+            if (QuestionManager.Instance.Timer > m_statsManager.LongestTimeBetweenQuestions)
+                m_statsManager.LongestTimeBetweenQuestions = QuestionManager.Instance.Timer;
         }
-        m_stats.TimeBetweenQuestions += questionTimer;
-        questionTimer = 0;
+        m_statsManager.TimeBetweenQuestions += QuestionManager.Instance.Timer;
+        QuestionManager.Instance.Timer = 0;
         
         
         // Progress bar is full
         if (progressBar.IncreaseProgressBar())
         {
-            m_stats.NbProgressBarFull++;
+            m_statsManager.NbProgressBarFull++;
             player.SetIsMoving(false);
-            ShowHideQuestionArea(false);
+            PanelManager.Instance.ShowQuestionArea(false);
             uiAnimations.StopShader(1.5f);
 
             
@@ -885,27 +611,27 @@ public class GameManager : SerializedMonoBehaviour
         // Left button
         if (answerIndex == 1)
         {
-            law1Type = currentQuestion.answer1Type1;
-            law2Type = currentQuestion.answer1Type2;
-            lawIncrement1 = currentQuestion.answer1Type1ADD;
-            lawIncrement2 = currentQuestion.answer1Type2ADD;
-            if (currentQuestion.answer1Illustration != "")
+            law1Type = QuestionManager.Instance.CurrentQuestion.answer1Type1;
+            law2Type = QuestionManager.Instance.CurrentQuestion.answer1Type2;
+            lawIncrement1 = QuestionManager.Instance.CurrentQuestion.answer1Type1ADD;
+            lawIncrement2 = QuestionManager.Instance.CurrentQuestion.answer1Type2ADD;
+            if (QuestionManager.Instance.CurrentQuestion.answer1Illustration != "")
             {
-                illusQueue.Add(currentQuestion.answer1Illustration);
-                illusQueuePriority.Add(currentQuestion.answer1IllustrationPriority);
+                illusQueue.Add(QuestionManager.Instance.CurrentQuestion.answer1Illustration);
+                illusQueuePriority.Add(QuestionManager.Instance.CurrentQuestion.answer1IllustrationPriority);
             }
         }
         // Right button
         else
         {
-            law1Type = currentQuestion.answer2Type1;
-            law2Type = currentQuestion.answer2Type2;
-            lawIncrement1 = currentQuestion.answer2Type1ADD;
-            lawIncrement2 = currentQuestion.answer2Type2ADD;
-            if (currentQuestion.answer2Illustration != "")
+            law1Type = QuestionManager.Instance.CurrentQuestion.answer2Type1;
+            law2Type = QuestionManager.Instance.CurrentQuestion.answer2Type2;
+            lawIncrement1 = QuestionManager.Instance.CurrentQuestion.answer2Type1ADD;
+            lawIncrement2 = QuestionManager.Instance.CurrentQuestion.answer2Type2ADD;
+            if (QuestionManager.Instance.CurrentQuestion.answer2Illustration != "")
             {
-                illusQueue.Add(currentQuestion.answer2Illustration);
-                illusQueuePriority.Add(currentQuestion.answer2IllustrationPriority);
+                illusQueue.Add(QuestionManager.Instance.CurrentQuestion.answer2Illustration);
+                illusQueuePriority.Add(QuestionManager.Instance.CurrentQuestion.answer2IllustrationPriority);
             }
         }
         
@@ -931,116 +657,6 @@ public class GameManager : SerializedMonoBehaviour
             }
         }
 
-        NextQuestion();
-    }
-
-    private void NextQuestion()
-    {
-        // If there are no more questions left
-        if (runtimeQuestions.Count < 1)
-        {
-            Debug.Log("No more questions available.");
-            questionText.text = "No more questions available.";
-            answer1Text.text = "BAKI";
-            answer2Text.text = "BAKI";
-            return;
-        }
-        
-        // Tutorial questions
-        if (runtimeTutorials.Count > 0 && m_stats.NbQuestionsAnswered > 8 && m_stats.NbQuestionsAnswered % intervalBetweenTutorials == 0)
-        {
-            currentQuestion = runtimeTutorials[0];
-            runtimeTutorials.RemoveAt(0);
-            isTutorialQuestion = true;
-        }
-        // Normal questions
-        else
-        {
-            // Choose a random number between 0 and the number of values
-            int questionIndex = UnityEngine.Random.Range(0, runtimeQuestions.Count);
-
-            // Change and delete the question if both law values are fully checked
-            if (runtimeQuestions[questionIndex].answer1Type1 >= 0 && lawCursors[runtimeQuestions[questionIndex].answer1Type1].LawsFullyChecked
-                                                                  && runtimeQuestions[questionIndex].answer2Type1 >=0 && lawCursors[runtimeQuestions[questionIndex].answer2Type1].LawsFullyChecked)
-            {
-                Debug.Log("Question skipped : " + runtimeQuestions[questionIndex].answer1Type1 + "and " + runtimeQuestions[questionIndex].answer2Type1 + " are fully checked.");
-                runtimeQuestions.RemoveAt(questionIndex);
-                NextQuestion();
-                return;
-            }
-        
-            currentQuestion = runtimeQuestions[questionIndex];
-            runtimeQuestions.RemoveAt(questionIndex);
-            isTutorialQuestion = false;
-        }
-        
-        // Display the question and answers
-        questionText.text = currentQuestion.question;
-        answer1Text.text = currentQuestion.answer1;
-        answer2Text.text = currentQuestion.answer2;
-    }
-
-#if UNITY_EDITOR
-    
-    [Header("CSV INFOS")]
-    [SerializeField] private string tutorialsFileName;
-    [SerializeField] private string questionsFileName;
-    [SerializeField] private string landmarkQuestionsFileName;
-    [SerializeField] private string lawsFileName;
-    
-    [Button, DisableInPlayMode]
-    private void LoadTutorials()
-    {
-        tutorials.Clear();
-        tutorials = LoadCSV.LoadTutorialsCSV(tutorialsFileName);
-        Debug.Log("Tutorials loaded : " + tutorials.Count);
-    }
-    
-    [Button, DisableInPlayMode]
-    private void LoadLandmarkQuestions()
-    {
-        landmarksTypeA.Clear();
-        landmarksTypeB.Clear();
-        landmarksTypeC.Clear();
-        landmarksTypeD.Clear();
-        
-        List<List<LandmarkQuestion>> landmarkQuestions = LoadCSV.LoadLandmarksCSV(landmarkQuestionsFileName);
-        
-        landmarksTypeA = landmarkQuestions[0];
-        landmarksTypeB = landmarkQuestions[1];
-        landmarksTypeC = landmarkQuestions[2];
-        landmarksTypeD = landmarkQuestions[3];
-        
-        Debug.Log("Landmark questions loaded : " + (landmarksTypeA.Count + landmarksTypeB.Count + landmarksTypeC.Count + landmarksTypeD.Count));
-    }
-    
-    [Button, DisableInPlayMode]
-    private void LoadLaws()
-    {
-        laws.Clear();
-        laws = LoadCSV.LoadLawsCSV(lawsFileName);
-        Debug.Log("Laws loaded : " + laws.Count);
-    }
-    
-    [Button, DisableInPlayMode]
-    private void LoadQuestions()
-    {
-        questions.Clear();
-        questions = LoadCSV.LoadQuestionsCSV(questionsFileName, laws);
-    }
-    
-    [Button, DisableInPlayMode]
-    private void ClearAllScriptables()
-    {
-        landmarksTypeA.Clear();
-        landmarksTypeB.Clear();
-        landmarksTypeC.Clear();
-        landmarksTypeD.Clear();
-        questions.Clear();
-        laws.Clear();
-        LoadCSV.ClearScriptables();
-        Debug.Log("All scriptables cleared.");
-    }
-#endif    
-    
+        QuestionManager.Instance.NextQuestion();
+    }  
 }
