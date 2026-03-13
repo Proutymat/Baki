@@ -6,7 +6,7 @@ public class Cell : MonoBehaviour
 {   
     private int _type; // 1 = player start, 2 = ground, 3 = wall, 4 = landmark A, 5 = landmark B, 6 = landmark C, 7 = landmark D, 8 = landmark E, 9 = special zone in, 10 = special zone out
     
-    public void Init(float x, float y, float z, float cellSize, Mesh mesh, int type)
+    public void Init(float x, float y, float z, float cellSize, Mesh mesh, int type, CustomGrid grid)
     {
         // Create the collider if the cell is a wall or landmark
         if (type == 3)
@@ -65,16 +65,16 @@ public class Cell : MonoBehaviour
         MeshRenderer meshRenderer = gameObject.AddComponent<MeshRenderer>();
         meshRenderer.material = _type switch
         {
-            1 => GM.materialStart,
-            2 => GM.materialGround,
-            3 => GM.materialWall,
-            4 => GM.materialLandmark,
-            5 => GM.materialLandmark,
-            6 => GM.materialLandmark,
-            7 => GM.materialLandmark,
-            8 => GM.materialLandmark,
-            9 => GM.materialSpecialZoneIn,
-            10 => GM.materialSpecialZoneOut,
+            1 => grid.materialStart,
+            2 => grid.materialGround,
+            3 => grid.materialWall,
+            4 => grid.materialLandmark,
+            5 => grid.materialLandmark,
+            6 => grid.materialLandmark,
+            7 => grid.materialLandmark,
+            8 => grid.materialLandmark,
+            9 => grid.materialSpecialZoneIn,
+            10 => grid.materialSpecialZoneOut,
             _ => null
         };
 

@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Proto_Sound.unity
     guid: 603eca06fbf089e4f98350170a82c1a4
   - enabled: 1
-    path: Assets/Scenes/ProtoDigital.unity
+    path: Assets/Scenes/Main.unity
     guid: 57bf04903782f3746b91244f3eaebc4e
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

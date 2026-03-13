@@ -7,10 +7,18 @@ using Sirenix.OdinInspector;
 
 public class CustomGrid : MonoBehaviour
 {
-    [Header("Assigned Objects")]
+    [Title("Assigned Objects")]
     [SerializeField] private Mesh _mesh;
     
-    [Header("Grid Settings")]
+    [Title("Materials"), ShowIf("setObjectsInInspector")] 
+    [SerializeField] public Material materialGround;
+    [SerializeField] public Material materialWall;
+    [SerializeField] public Material materialStart;
+    [SerializeField] public Material materialLandmark;
+    [SerializeField] public Material materialSpecialZoneIn;
+    [SerializeField] public Material materialSpecialZoneOut;
+    
+    [Title("Grid Settings (deprecated)")]
     [SerializeField] private float _cellSize = 1f;
     [SerializeField] private bool _drawGizmos = true;
     [SerializeField] private string _mapFileName;
@@ -66,7 +74,7 @@ public class CustomGrid : MonoBehaviour
          Cell groundCell = ground.AddComponent<Cell>();
          ground.transform.parent = this.transform;
          ground.transform.localScale = new Vector3(_cellSize * _ySize, _cellSize, _cellSize * _xSize);
-         groundCell.Init(0 + _ySize / 2f, 0, 0 + _xSize / 2f, _cellSize, _mesh, 2);
+         groundCell.Init(0 + _ySize / 2f, 0, 0 + _xSize / 2f, _cellSize, _mesh, 2, this);
          
         GameObject walls = new GameObject("WALLS");
         walls.transform.parent = this.transform;
@@ -102,7 +110,7 @@ public class CustomGrid : MonoBehaviour
                     cellObject.transform.localScale = new Vector3(_cellSize, _cellSize, _cellSize);
                 }
                 
-                cell.Init(x, _cellSize, z, _cellSize, _mesh, _wallsIndex[x * _xSize + z]);
+                cell.Init(x, _cellSize, z, _cellSize, _mesh, _wallsIndex[x * _xSize + z], this);
 
                 if (_wallsIndex[x * _xSize + z] == 3)
                 {

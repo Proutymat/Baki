@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     
     [Header("UI Animations")]
     [SerializeField] private Animator moveAnimation;
-    [SerializeField] private UiAnimations uiAnimations;
+    [SerializeField] private UIAnimations uiAnimations;
     
     [Header("MAP STUFF")]
     [SerializeField] private GameObject dottedLinePrefab;

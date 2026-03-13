@@ -17,13 +17,6 @@ public class GameManager : SerializedMonoBehaviour
     // ------------------------------------
     
     [SerializeField] private bool setObjectsInInspector = false;
-    [Header("------- MATERIALS -------"), ShowIf("setObjectsInInspector")] 
-    [SerializeField, ShowIf("setObjectsInInspector")] public Material materialGround;
-    [SerializeField, ShowIf("setObjectsInInspector")] public Material materialWall;
-    [SerializeField, ShowIf("setObjectsInInspector")] public Material materialStart;
-    [SerializeField, ShowIf("setObjectsInInspector")] public Material materialLandmark;
-    [SerializeField, ShowIf("setObjectsInInspector")] public Material materialSpecialZoneIn;
-    [SerializeField, ShowIf("setObjectsInInspector")] public Material materialSpecialZoneOut;
 
     [Header("----- UI ARROW BUTTONS ----- "), ShowIf("setObjectsInInspector")]
     [SerializeField, ShowIf("setObjectsInInspector")] private Sprite arrowUp;
@@ -86,7 +79,7 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("setObjectsInInspector")] private Player player;
     [SerializeField, ShowIf("setObjectsInInspector")] private ProgressBar progressBar;
     [SerializeField, ShowIf("setObjectsInInspector")] private PNGPrinter pngPrinter;
-    [SerializeField, ShowIf("setObjectsInInspector")] private UiAnimations uiAnimations;
+    [SerializeField, ShowIf("setObjectsInInspector")] private UIAnimations uiAnimations;
     
     [Title("Game Settings")]
     [SerializeField] private float gameDuration = 600;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using DG.Tweening;
 
-public class UiAnimations : MonoBehaviour
+public class UIAnimations : MonoBehaviour
 {
     [SerializeField] private List<Animator> animators;
     [SerializeField] private List<int> animationsOn; // 0 = off, 1 = on
