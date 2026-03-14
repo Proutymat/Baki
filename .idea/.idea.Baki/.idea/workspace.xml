@@ -6,50 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="73781b9b-5c78-4d1f-a1a2-b07d1229386b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Baki/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Baki/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Managers/P_CanvasManager.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Managers/P_CanvasManager.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Managers/P_VideoPlayerManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Managers/P_VideoPlayerManager.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Managers/P_VideoPlayerManager.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Managers/P_VideoPlayerManager.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/GamePanel/P_EndInterface.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/GamePanel/P_EndInterface.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/GamePanel/P_GamePanel.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/GamePanel/P_GamePanel.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/GamePanel/P_GamePanel.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/GamePanel/P_GamePanel.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/GamePanel/P_IntroInterface.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/GamePanel/P_IntroInterface.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/GamePanel/P_IntroInterface.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/GamePanel/P_IntroInterface.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/GamePanel/P_Landmarkinterface.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/GamePanel/P_Landmarkinterface.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/GamePanel/P_Landmarkinterface.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/GamePanel/P_Landmarkinterface.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/GamePanel/P_StandardInterface.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/GamePanel/P_StandardInterface.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/GamePanel/P_StandardInterface.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/GamePanel/P_StandardInterface.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Canvas.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Canvas.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LoadCSV.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LoadCSV.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Statistics.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Statistics.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/BAS.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/BAS.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/BAS_HOVER.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/BAS_HOVER.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/DROITE.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/DROITE.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/DROITE_HOVER.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/DROITE_HOVER.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/GAUCHE.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/GAUCHE.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/GAUCHE_HOVER.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/GAUCHE_HOVER.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/HAUT.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/HAUT.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/HAUT_HOVER.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/Arrows/HAUT_HOVER.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/BubblePages.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/BubblePages/BUBBLE_EMPTY.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/BubblePages/BUBBLE_EMPTY.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/BubblePages/BUBBLE_FULL.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/Sprites/BubblePages/BUBBLE_FULL.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PanelManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PanelManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

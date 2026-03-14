@@ -72,7 +72,6 @@ public class GameManager : SerializedMonoBehaviour
     
     // Managers
     public StatsManager m_statsManager;
-    public PanelManager m_panelManager;
     
     public StatsManager Statistics { get { return m_statsManager; } }
 
@@ -197,11 +196,11 @@ public class GameManager : SerializedMonoBehaviour
 
         if (skipIntro)
         {
-            m_panelManager.SetPanel(PanelManager.PanelState.Standard);
+            PanelManager.Instance.SetPanel(PanelManager.PanelState.Standard);
         }
         else
         {
-            m_panelManager.SetPanel(PanelManager.PanelState.Intro);
+            PanelManager.Instance.SetPanel(PanelManager.PanelState.Intro);
         }
     }
     
@@ -267,8 +266,8 @@ public class GameManager : SerializedMonoBehaviour
         }
         
         inLandmark = false;
-        m_panelManager.SetPanel(PanelManager.PanelState.Standard);
-        m_panelManager.ShowQuestionArea(false);
+        PanelManager.Instance.SetPanel(PanelManager.PanelState.Standard);
+        PanelManager.Instance.ShowQuestionArea(false);
         uiAnimations.StopShader(0);
         
         // Save answers to file
@@ -334,13 +333,13 @@ public class GameManager : SerializedMonoBehaviour
             UnboardingStep2();
         }
 
-        m_panelManager.ShowQuestionArea(true);
+        PanelManager.Instance.ShowQuestionArea(true);
     }
 
     private void UnboardingStep1()
     {
         PanelManager.Instance.ShowDirectionalArrows(true);
-        m_panelManager.ShowQuestionArea(false);
+        PanelManager.Instance.ShowQuestionArea(false);
     }
     
     private void UnboardingStep2()
@@ -361,7 +360,7 @@ public class GameManager : SerializedMonoBehaviour
             player.SetIsMoving(false);
             WriteFinalStatsToFile();
             isGameOver = true;
-            m_panelManager.SetPanel(PanelManager.PanelState.End);
+            PanelManager.Instance.SetPanel(PanelManager.PanelState.End);
             endingInterface.SetActive(true);
             FMODUnity.RuntimeManager.PlayOneShot("event:/StopAll");
             FMODUnity.RuntimeManager.PlayOneShot("event:/END");
