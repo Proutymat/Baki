@@ -44,6 +44,7 @@ public class PanelManager : MonoBehaviour
     [SerializeField] private Button startButton;
     
     [Title("Standard elements")]
+    [SerializeField] private ProgressBar progressBar;
     [SerializeField] private GameObject directionalArrowsObject;
     [SerializeField] private Button arrowButtonForeward;
     [SerializeField] private Button arrowButtonLeft;
@@ -56,6 +57,7 @@ public class PanelManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI answer1Text;
     [SerializeField] private TextMeshProUGUI answer2Text;
     
+    public ProgressBar ProgressBar { get => progressBar; set => progressBar = value; }
     public GameObject DirectionalArrows { get => directionalArrowsObject; set => directionalArrowsObject = value; }
     public string QuestionText { get => questionText.text; set => questionText.text = value; }
     public string Answer1Text { get => answer1Text.text; set => answer1Text.text = value; }

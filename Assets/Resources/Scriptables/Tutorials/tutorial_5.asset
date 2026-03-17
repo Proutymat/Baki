@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: tutorial_5
   m_EditorClassIdentifier: 
   question: "Tu es conscient que tu peux changer de direction \xE0 n'importe quel
-    moment ?"
+    moment"
   answer1: Oui
-  answer2: "Non\r"
+  answer2: Non
   answer1Type1: 0
   answer1Type1ADD: 0
   answer2Type1: 0
@@ -24,3 +24,7 @@ MonoBehaviour:
   answer1Type2ADD: 0
   answer2Type2: 0
   answer2Type2ADD: 0
+  answer1Illustration: 
+  answer1IllustrationPriority: 0
+  answer2Illustration: 
+  answer2IllustrationPriority: 0

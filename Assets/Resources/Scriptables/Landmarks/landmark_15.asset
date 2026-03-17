@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: landmark_15
   m_EditorClassIdentifier: 
   text1: "En g\xE9n\xE9ral, quand on rencontre quelqu'un"
-  text2: on lui demande d'abord son nom
-  text3: puis on lui demande ce qu'iel fait dans la vie.
-  text4: "Le travail qu'on fait est une des plus grandes partie de notre identit\xE9"
-  text5: "Pourtant, de plus en plus de personnes sont sans emplois, et le progr\xE8s
+  text2: On lui demande d'abord son nom
+  text3: Puis on lui demande ce qu'iel fait dans la vie.
+  text4: "Le travail qu'on fait est une des plus grandes parties de notre identit\xE9"
+  text5: "Pourtant, de plus en plus de personnes sont sans emploi, et le progr\xE8s
     technique pourrait empirer ce ph\xE9nom\xE8ne."
   text6: "Est-ce que le fait qu'on s'identifie par notre fonction en soci\xE9t\xE9
-    te d\xE9ranges ?"
+    te d\xE9range ?"
   answer1: Oui
   answer2: Non
   type: 1

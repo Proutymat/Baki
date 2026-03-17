@@ -44,6 +44,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d77ab846695836d46997cb8027501677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  m_tutorials:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  m_questions: []
+  m_landmarksTypeA: []
+  m_landmarksTypeB: []
+  m_landmarksTypeC: []
+  m_landmarksTypeD: []
   m_intervalBetweenTutorials: 3
+  debug: 1
   m_currentQuestion: {fileID: 0}
   m_currentLandmarkQuestion: {fileID: 0}
+  m_runtimeTutorials: []
+  m_runtimeQuestions: []
+  m_runtimeLandmarksTypeA: []
+  m_runtimeLandmarksTypeB: []
+  m_runtimeLandmarksTypeC: []
+  m_runtimeLandmarksTypeD: []

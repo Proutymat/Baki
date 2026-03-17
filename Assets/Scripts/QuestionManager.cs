@@ -2,15 +2,15 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-public class QuestionManager : MonoBehaviour
+public class QuestionManager : SerializedMonoBehaviour
 {
     [Title("STATIC LISTS (not used in runtime)")]
-    private static List<Question> m_tutorials;
-    private static List<Question> m_questions;
-    private static List<LandmarkQuestion> m_landmarksTypeA;
-    private static List<LandmarkQuestion> m_landmarksTypeB;
-    private static List<LandmarkQuestion> m_landmarksTypeC;
-    private static List<LandmarkQuestion> m_landmarksTypeD;
+    [SerializeField] public List<Question> m_tutorials;
+    [SerializeField] public List<Question> m_questions;
+    [SerializeField] public List<LandmarkQuestion> m_landmarksTypeA;
+    [SerializeField] public List<LandmarkQuestion> m_landmarksTypeB;
+    [SerializeField] public List<LandmarkQuestion> m_landmarksTypeC;
+    [SerializeField] public List<LandmarkQuestion> m_landmarksTypeD;
     
     public List<Question> Tutorials { get => m_tutorials; set => m_tutorials = value; }
     public List<Question> Questions { get => m_questions; set => m_questions = value; }
@@ -22,16 +22,15 @@ public class QuestionManager : MonoBehaviour
     [Title("Settings")]
     [SerializeField] private int m_intervalBetweenTutorials = 3;
     
-    [Title("Debugs")]
-    [SerializeField] private Question m_currentQuestion;
-    [SerializeField] private LandmarkQuestion m_currentLandmarkQuestion;
-    
-    private List<Question> m_runtimeTutorials;
-    private List<Question> m_runtimeQuestions;
-    private List<LandmarkQuestion> m_runtimeLandmarksTypeA;
-    private List<LandmarkQuestion> m_runtimeLandmarksTypeB;
-    private List<LandmarkQuestion> m_runtimeLandmarksTypeC;
-    private List<LandmarkQuestion> m_runtimeLandmarksTypeD;
+    [Title("Debug"), SerializeField] private bool debug;
+    [SerializeField, ShowIf("debug")] private Question m_currentQuestion;
+    [SerializeField, ShowIf("debug")] private LandmarkQuestion m_currentLandmarkQuestion;
+    [SerializeField, ShowIf("debug")] private List<Question> m_runtimeTutorials;
+    [SerializeField, ShowIf("debug")] private List<Question> m_runtimeQuestions;
+    [SerializeField, ShowIf("debug")] private List<LandmarkQuestion> m_runtimeLandmarksTypeA;
+    [SerializeField, ShowIf("debug")] private List<LandmarkQuestion> m_runtimeLandmarksTypeB;
+    [SerializeField, ShowIf("debug")] private List<LandmarkQuestion> m_runtimeLandmarksTypeC;
+    [SerializeField, ShowIf("debug")] private List<LandmarkQuestion> m_runtimeLandmarksTypeD;
     private float m_timer;
     private bool m_isTutorialQuestion;
     private int m_nbLandmarkQuestions;
@@ -68,7 +67,7 @@ public class QuestionManager : MonoBehaviour
         }
     }
 
-    public QuestionManager()
+    public void Init()
     {
         m_runtimeTutorials = new List<Question>(m_tutorials);
         m_runtimeQuestions = new List<Question>(m_questions);
@@ -217,4 +216,34 @@ public class QuestionManager : MonoBehaviour
         m_timer = 0;
         m_nbLandmarkQuestions = 0;
     }
+    
+    
+#if UNITY_EDITOR
+    
+    [Button, DisableInPlayMode]
+    public void LoadTutorials()
+    {
+        m_tutorials = FileImporterManager.Instance.LoadTutorialsCSV();
+        Debug.Log("Tutorials loaded: " + m_tutorials.Count);
+    }
+    
+    [Button, DisableInPlayMode]
+    public void LoadQuestions()
+    {
+        m_questions = FileImporterManager.Instance.LoadQuestionsCSV();
+        Debug.Log("Questions loaded: " + m_questions.Count);
+    }
+    
+    [Button, DisableInPlayMode]
+    public void LoadLandmarkQuestions()
+    {
+        List<List<LandmarkQuestion>> landmarkQuestions = FileImporterManager.Instance.LoadLandmarksCSV();
+        m_landmarksTypeA = landmarkQuestions[0];
+        m_landmarksTypeB = landmarkQuestions[1];
+        m_landmarksTypeC = landmarkQuestions[2];
+        m_landmarksTypeD = landmarkQuestions[3];
+        Debug.Log("Landmark questions loaded: " + (m_landmarksTypeA.Count + m_landmarksTypeB.Count + m_landmarksTypeC.Count + m_landmarksTypeD.Count));
+    }
+    
+#endif
 }

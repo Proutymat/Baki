@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8c8072d2125b034db50ac10816f2018, type: 3}
   m_Name: landmark_2
   m_EditorClassIdentifier: 
-  text1: Il existe autant de version de toi que de choix que tu ai du prendre.
-  text2: "A chaque d\xE9cision, tu cr\xE9es une version alternative de ta vie o\xF9
-    tu as pris l'autre choix."
+  text1: "Il existe autant de versions de toi que de choix que tu aies d\xFB prendre."
+  text2: "\xC0 chaque d\xE9cision, tu cr\xE9es une version alternative de ta vie
+    o\xF9 tu as pris l'autre choix."
   text3: "Tu es d\xE9j\xE0 mort.e dans plusieurs chemins de vie. \xC0 l'inverse,
     il existe un chemin o\xF9 tu n'as jamais connu l'\xE9chec."
   text4: "Parmi toutes ces versions de toi, penses-tu que certaines ont une personnalit\xE9
-    profond\xE9ment differente de celle de ce chemin-ci ?"
+    profond\xE9ment diff\xE9rente de celle de ce chemin-ci ?"
   text5: 
   text6: 
   answer1: Oui

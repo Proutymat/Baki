@@ -29,7 +29,6 @@ public class GameManager : SerializedMonoBehaviour
     [Header("------- INSTANCES -------")]
     private static GameManager _instance;
     [SerializeField, ShowIf("setObjectsInInspector")] private Player player;
-    [SerializeField, ShowIf("setObjectsInInspector")] private ProgressBar progressBar;
     [SerializeField, ShowIf("setObjectsInInspector")] private PNGPrinter pngPrinter;
     [SerializeField, ShowIf("setObjectsInInspector")] private UIAnimations uiAnimations;
     
@@ -148,12 +147,13 @@ public class GameManager : SerializedMonoBehaviour
         
         // Initialize managers
         m_statsManager = new StatsManager();
+        QuestionManager.Instance.Init();
 
         beatingValue = 1;
         beatingArrowTimer = 0;
         
         // Unboarding
-        progressBar.IsPaused = true;
+        PanelManager.Instance.ProgressBar.IsPaused = true;
         PanelManager.Instance.ShowDirectionalArrows(false);
         
         // Initialize game settings
@@ -344,7 +344,7 @@ public class GameManager : SerializedMonoBehaviour
     
     private void UnboardingStep2()
     {
-        progressBar.IsPaused = false;
+        PanelManager.Instance.ProgressBar.IsPaused = false;
     }
     
     private void Update()
@@ -580,7 +580,7 @@ public class GameManager : SerializedMonoBehaviour
         
         
         // Progress bar is full
-        if (progressBar.IncreaseProgressBar())
+        if (PanelManager.Instance.ProgressBar.IncreaseProgressBar())
         {
             m_statsManager.NbProgressBarFull++;
             player.SetIsMoving(false);

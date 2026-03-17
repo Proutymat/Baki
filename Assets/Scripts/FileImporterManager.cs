@@ -12,6 +12,19 @@ public class FileImporterManager : MonoBehaviour
     [SerializeField] private string m_lawsFileName;
     [SerializeField] private string m_questionsFileName;
     
+    private static FileImporterManager m_instance;
+
+    
+    public static FileImporterManager Instance
+    {
+        get
+        {
+            if (m_instance == null)
+                m_instance = FindFirstObjectByType<FileImporterManager>();
+            return m_instance;
+        }
+    }
+    
     static void ClearFolder(string name)
     {
         string folderPath = "Assets/Resources/Scriptables/" + name;
@@ -33,7 +46,7 @@ public class FileImporterManager : MonoBehaviour
     }
 
     [Button, DisableInPlayMode]
-    public void LoadTutorialsCSV()
+    public List<Question> LoadTutorialsCSV()
     {
         QuestionManager.Instance.Tutorials.Clear();
         ClearFolder("Tutorials");
@@ -73,12 +86,11 @@ public class FileImporterManager : MonoBehaviour
             tutorials.Add(scriptable);
         }
         
-        Debug.Log("Tutorials imported successfully : " + tutorials.Count);
-        QuestionManager.Instance.Tutorials = tutorials;
+        return tutorials;
     }
 
     [Button, DisableInPlayMode]
-    public void LoadLandmarksCSV()
+    public List<List<LandmarkQuestion>> LoadLandmarksCSV()
     {
         QuestionManager.Instance.LandmarksTypeA.Clear();
         QuestionManager.Instance.LandmarksTypeB.Clear();
@@ -86,6 +98,7 @@ public class FileImporterManager : MonoBehaviour
         QuestionManager.Instance.LandmarksTypeD.Clear();
         ClearFolder("Landmarks");
         
+        List<List<LandmarkQuestion>> landmarks = new List<List<LandmarkQuestion>>();
         List<LandmarkQuestion> landmarksTypeA = new List<LandmarkQuestion>();
         List<LandmarkQuestion> landmarksTypeB = new List<LandmarkQuestion>();
         List<LandmarkQuestion> landmarksTypeC = new List<LandmarkQuestion>();
@@ -151,11 +164,11 @@ public class FileImporterManager : MonoBehaviour
 
         }
 
-        Debug.Log("Landmark questions loaded : " + (landmarksTypeA.Count + landmarksTypeB.Count + landmarksTypeC.Count + landmarksTypeD.Count));
-        QuestionManager.Instance.LandmarksTypeA = landmarksTypeA;
-        QuestionManager.Instance.LandmarksTypeB = landmarksTypeB;
-        QuestionManager.Instance.LandmarksTypeC = landmarksTypeC;
-        QuestionManager.Instance.LandmarksTypeD = landmarksTypeD;
+        landmarks.Add(landmarksTypeA);
+        landmarks.Add(landmarksTypeB);
+        landmarks.Add(landmarksTypeC);
+        landmarks.Add(landmarksTypeD);
+        return landmarks;
     }
 
     [Button, DisableInPlayMode]
@@ -213,8 +226,9 @@ public class FileImporterManager : MonoBehaviour
             Debug.Log("Values imported successfully!");
         }
 
-        Debug.Log("Laws loaded : " + laws.Count);
         GameManager.Instance.laws = laws;
+        Debug.Log("Laws loaded : " + GameManager.Instance.laws.Count);
+
     }
 
     static int LawsStringToInt(string lawsName, List<Value> laws)
@@ -238,7 +252,7 @@ public class FileImporterManager : MonoBehaviour
     }
     
     [Button, DisableInPlayMode]
-    public void LoadQuestionsCSV()
+    public List<Question> LoadQuestionsCSV()
     {
         QuestionManager.Instance.Questions.Clear();
         List<Value> laws = GameManager.Instance.laws;
@@ -292,8 +306,7 @@ public class FileImporterManager : MonoBehaviour
             questions.Add(scriptable);
         }
 
-        Debug.Log(questions.Count + "/" + (i - 1) + " questions imported successfully!");
-        QuestionManager.Instance.Questions = questions;
+        return questions;
     }
 
     [Button, DisableInPlayMode]

@@ -22,7 +22,7 @@ MonoBehaviour:
   text5: "Tu fermes les yeux et tu t'endors. Est-ce que tu r\xEAves de ton quotidien
     ou de tes d\xE9couvertes ?"
   text6: 
-  answer1: Quotiien
-  answer2: "D\xE9couverte"
+  answer1: Quotidien
+  answer2: "D\xE9couvertes"
   type: 1
   nbTexts: 4

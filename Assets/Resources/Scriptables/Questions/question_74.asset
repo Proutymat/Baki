@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea369d2a2895f84b992cc7d3e27a834, type: 3}
   m_Name: question_74
   m_EditorClassIdentifier: 
-  question: "Tu pr\xE9f\xE8rerais ressembler \xE0 tout le monde ou \xEAtre absolument
+  question: "Tu pr\xE9f\xE9rerais ressembler \xE0 tout le monde ou \xEAtre absolument
     diff\xE9rent de tout le monde"
   answer1: "Ressembler \xE0 tout le monde"
   answer2: "\xCAtre diff\xE9rent"
