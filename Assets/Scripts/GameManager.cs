@@ -13,14 +13,9 @@ public class GameManager : SerializedMonoBehaviour
     // ------------------------------------
     
     [SerializeField] private bool setObjectsInInspector = false;
-
-    
     
     private float beatingArrowTimer;
     private float beatingValue = 1;
-    
-    [Header("----- UI INTERFACE ENDING -----"), ShowIf("setObjectsInInspector")]
-    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject endingInterface;
     
     [Header("----- MAP PRINTER -----"), ShowIf("setObjectsInInspector")]
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject landmarksArrows;
@@ -400,7 +395,6 @@ public class GameManager : SerializedMonoBehaviour
             WriteFinalStatsToFile();
             isGameOver = true;
             PanelManager.Instance.SetPanel(PanelManager.PanelState.End);
-            endingInterface.SetActive(true);
             FMODUnity.RuntimeManager.PlayOneShot("event:/StopAll");
             FMODUnity.RuntimeManager.PlayOneShot("event:/END");
             UnlockIllustrations();
