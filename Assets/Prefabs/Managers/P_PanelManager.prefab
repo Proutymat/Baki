@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2359520007640315550}
-  - component: {fileID: 3093575405534200440}
   - component: {fileID: 701526008097088159}
   - component: {fileID: 6904134583749256147}
   - component: {fileID: 7681975528982858780}
   - component: {fileID: 8932437698935583096}
+  - component: {fileID: 8306195625565175250}
   m_Layer: 5
   m_Name: P_PanelManager
   m_TagString: Untagged
@@ -46,26 +46,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &3093575405534200440
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 510968302493170124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84d3ffcc49efe3c4fbdc059e3105d3f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animators:
-  - {fileID: 6576081752098330662}
-  - {fileID: 3807893478036531224}
-  - {fileID: 7573512133862676106}
-  - {fileID: 1516296998851078677}
-  animationsOn: 
-  shaderImage: {fileID: 2138242003777763191}
-  shaderSpeed: 0.8
 --- !u!223 &701526008097088159
 Canvas:
   m_ObjectHideFlags: 0
@@ -182,6 +162,26 @@ MonoBehaviour:
   backButton: {fileID: 4975575479936381887}
   landmarkAnswer1Button: {fileID: 864004150096797383}
   landmarkAnswer2Button: {fileID: 3183180803147013363}
+--- !u!114 &8306195625565175250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 510968302493170124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84d3ffcc49efe3c4fbdc059e3105d3f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animators:
+  - {fileID: 6576081752098330662}
+  - {fileID: 3807893478036531224}
+  - {fileID: 7573512133862676106}
+  - {fileID: 1516296998851078677}
+  animationsOn: 
+  shaderImage: {fileID: 2138242003777763191}
+  shaderSpeed: 0.8
 --- !u!1 &3352434550825111758
 GameObject:
   m_ObjectHideFlags: 0
@@ -421,14 +421,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3396154425270342325, guid: 5fc8a257ead92aa4aacb6424cf4847ee, type: 3}
-      propertyPath: uiAnimations
-      value: 
-      objectReference: {fileID: 3093575405534200440}
-    - target: {fileID: 3437135316355402668, guid: 5fc8a257ead92aa4aacb6424cf4847ee, type: 3}
-      propertyPath: uiAnimations
-      value: 
-      objectReference: {fileID: 3093575405534200440}
     - target: {fileID: 3688890962636270045, guid: 5fc8a257ead92aa4aacb6424cf4847ee, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -653,10 +645,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7098453399502771712, guid: 5fc8a257ead92aa4aacb6424cf4847ee, type: 3}
-      propertyPath: uiAnimations
-      value: 
-      objectReference: {fileID: 3093575405534200440}
     - target: {fileID: 7869227812190914769, guid: 5fc8a257ead92aa4aacb6424cf4847ee, type: 3}
       propertyPath: m_SortingLayer
       value: 0
@@ -701,10 +689,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9207721094769419988, guid: 5fc8a257ead92aa4aacb6424cf4847ee, type: 3}
-      propertyPath: uiAnimations
-      value: 
-      objectReference: {fileID: 3093575405534200440}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1042,10 +1026,6 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 43.25
       objectReference: {fileID: 0}
-    - target: {fileID: 2337099298564843460, guid: 0e1cff1c0ce9b27419608b771636b7b8, type: 3}
-      propertyPath: uiAnimations
-      value: 
-      objectReference: {fileID: 3093575405534200440}
     - target: {fileID: 2385644822727711790, guid: 0e1cff1c0ce9b27419608b771636b7b8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -1138,10 +1118,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4368074657326306053, guid: 0e1cff1c0ce9b27419608b771636b7b8, type: 3}
-      propertyPath: uiAnimations
-      value: 
-      objectReference: {fileID: 3093575405534200440}
     - target: {fileID: 4720853044452375234, guid: 0e1cff1c0ce9b27419608b771636b7b8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1

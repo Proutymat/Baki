@@ -30,7 +30,7 @@ public class GameManager : SerializedMonoBehaviour
     private static GameManager _instance;
     [SerializeField, ShowIf("setObjectsInInspector")] private Player player;
     [SerializeField, ShowIf("setObjectsInInspector")] private PNGPrinter pngPrinter;
-    [SerializeField, ShowIf("setObjectsInInspector")] private UIAnimations uiAnimations;
+    
     
     [Title("Game Settings")]
     [SerializeField] private float gameDuration = 600;
@@ -192,7 +192,7 @@ public class GameManager : SerializedMonoBehaviour
         // Initialize instances 
         player.Initialize();
         pngPrinter.Initialize();
-        uiAnimations.Initialize();
+        PanelManager.Instance.UIAnimations.Initialize();
 
         if (skipIntro)
         {
@@ -268,7 +268,7 @@ public class GameManager : SerializedMonoBehaviour
         inLandmark = false;
         PanelManager.Instance.SetPanel(PanelManager.PanelState.Standard);
         PanelManager.Instance.ShowQuestionArea(false);
-        uiAnimations.StopShader(0);
+        PanelManager.Instance.UIAnimations.StopShader(0);
         
         // Save answers to file
         if (string.IsNullOrEmpty(answersLogFilePath))
@@ -585,7 +585,7 @@ public class GameManager : SerializedMonoBehaviour
             m_statsManager.NbProgressBarFull++;
             player.SetIsMoving(false);
             PanelManager.Instance.ShowQuestionArea(false);
-            uiAnimations.StopShader(1.5f);
+            PanelManager.Instance.UIAnimations.StopShader(1.5f);
 
             
             // Active all children of the landmark arrows
