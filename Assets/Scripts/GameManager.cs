@@ -346,9 +346,48 @@ public class GameManager : SerializedMonoBehaviour
     {
         PanelManager.Instance.ProgressBar.IsPaused = false;
     }
+
+    private void UpdateDirectionalArrowBeating()
+    {
+        // Update arrow beating movement
+        if (player.IsMoving)
+        {
+            Debug.Log("Player is moving - beating arrows");
+            DOTween.To(() => beatingValue, x => {
+                beatingValue = x;
+                PanelManager.Instance.DirectionalArrows.transform.localScale = new Vector3(beatingValue, beatingValue, 1f);
+            }, 1f, 0.5f);
+            
+        }
+        else
+        {
+            Debug.Log("Player is not moving - stopping beating arrows");
+            beatingArrowTimer += Time.deltaTime;
+            if (beatingArrowTimer >= 0.5f)
+            {
+                if (beatingValue >= 1)
+                {
+                    DOTween.To(() => beatingValue, x => {
+                        beatingValue = x;
+                        PanelManager.Instance.DirectionalArrows.transform.localScale = new Vector3(beatingValue, beatingValue, 1f);
+                    }, 0.9f, 1f);
+                }
+                else
+                {
+                    DOTween.To(() => beatingValue, x => {
+                        beatingValue = x;
+                        PanelManager.Instance.DirectionalArrows.transform.localScale = new Vector3(beatingValue, beatingValue, 1f);
+                    }, 1.02f, 1f);
+                }
+                beatingArrowTimer = 0f;
+            }
+        }
+    }
     
     private void Update()
     {
+        UpdateDirectionalArrowBeating();
+        
         if (isGameOver || !unboardingStep2 || inLandmark) return;
         
         // Update game time
@@ -386,37 +425,6 @@ public class GameManager : SerializedMonoBehaviour
             PrintLawsQueue();
             
             Debug.Log("" + lastPrintedPercent + "% of the game elapsed");
-        }
-        
-        // Update arrow beating movement
-        if (player.IsMoving)
-        {
-            DOTween.To(() => beatingValue, x => {
-                beatingValue = x;
-                PanelManager.Instance.DirectionalArrows.transform.localScale = new Vector3(beatingValue, beatingValue, 1f);
-            }, 1f, 0.5f);
-        }
-        else
-        {
-            beatingArrowTimer += Time.deltaTime;
-            if (beatingArrowTimer >= 0.5f)
-            {
-                if (beatingValue >= 1)
-                {
-                    DOTween.To(() => beatingValue, x => {
-                        beatingValue = x;
-                        PanelManager.Instance.DirectionalArrows.transform.localScale = new Vector3(beatingValue, beatingValue, 1f);
-                    }, 0.9f, 1f);
-                }
-                else
-                {
-                    DOTween.To(() => beatingValue, x => {
-                        beatingValue = x;
-                        PanelManager.Instance.DirectionalArrows.transform.localScale = new Vector3(beatingValue, beatingValue, 1f);
-                    }, 1.02f, 1f);
-                }
-                beatingArrowTimer = 0f;
-            }
         }
         
         // Update stats
