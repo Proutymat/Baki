@@ -225,9 +225,9 @@ public class GameManager : SerializedMonoBehaviour
 
     public void EnterLandmark(Landmark landmark)
     {
+        currentLandmark = landmark;
         QuestionManager.Instance.EnterLandmark(currentLandmark.Type);
         PanelManager.Instance.EnterLandmark();
-        currentLandmark = landmark;
         inLandmark = true;
         if (enablePrinters) pngPrinter.PrintLandmarkTicket(Mathf.FloorToInt(100 * (1 - (gameTimer / gameDuration))));
     }
