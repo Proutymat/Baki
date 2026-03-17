@@ -41,7 +41,7 @@ public class PNGPrinter : MonoBehaviour
     public void Initialize()
     {
         imageCounter = 0;
-        //ticketPath = Path.Combine(gameManager.CurrentGameLogFolder, $"ticket.png");
+        ticketPath = Path.Combine(gameManager.CurrentGameLogFolder, $"ticket.png");
         lawIncrement = 0;
         illustrationIncrement = 0;
     }
