@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6920881018582852997
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5149890840171348066}
+  - component: {fileID: 3387786549566008898}
+  m_Layer: 0
+  m_Name: P_CharteManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5149890840171348066
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6920881018582852997}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3387786549566008898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6920881018582852997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 829d437f7ba829f4da6409f059fc6b28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_maxLawsInterval: 50
+  m_printIntervalsInPercent: 100
+  m_debug: 0
+  lastPrintedPercent: 0
+  m_laws:
+  - {fileID: 11400000, guid: 6742cf0c88091b3429a7a9537f94b455, type: 2}
+  - {fileID: 11400000, guid: 4a2601a0c515bae43a1f10c4c4d65dc3, type: 2}
+  - {fileID: 11400000, guid: 24f682e3c0540d542a6c9aa4886876cc, type: 2}
+  - {fileID: 11400000, guid: a28f3d351ebdfa74983387044465d756, type: 2}
+  - {fileID: 11400000, guid: 5915ff34c7e229844846ac0bf1400c73, type: 2}
+  - {fileID: 11400000, guid: fca4b2f1a31b127429f041eb7b1bba80, type: 2}
+  - {fileID: 11400000, guid: c5c14fb6669e8f34cbfa9eb7dee809e7, type: 2}
+  - {fileID: 11400000, guid: ad0b40715f174154f95723e110ee83b9, type: 2}
+  - {fileID: 11400000, guid: 62a0f0ca2eec0fa40b59c392ebfc1587, type: 2}
+  - {fileID: 11400000, guid: 3b22d7ecea0ad4e4c834d18b69ea522e, type: 2}
+  - {fileID: 11400000, guid: 0cd18083e8e91544ea50f57ac907da2d, type: 2}
+  - {fileID: 11400000, guid: 3e9c37b00a082c5489a801c47ff67d9a, type: 2}
+  - {fileID: 11400000, guid: 399ef6f0498d36a42bbc768d271725f3, type: 2}
+  - {fileID: 11400000, guid: 4e196806fc921cd429e864f282ab03c7, type: 2}
+  - {fileID: 11400000, guid: 2fb10a13ca11c9b42be36b498dbc23b3, type: 2}
+  - {fileID: 11400000, guid: e00268da8076e764582bb22f9b2a0c01, type: 2}
+  - {fileID: 11400000, guid: 5e815df5cec9f73489ca0fe1e726ee73, type: 2}
+  - {fileID: 11400000, guid: d828788b940137a469da3c0f76fd75eb, type: 2}
+  - {fileID: 11400000, guid: 199d83ba9183a1645a47c73fc6e2b8a7, type: 2}
+  m_lawCursors: []
+  m_lawsQueue: []
+  m_lawsQueuePriority: 
+  m_illusQueue: []
+  m_illusQueuePriority: 

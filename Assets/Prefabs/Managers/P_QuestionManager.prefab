@@ -66,7 +66,7 @@ MonoBehaviour:
   m_landmarksTypeC: []
   m_landmarksTypeD: []
   m_intervalBetweenTutorials: 3
-  debug: 1
+  debug: 0
   m_currentQuestion: {fileID: 0}
   m_currentLandmarkQuestion: {fileID: 0}
   m_runtimeTutorials: []

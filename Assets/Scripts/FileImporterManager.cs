@@ -92,10 +92,6 @@ public class FileImporterManager : MonoBehaviour
     [Button, DisableInPlayMode]
     public List<List<LandmarkQuestion>> LoadLandmarksCSV()
     {
-        QuestionManager.Instance.LandmarksTypeA.Clear();
-        QuestionManager.Instance.LandmarksTypeB.Clear();
-        QuestionManager.Instance.LandmarksTypeC.Clear();
-        QuestionManager.Instance.LandmarksTypeD.Clear();
         ClearFolder("Landmarks");
         
         List<List<LandmarkQuestion>> landmarks = new List<List<LandmarkQuestion>>();
@@ -171,10 +167,8 @@ public class FileImporterManager : MonoBehaviour
         return landmarks;
     }
 
-    [Button, DisableInPlayMode]
-    public void LoadLawsCSV()
+    public List<Value> LoadLawsCSV()
     {
-        GameManager.Instance.laws.Clear();
         ClearFolder("Laws");
         List<Value> laws = new List<Value>();
 
@@ -226,9 +220,7 @@ public class FileImporterManager : MonoBehaviour
             Debug.Log("Values imported successfully!");
         }
 
-        GameManager.Instance.laws = laws;
-        Debug.Log("Laws loaded : " + GameManager.Instance.laws.Count);
-
+        return laws;
     }
 
     static int LawsStringToInt(string lawsName, List<Value> laws)
@@ -255,7 +247,7 @@ public class FileImporterManager : MonoBehaviour
     public List<Question> LoadQuestionsCSV()
     {
         QuestionManager.Instance.Questions.Clear();
-        List<Value> laws = GameManager.Instance.laws;
+        List<Value> laws = CharteManager.Instance.m_laws;
         ClearFolder("Questions");
         List<Question> questions = new List<Question>();
 
@@ -317,7 +309,7 @@ public class FileImporterManager : MonoBehaviour
         QuestionManager.Instance.LandmarksTypeB.Clear();
         QuestionManager.Instance.LandmarksTypeC.Clear();
         QuestionManager.Instance.LandmarksTypeD.Clear();
-        GameManager.Instance.laws.Clear();
+        CharteManager.Instance.m_laws.Clear();
         
         ClearFolder("Tutorials");
         ClearFolder("Landmarks");

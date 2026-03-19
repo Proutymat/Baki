@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class QuestionManager : SerializedMonoBehaviour
 {
+    private static QuestionManager m_instance;
+    
     [Title("STATIC LISTS (not used in runtime)")]
     [SerializeField] public List<Question> m_tutorials;
     [SerializeField] public List<Question> m_questions;
@@ -38,12 +40,20 @@ public class QuestionManager : SerializedMonoBehaviour
     public float Timer { get => m_timer; set => m_timer = value; }
     public Question CurrentQuestion { get => m_currentQuestion; set => m_currentQuestion = value; }
     public LandmarkQuestion CurrentLandmarkQuestion { get => m_currentLandmarkQuestion; set => m_currentLandmarkQuestion = value; }
-
-    private static QuestionManager m_instance;
     
     // --------------------------------------------
     //               INITIALIZATION
     // --------------------------------------------
+    
+    public static QuestionManager Instance
+    {
+        get
+        {
+            if (m_instance == null)
+                m_instance = FindFirstObjectByType<QuestionManager>();
+            return m_instance;
+        }
+    }
     
     private void Awake()
     {
@@ -57,17 +67,8 @@ public class QuestionManager : SerializedMonoBehaviour
             m_instance = this;
         }
     }
-    public static QuestionManager Instance
-    {
-        get
-        {
-            if (m_instance == null)
-                m_instance = FindFirstObjectByType<QuestionManager>();
-            return m_instance;
-        }
-    }
 
-    public void Init()
+    public void Initialize()
     {
         m_runtimeTutorials = new List<Question>(m_tutorials);
         m_runtimeQuestions = new List<Question>(m_questions);
@@ -93,7 +94,7 @@ public class QuestionManager : SerializedMonoBehaviour
         }
         
         // Tutorial questions
-        if (m_runtimeTutorials.Count > 0 && GameManager.Instance.m_statsManager.NbQuestionsAnswered > 8 && GameManager.Instance.m_statsManager.NbQuestionsAnswered % m_intervalBetweenTutorials == 0)
+        if (m_runtimeTutorials.Count > 0 && StatsManager.Instance.NbQuestionsAnswered > 8 && StatsManager.Instance.NbQuestionsAnswered % m_intervalBetweenTutorials == 0)
         {
             m_currentQuestion = m_runtimeTutorials[0];
             m_runtimeTutorials.RemoveAt(0);
@@ -106,8 +107,8 @@ public class QuestionManager : SerializedMonoBehaviour
             int questionIndex = UnityEngine.Random.Range(0, m_runtimeQuestions.Count);
 
             // Change and delete the question if both law values are fully checked
-            if (m_runtimeQuestions[questionIndex].answer1Type1 >= 0 && GameManager.Instance.lawCursors[m_runtimeQuestions[questionIndex].answer1Type1].LawsFullyChecked
-                                                                    && m_runtimeQuestions[questionIndex].answer2Type1 >=0 && GameManager.Instance.lawCursors[m_runtimeQuestions[questionIndex].answer2Type1].LawsFullyChecked)
+            if (m_runtimeQuestions[questionIndex].answer1Type1 >= 0 && CharteManager.Instance.LawCursors[m_runtimeQuestions[questionIndex].answer1Type1].LawsFullyChecked
+                                                                    && m_runtimeQuestions[questionIndex].answer2Type1 >=0 && CharteManager.Instance.LawCursors[m_runtimeQuestions[questionIndex].answer2Type1].LawsFullyChecked)
             {
                 Debug.Log("Question skipped : " + m_runtimeQuestions[questionIndex].answer1Type1 + "and " + m_runtimeQuestions[questionIndex].answer2Type1 + " are fully checked.");
                 m_runtimeQuestions.RemoveAt(questionIndex);
@@ -235,13 +236,19 @@ public class QuestionManager : SerializedMonoBehaviour
     }
     
     [Button, DisableInPlayMode]
-    public void LoadLandmarkQuestions()
+    private void LoadLandmarkQuestions()
     {
+        LandmarksTypeA.Clear();
+        LandmarksTypeB.Clear();
+        LandmarksTypeC.Clear();
+        LandmarksTypeD.Clear();
+        
         List<List<LandmarkQuestion>> landmarkQuestions = FileImporterManager.Instance.LoadLandmarksCSV();
         m_landmarksTypeA = landmarkQuestions[0];
         m_landmarksTypeB = landmarkQuestions[1];
         m_landmarksTypeC = landmarkQuestions[2];
         m_landmarksTypeD = landmarkQuestions[3];
+        
         Debug.Log("Landmark questions loaded: " + (m_landmarksTypeA.Count + m_landmarksTypeB.Count + m_landmarksTypeC.Count + m_landmarksTypeD.Count));
     }
     
