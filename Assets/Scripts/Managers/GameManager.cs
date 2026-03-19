@@ -188,12 +188,6 @@ public class GameManager : SerializedMonoBehaviour
         PanelManager.Instance.ProgressBar.IsPaused = false;
     }
 
-    private void UpdateDirectionalArrowBeating()
-    {
-        // Update arrow beating movement
-        
-    }
-
     private void EndGame()
     {
         m_isGameOver = true;
@@ -207,8 +201,6 @@ public class GameManager : SerializedMonoBehaviour
 
     private void Update()
     {
-        UpdateDirectionalArrowBeating();
-        
         if (m_isGameOver || !m_onboardingStep2checked || m_inLandmark) return;
         
         // Update game time
