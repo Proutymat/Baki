@@ -146,6 +146,7 @@ MonoBehaviour:
   uiAnimations: {fileID: 8306195625565175250}
   progressBar: {fileID: 312645490275312074}
   directionalArrowsObject: {fileID: 5668425064483989351}
+  directionalArrowsBeating: {fileID: 577369098998211567}
   arrowButtonForeward: {fileID: 41168193929572095}
   arrowButtonLeft: {fileID: 2830993078191964450}
   arrowButtonRight: {fileID: 3632672084353568342}
@@ -740,6 +741,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ce91f84bdd20cd44a8f7db2066e5331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &577369098998211567 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 604066687457811263, guid: 5fc8a257ead92aa4aacb6424cf4847ee, type: 3}
+  m_PrefabInstance: {fileID: 27348502027876560}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5668425064483989351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aac5b873f108114ba904c3939a9adfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &764469239867518687 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 791184277034669583, guid: 5fc8a257ead92aa4aacb6424cf4847ee, type: 3}
@@ -1064,7 +1076,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1659166021097867138, guid: 0e1cff1c0ce9b27419608b771636b7b8, type: 3}
       propertyPath: m_fontSize
-      value: 43.3
+      value: 43.25
       objectReference: {fileID: 0}
     - target: {fileID: 2337099298564843460, guid: 0e1cff1c0ce9b27419608b771636b7b8, type: 3}
       propertyPath: uiAnimations
