@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e469d6ee5098c5040a3371a6eefcd91b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_setInInspector: 1
   setupPanel: {fileID: 0}
   introPanel: {fileID: 723706200288975865}
   standardPanel: {fileID: 8285346359475488991}

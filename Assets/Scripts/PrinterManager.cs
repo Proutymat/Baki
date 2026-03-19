@@ -8,15 +8,10 @@ public class PrinterManager : MonoBehaviour
     
     public PNGPrinter PNGPrinter { get => pngPrinter; }
     
-    public static PrinterManager Instance
-    {
-        get
-        {
-            if (m_instance == null)
-                m_instance = FindFirstObjectByType<PrinterManager>();
-            return m_instance;
-        }
-    }
+    
+    // --------------------------------------------
+    //               INITIALIZATION
+    // --------------------------------------------
     
     private void Awake()
     {
@@ -30,9 +25,24 @@ public class PrinterManager : MonoBehaviour
             m_instance = this;
         }
     }
+    
+    public static PrinterManager Instance
+    {
+        get
+        {
+            if (m_instance == null)
+                m_instance = FindFirstObjectByType<PrinterManager>();
+            return m_instance;
+        }
+    }
 
     public void Initialize()
     {
         pngPrinter.Initialize();
     }
+    
+    
+    // --------------------------------------------
+    //                  FUNCTIONS
+    // --------------------------------------------
 }

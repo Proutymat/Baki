@@ -16,72 +16,72 @@ public class PanelManager : MonoBehaviour
         End
     }
     
+    private static PanelManager m_instance;
+
+    [SerializeField] private bool m_setInInspector;
+    
     [Title("Panels")]
-    [SerializeField] private GameObject setupPanel;
-    [SerializeField] private GameObject introPanel;
-    [SerializeField] private GameObject standardPanel;
-    [SerializeField] private GameObject landmarkPanel;
-    [SerializeField] private GameObject endPanel;
+    [SerializeField, ShowIf("m_setInInspector")] private GameObject setupPanel;
+    [SerializeField, ShowIf("m_setInInspector")] private GameObject introPanel;
+    [SerializeField, ShowIf("m_setInInspector")] private GameObject standardPanel;
+    [SerializeField, ShowIf("m_setInInspector")] private GameObject landmarkPanel;
+    [SerializeField, ShowIf("m_setInInspector")] private GameObject endPanel;
     
     [Title("Arrow Buttons")]
-    [SerializeField] private Sprite arrowUp;
-    [SerializeField] private Sprite arrowUpHovered;
-    [SerializeField] private Sprite arrowDown;
-    [SerializeField] private Sprite arrowDownHovered;
-    [SerializeField] private Sprite arrowLeft;
-    [SerializeField] private Sprite arrowLeftHovered;
-    [SerializeField] private Sprite arrowRight;
-    [SerializeField] private Sprite arrowRightHovered;
-    [SerializeField] private Image buttonUp;
-    [SerializeField] private Image buttonDown;
-    [SerializeField] private Image buttonLeft;
-    [SerializeField] private Image buttonRight;
+    [SerializeField, ShowIf("m_setInInspector")] private Sprite arrowUp;
+    [SerializeField, ShowIf("m_setInInspector")] private Sprite arrowUpHovered;
+    [SerializeField, ShowIf("m_setInInspector")] private Sprite arrowDown;
+    [SerializeField, ShowIf("m_setInInspector")] private Sprite arrowDownHovered;
+    [SerializeField, ShowIf("m_setInInspector")] private Sprite arrowLeft;
+    [SerializeField, ShowIf("m_setInInspector")] private Sprite arrowLeftHovered;
+    [SerializeField, ShowIf("m_setInInspector")] private Sprite arrowRight;
+    [SerializeField, ShowIf("m_setInInspector")] private Sprite arrowRightHovered;
+    [SerializeField, ShowIf("m_setInInspector")] private Image buttonUp;
+    [SerializeField, ShowIf("m_setInInspector")] private Image buttonDown;
+    [SerializeField, ShowIf("m_setInInspector")] private Image buttonLeft;
+    [SerializeField, ShowIf("m_setInInspector")] private Image buttonRight;
     
     [Title("Intro elements")]
-    [SerializeField] private Canvas mainCanvas;
-    [SerializeField] private Camera canvasCamera;
-    [SerializeField] private VideoPlayer videoPlayer;
-    [SerializeField] private Button startButton;
+    [SerializeField, ShowIf("m_setInInspector")] private Canvas mainCanvas;
+    [SerializeField, ShowIf("m_setInInspector")] private Camera canvasCamera;
+    [SerializeField, ShowIf("m_setInInspector")] private VideoPlayer videoPlayer;
+    [SerializeField, ShowIf("m_setInInspector")] private Button startButton;
     
     [Title("Standard elements")]
-    [SerializeField] private UiAnimations uiAnimations;
-    [SerializeField] private ProgressBar progressBar;
-    [SerializeField] private GameObject directionalArrowsObject;
-    [SerializeField] private Button arrowButtonForeward;
-    [SerializeField] private Button arrowButtonLeft;
-    [SerializeField] private Button arrowButtonRight;
-    [SerializeField] private Button arrowButtonBackward;
-    [SerializeField] private GameObject questionsArea;
-    [SerializeField] private GameObject progressBarObject;
-    [SerializeField] private GameObject bottomArrowIndication;
-    [SerializeField] private TextMeshProUGUI questionText;
-    [SerializeField] private TextMeshProUGUI answer1Text;
-    [SerializeField] private TextMeshProUGUI answer2Text;
+    [SerializeField, ShowIf("m_setInInspector")] private UiAnimations uiAnimations;
+    [SerializeField, ShowIf("m_setInInspector")] private ProgressBar progressBar;
+    [SerializeField, ShowIf("m_setInInspector")] private GameObject directionalArrowsObject;
+    [SerializeField, ShowIf("m_setInInspector")] private Button arrowButtonForeward;
+    [SerializeField, ShowIf("m_setInInspector")] private Button arrowButtonLeft;
+    [SerializeField, ShowIf("m_setInInspector")] private Button arrowButtonRight;
+    [SerializeField, ShowIf("m_setInInspector")] private Button arrowButtonBackward;
+    [SerializeField, ShowIf("m_setInInspector")] private GameObject questionsArea;
+    [SerializeField, ShowIf("m_setInInspector")] private GameObject progressBarObject;
+    [SerializeField, ShowIf("m_setInInspector")] private GameObject bottomArrowIndication;
+    [SerializeField, ShowIf("m_setInInspector")] private TextMeshProUGUI questionText;
+    [SerializeField, ShowIf("m_setInInspector")] private TextMeshProUGUI answer1Text;
+    [SerializeField, ShowIf("m_setInInspector")] private TextMeshProUGUI answer2Text;
+    
+    [Title("Landmark elements")]
+    [SerializeField, ShowIf("m_setInInspector")] private List<Image> bubblePages;
+    [SerializeField, ShowIf("m_setInInspector")] private Sprite emptyBubbleSprite;
+    [SerializeField, ShowIf("m_setInInspector")] private Sprite filledBubbleSprite;
+    [SerializeField, ShowIf("m_setInInspector")] private TextMeshProUGUI landmarkText;
+    [SerializeField, ShowIf("m_setInInspector")] private GameObject nextButton;
+    [SerializeField, ShowIf("m_setInInspector")] private GameObject backButton;
+    [SerializeField, ShowIf("m_setInInspector")] private GameObject landmarkAnswer1Button;
+    [SerializeField, ShowIf("m_setInInspector")] private GameObject landmarkAnswer2Button;
+    
+    private PanelState m_currentPanelState;
     
     public UiAnimations UIAnimations { get => uiAnimations; set => uiAnimations = value; }
     public ProgressBar ProgressBar { get => progressBar; set => progressBar = value; }
     public GameObject DirectionalArrows { get => directionalArrowsObject; set => directionalArrowsObject = value; }
-    public string QuestionText { get => questionText.text; set => questionText.text = value; }
-    public string Answer1Text { get => answer1Text.text; set => answer1Text.text = value; }
-    public string Answer2Text { get => answer2Text.text; set => answer2Text.text = value; }
-    
-    [Title("Landmark elements")]
-    [SerializeField] private List<Image> bubblePages;
-    [SerializeField] private Sprite emptyBubbleSprite;
-    [SerializeField] private Sprite filledBubbleSprite;
-    [SerializeField] private TextMeshProUGUI landmarkText;
-    [SerializeField] private GameObject nextButton;
-    [SerializeField] private GameObject backButton;
-    [SerializeField] private GameObject landmarkAnswer1Button;
-    [SerializeField] private GameObject landmarkAnswer2Button;
-    
-    public string LandmarkText { get => landmarkText.text; set => landmarkText.text = value; }
-    public string LandmarkAnswer1Text { get => landmarkAnswer1Button.GetComponentInChildren<TextMeshProUGUI>().text; set => landmarkAnswer1Button.GetComponentInChildren<TextMeshProUGUI>().text = value; }
-    public string LandmarkAnswer2Text { get => landmarkAnswer2Button.GetComponentInChildren<TextMeshProUGUI>().text; set => landmarkAnswer2Button.GetComponentInChildren<TextMeshProUGUI>().text = value; }
-    
-    private static PanelManager m_instance;
-    private PanelState m_currentPanelState;
-    
+    public string QuestionText {set => questionText.text = value; }
+    public string Answer1Text {set => answer1Text.text = value; }
+    public string Answer2Text {set => answer2Text.text = value; }
+    public string LandmarkText {set => landmarkText.text = value; }
+
     
     // --------------------------------------------
     //               INITIALIZATION
@@ -108,6 +108,16 @@ public class PanelManager : MonoBehaviour
             return m_instance;
         }
     }
+
+    public void Initialize()
+    {
+        uiAnimations.Initialize();
+
+    }
+    
+    // --------------------------------------------
+    //                  FUNCTIONS
+    // --------------------------------------------
 
     public void SetPanel(PanelState panel)
     {

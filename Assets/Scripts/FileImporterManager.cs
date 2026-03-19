@@ -6,14 +6,31 @@ using Sirenix.OdinInspector;
 
 public class FileImporterManager : MonoBehaviour
 {
+    private static FileImporterManager m_instance;
+    
     [Title("Files names")]
     [SerializeField] private string m_tutorialsFileName;
     [SerializeField] private string m_landmarkQuestionsFileName;
     [SerializeField] private string m_lawsFileName;
     [SerializeField] private string m_questionsFileName;
     
-    private static FileImporterManager m_instance;
-
+    
+    // --------------------------------------------
+    //               INITIALIZATION
+    // --------------------------------------------
+    
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Debug.LogWarning("Multiple FileImporterManager instances in scene!");
+            Destroy(gameObject);
+        }
+        else
+        {
+            m_instance = this;
+        }
+    }
     
     public static FileImporterManager Instance
     {
@@ -24,6 +41,11 @@ public class FileImporterManager : MonoBehaviour
             return m_instance;
         }
     }
+    
+    
+    // --------------------------------------------
+    //                  FUNCTIONS
+    // --------------------------------------------
     
     static void ClearFolder(string name)
     {
@@ -48,7 +70,6 @@ public class FileImporterManager : MonoBehaviour
     [Button, DisableInPlayMode]
     public List<Question> LoadTutorialsCSV()
     {
-        QuestionManager.Instance.Tutorials.Clear();
         ClearFolder("Tutorials");
         List<Question> tutorials = new List<Question>();
         
@@ -246,8 +267,7 @@ public class FileImporterManager : MonoBehaviour
     [Button, DisableInPlayMode]
     public List<Question> LoadQuestionsCSV()
     {
-        QuestionManager.Instance.Questions.Clear();
-        List<Value> laws = CharteManager.Instance.m_laws;
+        List<Value> laws = CharteManager.Instance.Laws;
         ClearFolder("Questions");
         List<Question> questions = new List<Question>();
 
@@ -304,12 +324,8 @@ public class FileImporterManager : MonoBehaviour
     [Button, DisableInPlayMode]
     public static void ClearScriptables()
     {
-        QuestionManager.Instance.Questions.Clear();
-        QuestionManager.Instance.LandmarksTypeA.Clear();
-        QuestionManager.Instance.LandmarksTypeB.Clear();
-        QuestionManager.Instance.LandmarksTypeC.Clear();
-        QuestionManager.Instance.LandmarksTypeD.Clear();
-        CharteManager.Instance.m_laws.Clear();
+        QuestionManager.Instance.ClearStaticLists();
+        CharteManager.Instance.Laws.Clear();
         
         ClearFolder("Tutorials");
         ClearFolder("Landmarks");

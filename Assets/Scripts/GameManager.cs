@@ -5,66 +5,41 @@ using DG.Tweening;
 
 public class GameManager : SerializedMonoBehaviour
 {
-    // ------------------------------------
-    //             ATTRIBUTES
-    // ------------------------------------
+    private static GameManager m_instance;
     
-    [SerializeField] private bool setObjectsInInspector = false;
+    [Title("Parameters")]
+    [SerializeField] private float m_gameDuration = 600;
+    [SerializeField] private bool m_skipIntro;
+    [SerializeField] private bool m_enablePrinters;
     
-    private float beatingArrowTimer;
-    private float beatingValue = 1;
+    [Title("Set in inspector")]
+    [SerializeField] private Player player;
+    [SerializeField] private GameObject landmarksArrows;
+    [SerializeField] private Camera playerCamera;
     
-    [Header("----- MAP PRINTER -----"), ShowIf("setObjectsInInspector")]
-    [SerializeField, ShowIf("setObjectsInInspector")] private GameObject landmarksArrows;
-    [SerializeField, ShowIf("setObjectsInInspector")] private Camera playerCamera;
-    
-    [Header("------- INSTANCES -------")]
-    private static GameManager _instance;
-    [SerializeField, ShowIf("setObjectsInInspector")] private Player player;
-    
-    
-    [Title("Game Settings")]
-    [SerializeField] private float gameDuration = 600;
+    [Title("Debug"), SerializeField] private bool m_debug;
+    [SerializeField, ShowIf("m_debug")]private bool m_onboardingStep1checked;
+    [SerializeField, ShowIf("m_debug")]private bool m_onboardingStep2checked;
+    [SerializeField, ShowIf("m_debug")] private float m_gameTimer;
+    [SerializeField, ShowIf("m_debug")]private float m_beatingArrowTimer;
+    [SerializeField, ShowIf("m_debug")]private float m_beatingValue = 1;
+    [SerializeField, ShowIf("m_debug")]private bool m_isGameOver;
+    [SerializeField, ShowIf("m_debug")]private bool m_inLandmark;
+    [SerializeField, ShowIf("m_debug")]private Landmark m_currentLandmark;
+    [SerializeField, ShowIf("m_debug")]private string m_currentGameLogFolder;
+    [SerializeField, ShowIf("m_debug")]private string m_answersLogFilePath;
     
     
 
-    private bool unboardingStep1 = false;
-    private bool unboardingStep2 = false;
-    
-    [Header("DEBUGS")]
-    [SerializeField] private bool debug = false;
-    [SerializeField] private bool skipIntro = false;
-    [SerializeField] private bool enablePrinters = true;
-    
-    [Header("WORKING VALUES (used in runtime)")]
-    [SerializeField, ShowIf("debug")] private float gameTimer;
-    
-    private string currentGameLogFolder;
-    
-    private string answersLogFilePath;
-    private bool isGameOver = false;
-    private bool inLandmark;
-    private Landmark currentLandmark;
-
-    public string CurrentGameLogFolder { get { return currentGameLogFolder; } }
-    public bool EnablePrinters { get => enablePrinters; }
-    public float GameTimer { get => gameTimer; }
+    public string CurrentGameLogFolder { get => m_currentGameLogFolder; }
+    public bool EnablePrinters { get => m_enablePrinters; }
+    public float GameTimer { get => m_gameTimer; }
 
 
     // --------------------------------------------
     //               INITIALIZATION
     // --------------------------------------------
     
-    public static GameManager Instance
-    {
-        get
-        {
-            if (_instance == null)
-                _instance = FindFirstObjectByType<GameManager>();
-            return _instance;
-        }
-    }
-
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -74,54 +49,58 @@ public class GameManager : SerializedMonoBehaviour
         }
         else
         {
-            _instance = this;
+            m_instance = this;
+        }
+    }
+    
+    public static GameManager Instance
+    {
+        get
+        {
+            if (m_instance == null)
+                m_instance = FindFirstObjectByType<GameManager>();
+            return m_instance;
         }
     }
 
     private void InitializeGame()
     {
+        // Initialize variables
+        m_onboardingStep1checked = false;
+        m_onboardingStep2checked = false;
+        m_gameTimer = m_gameDuration;
+        m_beatingArrowTimer = 0;
+        m_beatingValue = 1;
+        m_isGameOver = false;
+        m_inLandmark = false;
+        
+        // Create log folder
+        m_currentGameLogFolder = Application.dataPath + "/Logs";
+        if (!System.IO.Directory.Exists(m_currentGameLogFolder))
+        {
+            System.IO.Directory.CreateDirectory(m_currentGameLogFolder);
+        }
+        Debug.Log("log folder = " + m_currentGameLogFolder);
+        m_currentGameLogFolder += "/" + System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
+        System.IO.Directory.CreateDirectory(m_currentGameLogFolder);
+        m_answersLogFilePath = $"{m_currentGameLogFolder}/answers.txt";
+        
         // Initialize managers
-        StatsManager.Instance.Initialize();
         QuestionManager.Instance.Initialize();
-        
         CharteManager.Instance.Initialize();
-
-        beatingValue = 1;
-        beatingArrowTimer = 0;
+        StatsManager.Instance.Initialize();
+        PanelManager.Instance.Initialize();
+        PrinterManager.Instance.Initialize();
         
-        // Unboarding
+        // Set up onboarding
         PanelManager.Instance.ProgressBar.IsPaused = true;
         PanelManager.Instance.ShowDirectionalArrows(false);
-        
-        // Initialize game settings
-        gameTimer = gameDuration;
-        isGameOver = false;
-        
-        
-        
-        
-        
         QuestionManager.Instance.NextQuestion();
+        
         playerCamera.transform.position = new Vector3(player.transform.position.x, playerCamera.transform.position.y, player.transform.position.z);
-
-        
-        // DEBUG : Create log folder
-        currentGameLogFolder = Application.dataPath + "/Logs";
-        if (!System.IO.Directory.Exists(currentGameLogFolder))
-        {
-            System.IO.Directory.CreateDirectory(currentGameLogFolder);
-        }
-        Debug.Log("log folder = " + currentGameLogFolder);
-        currentGameLogFolder += "/" + System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
-        System.IO.Directory.CreateDirectory(currentGameLogFolder);
-        
-        answersLogFilePath = $"{currentGameLogFolder}/answers.txt";
-        
-        // Initialize instances 
         player.Initialize();
-        PanelManager.Instance.UIAnimations.Initialize();
 
-        if (skipIntro)
+        if (m_skipIntro)
         {
             PanelManager.Instance.SetPanel(PanelManager.PanelState.Standard);
         }
@@ -129,8 +108,6 @@ public class GameManager : SerializedMonoBehaviour
         {
             PanelManager.Instance.SetPanel(PanelManager.PanelState.Intro);
         }
-        
-        PrinterManager.Instance.Initialize();
     }
     
     private void Start()
@@ -141,43 +118,43 @@ public class GameManager : SerializedMonoBehaviour
     
     
     // --------------------------------------------
-    //                  QUESTIONS
+    //                  FUNCTIONS
     // --------------------------------------------
 
     public void PrintAreaPlayer(bool showAllLandmarkArrows = false)
     {
         playerCamera.transform.position = new Vector3(player.transform.position.x, playerCamera.transform.position.y, player.transform.position.z);
         landmarksArrows.GetComponent<LandmarkDetection>().UpdateLandmarkArrows(showAllLandmarkArrows);
-        if (enablePrinters) StartCoroutine(PrinterManager.Instance.PNGPrinter.PrintMapTicket());
+        if (m_enablePrinters) StartCoroutine(PrinterManager.Instance.PNGPrinter.PrintMapTicket());
 	}
 
     public void EnterLandmark(Landmark landmark)
     {
-        currentLandmark = landmark;
-        QuestionManager.Instance.EnterLandmark(currentLandmark.Type);
+        m_currentLandmark = landmark;
+        QuestionManager.Instance.EnterLandmark(m_currentLandmark.Type);
         PanelManager.Instance.EnterLandmark();
-        inLandmark = true;
-        if (enablePrinters) PrinterManager.Instance.PNGPrinter.PrintLandmarkTicket(Mathf.FloorToInt(100 * (1 - (gameTimer / gameDuration))));
+        m_inLandmark = true;
+        if (m_enablePrinters) PrinterManager.Instance.PNGPrinter.PrintLandmarkTicket(Mathf.FloorToInt(100 * (1 - (m_gameTimer / m_gameDuration))));
     }
 
     public void ExitLandmark(int buttonIndex)
     {
         FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_QuestionRespondClick");
         
-        CharteManager.Instance.ExitLandmark(currentLandmark.Type);
+        CharteManager.Instance.ExitLandmark(m_currentLandmark.Type);
         
-        inLandmark = false;
+        m_inLandmark = false;
         PanelManager.Instance.SetPanel(PanelManager.PanelState.Standard);
         PanelManager.Instance.ShowQuestionArea(false);
         PanelManager.Instance.UIAnimations.StopShader(0);
         
         // Save answers to file
-        if (string.IsNullOrEmpty(answersLogFilePath))
+        if (string.IsNullOrEmpty(m_answersLogFilePath))
         {
             Debug.LogError("Log file path not initialized.");
             return;
         }
-        using (System.IO.StreamWriter writer = new System.IO.StreamWriter(answersLogFilePath, true))
+        using (System.IO.StreamWriter writer = new System.IO.StreamWriter(m_answersLogFilePath, true))
         {
             string answer = "";
             if (buttonIndex == 1)
@@ -190,7 +167,7 @@ public class GameManager : SerializedMonoBehaviour
             writer.WriteLine("------------------------");
         }
         
-        currentLandmark.Exit();
+        m_currentLandmark.Exit();
         PrintAreaPlayer(true);
     }
 
@@ -198,9 +175,9 @@ public class GameManager : SerializedMonoBehaviour
     {
         PanelManager.Instance.UpdateDirectionalArrow(direction);
 
-        if (!unboardingStep2)
+        if (!m_onboardingStep2checked)
         {
-            unboardingStep2 = true;
+            m_onboardingStep2checked = true;
             UnboardingStep2();
         }
 
@@ -223,39 +200,39 @@ public class GameManager : SerializedMonoBehaviour
         // Update arrow beating movement
         if (player.IsMoving)
         {
-            DOTween.To(() => beatingValue, x => {
-                beatingValue = x;
-                PanelManager.Instance.DirectionalArrows.transform.localScale = new Vector3(beatingValue, beatingValue, 1f);
+            DOTween.To(() => m_beatingValue, x => {
+                m_beatingValue = x;
+                PanelManager.Instance.DirectionalArrows.transform.localScale = new Vector3(m_beatingValue, m_beatingValue, 1f);
             }, 1f, 0.5f);
             
         }
         else
         {
-            beatingArrowTimer += Time.deltaTime;
-            if (beatingArrowTimer >= 0.5f)
+            m_beatingArrowTimer += Time.deltaTime;
+            if (m_beatingArrowTimer >= 0.5f)
             {
-                if (beatingValue >= 1)
+                if (m_beatingValue >= 1)
                 {
-                    DOTween.To(() => beatingValue, x => {
-                        beatingValue = x;
-                        PanelManager.Instance.DirectionalArrows.transform.localScale = new Vector3(beatingValue, beatingValue, 1f);
+                    DOTween.To(() => m_beatingValue, x => {
+                        m_beatingValue = x;
+                        PanelManager.Instance.DirectionalArrows.transform.localScale = new Vector3(m_beatingValue, m_beatingValue, 1f);
                     }, 0.9f, 1f);
                 }
                 else
                 {
-                    DOTween.To(() => beatingValue, x => {
-                        beatingValue = x;
-                        PanelManager.Instance.DirectionalArrows.transform.localScale = new Vector3(beatingValue, beatingValue, 1f);
+                    DOTween.To(() => m_beatingValue, x => {
+                        m_beatingValue = x;
+                        PanelManager.Instance.DirectionalArrows.transform.localScale = new Vector3(m_beatingValue, m_beatingValue, 1f);
                     }, 1.02f, 1f);
                 }
-                beatingArrowTimer = 0f;
+                m_beatingArrowTimer = 0f;
             }
         }
     }
 
     private void EndGame()
     {
-        isGameOver = true;
+        m_isGameOver = true;
         player.SetIsMoving(false);
         StatsManager.Instance.WriteFinalStatsToFile();
         PanelManager.Instance.SetPanel(PanelManager.PanelState.End);
@@ -268,19 +245,19 @@ public class GameManager : SerializedMonoBehaviour
     {
         UpdateDirectionalArrowBeating();
         
-        if (isGameOver || !unboardingStep2 || inLandmark) return;
+        if (m_isGameOver || !m_onboardingStep2checked || m_inLandmark) return;
         
         // Update game time
-        gameTimer -= Time.deltaTime;
+        m_gameTimer -= Time.deltaTime;
         
         // End game logic
-        if (gameTimer <= 0)
+        if (m_gameTimer <= 0)
         {
             EndGame();
         }
         
         // Update charte
-        int percentElapsed = Mathf.FloorToInt(100 * (1 - (gameTimer / gameDuration)));
+        int percentElapsed = Mathf.FloorToInt(100 * (1 - (m_gameTimer / m_gameDuration)));
         CharteManager.Instance.UpdatePercentage(percentElapsed);
         
         // Update stats
@@ -295,12 +272,12 @@ public class GameManager : SerializedMonoBehaviour
         if (answerIndex == 2) FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_QuestionRespondClick_NAN");
         
         // Save answers to file
-        if (string.IsNullOrEmpty(answersLogFilePath))
+        if (string.IsNullOrEmpty(m_answersLogFilePath))
         {
             Debug.LogError("Log file path not initialized.");
             return;
         }
-        using (System.IO.StreamWriter writer = new System.IO.StreamWriter(answersLogFilePath, true))
+        using (System.IO.StreamWriter writer = new System.IO.StreamWriter(m_answersLogFilePath, true))
         {
             //Debug.Log("Writing to file : " + answersLogFilePath);
             writer.WriteLine(QuestionManager.Instance.CurrentQuestion.question + " : " + (answerIndex == 1 ? QuestionManager.Instance.CurrentQuestion.answer1 : QuestionManager.Instance.CurrentQuestion.answer2));
@@ -342,9 +319,9 @@ public class GameManager : SerializedMonoBehaviour
                 child.gameObject.SetActive(true);
             }
             
-            if (!unboardingStep1)
+            if (!m_onboardingStep1checked)
             {
-                unboardingStep1 = true;
+                m_onboardingStep1checked = true;
                 UnboardingStep1();
             }
 

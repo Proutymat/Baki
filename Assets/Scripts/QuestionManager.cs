@@ -6,6 +6,9 @@ public class QuestionManager : SerializedMonoBehaviour
 {
     private static QuestionManager m_instance;
     
+    [Title("Parameters")]
+    [SerializeField] private int m_intervalBetweenTutorials = 3;
+    
     [Title("STATIC LISTS (not used in runtime)")]
     [SerializeField] public List<Question> m_tutorials;
     [SerializeField] public List<Question> m_questions;
@@ -14,46 +17,27 @@ public class QuestionManager : SerializedMonoBehaviour
     [SerializeField] public List<LandmarkQuestion> m_landmarksTypeC;
     [SerializeField] public List<LandmarkQuestion> m_landmarksTypeD;
     
-    public List<Question> Tutorials { get => m_tutorials; set => m_tutorials = value; }
-    public List<Question> Questions { get => m_questions; set => m_questions = value; }
-    public List<LandmarkQuestion> LandmarksTypeA { get => m_landmarksTypeA; set => m_landmarksTypeA = value; }
-    public List<LandmarkQuestion> LandmarksTypeB { get => m_landmarksTypeB; set => m_landmarksTypeB = value; }
-    public List<LandmarkQuestion> LandmarksTypeC { get => m_landmarksTypeC; set => m_landmarksTypeC = value; }
-    public List<LandmarkQuestion> LandmarksTypeD { get => m_landmarksTypeD; set => m_landmarksTypeD = value; }
-    
-    [Title("Settings")]
-    [SerializeField] private int m_intervalBetweenTutorials = 3;
-    
-    [Title("Debug"), SerializeField] private bool debug;
-    [SerializeField, ShowIf("debug")] private Question m_currentQuestion;
-    [SerializeField, ShowIf("debug")] private LandmarkQuestion m_currentLandmarkQuestion;
-    [SerializeField, ShowIf("debug")] private List<Question> m_runtimeTutorials;
-    [SerializeField, ShowIf("debug")] private List<Question> m_runtimeQuestions;
-    [SerializeField, ShowIf("debug")] private List<LandmarkQuestion> m_runtimeLandmarksTypeA;
-    [SerializeField, ShowIf("debug")] private List<LandmarkQuestion> m_runtimeLandmarksTypeB;
-    [SerializeField, ShowIf("debug")] private List<LandmarkQuestion> m_runtimeLandmarksTypeC;
-    [SerializeField, ShowIf("debug")] private List<LandmarkQuestion> m_runtimeLandmarksTypeD;
-    private float m_timer;
-    private bool m_isTutorialQuestion;
-    private int m_nbLandmarkQuestions;
+    [Title("Debug"), SerializeField] private bool m_debug;
+    [SerializeField, ShowIf("m_debug")] private float m_timer;
+    [SerializeField, ShowIf("m_debug")] private bool m_isTutorialQuestion;
+    [SerializeField, ShowIf("m_debug")] private int m_landmarkPage;
+    [SerializeField, ShowIf("m_debug")] private Question m_currentQuestion;
+    [SerializeField, ShowIf("m_debug")] private LandmarkQuestion m_currentLandmarkQuestion;
+    [SerializeField, ShowIf("m_debug")] private List<Question> m_runtimeTutorials;
+    [SerializeField, ShowIf("m_debug")] private List<Question> m_runtimeQuestions;
+    [SerializeField, ShowIf("m_debug")] private List<LandmarkQuestion> m_runtimeLandmarksTypeA;
+    [SerializeField, ShowIf("m_debug")] private List<LandmarkQuestion> m_runtimeLandmarksTypeB;
+    [SerializeField, ShowIf("m_debug")] private List<LandmarkQuestion> m_runtimeLandmarksTypeC;
+    [SerializeField, ShowIf("m_debug")] private List<LandmarkQuestion> m_runtimeLandmarksTypeD;
     
     public float Timer { get => m_timer; set => m_timer = value; }
     public Question CurrentQuestion { get => m_currentQuestion; set => m_currentQuestion = value; }
     public LandmarkQuestion CurrentLandmarkQuestion { get => m_currentLandmarkQuestion; set => m_currentLandmarkQuestion = value; }
     
+    
     // --------------------------------------------
     //               INITIALIZATION
     // --------------------------------------------
-    
-    public static QuestionManager Instance
-    {
-        get
-        {
-            if (m_instance == null)
-                m_instance = FindFirstObjectByType<QuestionManager>();
-            return m_instance;
-        }
-    }
     
     private void Awake()
     {
@@ -67,19 +51,34 @@ public class QuestionManager : SerializedMonoBehaviour
             m_instance = this;
         }
     }
+    
+    public static QuestionManager Instance
+    {
+        get
+        {
+            if (m_instance == null)
+                m_instance = FindFirstObjectByType<QuestionManager>();
+            return m_instance;
+        }
+    }
 
     public void Initialize()
     {
+        m_timer = 0;
+        m_landmarkPage = 0;
+        m_isTutorialQuestion = false;
         m_runtimeTutorials = new List<Question>(m_tutorials);
         m_runtimeQuestions = new List<Question>(m_questions);
         m_runtimeLandmarksTypeA = new List<LandmarkQuestion>(m_landmarksTypeA);
         m_runtimeLandmarksTypeB = new List<LandmarkQuestion>(m_landmarksTypeB);
         m_runtimeLandmarksTypeC = new List<LandmarkQuestion>(m_landmarksTypeC);
         m_runtimeLandmarksTypeD = new List<LandmarkQuestion>(m_landmarksTypeD);
-        m_timer = 0;
-        m_nbLandmarkQuestions = 0;
-        m_isTutorialQuestion = false;
     }
+    
+    
+    // --------------------------------------------
+    //                  FUNCTIONS
+    // --------------------------------------------
     
     public void NextQuestion()
     {
@@ -104,7 +103,7 @@ public class QuestionManager : SerializedMonoBehaviour
         else
         {
             // Choose a random number between 0 and the number of values
-            int questionIndex = UnityEngine.Random.Range(0, m_runtimeQuestions.Count);
+            int questionIndex = Random.Range(0, m_runtimeQuestions.Count);
 
             // Change and delete the question if both law values are fully checked
             if (m_runtimeQuestions[questionIndex].answer1Type1 >= 0 && CharteManager.Instance.LawCursors[m_runtimeQuestions[questionIndex].answer1Type1].LawsFullyChecked
@@ -129,56 +128,56 @@ public class QuestionManager : SerializedMonoBehaviour
     
     public void NextLandmarkQuestion()
     {
-        m_nbLandmarkQuestions += 1;
+        m_landmarkPage += 1;
         FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_QuestionRespondClick");
 
-        PanelManager.Instance.PreviousBubblePage(m_nbLandmarkQuestions);
+        PanelManager.Instance.PreviousBubblePage(m_landmarkPage);
         
 
         // Last text
-        if (m_nbLandmarkQuestions == m_currentLandmarkQuestion.nbTexts)
+        if (m_landmarkPage == m_currentLandmarkQuestion.nbTexts)
         {
             PanelManager.Instance.LastLandmarkPage();
             FMODUnity.RuntimeManager.PlayOneShot("event:/MX/MX_Trig/MX_Trig_Question");
         }
 
         // Update text
-        if (m_nbLandmarkQuestions == 1)
+        if (m_landmarkPage == 1)
             PanelManager.Instance.LandmarkText = m_currentLandmarkQuestion.text2;
-        else if (m_nbLandmarkQuestions == 2)
+        else if (m_landmarkPage == 2)
             PanelManager.Instance.LandmarkText = m_currentLandmarkQuestion.text3;
-        else if (m_nbLandmarkQuestions == 3)
+        else if (m_landmarkPage == 3)
             PanelManager.Instance.LandmarkText = m_currentLandmarkQuestion.text4;
-        else if (m_nbLandmarkQuestions == 4)
+        else if (m_landmarkPage == 4)
             PanelManager.Instance.LandmarkText = m_currentLandmarkQuestion.text5;
-        else if (m_nbLandmarkQuestions == 5)
+        else if (m_landmarkPage == 5)
             PanelManager.Instance.LandmarkText = m_currentLandmarkQuestion.text6;
     }
     
     public void PreviousLandmarkQuestion()
     {
         // Cannot go back if it's the first question
-        if (m_nbLandmarkQuestions <= 0)
+        if (m_landmarkPage <= 0)
         {
             FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_QuestionRespondClick");
             return;
         }
         
-        m_nbLandmarkQuestions -= 1;
+        m_landmarkPage -= 1;
         FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_QuestionRespondClick");
         
-        PanelManager.Instance.NextBubblePage(m_nbLandmarkQuestions);
+        PanelManager.Instance.NextBubblePage(m_landmarkPage);
         
         // Update text
-        if (m_nbLandmarkQuestions == 0)
+        if (m_landmarkPage == 0)
             PanelManager.Instance.LandmarkText = m_currentLandmarkQuestion.text1;
-        else if (m_nbLandmarkQuestions == 1)
+        else if (m_landmarkPage == 1)
             PanelManager.Instance.LandmarkText = m_currentLandmarkQuestion.text2;
-        else if (m_nbLandmarkQuestions == 2)
+        else if (m_landmarkPage == 2)
             PanelManager.Instance.LandmarkText = m_currentLandmarkQuestion.text3;
-        else if (m_nbLandmarkQuestions == 3)
+        else if (m_landmarkPage == 3)
             PanelManager.Instance.LandmarkText = m_currentLandmarkQuestion.text4;
-        else if (m_nbLandmarkQuestions == 4)
+        else if (m_landmarkPage == 4)
             PanelManager.Instance.LandmarkText = m_currentLandmarkQuestion.text5;
     }
 
@@ -186,25 +185,25 @@ public class QuestionManager : SerializedMonoBehaviour
     {
         if (landmarkTypeIndex == 0)
         {
-            int index = UnityEngine.Random.Range(0, m_runtimeLandmarksTypeA.Count);
+            int index = Random.Range(0, m_runtimeLandmarksTypeA.Count);
             m_currentLandmarkQuestion = m_runtimeLandmarksTypeA[index];
             m_runtimeLandmarksTypeA.RemoveAt(index);
         }
         else if (landmarkTypeIndex == 1)
         {
-            int index = UnityEngine.Random.Range(0, m_runtimeLandmarksTypeB.Count);
+            int index = Random.Range(0, m_runtimeLandmarksTypeB.Count);
             m_currentLandmarkQuestion = m_runtimeLandmarksTypeB[index];
             m_runtimeLandmarksTypeB.RemoveAt(index);
         }
         else if (landmarkTypeIndex == 2)
         {
-            int index = UnityEngine.Random.Range(0, m_runtimeLandmarksTypeC.Count);
+            int index = Random.Range(0, m_runtimeLandmarksTypeC.Count);
             m_currentLandmarkQuestion = m_runtimeLandmarksTypeC[index];
             m_runtimeLandmarksTypeC.RemoveAt(index);
         }
         else if (landmarkTypeIndex == 3)
         {
-            int index = UnityEngine.Random.Range(0, m_runtimeLandmarksTypeD.Count);
+            int index = Random.Range(0, m_runtimeLandmarksTypeD.Count);
             m_currentLandmarkQuestion = m_runtimeLandmarksTypeD[index];
             m_runtimeLandmarksTypeD.RemoveAt(index);
         }
@@ -215,15 +214,29 @@ public class QuestionManager : SerializedMonoBehaviour
     public void ExitLandmark()
     {
         m_timer = 0;
-        m_nbLandmarkQuestions = 0;
+        m_landmarkPage = 0;
     }
     
     
 #if UNITY_EDITOR
     
+    // --------------------------------------------
+    //                  IMPORTERS
+    // --------------------------------------------
+
+    public void ClearStaticLists()
+    {
+        m_questions.Clear();
+        m_landmarksTypeA.Clear();
+        m_landmarksTypeB.Clear();
+        m_landmarksTypeC.Clear();
+        m_landmarksTypeD.Clear();
+    }
+    
     [Button, DisableInPlayMode]
     public void LoadTutorials()
     {
+        m_tutorials.Clear();
         m_tutorials = FileImporterManager.Instance.LoadTutorialsCSV();
         Debug.Log("Tutorials loaded: " + m_tutorials.Count);
     }
@@ -231,6 +244,7 @@ public class QuestionManager : SerializedMonoBehaviour
     [Button, DisableInPlayMode]
     public void LoadQuestions()
     {
+        m_questions.Clear();
         m_questions = FileImporterManager.Instance.LoadQuestionsCSV();
         Debug.Log("Questions loaded: " + m_questions.Count);
     }
@@ -238,10 +252,10 @@ public class QuestionManager : SerializedMonoBehaviour
     [Button, DisableInPlayMode]
     private void LoadLandmarkQuestions()
     {
-        LandmarksTypeA.Clear();
-        LandmarksTypeB.Clear();
-        LandmarksTypeC.Clear();
-        LandmarksTypeD.Clear();
+        m_landmarksTypeA.Clear();
+        m_landmarksTypeB.Clear();
+        m_landmarksTypeC.Clear();
+        m_landmarksTypeD.Clear();
         
         List<List<LandmarkQuestion>> landmarkQuestions = FileImporterManager.Instance.LoadLandmarksCSV();
         m_landmarksTypeA = landmarkQuestions[0];

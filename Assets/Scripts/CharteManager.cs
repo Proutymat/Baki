@@ -11,34 +11,33 @@ public class CharteManager : MonoBehaviour
     [SerializeField] private int m_maxLawsInterval = 5;
     [SerializeField] private int m_printIntervalsInPercent;
     
+    [Title("Static list")]
+    [SerializeField] private List<Value> m_laws;
+    
+    // Temporary solution
     private List<string> m_illusLandmarkA;
     private List<string> m_illusLandmarkB;
     private List<string> m_illusLandmarkC;
     private List<string> m_illusLandmarkD;
     private List<string> m_illustrations;
-    private string m_logFilePath;
     
     [Title("Debug"), SerializeField] private bool m_debug;
-    [SerializeField, ShowIf("m_debug")] private int lastPrintedPercent = 0;
-    [SerializeField, ShowIf("m_debug")] public List<Value> m_laws;
+    [SerializeField, ShowIf("m_debug")] private int m_lastPrintedPercent;
+    [SerializeField, ShowIf("m_debug")] private string m_logFilePath;
     [SerializeField, ShowIf("m_debug")] private List<LawCursor> m_lawCursors;
     [SerializeField, ShowIf("m_debug")] private List<string> m_lawsQueue;
     [SerializeField, ShowIf("m_debug")] private List<int> m_lawsQueuePriority;
     [SerializeField, ShowIf("m_debug")] private List<string> m_illusQueue;
     [SerializeField, ShowIf("m_debug")] private List<int> m_illusQueuePriority;
     
+    public List<Value> Laws { get => m_laws; }
     public List<LawCursor> LawCursors { get => m_lawCursors; set => m_lawCursors = value; }
     public string LogFilePath { get => m_logFilePath; }
     
-    public static CharteManager Instance
-    {
-        get
-        {
-            if (m_instance == null)
-                m_instance = FindFirstObjectByType<CharteManager>();
-            return m_instance;
-        }
-    }
+    
+    // --------------------------------------------
+    //               INITIALIZATION
+    // --------------------------------------------
     
     private void Awake()
     {
@@ -52,7 +51,18 @@ public class CharteManager : MonoBehaviour
             m_instance = this;
         }
     }
+    
+    public static CharteManager Instance
+    {
+        get
+        {
+            if (m_instance == null)
+                m_instance = FindFirstObjectByType<CharteManager>();
+            return m_instance;
+        }
+    }
 
+    // Temporary solution, because we still not have chosen which illus goes with each anwsers
     private void TemporaryFillingIllustrations()
     {
         m_illustrations = new List<string>();
@@ -97,23 +107,31 @@ public class CharteManager : MonoBehaviour
 
     public void Initialize()
     {
-        lastPrintedPercent = 0;
         TemporaryFillingIllustrations();
+        
+        m_lastPrintedPercent = 0;
         m_logFilePath = $"{GameManager.Instance.CurrentGameLogFolder}/charte.txt";
         
-        m_lawsQueue = new List<string>();
+        // Create law cursors
         m_lawCursors.Clear();
         m_lawCursors = new List<LawCursor>();
-        
-        // Create law cursors
         for (int i = 0; i < m_laws.Count; i++)
         {
             LawCursor lawCursor = new LawCursor(m_laws[i]);
             m_lawCursors.Add(lawCursor);
         }
-        
         Debug.Log("Law cursors created : " + m_lawCursors.Count);
+        
+        m_lawsQueue = new List<string>();
+        m_lawsQueuePriority = new List<int>();
+        m_illusQueue = new List<string>();
+        m_illusQueuePriority = new List<int>();
     }
+    
+    
+    // --------------------------------------------
+    //                  FUNCTIONS
+    // --------------------------------------------
 
     public void IncrementLawCursor(int lawType, int lawIncrement)
     {
@@ -136,28 +154,28 @@ public class CharteManager : MonoBehaviour
     {
         if (landmarkType == 0 && m_illusLandmarkA.Count > 0)
         {
-            int index = UnityEngine.Random.Range(0, m_illusLandmarkA.Count);
+            int index = Random.Range(0, m_illusLandmarkA.Count);
             m_illusQueue.Add(m_illusLandmarkA[index]);
             m_illusQueuePriority.Add(1);
             m_illusLandmarkA.RemoveAt(index);
         }
         else if (landmarkType == 1 && m_illusLandmarkB.Count > 0)
         {
-            int index = UnityEngine.Random.Range(0, m_illusLandmarkB.Count);
+            int index = Random.Range(0, m_illusLandmarkB.Count);
             m_illusQueue.Add(m_illusLandmarkB[index]);
             m_illusQueuePriority.Add(1);
             m_illusLandmarkB.RemoveAt(index);
         }
         else if (landmarkType == 2 && m_illusLandmarkC.Count > 0)
         {
-            int index = UnityEngine.Random.Range(0, m_illusLandmarkC.Count);
+            int index = Random.Range(0, m_illusLandmarkC.Count);
             m_illusQueue.Add(m_illusLandmarkC[index]);
             m_illusQueuePriority.Add(1);
             m_illusLandmarkC.RemoveAt(index);
         }
         else if (landmarkType == 3 && m_illusLandmarkD.Count > 0)
         {
-            int index = UnityEngine.Random.Range(0, m_illusLandmarkD.Count);
+            int index = Random.Range(0, m_illusLandmarkD.Count);
             m_illusQueue.Add(m_illusLandmarkD[index]);
             m_illusQueuePriority.Add(1);
             m_illusLandmarkD.RemoveAt(index);
@@ -179,7 +197,7 @@ public class CharteManager : MonoBehaviour
         using (System.IO.StreamWriter writer = new System.IO.StreamWriter(m_logFilePath, true))
         {
             writer.WriteLine("------------------------");
-            writer.WriteLine($"   SALVE DE LOIS " + lastPrintedPercent + "%");
+            writer.WriteLine($"   SALVE DE LOIS " + m_lastPrintedPercent + "%");
             writer.WriteLine("------------------------");
             
             int lawPrinted = 0;
@@ -209,12 +227,12 @@ public class CharteManager : MonoBehaviour
 
     public void UpdatePercentage(int percentElapsed)
     {
-        if (percentElapsed >= lastPrintedPercent + m_printIntervalsInPercent)
+        if (percentElapsed >= m_lastPrintedPercent + m_printIntervalsInPercent)
         {
-            lastPrintedPercent += m_printIntervalsInPercent;
+            m_lastPrintedPercent += m_printIntervalsInPercent;
             PrintLawsQueue();
             
-            Debug.Log("" + lastPrintedPercent + "% of the game elapsed");
+            Debug.Log("" + m_lastPrintedPercent + "% of the game elapsed");
         }
     }
 
@@ -222,7 +240,7 @@ public class CharteManager : MonoBehaviour
     {
         while (Mathf.RoundToInt(m_lawsQueue.Count / 5f) > Mathf.RoundToInt(m_illusQueue.Count / 3f) && m_illustrations.Count > 0)
         {
-            int index = UnityEngine.Random.Range(0, m_illustrations.Count);
+            int index = Random.Range(0, m_illustrations.Count);
             string illu = m_illustrations[index];
             m_illusQueue.Add(illu);
             m_illustrations.RemoveAt(index);

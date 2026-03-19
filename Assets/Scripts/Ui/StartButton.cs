@@ -9,8 +9,8 @@ using UnityEngine.Video;
 public class StartButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private float beatingCooldown = 1;
-    [SerializeField] private bool setObjectsInInspector = false;
-    [Header("------- SET IN INSPECTOR -------"), ShowIf("setObjectsInInspector")] 
+    [SerializeField] private bool setObjectsInInspector;
+    [Title("Set in inspector"), ShowIf("setObjectsInInspector")] 
     [SerializeField, ShowIf("setObjectsInInspector")] private VideoPlayer videoPlayer;
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject introInterface;
     [SerializeField, ShowIf("setObjectsInInspector")] private GameObject questionsInterface;
