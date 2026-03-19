@@ -85,6 +85,7 @@ public class Player : MonoBehaviour
         }
         
         isMoving = newMovingValue;
+        PanelManager.Instance.BeatingArrows.IsBeating = !newMovingValue;
     }
 
     public void OnColliderTriggered(Collider collider)

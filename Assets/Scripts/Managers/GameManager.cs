@@ -25,8 +25,6 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("m_debug")]private Landmark m_currentLandmark;
     [SerializeField, ShowIf("m_debug")]private string m_currentGameLogFolder;
     [SerializeField, ShowIf("m_debug")]private string m_answersLogFilePath;
-    
-    
 
     public string CurrentGameLogFolder { get => m_currentGameLogFolder; }
     public bool EnablePrinters { get => m_enablePrinters; }

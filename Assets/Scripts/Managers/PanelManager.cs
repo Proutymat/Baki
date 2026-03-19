@@ -77,6 +77,7 @@ public class PanelManager : MonoBehaviour
     
     public UiAnimations UIAnimations { get => uiAnimations; set => uiAnimations = value; }
     public ProgressBar ProgressBar { get => progressBar; set => progressBar = value; }
+    public BeatingArrows BeatingArrows { get => directionalArrowsBeating; set => directionalArrowsBeating = value; }
     public GameObject DirectionalArrows { get => directionalArrowsObject; set => directionalArrowsObject = value; }
     public string QuestionText {set => questionText.text = value; }
     public string Answer1Text {set => answer1Text.text = value; }

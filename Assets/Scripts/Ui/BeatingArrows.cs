@@ -15,7 +15,7 @@ public class BeatingArrows : MonoBehaviour
     
     void Update()
     {
-        if (isBeating)
+        if (!isBeating)
         {
             DOTween.To(() => m_beatingValue, x => {
                 m_beatingValue = x;
