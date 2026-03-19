@@ -177,7 +177,7 @@ public class GameManager : SerializedMonoBehaviour
         {
             System.IO.Directory.CreateDirectory(currentGameLogFolder);
         }
-
+        Debug.Log("log folder = " + currentGameLogFolder);
         currentGameLogFolder += "/" + System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
         System.IO.Directory.CreateDirectory(currentGameLogFolder);
         charteLogFilePath = $"{currentGameLogFolder}/charte.txt";

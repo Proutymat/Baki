@@ -35,7 +35,6 @@ public class PNGPrinter : MonoBehaviour
     void Start()
     {
         gameManager = GameManager.Instance;
-        Initialize();
     }
 
     public void Initialize()
