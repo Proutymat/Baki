@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
+using DG.Tweening;
 
 public class PanelManager : MonoBehaviour
 { 
@@ -17,6 +18,10 @@ public class PanelManager : MonoBehaviour
     }
     
     private static PanelManager m_instance;
+    
+    [Title("Parameters")]
+    [SerializeField] private float m_answersAnimDuration;
+    [SerializeField] private float m_questionsAnimDuration;
 
     [SerializeField] private bool m_setInInspector;
     
@@ -56,12 +61,25 @@ public class PanelManager : MonoBehaviour
     [SerializeField, ShowIf("m_setInInspector")] private Button arrowButtonLeft;
     [SerializeField, ShowIf("m_setInInspector")] private Button arrowButtonRight;
     [SerializeField, ShowIf("m_setInInspector")] private Button arrowButtonBackward;
-    [SerializeField, ShowIf("m_setInInspector")] private GameObject questionsArea;
     [SerializeField, ShowIf("m_setInInspector")] private GameObject progressBarObject;
     [SerializeField, ShowIf("m_setInInspector")] private GameObject bottomArrowIndication;
-    [SerializeField, ShowIf("m_setInInspector")] private TextMeshProUGUI questionText;
-    [SerializeField, ShowIf("m_setInInspector")] private TextMeshProUGUI answer1Text;
-    [SerializeField, ShowIf("m_setInInspector")] private TextMeshProUGUI answer2Text;
+    [SerializeField, ShowIf("m_setInInspector")] private GameObject questionsArea;
+    [SerializeField, ShowIf("m_setInInspector")] private GameObject m_QZ1;
+    [SerializeField, ShowIf("m_setInInspector")] private TextMeshProUGUI m_QZ1questionText;
+    [SerializeField, ShowIf("m_setInInspector")] private RectTransform m_QZ1AnswersTransform;
+    [SerializeField, ShowIf("m_setInInspector")] private TextMeshProUGUI m_QZ1answer1Text;
+    [SerializeField, ShowIf("m_setInInspector")] private TextMeshProUGUI m_QZ1answer2Text;
+    [SerializeField, ShowIf("m_setInInspector")] private Button m_QZ1answer1Button;
+    [SerializeField, ShowIf("m_setInInspector")] private Button m_QZ1answer2Button;
+    [SerializeField, ShowIf("m_setInInspector")] private GameObject m_QZ2;
+    [SerializeField, ShowIf("m_setInInspector")] private TextMeshProUGUI m_QZ2questionText;
+    [SerializeField, ShowIf("m_setInInspector")] private RectTransform m_QZ2AnswersTransform;
+    [SerializeField, ShowIf("m_setInInspector")] private TextMeshProUGUI m_QZ2answer1Text;
+    [SerializeField, ShowIf("m_setInInspector")] private TextMeshProUGUI m_QZ2answer2Text;
+    [SerializeField, ShowIf("m_setInInspector")] private Button m_QZ2answer1Button;
+    [SerializeField, ShowIf("m_setInInspector")] private Button m_QZ2answer2Button;
+    private int m_currentQuestionZone;
+    
     
     [Title("Landmark elements")]
     [SerializeField, ShowIf("m_setInInspector")] private List<Image> bubblePages;
@@ -79,10 +97,50 @@ public class PanelManager : MonoBehaviour
     public ProgressBar ProgressBar { get => progressBar; set => progressBar = value; }
     public BeatingArrows BeatingArrows { get => directionalArrowsBeating; set => directionalArrowsBeating = value; }
     public GameObject DirectionalArrows { get => directionalArrowsObject; set => directionalArrowsObject = value; }
-    public string QuestionText {set => questionText.text = value; }
-    public string Answer1Text {set => answer1Text.text = value; }
-    public string Answer2Text {set => answer2Text.text = value; }
+    public int CurrentQuestionZone { get => m_currentQuestionZone; }
+
+    public void SetQuestionText(string value)
+    {
+        if (m_currentQuestionZone == 1)
+        {
+            m_QZ1questionText.text = value;
+        }
+        else
+        {
+            m_QZ2questionText.text = value;
+        }
+    }
+    
+    public void SetAnswer1Text(string value)
+    {
+        if (m_currentQuestionZone == 1)
+        {
+            m_QZ1answer1Text.text = value;
+        }
+        else
+        {
+            m_QZ2answer1Text.text = value;
+        }
+    }
+    
+    public void SetAnswer2Text(string value)
+    {
+        if (m_currentQuestionZone == 1)
+        {
+            m_QZ1answer2Text.text = value;
+        }
+        else
+        {
+            m_QZ2answer2Text.text = value;
+        }
+    }
+    
     public string LandmarkText {set => landmarkText.text = value; }
+
+    public void SwitchQuestionZone()
+    {
+        m_currentQuestionZone = m_currentQuestionZone == 1 ? 2 : 1;
+    }
 
     
     // --------------------------------------------
@@ -115,6 +173,7 @@ public class PanelManager : MonoBehaviour
     {
         uiAnimations.Initialize();
         directionalArrowsBeating.IsBeating = true;
+        m_currentQuestionZone = 1;
     }
     
     // --------------------------------------------
@@ -263,5 +322,76 @@ public class PanelManager : MonoBehaviour
         backButton.SetActive(true);
         landmarkAnswer1Button.SetActive(false);
         landmarkAnswer2Button.SetActive(false);
+    }
+
+    private void EnableAnswersButtons(bool value)
+    {
+        m_QZ1answer1Button.interactable = value;
+        m_QZ1answer2Button.interactable = value;
+        m_QZ2answer1Button.interactable = value;
+        m_QZ2answer2Button.interactable = value;
+    }
+
+    public void QuestionsTransitionAnimation(int answerIndex)
+    {
+        EnableAnswersButtons(false);
+
+        Sequence anim = DOTween.Sequence();
+
+        
+        // Assign question zone
+        
+        Transform currentZone;
+        Transform nextZone;
+        Transform answer1;
+        Transform answer2;
+        
+        if (m_currentQuestionZone == 1)
+        {
+            currentZone = m_QZ1.transform;
+            nextZone = m_QZ2.transform;
+            answer1 = m_QZ1answer1Button.transform;
+            answer2 = m_QZ1answer2Button.transform;
+            
+        }
+        else
+        {
+            currentZone = m_QZ2.transform;
+            nextZone = m_QZ1.transform;
+            answer1 = m_QZ2answer1Button.transform;
+            answer2 = m_QZ2answer2Button.transform;
+        }
+
+        
+        // Assign selected answer
+        
+        Transform selected, other;
+
+        if (answerIndex == 1)
+        {
+            selected = answer1;
+            other = answer2;
+        }
+        else
+        {
+            selected = answer2;
+            other = answer1;
+        }
+
+        
+        // ANIMATION SEQUENCE
+        
+        anim.Append(selected.DOLocalMoveX(0, m_answersAnimDuration).SetEase(Ease.InOutQuad)); // Center selected answer
+        anim.Join(other.DOLocalMoveY(-200, m_answersAnimDuration).SetEase(Ease.InOutQuad)); // Exit other answer
+        anim.Append(currentZone.DOLocalMoveX(750, m_questionsAnimDuration).SetEase(Ease.InOutQuad)); // Exit current zone
+        anim.Join(nextZone.DOLocalMoveX(0, m_questionsAnimDuration).SetEase(Ease.InOutQuad)); // Enter next zone
+        anim.Append(currentZone.DOLocalMoveX(-750, 0)); // Reset position
+        
+        anim.OnComplete(() =>
+        {
+            LayoutRebuilder.ForceRebuildLayoutImmediate(m_QZ1AnswersTransform);
+            LayoutRebuilder.ForceRebuildLayoutImmediate(m_QZ2AnswersTransform);
+            EnableAnswersButtons(true); // Reactivate buttons
+        });
     }
 }

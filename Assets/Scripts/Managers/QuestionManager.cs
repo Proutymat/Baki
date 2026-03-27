@@ -82,13 +82,18 @@ public class QuestionManager : SerializedMonoBehaviour
     
     public void NextQuestion()
     {
+        if (StatsManager.Instance.NbQuestionsAnswered != 0)
+        {
+            PanelManager.Instance.SwitchQuestionZone();
+        }
+        
         // If there are no more questions left
         if (m_runtimeQuestions.Count < 1)
         {
             Debug.Log("No more questions available.");
-            PanelManager.Instance.QuestionText = "No more questions available.";
-            PanelManager.Instance.Answer1Text = "BAKI";
-            PanelManager.Instance.Answer2Text = "BAKI";
+            PanelManager.Instance.SetQuestionText("No more questions available.");
+            PanelManager.Instance.SetAnswer1Text("BAKI");
+            PanelManager.Instance.SetAnswer2Text("BAKI");
             return;
         }
         
@@ -121,9 +126,9 @@ public class QuestionManager : SerializedMonoBehaviour
         }
         
         // Display the question and answers
-         PanelManager.Instance.QuestionText = m_currentQuestion.question;
-         PanelManager.Instance.Answer1Text = m_currentQuestion.answer1;
-         PanelManager.Instance.Answer2Text = m_currentQuestion.answer2;
+         PanelManager.Instance.SetQuestionText(m_currentQuestion.question);
+         PanelManager.Instance.SetAnswer1Text(m_currentQuestion.answer1);
+         PanelManager.Instance.SetAnswer2Text(m_currentQuestion.answer2);
     }
     
     public void NextLandmarkQuestion()

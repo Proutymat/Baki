@@ -281,7 +281,7 @@ public class GameManager : SerializedMonoBehaviour
                 UnboardingStep1();
             }
 
-		PrintAreaPlayer();
+		    PrintAreaPlayer();
         }
 
         // The two laws to update with their increments
@@ -323,6 +323,12 @@ public class GameManager : SerializedMonoBehaviour
             CharteManager.Instance.IncrementLawCursor(law2Type, lawIncrement2);
         }
 
+        // Trigger questions transition anim
+        if (StatsManager.Instance.NbQuestionsAnswered != 0)
+        {
+            PanelManager.Instance.QuestionsTransitionAnimation(answerIndex);
+        }
+        
         QuestionManager.Instance.NextQuestion();
     }  
 }
