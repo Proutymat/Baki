@@ -64,6 +64,7 @@ public class PanelManager : MonoBehaviour
     [SerializeField, ShowIf("m_setInInspector")] private GameObject progressBarObject;
     [SerializeField, ShowIf("m_setInInspector")] private GameObject bottomArrowIndication;
     [SerializeField, ShowIf("m_setInInspector")] private GameObject questionsArea;
+    [Header("Question zone 1")]
     [SerializeField, ShowIf("m_setInInspector")] private GameObject m_QZ1;
     [SerializeField, ShowIf("m_setInInspector")] private TextMeshProUGUI m_QZ1questionText;
     [SerializeField, ShowIf("m_setInInspector")] private RectTransform m_QZ1AnswersTransform;
@@ -71,6 +72,7 @@ public class PanelManager : MonoBehaviour
     [SerializeField, ShowIf("m_setInInspector")] private TextMeshProUGUI m_QZ1answer2Text;
     [SerializeField, ShowIf("m_setInInspector")] private Button m_QZ1answer1Button;
     [SerializeField, ShowIf("m_setInInspector")] private Button m_QZ1answer2Button;
+    [Header("Question zone 2")]
     [SerializeField, ShowIf("m_setInInspector")] private GameObject m_QZ2;
     [SerializeField, ShowIf("m_setInInspector")] private TextMeshProUGUI m_QZ2questionText;
     [SerializeField, ShowIf("m_setInInspector")] private RectTransform m_QZ2AnswersTransform;
@@ -341,10 +343,8 @@ public class PanelManager : MonoBehaviour
         
         // Assign question zone
         
-        Transform currentZone;
-        Transform nextZone;
-        Transform answer1;
-        Transform answer2;
+        Transform currentZone, nextZone;
+        Transform answer1, answer2;
         
         if (m_currentQuestionZone == 1)
         {
@@ -389,8 +389,10 @@ public class PanelManager : MonoBehaviour
         
         anim.OnComplete(() =>
         {
+            // Recalculate button positions
             LayoutRebuilder.ForceRebuildLayoutImmediate(m_QZ1AnswersTransform);
             LayoutRebuilder.ForceRebuildLayoutImmediate(m_QZ2AnswersTransform);
+
             EnableAnswersButtons(true); // Reactivate buttons
         });
     }
