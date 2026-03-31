@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,7 +7,7 @@ using UnityEngine.UI;
 public class ProgressBar : MonoBehaviour
 {
 
-    [SerializeField] private Image mask;
+    [SerializeField] private float fillingSpeed;
     [SerializeField] private float minimum = 0;
     [SerializeField] private float maximum;
     [SerializeField] private float current;
@@ -14,11 +15,15 @@ public class ProgressBar : MonoBehaviour
     [SerializeField] private float increaseValue;
     [SerializeField] private float decreaseValue;
     
+    [SerializeField] private Image shaderImage;
+    
     [SerializeField] private bool isPaused;
     public bool IsPaused { set { isPaused = value; } }
     
     private float _timer;
     private bool barIsEmpty;
+
+    private float m_progress;
     
     
 
@@ -26,7 +31,8 @@ public class ProgressBar : MonoBehaviour
     {
         // Set the initial value of the progress bar
         current = minimum;
-        mask.fillAmount = 0;
+        shaderImage.material.SetFloat("_Progress", 0);
+        m_progress = 0;
 
         barIsEmpty = true;
         isPaused = true;
@@ -81,7 +87,11 @@ public class ProgressBar : MonoBehaviour
         float currentOffset = current -  minimum;
         float maximumOffset = maximum - minimum;
         float fillAmount = (float)current / maximumOffset;
-        mask.fillAmount = fillAmount;
+        DOTween.To(() => m_progress, x => {
+            m_progress = x;
+            shaderImage.material.SetFloat("_Progress", m_progress);
+        }, fillAmount, fillingSpeed);
+        
         return fillAmount;
     }
     

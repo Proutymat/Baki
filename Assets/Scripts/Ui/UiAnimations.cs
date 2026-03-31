@@ -53,11 +53,13 @@ public class UiAnimations : MonoBehaviour
         animationsOn[randomIndex] = 1;
     }
     
+    /*
     public void SetShaderSpeed(float speed)
     {
         shaderSpeed = speed;
         PlayShader();
     }
+    */
     
     public void StopShader(float stopSpeed = 3f)
     {

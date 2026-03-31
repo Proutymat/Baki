@@ -184,6 +184,7 @@ public class Player : MonoBehaviour
         SetIsMoving(true);
     }
 
+    /*
     public void SetInSpecialZone(bool newInSpecialZone)
     {
         // Enter special zone
@@ -203,6 +204,7 @@ public class Player : MonoBehaviour
         
         inSpecialZone = newInSpecialZone;
     }
+    */
 
     bool IsHorizontal(Vector3 direction)
     {
