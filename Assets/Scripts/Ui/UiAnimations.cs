@@ -10,7 +10,8 @@ public class UiAnimations : MonoBehaviour
     [SerializeField] private Image shaderImage;
     [SerializeField] private float shaderSpeed = 0.8f;
     
-    private float shaderValue;
+    private float angle;
+    private float angleFactor;
     
     void Start()
     {
@@ -29,8 +30,14 @@ public class UiAnimations : MonoBehaviour
     public void Initialize()
     {
         shaderImage.material.SetFloat("_vitesse", 0);
-        shaderSpeed = 0.8f;
-        shaderValue = 0f;
+        angle = 0;
+        angleFactor = 0;
+    }
+    
+    private void Update()
+    {
+        angle += Time.deltaTime * angleFactor * shaderSpeed;
+        shaderImage.material.SetFloat("_vitesse", angle);
     }
 
     public void SetAnimation(int index)
@@ -54,18 +61,16 @@ public class UiAnimations : MonoBehaviour
     
     public void StopShader(float stopSpeed = 3f)
     {
-        DOTween.To(() => shaderValue, x => {
-            shaderValue = x;
-            shaderImage.material.SetFloat("_vitesse", shaderValue);
+        DOTween.To(() => angleFactor, x => {
+            angleFactor = x;
         }, 0f, stopSpeed);
     }
     
     public void PlayShader()
     {
-        DOTween.To(() => shaderValue, x => {
-            shaderValue = x;
-            shaderImage.material.SetFloat("_vitesse", shaderValue);
-        }, shaderSpeed, 3f);
+        DOTween.To(() => angleFactor, x => {
+            angleFactor = x;
+        }, 1, 3f);
     }
 
     public void PauseAnimations()
