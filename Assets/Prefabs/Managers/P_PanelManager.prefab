@@ -196,15 +196,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84d3ffcc49efe3c4fbdc059e3105d3f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animators:
+  animators: []
+  m_animators:
   - {fileID: 6576081752098330662}
   - {fileID: 3807893478036531224}
   - {fileID: 1516296998851078677}
   - {fileID: 7573512133862676106}
-  animationsOn: 
-  topShaderImage: {fileID: 1980940933516434452}
-  downShaderImage: {fileID: 2453043061444488923}
-  shaderSpeed: 0.8
+  m_animationsOn: 
+  m_topShaderImage: {fileID: 1980940933516434452}
+  m_downShaderImage: {fileID: 2453043061444488923}
+  m_shaderSpeed: 0.8
 --- !u!1 &3352434550825111758
 GameObject:
   m_ObjectHideFlags: 0

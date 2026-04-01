@@ -8,14 +8,14 @@ public class BeatingArrows : MonoBehaviour
     [SerializeField] private float m_beatingValue;
     
     [Title("Debug"), SerializeField] private bool m_debug;
-    [SerializeField, ShowIf("m_debug")] private bool isBeating;
+    [SerializeField, ShowIf("m_debug")] private bool m_isBeating;
     [SerializeField, ShowIf("m_debug")] private float m_beatingArrowTimer;
     
-    public bool IsBeating { set => isBeating = value; }
+    public bool IsBeating { set => m_isBeating = value; }
     
     void Update()
     {
-        if (!isBeating)
+        if (!m_isBeating)
         {
             DOTween.To(() => m_beatingValue, x => {
                 m_beatingValue = x;

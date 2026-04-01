@@ -1,112 +1,108 @@
 using System;
 using DG.Tweening;
-using TMPro;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ProgressBar : MonoBehaviour
 {
 
-    [SerializeField] private float fillingSpeed;
-    [SerializeField] private float minimum = 0;
-    [SerializeField] private float maximum;
-    [SerializeField] private float current;
-
-    [SerializeField] private float increaseValue;
-    [SerializeField] private float decreaseValue;
+    [Title("Parameters")]
+    [SerializeField] private float m_minimum = 0;
+    [SerializeField] private float m_maximum;
+    [SerializeField] private float m_current;
+    [SerializeField] private float m_increaseValue;
+    [SerializeField] private float m_decreaseValue;
+    [SerializeField] private float m_fillingSpeed;
     
-    [SerializeField] private Image shaderImage;
+    [Title("Set In Inspector")]
+    [SerializeField] private Image m_shaderImage;
     
-    [SerializeField] private bool isPaused;
+    [Title("Debug"), SerializeField] private bool m_debug;
+    [SerializeField, ShowIf("m_debug")] private bool isPaused;
+    
     public bool IsPaused { set { isPaused = value; } }
     
-    private float _timer;
-    private bool barIsEmpty;
-
+    private float m_timer;
+    private bool m_barIsEmpty;
     private float m_progress;
     
-    
 
+    // --------------------------------------------
+    //               INITIALIZATION
+    // --------------------------------------------
+    
     private void Start()
     {
         // Set the initial value of the progress bar
-        current = minimum;
-        shaderImage.material.SetFloat("_Progress", 0);
+        m_current = m_minimum;
+        m_shaderImage.material.SetFloat("_Progress", 0);
         m_progress = 0;
 
-        barIsEmpty = true;
+        m_barIsEmpty = true;
         isPaused = true;
     }
     
-    private void Update()
-    {
-        // DEBUG : Increase progress bar
-        if (Input.GetKeyDown(KeyCode.B) && Input.GetKeyDown(KeyCode.A) && Input.GetKeyDown(KeyCode.R))
-        {
-            current += increaseValue;
-        }
-        
-        // DEBUG : Reset progress bar
-        if (Input.GetKeyDown(KeyCode.R) && Input.GetKeyDown(KeyCode.E) && Input.GetKeyDown(KeyCode.S))
-        {
-            current = 0;
-            barIsEmpty = true;
-            FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_QuestionBarEmpty");
-        }
-    }
+    
+    // --------------------------------------------
+    //                  FUNCTIONS
+    // --------------------------------------------
 
     void FixedUpdate()
     {
         // Decrease progress bar every millisecond
-        _timer -= Time.deltaTime;
-        if (_timer <= 0)
+        m_timer -= Time.deltaTime;
+        if (m_timer <= 0)
         {
-            _timer = 0.001F;
-            if (!isPaused) current -= decreaseValue / 100;
+            m_timer = 0.001F;
+            if (!isPaused) m_current -= m_decreaseValue / 100;
         }
 
-        current = current < minimum ? minimum : current > maximum ? maximum : current; // Clamp 'current' values to min and max
+        m_current = m_current < m_minimum ? m_minimum : m_current > m_maximum ? m_maximum : m_current; // Clamp 'current' values to min and max
         
-        if (current < 0 && !barIsEmpty)
+        if (m_current < 0 && !m_barIsEmpty)
         {
-            barIsEmpty = true;
-            current = 0;
+            m_barIsEmpty = true;
+            m_current = 0;
             FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_QuestionBarEmpty");
         }
         
         if (UpdateFillAmount() == 1)
         {
-            current = 0;
-            barIsEmpty = true;
+            m_current = 0;
+            m_barIsEmpty = true;
         }
 
     }
 
     float UpdateFillAmount()
     {
-        float currentOffset = current -  minimum;
-        float maximumOffset = maximum - minimum;
-        float fillAmount = (float)current / maximumOffset;
+        float currentOffset = m_current - m_minimum;
+        float maximumOffset = m_maximum - m_minimum;
+        float fillAmount = (float)m_current / maximumOffset;
         DOTween.To(() => m_progress, x => {
             m_progress = x;
-            shaderImage.material.SetFloat("_Progress", m_progress);
-        }, fillAmount, fillingSpeed);
+            m_shaderImage.material.SetFloat("_Progress", m_progress);
+        }, fillAmount, m_fillingSpeed);
         
         return fillAmount;
     }
     
     public bool IncreaseProgressBar()
     {
-        current += increaseValue;
+        m_current += m_increaseValue;
         
-        if (current >= maximum)
+        // Bar is full
+        if (m_current >= m_maximum)
         {
             FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_QuestionBarFull");
+            m_barIsEmpty = true;
             return true;
         }
+        // Bar is filling up
         else
         {
-            barIsEmpty = false;
+            m_barIsEmpty = false;
             return false;
         }
     }
