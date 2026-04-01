@@ -7,7 +7,8 @@ public class UiAnimations : MonoBehaviour
 {
     [SerializeField] private List<Animator> animators;
     [SerializeField] private List<int> animationsOn; // 0 = off, 1 = on
-    [SerializeField] private Image shaderImage;
+    [SerializeField] private Image topShaderImage;
+    [SerializeField] private Image downShaderImage;
     [SerializeField] private float shaderSpeed = 0.8f;
     
     private float angle;
@@ -29,7 +30,8 @@ public class UiAnimations : MonoBehaviour
 
     public void Initialize()
     {
-        shaderImage.material.SetFloat("_vitesse", 0);
+        topShaderImage.material.SetFloat("_vitesse", 0);
+        downShaderImage.material.SetFloat("_vitesse", 0);
         angle = 0;
         angleFactor = 0;
     }
@@ -37,7 +39,8 @@ public class UiAnimations : MonoBehaviour
     private void Update()
     {
         angle += Time.deltaTime * angleFactor * shaderSpeed;
-        shaderImage.material.SetFloat("_vitesse", angle);
+        topShaderImage.material.SetFloat("_vitesse", angle);
+        downShaderImage.material.SetFloat("_vitesse", angle);
     }
 
     public void SetAnimation(int index)

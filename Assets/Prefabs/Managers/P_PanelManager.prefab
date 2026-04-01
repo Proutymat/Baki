@@ -121,8 +121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e469d6ee5098c5040a3371a6eefcd91b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_answersAnimDuration: 0.5
-  m_questionsAnimDuration: 1
+  m_answersAnimDuration: 0.4
+  m_questionsAnimDuration: 0.9
   m_setInInspector: 1
   setupPanel: {fileID: 0}
   introPanel: {fileID: 723706200288975865}
@@ -202,7 +202,8 @@ MonoBehaviour:
   - {fileID: 1516296998851078677}
   - {fileID: 7573512133862676106}
   animationsOn: 
-  shaderImage: {fileID: 2138242003777763191}
+  topShaderImage: {fileID: 1980940933516434452}
+  downShaderImage: {fileID: 2453043061444488923}
   shaderSpeed: 0.8
 --- !u!1 &3352434550825111758
 GameObject:
@@ -1019,9 +1020,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2138242003777763191 stripped
+--- !u!114 &1980940933516434452 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2147555766179762087, guid: 5fc8a257ead92aa4aacb6424cf4847ee, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1953610171867833540, guid: 5fc8a257ead92aa4aacb6424cf4847ee, type: 3}
   m_PrefabInstance: {fileID: 27348502027876560}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -1050,6 +1051,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2453043061444488923 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2480318993557100043, guid: 5fc8a257ead92aa4aacb6424cf4847ee, type: 3}
+  m_PrefabInstance: {fileID: 27348502027876560}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &2559509369728697908 stripped
