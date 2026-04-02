@@ -50,15 +50,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ce91f84bdd20cd44a8f7db2066e5331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_minimum: 0
-  m_maximum: 100
-  m_current: 0.5
+  m_progression: 0
   m_increaseValue: 22
   m_decreaseValue: 3
-  m_fillingSpeed: 0.2
+  m_fillingTweenSpeed: 0
+  m_updateShaderDecreaseInSec: 1
   m_shaderImage: {fileID: 8208893050768411301}
   m_debug: 0
-  isPaused: 0
+  m_enableDecreasing: 0
+  m_isPaused: 0
 --- !u!222 &7134485814067627790
 CanvasRenderer:
   m_ObjectHideFlags: 0

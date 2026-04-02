@@ -222,6 +222,29 @@ public class GameManager : SerializedMonoBehaviour
         QuestionManager.Instance.Timer += Time.deltaTime;
     }
 
+    public void BarIsFulfilled()
+    {
+        StatsManager.Instance.NbProgressBarFull++;
+        player.SetIsMoving(false);
+        PanelManager.Instance.ShowQuestionArea(false);
+        PanelManager.Instance.UIAnimations.StopShader(1.5f);
+
+            
+        // Active all children of the landmark arrows
+        foreach (Transform child in landmarksArrows.transform)
+        {
+            child.gameObject.SetActive(true);
+        }
+            
+        if (!m_onboardingStep1checked)
+        {
+            m_onboardingStep1checked = true;
+            UnboardingStep1();
+        }
+
+        PrintAreaPlayer();
+    }
+
     public void AnsweringQuestion(int answerIndex)
     {
         if (answerIndex == 1) FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_QuestionRespondClick");
@@ -258,31 +281,6 @@ public class GameManager : SerializedMonoBehaviour
         }
         statsManager.TimeBetweenQuestions += QuestionManager.Instance.Timer;
         QuestionManager.Instance.Timer = 0;
-        
-        
-        // Progress bar is full
-        if (PanelManager.Instance.ProgressBar.IncreaseProgressBar())
-        {
-            statsManager.NbProgressBarFull++;
-            player.SetIsMoving(false);
-            PanelManager.Instance.ShowQuestionArea(false);
-            PanelManager.Instance.UIAnimations.StopShader(1.5f);
-
-            
-            // Active all children of the landmark arrows
-            foreach (Transform child in landmarksArrows.transform)
-            {
-                child.gameObject.SetActive(true);
-            }
-            
-            if (!m_onboardingStep1checked)
-            {
-                m_onboardingStep1checked = true;
-                UnboardingStep1();
-            }
-
-		    PrintAreaPlayer();
-        }
 
         // The two laws to update with their increments
         int law1Type, law2Type;
@@ -322,6 +320,8 @@ public class GameManager : SerializedMonoBehaviour
         {
             CharteManager.Instance.IncrementLawCursor(law2Type, lawIncrement2);
         }
+
+        PanelManager.Instance.ProgressBar.IncreaseProgressBar();
 
         // Trigger questions transition anim
         if (StatsManager.Instance.NbQuestionsAnswered != 0)

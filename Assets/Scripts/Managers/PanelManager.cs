@@ -174,6 +174,7 @@ public class PanelManager : MonoBehaviour
     public void Initialize()
     {
         uiAnimations.Initialize();
+        progressBar.Intitialize();
         directionalArrowsBeating.IsBeating = true;
         m_currentQuestionZone = 1;
     }
@@ -205,8 +206,7 @@ public class PanelManager : MonoBehaviour
     public void ShowQuestionArea(bool show)
     {
         questionsArea.SetActive(show);
-        progressBarObject.SetActive(show);
-
+        ProgressBar.IsPaused = !show;
     }
 
     public void UpdateDirectionalArrow(string direction)

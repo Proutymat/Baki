@@ -8,39 +8,39 @@ public class ProgressBar : MonoBehaviour
 {
 
     [Title("Parameters")]
-    [SerializeField] private float m_minimum = 0;
-    [SerializeField] private float m_maximum;
-    [SerializeField] private float m_current;
+    [SerializeField] private float m_progression;
     [SerializeField] private float m_increaseValue;
     [SerializeField] private float m_decreaseValue;
-    [SerializeField] private float m_fillingSpeed;
+    [SerializeField] private float m_fillingTweenSpeed;
+    [SerializeField] private float m_updateShaderDecreaseInSec;
     
     [Title("Set In Inspector")]
     [SerializeField] private Image m_shaderImage;
     
     [Title("Debug"), SerializeField] private bool m_debug;
-    [SerializeField, ShowIf("m_debug")] private bool isPaused;
-    
-    public bool IsPaused { set { isPaused = value; } }
-    
-    private float m_timer;
-    private bool m_barIsEmpty;
-    private float m_progress;
-    
+    [SerializeField, ShowIf("m_debug")] private bool m_isPaused;
+    [SerializeField, ShowIf("m_debug")] private float m_decreaseTimer;
+    [SerializeField, ShowIf("m_debug")] private float m_shaderProgression;
 
+    public bool IsPaused { set => m_isPaused = value; }
+    
+    
     // --------------------------------------------
     //               INITIALIZATION
     // --------------------------------------------
     
     private void Start()
     {
-        // Set the initial value of the progress bar
-        m_current = m_minimum;
-        m_shaderImage.material.SetFloat("_Progress", 0);
-        m_progress = 0;
+        Intitialize();
+    }
 
-        m_barIsEmpty = true;
-        isPaused = true;
+    public void Intitialize()
+    {
+        m_progression = 0;
+        m_shaderImage.material.SetFloat("_Progress", 0);
+        m_isPaused = false;
+        m_decreaseTimer = 0;
+        m_shaderProgression = 0;
     }
     
     
@@ -48,62 +48,61 @@ public class ProgressBar : MonoBehaviour
     //                  FUNCTIONS
     // --------------------------------------------
 
-    void FixedUpdate()
+    private void Update()
     {
-        // Decrease progress bar every millisecond
-        m_timer -= Time.deltaTime;
-        if (m_timer <= 0)
+        if (m_isPaused)
         {
-            m_timer = 0.001F;
-            if (!isPaused) m_current -= m_decreaseValue / 100;
+            return;
         }
 
-        m_current = m_current < m_minimum ? m_minimum : m_current > m_maximum ? m_maximum : m_current; // Clamp 'current' values to min and max
+        m_progression -= m_decreaseValue * Time.deltaTime;
+        m_progression = m_progression < 0 ? 0 : m_progression; // Clamp value
         
-        if (m_current < 0 && !m_barIsEmpty)
-        {
-            m_barIsEmpty = true;
-            m_current = 0;
-            FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_QuestionBarEmpty");
-        }
+        m_decreaseTimer += Time.deltaTime;
         
-        if (UpdateFillAmount() == 1)
+        // Update shader
+        if (m_decreaseTimer >= m_updateShaderDecreaseInSec)
         {
-            m_current = 0;
-            m_barIsEmpty = true;
+            m_decreaseTimer = 0;
+            UpdateShader();
         }
-
     }
 
-    float UpdateFillAmount()
+    private void UpdateShader()
     {
-        float currentOffset = m_current - m_minimum;
-        float maximumOffset = m_maximum - m_minimum;
-        float fillAmount = (float)m_current / maximumOffset;
-        DOTween.To(() => m_progress, x => {
-            m_progress = x;
-            m_shaderImage.material.SetFloat("_Progress", m_progress);
-        }, fillAmount, m_fillingSpeed);
-        
-        return fillAmount;
+        DOTween.To(() => m_shaderProgression, x => {
+            m_shaderProgression = x;
+            m_shaderImage.material.SetFloat("_Progress", m_shaderProgression);
+        }, m_progression / 100, m_fillingTweenSpeed);
     }
     
-    public bool IncreaseProgressBar()
+    public void IncreaseProgressBar()
     {
-        m_current += m_increaseValue;
+        m_progression += m_increaseValue;
+        m_progression = m_progression > 100 ? 100 : m_progression; // Clamp value
+        UpdateShader();
         
         // Bar is full
-        if (m_current >= m_maximum)
+        if (m_progression >= 100)
         {
+            m_progression = 0;
+            m_decreaseTimer = 0;
             FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_QuestionBarFull");
-            m_barIsEmpty = true;
-            return true;
-        }
-        // Bar is filling up
-        else
-        {
-            m_barIsEmpty = false;
-            return false;
+            GameManager.Instance.BarIsFulfilled();
+
+            Sequence seq = DOTween.Sequence();
+            
+            // Fill up to 100%
+            seq.Append(DOTween.To(() => m_shaderProgression, x => {
+                m_shaderProgression = x;
+                m_shaderImage.material.SetFloat("_Progress", m_shaderProgression);
+            }, 1, m_fillingTweenSpeed));
+            
+            // Then empty it
+            seq.Append(DOTween.To(() => m_shaderProgression, x => {
+                m_shaderProgression = x;
+                m_shaderImage.material.SetFloat("_Progress", m_shaderProgression);
+            }, 0, m_fillingTweenSpeed));
         }
     }
 }

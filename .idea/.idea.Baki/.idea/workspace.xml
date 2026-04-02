@@ -8,18 +8,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Baki/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Baki/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Managers/P_PanelManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Managers/P_PanelManager.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/GamePanel/P_StandardInterface.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/GamePanel/P_StandardInterface.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ui/BeatingArrows.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ui/BeatingArrows.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/PanelManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/PanelManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ui/ProgressBar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ui/ProgressBar.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ui/UiAnimations.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ui/UiAnimations.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shaders/SHADER_BAR.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shaders/SHADER_BAR.shadergraph" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Shaders/SHADER_BAR_MAT.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shaders/SHADER_BAR_MAT.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/UI/STANDARD_INTERFACE.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/UI/STANDARD_INTERFACE.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/UI/STANDARD_INTERFACE.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/UI/STANDARD_INTERFACE.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/UI/STANDARD_INTERFACE_LAYER_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/UI/STANDARD_INTERFACE_LAYER_1.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/UI/STANDARD_INTERFACE_LAYER_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/UI/STANDARD_INTERFACE_LAYER_2.png.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,7 +179,7 @@
       <workItem from="1774483298776" duration="3640000" />
       <workItem from="1774578646186" duration="10618000" />
       <workItem from="1774983706508" duration="4638000" />
-      <workItem from="1775074492685" duration="6708000" />
+      <workItem from="1775074492685" duration="19673000" />
     </task>
     <servers />
   </component>

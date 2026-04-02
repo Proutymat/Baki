@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84d3ffcc49efe3c4fbdc059e3105d3f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animators: []
+  m_shaderSpeed: 0.8
   m_animators:
   - {fileID: 6576081752098330662}
   - {fileID: 3807893478036531224}
@@ -205,7 +205,6 @@ MonoBehaviour:
   m_animationsOn: 
   m_topShaderImage: {fileID: 1980940933516434452}
   m_downShaderImage: {fileID: 2453043061444488923}
-  m_shaderSpeed: 0.8
 --- !u!1 &3352434550825111758
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,6 +335,14 @@ PrefabInstance:
     - target: {fileID: 271264802686045070, guid: 5fc8a257ead92aa4aacb6424cf4847ee, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 303874484903762202, guid: 5fc8a257ead92aa4aacb6424cf4847ee, type: 3}
+      propertyPath: m_debug
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 303874484903762202, guid: 5fc8a257ead92aa4aacb6424cf4847ee, type: 3}
+      propertyPath: m_fillingTweenSpeed
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 408112101967658381, guid: 5fc8a257ead92aa4aacb6424cf4847ee, type: 3}
       propertyPath: m_AnchorMax.y
