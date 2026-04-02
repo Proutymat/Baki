@@ -18,6 +18,11 @@ public class UiAnimations : MonoBehaviour
     private float m_angle;
     private float m_angleFactor;
     
+    
+    // --------------------------------------------
+    //               INITIALIZATION
+    // --------------------------------------------
+    
     void Start()
     {
         m_animationsOn = new List<int>();
@@ -39,6 +44,11 @@ public class UiAnimations : MonoBehaviour
         m_angle = 0;
         m_angleFactor = 0;
     }
+    
+    
+    // --------------------------------------------
+    //                  FUNCTIONS
+    // --------------------------------------------
     
     private void Update()
     {

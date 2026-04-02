@@ -13,6 +13,11 @@ public class BeatingArrows : MonoBehaviour
     
     public bool IsBeating { set => m_isBeating = value; }
     
+    
+    // --------------------------------------------
+    //                  FUNCTIONS
+    // --------------------------------------------
+    
     void Update()
     {
         if (!m_isBeating)
