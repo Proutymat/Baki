@@ -137,6 +137,8 @@ public class GameManager : SerializedMonoBehaviour
         CharteManager.Instance.ExitLandmark(m_currentLandmark.Type);
         
         m_inLandmark = false;
+        QuestionManager.Instance.ExitLandmark();
+        PanelManager.Instance.ExitLandmark();
         PanelManager.Instance.SetPanel(PanelManager.PanelState.Standard);
         PanelManager.Instance.ShowQuestionArea(false);
         PanelManager.Instance.UIAnimations.StopShader(0);
