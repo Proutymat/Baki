@@ -51,7 +51,8 @@ public class Player : MonoBehaviour
         isMoving = false;
         currentDirection = transform.forward * gridCellSize;
         previousDirection = "none";
-        transform.position = new Vector3(startCellPosition.x, startCellPosition.y + gridCellSize / 2, startCellPosition.z);
+        //transform.position = new Vector3(startCellPosition.x, startCellPosition.y + gridCellSize / 2, startCellPosition.z);
+        transform.position = new Vector3(startCellPosition.x, 2, startCellPosition.z);
         midSoundPlayed = false;
         hasMovedOnce = false;
         speed = secondPerUnit;
