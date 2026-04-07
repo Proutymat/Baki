@@ -143,6 +143,20 @@ public class Player : MonoBehaviour
             return;
         }
         
+        // Update tutorials check flags
+        if (previousDirection != direction && hasMovedOnce)
+        {
+            QuestionManager.Instance.TutorialChangeDirectionCheck = true;
+        }
+        if (isMoving)
+        {
+            QuestionManager.Instance.TutorialChangeDirectionAnytimeCheck = true;
+        }
+        else if (hasMovedOnce)
+        {
+            QuestionManager.Instance.TutorialStartAfterCheck = true;
+        }
+        
         previousDirection = direction;
         StatsManager.Instance.NbDirectionChanges++;
         

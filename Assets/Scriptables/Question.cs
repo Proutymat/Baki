@@ -19,4 +19,5 @@ public class Question : ScriptableObject
     public int answer1IllustrationPriority;
     public string answer2Illustration;
     public int answer2IllustrationPriority;
+    public TutorialsFlags flag;
 }

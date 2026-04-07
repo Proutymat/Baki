@@ -29,12 +29,20 @@ public class QuestionManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("m_debug")] private List<LandmarkQuestion> m_runtimeLandmarksTypeB;
     [SerializeField, ShowIf("m_debug")] private List<LandmarkQuestion> m_runtimeLandmarksTypeC;
     [SerializeField, ShowIf("m_debug")] private List<LandmarkQuestion> m_runtimeLandmarksTypeD;
+    [SerializeField, ShowIf("m_debug")] private bool m_tutorialChangeDirectionCheck;
+    [SerializeField, ShowIf("m_debug")] private bool m_tutorialStartAfterCheck;
+    [SerializeField, ShowIf("m_debug")] private bool m_tutorialChangeDirectionAnytimeCheck;
     
     public float Timer { get => m_timer; set => m_timer = value; }
     public Question CurrentQuestion { get => m_currentQuestion; set => m_currentQuestion = value; }
     public LandmarkQuestion CurrentLandmarkQuestion { get => m_currentLandmarkQuestion; set => m_currentLandmarkQuestion = value; }
+
+    public bool TutorialChangeDirectionCheck { get => m_tutorialChangeDirectionCheck ; set => m_tutorialChangeDirectionCheck = value; }
+    public bool TutorialStartAfterCheck { get => m_tutorialStartAfterCheck ; set => m_tutorialStartAfterCheck = value; }
+    public bool TutorialChangeDirectionAnytimeCheck { get => m_tutorialChangeDirectionAnytimeCheck ; set => m_tutorialChangeDirectionAnytimeCheck = value; }
     
-    
+
+
     // --------------------------------------------
     //               INITIALIZATION
     // --------------------------------------------
@@ -73,12 +81,29 @@ public class QuestionManager : SerializedMonoBehaviour
         m_runtimeLandmarksTypeB = new List<LandmarkQuestion>(m_landmarksTypeB);
         m_runtimeLandmarksTypeC = new List<LandmarkQuestion>(m_landmarksTypeC);
         m_runtimeLandmarksTypeD = new List<LandmarkQuestion>(m_landmarksTypeD);
+        m_tutorialChangeDirectionCheck = false;
+        m_tutorialStartAfterCheck = false;
+        m_tutorialChangeDirectionAnytimeCheck = false;  
     }
     
     
     // --------------------------------------------
     //                  FUNCTIONS
     // --------------------------------------------
+
+    public void CheckTutorialsQuestion()
+    {
+        if (m_currentQuestion.flag != TutorialsFlags.None)
+        {
+            // Add tutorial back if the player has not done it yet
+            if (m_currentQuestion.flag == TutorialsFlags.ChangeDirection && !m_tutorialChangeDirectionCheck
+                || m_currentQuestion.flag == TutorialsFlags.StartAfter && !m_tutorialStartAfterCheck
+                || m_currentQuestion.flag == TutorialsFlags.ChangeDirectionAnytime && !m_tutorialChangeDirectionAnytimeCheck)
+            {
+                m_runtimeTutorials.Add(m_currentQuestion);
+            }
+        }
+    }
     
     public void NextQuestion()
     {

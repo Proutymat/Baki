@@ -249,6 +249,7 @@ public class GameManager : SerializedMonoBehaviour
 
     public void AnsweringQuestion(int answerIndex)
     {
+        // Play sound
         if (answerIndex == 1) FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_QuestionRespondClick");
         if (answerIndex == 2) FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_QuestionRespondClick_NAN");
         
@@ -287,6 +288,8 @@ public class GameManager : SerializedMonoBehaviour
         // The two laws to update with their increments
         int law1Type, law2Type;
         int lawIncrement1, lawIncrement2;
+
+        QuestionManager.Instance.CheckTutorialsQuestion();
         
         // Left button
         if (answerIndex == 1)

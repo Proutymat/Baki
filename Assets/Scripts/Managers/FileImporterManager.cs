@@ -1,5 +1,6 @@
 #if UNITY_EDITOR
 
+using System;
 using UnityEngine;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
@@ -87,7 +88,7 @@ public class FileImporterManager : MonoBehaviour
             string line = lines[i];
             string[] fields = line.Split(';');
 
-            if (fields.Length < 2)
+            if (fields.Length < 3)
             {
                 Debug.LogWarning("Malformed line skipped: " + line);
                 continue;
@@ -97,6 +98,9 @@ public class FileImporterManager : MonoBehaviour
             scriptable.question = fields[0];
             scriptable.answer1 = fields[1];
             scriptable.answer2 = fields[2];
+
+            Enum.TryParse(fields[3], out TutorialsFlags flag);
+            scriptable.flag = flag;
 
 
             // Sauvegarde du ScriptableObject dans le projet (dans un dossier "Assets/Resources/Questions")
@@ -308,6 +312,7 @@ public class FileImporterManager : MonoBehaviour
             scriptable.answer1IllustrationPriority = ParseSafe(fields[12]);
             scriptable.answer2Illustration = fields[13];
             scriptable.answer2IllustrationPriority = ParseSafe(fields[14]);
+            scriptable.flag = TutorialsFlags.None;
 
 
             // Sauvegarde du ScriptableObject dans le projet (dans un dossier "Assets/Resources/Questions")
