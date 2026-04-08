@@ -12,14 +12,10 @@
   <component name="ChangeListManager">
     <list default="true" id="73781b9b-5c78-4d1f-a1a2-b07d1229386b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Baki/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Baki/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Tutorials/tutorial_3.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scriptables/Tutorials/tutorial_3.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Tutorials/tutorial_4.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scriptables/Tutorials/tutorial_4.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Scriptables/Tutorials/tutorial_5.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Scriptables/Tutorials/tutorial_5.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Question.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Question.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/FileImporterManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/FileImporterManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/QuestionManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/QuestionManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Printer/PDFPrinter.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Printer/PDFPrinter.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Printer/PNGPrinter.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Printer/PNGPrinter.cs.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +67,7 @@
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "cidr.known.project.marker": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "feat/printer",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -87,9 +83,7 @@
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="C:\Users\ELE66defb67b315c\Desktop\BUILDS" />
       <option name="PASS_PARENT_ENVS" value="1" />
-      <option name="ENV_FILE_PATHS" value="" />
-      <option name="REDIRECT_INPUT_PATH" value="" />
-      <option name="MIXED_MODE_DEBUG" value="0" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <method v="2" />
     </configuration>
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
@@ -97,9 +91,7 @@
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\ELE66defb67b315c\Desktop\GithubDesktop\Baki -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\ELE66defb67b315c\Desktop\GithubDesktop\Baki" />
       <option name="PASS_PARENT_ENVS" value="1" />
-      <option name="ENV_FILE_PATHS" value="" />
-      <option name="REDIRECT_INPUT_PATH" value="" />
-      <option name="MIXED_MODE_DEBUG" value="0" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
@@ -107,12 +99,10 @@
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Users\ELE66defb67b315c\Desktop\GithubDesktop\Baki -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\ELE66defb67b315c\Desktop\GithubDesktop\Baki" />
       <option name="PASS_PARENT_ENVS" value="1" />
-      <option name="ENV_FILE_PATHS" value="" />
-      <option name="REDIRECT_INPUT_PATH" value="" />
-      <option name="MIXED_MODE_DEBUG" value="0" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" useMixedMode="false">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
@@ -125,7 +115,7 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" useMixedMode="false">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
