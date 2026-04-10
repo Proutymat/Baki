@@ -57,8 +57,9 @@ MonoBehaviour:
   m_updateShaderDecreaseInSec: 1
   m_shaderImage: {fileID: 8208893050768411301}
   m_debug: 0
-  m_enableDecreasing: 0
   m_isPaused: 0
+  m_decreaseTimer: 0
+  m_shaderProgression: 0
 --- !u!222 &7134485814067627790
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -611,7 +612,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fd7eb4ee7a61ac34b90e08f455daf793, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e81dc295d7a220142b715ec30576be2a, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -3085,7 +3086,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1132257206801061015, guid: 781f4b00833a73b48a1cff6e35794961, type: 3}
       propertyPath: m_fontSize
-      value: 35.45
+      value: 34.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2174319476253755403, guid: 781f4b00833a73b48a1cff6e35794961, type: 3}
+      propertyPath: m_fontSize
+      value: 28.2
       objectReference: {fileID: 0}
     - target: {fileID: 5052608446918596773, guid: 781f4b00833a73b48a1cff6e35794961, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3327,7 +3332,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1132257206801061015, guid: 781f4b00833a73b48a1cff6e35794961, type: 3}
       propertyPath: m_fontSize
-      value: 61.7
+      value: 56.4
       objectReference: {fileID: 0}
     - target: {fileID: 2174319476253755403, guid: 781f4b00833a73b48a1cff6e35794961, type: 3}
       propertyPath: m_text
@@ -3335,7 +3340,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2174319476253755403, guid: 781f4b00833a73b48a1cff6e35794961, type: 3}
       propertyPath: m_fontSize
-      value: 61.7
+      value: 56.4
       objectReference: {fileID: 0}
     - target: {fileID: 5052608446918596773, guid: 781f4b00833a73b48a1cff6e35794961, type: 3}
       propertyPath: m_AnchorMax.y
