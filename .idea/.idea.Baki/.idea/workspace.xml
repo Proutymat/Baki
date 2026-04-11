@@ -12,13 +12,8 @@
   <component name="ChangeListManager">
     <list default="true" id="73781b9b-5c78-4d1f-a1a2-b07d1229386b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Baki/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Baki/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/mac/lib/fmodstudio.bundle/Contents/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/mac/lib/fmodstudio.bundle/Contents/Info.plist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/mac/lib/fmodstudioL.bundle/Contents/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/mac/lib/fmodstudioL.bundle/Contents/Info.plist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/mac/lib/resonanceaudio.bundle/Contents/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/FMOD/platforms/mac/lib/resonanceaudio.bundle/Contents/Info.plist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/GamePanel/P_StandardInterface.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/GamePanel/P_StandardInterface.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/DOTweenSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/DOTweenSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Ui/UiAnimations.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Ui/UiAnimations.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shaders/SHADER_BAR_MAT.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shaders/SHADER_BAR_MAT.mat" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +42,7 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/612ea0208cc847f49d539e6511ed3cd51df400/da/59238685/Debug.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scriptables/Question.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/TutorialsFlags.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Ui/BeatingArrows.cs" root0="FORCE_HIGHLIGHTING" />
@@ -195,7 +191,7 @@
       <workItem from="1774983706508" duration="4638000" />
       <workItem from="1775074492685" duration="19673000" />
       <workItem from="1775568024705" duration="7828000" />
-      <workItem from="1775926534881" duration="4393000" />
+      <workItem from="1775926534881" duration="11707000" />
     </task>
     <servers />
   </component>

@@ -19,8 +19,6 @@ public class UiAnimations : MonoBehaviour
     private float m_angleFactor;
     private float m_shaderAlpha;
 
-    private bool delete;
-
     [SerializeField] private float value;
     
     // --------------------------------------------
@@ -47,7 +45,6 @@ public class UiAnimations : MonoBehaviour
         m_downShaderImage.material.SetFloat("_vitesse", 0);
         m_angle = 0;
         m_angleFactor = 0;
-        delete = false;
         
         // Shader alpha
         m_shaderAlpha = 0;

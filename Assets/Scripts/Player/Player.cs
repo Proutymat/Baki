@@ -166,28 +166,28 @@ public class Player : MonoBehaviour
             currentDirection = Vector3.left * gridCellSize;
             avatarArrow.transform.rotation = Quaternion.Euler(90, -90, 0);
             FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/SFX_InGame/SFX_IG_DirectionalRotate_SPAT/SFX_IG_DirectionalRotate_C");
-            Debug.Log("Moving foreward");
+            //Debug.Log("Moving foreward");
         }
         else if (direction == "backward")
         {
             currentDirection = Vector3.right * gridCellSize;
             avatarArrow.transform.rotation = Quaternion.Euler(90, 90, 0);
             FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/SFX_InGame/SFX_IG_DirectionalRotate_SPAT/SFX_IG_DirectionalRotate_B");
-            Debug.Log("Moving backward");
+            //Debug.Log("Moving backward");
         }
         else if (direction == "right")
         {
             currentDirection = Vector3.forward * gridCellSize;
             avatarArrow.transform.rotation = Quaternion.Euler(90, 0, 0);
             FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/SFX_InGame/SFX_IG_DirectionalRotate_SPAT/SFX_IG_DirectionalRotate_R");
-            Debug.Log("Moving right");
+            //Debug.Log("Moving right");
         }
         else if (direction == "left")
         {
             currentDirection = Vector3.back * gridCellSize;
             avatarArrow.transform.rotation = Quaternion.Euler(90, 180, 0);
             FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/SFX_InGame/SFX_IG_DirectionalRotate_SPAT/SFX_IG_DirectionalRotate_L");
-            Debug.Log("Moving left");
+            //Debug.Log("Moving left");
         }
 
         // Move the player
