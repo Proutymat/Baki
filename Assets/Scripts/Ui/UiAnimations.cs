@@ -17,7 +17,11 @@ public class UiAnimations : MonoBehaviour
     
     private float m_angle;
     private float m_angleFactor;
-    
+    private float m_shaderAlpha;
+
+    private bool delete;
+
+    [SerializeField] private float value;
     
     // --------------------------------------------
     //               INITIALIZATION
@@ -43,6 +47,14 @@ public class UiAnimations : MonoBehaviour
         m_downShaderImage.material.SetFloat("_vitesse", 0);
         m_angle = 0;
         m_angleFactor = 0;
+        delete = false;
+        
+        // Shader alpha
+        m_shaderAlpha = 0;
+        Color color = m_topShaderImage.color;
+        color.a = m_shaderAlpha;
+        m_topShaderImage.color = color;
+        m_downShaderImage.color = color;
     }
     
     
@@ -72,15 +84,35 @@ public class UiAnimations : MonoBehaviour
     
     public void StopShader(float stopSpeed = 3f)
     {
+        // Speed
         DOTween.To(() => m_angleFactor, x => {
             m_angleFactor = x;
         }, 0f, stopSpeed);
+        
+        // Alpha
+        DOTween.To(() => m_shaderAlpha, x => {
+            m_shaderAlpha = x;
+            Color color = m_topShaderImage.color;
+            color.a = m_shaderAlpha;
+            m_topShaderImage.color = color;
+            m_downShaderImage.color = color;
+        }, 0, stopSpeed);
     }
     
     public void PlayShader()
     {
+        // Speed
         DOTween.To(() => m_angleFactor, x => {
             m_angleFactor = x;
+        }, 1, 3f);
+        
+        // Alpha
+        DOTween.To(() => m_shaderAlpha, x => {
+            m_shaderAlpha = x;
+            Color color = m_topShaderImage.color;
+            color.a = m_shaderAlpha;
+            m_topShaderImage.color = color;
+            m_downShaderImage.color = color;
         }, 1, 3f);
     }
 
