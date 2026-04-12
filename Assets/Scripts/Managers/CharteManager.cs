@@ -120,7 +120,6 @@ public class CharteManager : MonoBehaviour
             LawCursor lawCursor = new LawCursor(m_laws[i]);
             m_lawCursors.Add(lawCursor);
         }
-        Debug.Log("Law cursors created : " + m_lawCursors.Count);
         
         m_lawsQueue = new List<string>();
         m_lawsQueuePriority = new List<int>();

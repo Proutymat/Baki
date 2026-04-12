@@ -1,15 +1,21 @@
 using UnityEngine;
 using Sirenix.OdinInspector;
+using Unity.VisualScripting;
 
 
 public class GameManager : SerializedMonoBehaviour
 {
+    public enum GameLanguage
+    {
+        French,
+        English
+    }
+    
     private static GameManager m_instance;
     
     [Title("Parameters")]
-    [SerializeField] private float m_gameDuration = 600;
-    [SerializeField] private bool m_skipIntro;
     [SerializeField] private bool m_enablePrinters;
+   
     
     [Title("Set in inspector")]
     [SerializeField] private Player player;
@@ -19,7 +25,9 @@ public class GameManager : SerializedMonoBehaviour
     [Title("Debug"), SerializeField] private bool m_debug;
     [SerializeField, ShowIf("m_debug")]private bool m_onboardingStep1checked;
     [SerializeField, ShowIf("m_debug")]private bool m_onboardingStep2checked;
+    [SerializeField, ShowIf("m_debug")] private float m_gameDuration = 600;
     [SerializeField, ShowIf("m_debug")] private float m_gameTimer;
+    [SerializeField, ShowIf("m_debug")] private GameLanguage m_language;
     [SerializeField, ShowIf("m_debug")]private bool m_isGameOver;
     [SerializeField, ShowIf("m_debug")]private bool m_inLandmark;
     [SerializeField, ShowIf("m_debug")]private Landmark m_currentLandmark;
@@ -58,12 +66,13 @@ public class GameManager : SerializedMonoBehaviour
         }
     }
 
-    private void InitializeGame()
+    public void InitializeGame(float gameDuration, GameLanguage language, bool skipIntro)
     {
         // Initialize variables
         m_onboardingStep1checked = false;
         m_onboardingStep2checked = false;
-        m_gameTimer = m_gameDuration;
+        m_gameTimer = gameDuration;
+        m_language = language;
         m_isGameOver = false;
         m_inLandmark = false;
         
@@ -73,7 +82,7 @@ public class GameManager : SerializedMonoBehaviour
         {
             System.IO.Directory.CreateDirectory(m_currentGameLogFolder);
         }
-        Debug.Log("log folder = " + m_currentGameLogFolder);
+
         m_currentGameLogFolder += "/" + System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
         System.IO.Directory.CreateDirectory(m_currentGameLogFolder);
         m_answersLogFilePath = $"{m_currentGameLogFolder}/answers.txt";
@@ -93,7 +102,7 @@ public class GameManager : SerializedMonoBehaviour
         playerCamera.transform.position = new Vector3(player.transform.position.x, playerCamera.transform.position.y, player.transform.position.z);
         player.Initialize();
 
-        if (m_skipIntro)
+        if (skipIntro)
         {
             PanelManager.Instance.SetPanel(PanelManager.PanelState.Standard);
         }
@@ -106,7 +115,7 @@ public class GameManager : SerializedMonoBehaviour
     private void Start()
     {
         player = FindFirstObjectByType<Player>();
-        InitializeGame();
+        PanelManager.Instance.SetPanel(PanelManager.PanelState.Setup);
     }
     
     

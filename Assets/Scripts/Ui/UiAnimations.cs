@@ -18,8 +18,6 @@ public class UiAnimations : MonoBehaviour
     private float m_angle;
     private float m_angleFactor;
     private float m_shaderAlpha;
-
-    [SerializeField] private float value;
     
     // --------------------------------------------
     //               INITIALIZATION

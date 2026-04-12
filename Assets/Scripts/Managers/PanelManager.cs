@@ -185,7 +185,7 @@ public class PanelManager : MonoBehaviour
 
     public void SetPanel(PanelState panel)
     {
-        //setupPanel.SetActive(panel == PanelState.Setup);
+        setupPanel.SetActive(panel == PanelState.Setup);
         introPanel.SetActive(panel == PanelState.Intro);
         standardPanel.SetActive(panel == PanelState.Standard);
         landmarkPanel.SetActive(panel == PanelState.Landmark);

@@ -22,7 +22,7 @@ public class ProgressBar : MonoBehaviour
     [SerializeField, ShowIf("m_debug")] private float m_decreaseTimer;
     [SerializeField, ShowIf("m_debug")] private float m_shaderProgression;
 
-    public bool IsPaused { set => m_isPaused = value; }
+    public bool IsPaused { set => m_isPaused = value;}
     
     
     // --------------------------------------------
@@ -54,7 +54,7 @@ public class ProgressBar : MonoBehaviour
         {
             return;
         }
-
+        
         m_progression -= m_decreaseValue * Time.deltaTime;
         m_progression = m_progression < 0 ? 0 : m_progression; // Clamp value
         
