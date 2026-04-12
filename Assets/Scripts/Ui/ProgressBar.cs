@@ -22,18 +22,13 @@ public class ProgressBar : MonoBehaviour
     [SerializeField, ShowIf("m_debug")] private float m_decreaseTimer;
     [SerializeField, ShowIf("m_debug")] private float m_shaderProgression;
 
-    public bool IsPaused { set => m_isPaused = value;}
+    public bool IsPaused { set => m_isPaused = value; }
     
     
     // --------------------------------------------
     //               INITIALIZATION
     // --------------------------------------------
     
-    private void Start()
-    {
-        Intitialize();
-    }
-
     public void Intitialize()
     {
         m_progression = 0;
