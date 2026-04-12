@@ -151,9 +151,20 @@ public class QuestionManager : SerializedMonoBehaviour
         }
         
         // Display the question and answers
-         PanelManager.Instance.SetQuestionText(m_currentQuestion.question);
-         PanelManager.Instance.SetAnswer1Text(m_currentQuestion.answer1);
-         PanelManager.Instance.SetAnswer2Text(m_currentQuestion.answer2);
+        // French
+        if (GameManager.Instance.Language == GameManager.GameLanguage.French)
+        {
+            PanelManager.Instance.SetQuestionText(m_currentQuestion.question);
+            PanelManager.Instance.SetAnswer1Text(m_currentQuestion.answer1);
+            PanelManager.Instance.SetAnswer2Text(m_currentQuestion.answer2);
+        }
+        // English
+        else
+        {
+            PanelManager.Instance.SetQuestionText(m_currentQuestion.question_EN);
+            PanelManager.Instance.SetAnswer1Text(m_currentQuestion.answer1_EN);
+            PanelManager.Instance.SetAnswer2Text(m_currentQuestion.answer2_EN);
+        }
     }
     
     public void NextLandmarkQuestion()
@@ -172,16 +183,34 @@ public class QuestionManager : SerializedMonoBehaviour
         }
 
         // Update text
-        if (m_landmarkPage == 1)
-            PanelManager.Instance.LandmarkText = m_currentLandmarkQuestion.text2;
-        else if (m_landmarkPage == 2)
-            PanelManager.Instance.LandmarkText = m_currentLandmarkQuestion.text3;
-        else if (m_landmarkPage == 3)
-            PanelManager.Instance.LandmarkText = m_currentLandmarkQuestion.text4;
-        else if (m_landmarkPage == 4)
-            PanelManager.Instance.LandmarkText = m_currentLandmarkQuestion.text5;
-        else if (m_landmarkPage == 5)
-            PanelManager.Instance.LandmarkText = m_currentLandmarkQuestion.text6;
+        // French
+        if (GameManager.Instance.Language == GameManager.GameLanguage.French)
+        {
+            if (m_landmarkPage == 1)
+                PanelManager.Instance.LandmarkText = m_currentLandmarkQuestion.text2;
+            else if (m_landmarkPage == 2)
+                PanelManager.Instance.LandmarkText = m_currentLandmarkQuestion.text3;
+            else if (m_landmarkPage == 3)
+                PanelManager.Instance.LandmarkText = m_currentLandmarkQuestion.text4;
+            else if (m_landmarkPage == 4)
+                PanelManager.Instance.LandmarkText = m_currentLandmarkQuestion.text5;
+            else if (m_landmarkPage == 5)
+                PanelManager.Instance.LandmarkText = m_currentLandmarkQuestion.text6;
+        }
+        // English
+        else
+        {
+            if (m_landmarkPage == 1)
+                PanelManager.Instance.LandmarkText = m_currentLandmarkQuestion.text2_EN;
+            else if (m_landmarkPage == 2)
+                PanelManager.Instance.LandmarkText = m_currentLandmarkQuestion.text3_EN;
+            else if (m_landmarkPage == 3)
+                PanelManager.Instance.LandmarkText = m_currentLandmarkQuestion.text4_EN;
+            else if (m_landmarkPage == 4)
+                PanelManager.Instance.LandmarkText = m_currentLandmarkQuestion.text5_EN;
+            else if (m_landmarkPage == 5)
+                PanelManager.Instance.LandmarkText = m_currentLandmarkQuestion.text6_EN;  
+        }
     }
     
     public void PreviousLandmarkQuestion()
@@ -199,16 +228,35 @@ public class QuestionManager : SerializedMonoBehaviour
         PanelManager.Instance.NextBubblePage(m_landmarkPage);
         
         // Update text
-        if (m_landmarkPage == 0)
-            PanelManager.Instance.LandmarkText = m_currentLandmarkQuestion.text1;
-        else if (m_landmarkPage == 1)
-            PanelManager.Instance.LandmarkText = m_currentLandmarkQuestion.text2;
-        else if (m_landmarkPage == 2)
-            PanelManager.Instance.LandmarkText = m_currentLandmarkQuestion.text3;
-        else if (m_landmarkPage == 3)
-            PanelManager.Instance.LandmarkText = m_currentLandmarkQuestion.text4;
-        else if (m_landmarkPage == 4)
-            PanelManager.Instance.LandmarkText = m_currentLandmarkQuestion.text5;
+        // French
+        if (GameManager.Instance.Language == GameManager.GameLanguage.French)
+        {
+            if (m_landmarkPage == 0)
+                PanelManager.Instance.LandmarkText = m_currentLandmarkQuestion.text1;
+            else if (m_landmarkPage == 1)
+                PanelManager.Instance.LandmarkText = m_currentLandmarkQuestion.text2;
+            else if (m_landmarkPage == 2)
+                PanelManager.Instance.LandmarkText = m_currentLandmarkQuestion.text3;
+            else if (m_landmarkPage == 3)
+                PanelManager.Instance.LandmarkText = m_currentLandmarkQuestion.text4;
+            else if (m_landmarkPage == 4)
+                PanelManager.Instance.LandmarkText = m_currentLandmarkQuestion.text5;
+        }
+        // English
+        else
+        {
+            if (m_landmarkPage == 0)
+                PanelManager.Instance.LandmarkText = m_currentLandmarkQuestion.text1_EN;
+            else if (m_landmarkPage == 1)
+                PanelManager.Instance.LandmarkText = m_currentLandmarkQuestion.text2_EN;
+            else if (m_landmarkPage == 2)
+                PanelManager.Instance.LandmarkText = m_currentLandmarkQuestion.text3_EN;
+            else if (m_landmarkPage == 3)
+                PanelManager.Instance.LandmarkText = m_currentLandmarkQuestion.text4_EN;
+            else if (m_landmarkPage == 4)
+                PanelManager.Instance.LandmarkText = m_currentLandmarkQuestion.text5_EN;
+        }
+        
     }
 
     public void EnterLandmark(int landmarkTypeIndex)

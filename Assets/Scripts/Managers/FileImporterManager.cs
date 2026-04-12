@@ -102,6 +102,10 @@ public class FileImporterManager : MonoBehaviour
             Enum.TryParse(fields[3], out TutorialsFlags flag);
             scriptable.flag = flag;
 
+            scriptable.question_EN = fields[4];
+            scriptable.answer1_EN = fields[5];
+            scriptable.answer2_EN = fields[6];
+            
 
             // Sauvegarde du ScriptableObject dans le projet (dans un dossier "Assets/Resources/Questions")
             string assetPath = $"Assets/Resources/Scriptables/Tutorials/tutorial_" + i + ".asset";
@@ -139,7 +143,7 @@ public class FileImporterManager : MonoBehaviour
             string line = lines[i];
             string[] fields = line.Split(';');
 
-            if (fields.Length < 5)
+            if (fields.Length < 16)
             {
                 Debug.LogWarning("Malformed line skipped: " + line);
                 continue;
@@ -155,6 +159,16 @@ public class FileImporterManager : MonoBehaviour
             scriptable.answer1 = fields[6];
             scriptable.answer2 = fields[7];
             scriptable.type = int.Parse(fields[8]);
+            
+            // English
+            scriptable.text1_EN = fields[9];
+            scriptable.text2_EN = fields[10];
+            scriptable.text3_EN = fields[11];
+            scriptable.text4_EN = fields[12];
+            scriptable.text5_EN = fields[13];
+            scriptable.text6_EN = fields[14];
+            scriptable.answer1_EN = fields[15];
+            scriptable.answer2_EN = fields[16];
             
             int nbTexts = 0;
             for (int k = 1; k < 6; k++)
@@ -313,6 +327,11 @@ public class FileImporterManager : MonoBehaviour
             scriptable.answer2Illustration = fields[13];
             scriptable.answer2IllustrationPriority = ParseSafe(fields[14]);
             scriptable.flag = TutorialsFlags.None;
+            
+            // English
+            scriptable.question_EN = fields[15];
+            scriptable.answer1_EN = fields[16];
+            scriptable.answer2_EN = fields[17];
 
 
             // Sauvegarde du ScriptableObject dans le projet (dans un dossier "Assets/Resources/Questions")

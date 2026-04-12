@@ -4,9 +4,16 @@ using System.Collections.Generic;
 [CreateAssetMenu(fileName = "Question", menuName = "Scriptable Objects/Question")]
 public class Question : ScriptableObject
 {
+    // French
     public string question; 
     public string answer1;
     public string answer2;
+    
+    // English
+    public string question_EN; 
+    public string answer1_EN;
+    public string answer2_EN;
+    
     public int answer1Type1;
     public int answer1Type1ADD;
     public int answer2Type1;

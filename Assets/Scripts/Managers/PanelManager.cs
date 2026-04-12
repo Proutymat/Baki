@@ -298,8 +298,23 @@ public class PanelManager : MonoBehaviour
         backButton.SetActive(false);
         landmarkAnswer1Button.SetActive(true);
         landmarkAnswer2Button.SetActive(true);
-        landmarkAnswer1Button.GetComponentInChildren<TextMeshProUGUI>().text = QuestionManager.Instance.CurrentLandmarkQuestion.answer1;
-        landmarkAnswer2Button.GetComponentInChildren<TextMeshProUGUI>().text = QuestionManager.Instance.CurrentLandmarkQuestion.answer2;
+        
+        // French
+        if (GameManager.Instance.Language == GameManager.GameLanguage.French)
+        {
+            landmarkAnswer1Button.GetComponentInChildren<TextMeshProUGUI>().text =
+                QuestionManager.Instance.CurrentLandmarkQuestion.answer1;
+            landmarkAnswer2Button.GetComponentInChildren<TextMeshProUGUI>().text =
+                QuestionManager.Instance.CurrentLandmarkQuestion.answer2;
+        }
+        // English
+        else
+        {
+            landmarkAnswer1Button.GetComponentInChildren<TextMeshProUGUI>().text =
+                QuestionManager.Instance.CurrentLandmarkQuestion.answer1_EN;
+            landmarkAnswer2Button.GetComponentInChildren<TextMeshProUGUI>().text =
+                QuestionManager.Instance.CurrentLandmarkQuestion.answer2_EN;
+        }
     }
     
     public void EnterLandmark()

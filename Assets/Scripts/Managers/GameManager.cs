@@ -37,6 +37,7 @@ public class GameManager : SerializedMonoBehaviour
     public string CurrentGameLogFolder { get => m_currentGameLogFolder; }
     public bool EnablePrinters { get => m_enablePrinters; }
     public float GameTimer { get => m_gameTimer; }
+    public GameLanguage Language { get => m_language; }
 
 
     // --------------------------------------------
