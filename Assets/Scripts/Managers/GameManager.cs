@@ -92,7 +92,7 @@ public class GameManager : SerializedMonoBehaviour
         CharteManager.Instance.Initialize();
         StatsManager.Instance.Initialize();
         PanelManager.Instance.Initialize();
-        PrinterManager.Instance.Initialize();
+        PrinterManager.Instance.Initialize(language);
         
         // Set up onboarding
         PanelManager.Instance.ProgressBar.IsPaused = true;

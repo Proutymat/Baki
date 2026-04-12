@@ -5,15 +5,16 @@ using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using Debug = UnityEngine.Debug;
 
 
 public class PNGPrinter : MonoBehaviour
 {
+    
     [SerializeField] private Camera playerCamera;
     [SerializeField] private Camera textCamera;
     [SerializeField] private TextMeshProUGUI percentageText;
+    
     [SerializeField] private string pngFileNameDebug;
     [SerializeField] private bool smallNumbers = false;
     
@@ -37,7 +38,7 @@ public class PNGPrinter : MonoBehaviour
         gameManager = GameManager.Instance;
     }
 
-    public void Initialize()
+    public void Initialize(GameManager.GameLanguage language)
     {
         imageCounter = 0;
         ticketPath = Path.Combine(gameManager.CurrentGameLogFolder, $"ticket.png");
