@@ -16,6 +16,10 @@ MonoBehaviour:
     les armes pour ton pays"
   answer1: Oui
   answer2: Non
+  question_EN: If certain conditions were met, you would be willing to take up arms
+    for your country
+  answer1_EN: Yes
+  answer2_EN: No
   answer1Type1: -1
   answer1Type1ADD: 0
   answer2Type1: -1
@@ -28,3 +32,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

@@ -15,6 +15,9 @@ MonoBehaviour:
   question: "Tu penses avoir r\xE9ussi ta vie"
   answer1: Oui
   answer2: Non
+  question_EN: Do you think you've succeeded in life
+  answer1_EN: 'Yes '
+  answer2_EN: 'No '
   answer1Type1: 4
   answer1Type1ADD: 10
   answer2Type1: 15
@@ -27,3 +30,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

@@ -15,6 +15,9 @@ MonoBehaviour:
   question: Mourir aujourd'hui ou mourir demain
   answer1: Aujourd'hui
   answer2: Demain
+  question_EN: To die today or to die tomorrow
+  answer1_EN: Today
+  answer2_EN: Tomorrow
   answer1Type1: -1
   answer1Type1ADD: 0
   answer2Type1: -1
@@ -27,3 +30,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

@@ -158,17 +158,17 @@ public class FileImporterManager : MonoBehaviour
             scriptable.text6 = fields[5];
             scriptable.answer1 = fields[6];
             scriptable.answer2 = fields[7];
-            scriptable.type = int.Parse(fields[8]);
+            scriptable.type = int.Parse(fields[10]);
             
             // English
-            scriptable.text1_EN = fields[9];
-            scriptable.text2_EN = fields[10];
-            scriptable.text3_EN = fields[11];
-            scriptable.text4_EN = fields[12];
-            scriptable.text5_EN = fields[13];
-            scriptable.text6_EN = fields[14];
-            scriptable.answer1_EN = fields[15];
-            scriptable.answer2_EN = fields[16];
+            scriptable.text1_EN = fields[11];
+            scriptable.text2_EN = fields[12];
+            scriptable.text3_EN = fields[13];
+            scriptable.text4_EN = fields[14];
+            scriptable.text5_EN = fields[15];
+            scriptable.text6_EN = fields[16];
+            scriptable.answer1_EN = fields[17];
+            scriptable.answer2_EN = fields[18];
             
             int nbTexts = 0;
             for (int k = 1; k < 6; k++)

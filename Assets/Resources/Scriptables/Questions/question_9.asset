@@ -15,6 +15,9 @@ MonoBehaviour:
   question: Est-ce que tu me fais confiance
   answer1: Oui
   answer2: Non
+  question_EN: Do you trust me
+  answer1_EN: 'Yes '
+  answer2_EN: No
   answer1Type1: 14
   answer1Type1ADD: 5
   answer2Type1: -1
@@ -27,3 +30,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 1
   answer2Illustration: PILLS
   answer2IllustrationPriority: 1
+  flag: 0

@@ -16,6 +16,10 @@ MonoBehaviour:
     en d\xE9mocratie"
   answer1: Oui
   answer2: Non
+  question_EN: School does enough to raise awareness of the importance of politics
+    in a democracy
+  answer1_EN: Yes
+  answer2_EN: No
   answer1Type1: -1
   answer1Type1ADD: 0
   answer2Type1: -1
@@ -28,3 +32,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

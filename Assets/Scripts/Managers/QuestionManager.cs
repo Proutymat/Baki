@@ -226,6 +226,7 @@ public class QuestionManager : SerializedMonoBehaviour
         FMODUnity.RuntimeManager.PlayOneShot("event:/UI/UI_InGame/UI_IG_QuestionRespondClick");
         
         PanelManager.Instance.NextBubblePage(m_landmarkPage);
+
         
         // Update text
         // French

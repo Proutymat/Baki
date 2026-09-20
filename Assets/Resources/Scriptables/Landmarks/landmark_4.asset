@@ -24,5 +24,16 @@ MonoBehaviour:
   text6: 
   answer1: Oui
   answer2: Non
+  text1_EN: The wind reminds you of every square inch of your skin.
+  text2_EN: Thirst keeps you from forgetting your mouth, the cold makes every muscle
+    in your body tremble.
+  text3_EN: Yet some people claim that we are all living in a computer simulation.
+  text4_EN: We would not really exist and would instead be the work of an incredibly
+    sophisticated program.
+  text5_EN: If you were nothing more than a piece of code, would you want to know
+    that you are living in a simulation?
+  text6_EN: 
+  answer1_EN: 'Yes '
+  answer2_EN: No
   type: 2
   nbTexts: 4

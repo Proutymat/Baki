@@ -16,6 +16,10 @@ MonoBehaviour:
     et ce qui est de la responsabilit\xE9 des parents"
   answer1: Oui
   answer2: Non
+  question_EN: It is easy to distinguish between what is the teacher's responsibility
+    and what is the parents' responsibility
+  answer1_EN: 'Yes '
+  answer2_EN: No
   answer1Type1: 10
   answer1Type1ADD: 10
   answer2Type1: 10
@@ -28,3 +32,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

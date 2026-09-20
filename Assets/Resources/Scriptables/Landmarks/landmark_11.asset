@@ -26,5 +26,19 @@ MonoBehaviour:
     Est-ce que tu sais comment prouver qui est le vrai toi ?"
   answer1: Oui
   answer2: Non
+  text1_EN: You try out a brand-new teleportation device.
+  text2_EN: It creates a body identical to yours at your destination and destroys
+    the one at the point of departure.
+  text3_EN: The consciousness inside the arriving body is identical to yours. Same
+    personality, same memories.
+  text4_EN: You see an error message in front of you. You are still at your point
+    of departure, but a copy of you is there too. You haven't moved, and your body
+    hasn't been destroyed.
+  text5_EN: The copy is alive and shares the same memories as you up until a few
+    seconds ago. A moment ago, one of you did not exist.
+  text6_EN: So you are both convinced that you are the original you. Do you know
+    how to prove which one is the real you?
+  answer1_EN: 'Yes '
+  answer2_EN: No
   type: 2
   nbTexts: 5

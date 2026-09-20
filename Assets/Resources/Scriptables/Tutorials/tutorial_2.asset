@@ -15,6 +15,9 @@ MonoBehaviour:
   question: "Tu es conscient que tu t'arr\xEAtes parfois"
   answer1: Oui
   answer2: Non
+  question_EN: Do you realize that you sometimes stop?
+  answer1_EN: Yes
+  answer2_EN: "No\r"
   answer1Type1: 0
   answer1Type1ADD: 0
   answer2Type1: 0
@@ -27,3 +30,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

@@ -15,6 +15,9 @@ MonoBehaviour:
   question: La culture du vide existe
   answer1: Oui
   answer2: Non
+  question_EN: A culture of emptiness exists
+  answer1_EN: Yes
+  answer2_EN: No
   answer1Type1: 6
   answer1Type1ADD: 5
   answer2Type1: 6
@@ -27,3 +30,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

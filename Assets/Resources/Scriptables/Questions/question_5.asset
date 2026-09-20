@@ -15,6 +15,9 @@ MonoBehaviour:
   question: "Se t\xE9l\xE9porter ou lire dans les pens\xE9es"
   answer1: "Se t\xE9l\xE9porter"
   answer2: "Lire dans les pens\xE9es"
+  question_EN: To have the ability to teleport or to read minds
+  answer1_EN: To Teleport
+  answer2_EN: 'To read minds '
   answer1Type1: -1
   answer1Type1ADD: 0
   answer2Type1: 0
@@ -27,3 +30,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

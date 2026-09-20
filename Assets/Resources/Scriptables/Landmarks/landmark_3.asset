@@ -22,5 +22,14 @@ MonoBehaviour:
   text6: 
   answer1: Tournesols
   answer2: Violettes
+  text1_EN: If you concentrate, you can imagine yourself in a place of peace.
+  text2_EN: A place just for you that evokes nothing but well-being.
+  text3_EN: You walk through this place and come face to face with a field of flowers.
+  text4_EN: In the middle of the field is someone extremely important to you.
+  text5_EN: The flowers in the field resemble them. Is it a field of sunflowers or
+    violets?
+  text6_EN: 
+  answer1_EN: Sunflowers
+  answer2_EN: Violets
   type: 0
   nbTexts: 4

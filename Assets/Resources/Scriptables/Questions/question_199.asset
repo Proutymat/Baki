@@ -15,6 +15,9 @@ MonoBehaviour:
   question: Ne plus jamais pouvoir respirer par la bouche ou par le nez
   answer1: Par la bouche
   answer2: Par le nez
+  question_EN: Never again being able to breathe through the mouth or nose
+  answer1_EN: Through the mouth
+  answer2_EN: Through the noze
   answer1Type1: -1
   answer1Type1ADD: 0
   answer2Type1: -1
@@ -27,3 +30,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

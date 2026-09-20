@@ -23,5 +23,17 @@ MonoBehaviour:
   text6: 
   answer1: Oui
   answer2: Non
+  text1_EN: There are as many versions of you as there are choices you have had to
+    make.
+  text2_EN: With every decision, you create an alternate version of your life in
+    which you made the other choice.
+  text3_EN: You are already dead in several possible paths of life. Conversely, there
+    is a path where you have never experienced failure.
+  text4_EN: Among all these versions of you, do you think some of them have a personality
+    that is fundamentally different from the one on this path?
+  text5_EN: 
+  text6_EN: 
+  answer1_EN: 'Yes '
+  answer2_EN: No
   type: 2
   nbTexts: 3

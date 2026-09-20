@@ -15,6 +15,9 @@ MonoBehaviour:
   question: "Sauver un adulte ou un b\xE9b\xE9"
   answer1: Adulte
   answer2: "B\xE9b\xE9"
+  question_EN: Save an adult or save a baby
+  answer1_EN: An adult
+  answer2_EN: A baby
   answer1Type1: 5
   answer1Type1ADD: -10
   answer2Type1: 5
@@ -27,3 +30,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

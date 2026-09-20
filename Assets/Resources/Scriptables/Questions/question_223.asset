@@ -15,6 +15,9 @@ MonoBehaviour:
   question: Qui fais-tu passer en premier
   answer1: "Toi-m\xEAme"
   answer2: Les autres
+  question_EN: Who do you put first
+  answer1_EN: Yourself
+  answer2_EN: The others
   answer1Type1: 1
   answer1Type1ADD: 10
   answer2Type1: 1
@@ -27,3 +30,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

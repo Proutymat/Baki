@@ -15,6 +15,9 @@ MonoBehaviour:
   question: "Plut\xF4t supprimer les livres ou films"
   answer1: Les livres
   answer2: Les films
+  question_EN: It's better to get rid of books or movies
+  answer1_EN: Books
+  answer2_EN: Movies
   answer1Type1: -1
   answer1Type1ADD: 0
   answer2Type1: -1
@@ -27,3 +30,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

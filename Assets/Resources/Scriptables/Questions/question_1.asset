@@ -15,6 +15,9 @@ MonoBehaviour:
   question: "Tu pr\xE9f\xE8res le jour ou la nuit"
   answer1: Jour
   answer2: Nuit
+  question_EN: 'Are you more of a morning person or a night owl '
+  answer1_EN: 'Morning person '
+  answer2_EN: 'Night owl '
   answer1Type1: 15
   answer1Type1ADD: 10
   answer2Type1: 15
@@ -27,3 +30,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

@@ -15,6 +15,9 @@ MonoBehaviour:
   question: Qui gagne entre un bouledogue et un cheval
   answer1: Le bouledog
   answer2: Le cheval
+  question_EN: Who would win, a bulldog or a horse
+  answer1_EN: 'A bulldog '
+  answer2_EN: A Horse
   answer1Type1: -1
   answer1Type1ADD: 0
   answer2Type1: -1
@@ -27,3 +30,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

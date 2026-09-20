@@ -16,6 +16,10 @@ MonoBehaviour:
     que de financer un syst\xE8me qui aide des inconnus."
   answer1: Oui
   answer2: Non
+  question_EN: You'd rather personally help a loved one in need than fund a system
+    that helps strangers.
+  answer1_EN: 'Yes '
+  answer2_EN: No
   answer1Type1: 0
   answer1Type1ADD: -10
   answer2Type1: 0
@@ -28,3 +32,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

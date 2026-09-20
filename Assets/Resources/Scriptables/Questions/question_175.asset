@@ -15,6 +15,9 @@ MonoBehaviour:
   question: La confiance est quelque chose qu'on acquiert ou qu'on perd
   answer1: Qu'on acquiert
   answer2: Qu'on perd
+  question_EN: Trust is something you gain or lose
+  answer1_EN: Gain
+  answer2_EN: Lose
   answer1Type1: 0
   answer1Type1ADD: -10
   answer2Type1: 0
@@ -27,3 +30,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

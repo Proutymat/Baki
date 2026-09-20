@@ -15,6 +15,9 @@ MonoBehaviour:
   question: Chien ou chat
   answer1: Chien
   answer2: Chat
+  question_EN: Dog or cat
+  answer1_EN: Dog
+  answer2_EN: Cat
   answer1Type1: 0
   answer1Type1ADD: 5
   answer2Type1: 18
@@ -27,3 +30,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

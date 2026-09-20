@@ -16,6 +16,9 @@ MonoBehaviour:
     priv\xE9e ou publique"
   answer1: "Priv\xE9e"
   answer2: Publique
+  question_EN: If you were a TV channel, would you be a private or public channel
+  answer1_EN: Private
+  answer2_EN: Public
   answer1Type1: -1
   answer1Type1ADD: 0
   answer2Type1: -1
@@ -28,3 +31,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

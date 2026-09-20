@@ -15,6 +15,9 @@ MonoBehaviour:
   question: On peut rire de tout
   answer1: Oui
   answer2: Non
+  question_EN: Can we laugh about anything
+  answer1_EN: Yes
+  answer2_EN: No
   answer1Type1: 7
   answer1Type1ADD: -10
   answer2Type1: 7
@@ -27,3 +30,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

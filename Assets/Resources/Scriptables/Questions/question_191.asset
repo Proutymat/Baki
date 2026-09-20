@@ -15,6 +15,9 @@ MonoBehaviour:
   question: 'Les nouveaux riches ont un syndrome de Stockholm '
   answer1: Oui
   answer2: Non
+  question_EN: Newly rich people have Stockholm syndrome
+  answer1_EN: Yes
+  answer2_EN: No
   answer1Type1: -1
   answer1Type1ADD: 0
   answer2Type1: -1
@@ -27,3 +30,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

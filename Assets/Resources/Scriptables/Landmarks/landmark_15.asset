@@ -22,5 +22,15 @@ MonoBehaviour:
     te d\xE9range ?"
   answer1: Oui
   answer2: Non
+  text1_EN: In general, when we meet someone
+  text2_EN: We first ask them their name
+  text3_EN: Then we ask them what they do for a living.
+  text4_EN: The work we do is one of the biggest parts of our identity.
+  text5_EN: Yet more and more people are unemployed, and technological progress could
+    make this phenomenon worse.
+  text6_EN: Does the fact that we identify ourselves through our role in society
+    bother you?
+  answer1_EN: 'Yes '
+  answer2_EN: No
   type: 1
   nbTexts: 5

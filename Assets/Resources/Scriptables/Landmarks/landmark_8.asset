@@ -22,5 +22,14 @@ MonoBehaviour:
   text6: 
   answer1: Regret
   answer2: Accomplissement
+  text1_EN: 'The landscape passes by: fields, mountains, sometimes villages, your
+    head resting against the car window.'
+  text2_EN: You are coming home from an event with people close to you.
+  text3_EN: The sun sets on the horizon and rain gently taps against the car.
+  text4_EN: The car veers off the road, and time stops. What is your last feeling?
+  text5_EN: 
+  text6_EN: 
+  answer1_EN: Regret
+  answer2_EN: Fulfillment
   type: 0
   nbTexts: 3

@@ -16,6 +16,10 @@ MonoBehaviour:
     un certain \xE2ge"
   answer1: Oui
   answer2: Non
+  question_EN: All children should follow the same school curriculum up to a certain
+    age
+  answer1_EN: Yes
+  answer2_EN: No
   answer1Type1: 11
   answer1Type1ADD: -10
   answer2Type1: 11
@@ -28,3 +32,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

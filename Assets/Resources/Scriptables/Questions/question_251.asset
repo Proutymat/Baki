@@ -15,6 +15,9 @@ MonoBehaviour:
   question: De quelle couleur est le chiffre 7
   answer1: Jaune
   answer2: Vert
+  question_EN: What color is the number 7
+  answer1_EN: 'Yellow '
+  answer2_EN: Green
   answer1Type1: -1
   answer1Type1ADD: 0
   answer2Type1: -1
@@ -27,3 +30,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

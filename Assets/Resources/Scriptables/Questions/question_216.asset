@@ -16,6 +16,10 @@ MonoBehaviour:
     ou quelqu'un qui parle tr\xE8s peu"
   answer1: "Enorm\xE9ment"
   answer2: "Tr\xE8s peu"
+  question_EN: 'What''s more annoying: someone who talks way too much or someone
+    who barely talks'
+  answer1_EN: Talks way too much
+  answer2_EN: 'Barely talks '
   answer1Type1: -1
   answer1Type1ADD: 0
   answer2Type1: -1
@@ -28,3 +32,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

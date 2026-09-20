@@ -16,6 +16,10 @@ MonoBehaviour:
     aimes ou qu'ils perdent tous leurs souvenirs de toi"
   answer1: Tu perds tes souvenirs
   answer2: Les autres t'oublient
+  question_EN: Would you rather lose all your memories of the people you love, or
+    would you rather they lose all their memories of you?
+  answer1_EN: All memories of people you love
+  answer2_EN: 'All memories of you '
   answer1Type1: -1
   answer1Type1ADD: 0
   answer2Type1: -1
@@ -28,3 +32,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

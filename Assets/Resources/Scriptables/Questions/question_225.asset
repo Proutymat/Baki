@@ -15,6 +15,9 @@ MonoBehaviour:
   question: "Ch\xE2teau de sable ou ch\xE2teau de cartes"
   answer1: De sable
   answer2: De cartes
+  question_EN: Sandcastle or house of cards
+  answer1_EN: 'Sandcastle '
+  answer2_EN: House of cards
   answer1Type1: -1
   answer1Type1ADD: 0
   answer2Type1: -1
@@ -27,3 +30,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

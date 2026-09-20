@@ -16,6 +16,10 @@ MonoBehaviour:
     de certains m\xE9tiers"
   answer1: Oui
   answer2: Non
+  question_EN: Only crimes, not misdemeanors, should prevent someone from working
+    in certain professions
+  answer1_EN: Yes
+  answer2_EN: No
   answer1Type1: 12
   answer1Type1ADD: -10
   answer2Type1: 12
@@ -28,3 +32,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

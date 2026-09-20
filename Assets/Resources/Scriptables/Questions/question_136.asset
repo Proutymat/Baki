@@ -15,6 +15,9 @@ MonoBehaviour:
   question: "Ne pas avoir de passion est un d\xE9savantage en soci\xE9t\xE9"
   answer1: Oui
   answer2: Non
+  question_EN: Not having a passion is a disadvantage in society
+  answer1_EN: Yes
+  answer2_EN: No
   answer1Type1: 13
   answer1Type1ADD: 10
   answer2Type1: 13
@@ -27,3 +30,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

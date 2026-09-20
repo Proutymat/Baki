@@ -15,6 +15,9 @@ MonoBehaviour:
   question: "Est-ce que tu penses \xEAtre suffisamment objectif \xE0 propos de toi"
   answer1: Oui
   answer2: Non
+  question_EN: Do you think you are objective enough about yourself
+  answer1_EN: Yes
+  answer2_EN: No
   answer1Type1: 4
   answer1Type1ADD: 10
   answer2Type1: -1
@@ -27,3 +30,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

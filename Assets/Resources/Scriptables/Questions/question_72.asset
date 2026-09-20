@@ -15,6 +15,10 @@ MonoBehaviour:
   question: "Si c'\xE9tait possible, tu aimerais acqu\xE9rir tout le savoir du monde"
   answer1: Oui
   answer2: Non
+  question_EN: If it were possible, would you like to acquire all the knowledge in
+    the world
+  answer1_EN: 'Yes '
+  answer2_EN: No
   answer1Type1: 14
   answer1Type1ADD: 10
   answer2Type1: -1
@@ -27,3 +31,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

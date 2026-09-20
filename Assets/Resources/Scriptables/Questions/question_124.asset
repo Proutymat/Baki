@@ -15,6 +15,9 @@ MonoBehaviour:
   question: Un enfant est capable de savoir ce qui est bon pour lui
   answer1: Oui
   answer2: Non
+  question_EN: A child is capable of knowing what is good for them
+  answer1_EN: Yes
+  answer2_EN: No
   answer1Type1: 8
   answer1Type1ADD: 10
   answer2Type1: 8
@@ -27,3 +30,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

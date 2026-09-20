@@ -15,6 +15,9 @@ MonoBehaviour:
   question: "Les jeunes devraient pouvoir voter plus t\xF4t"
   answer1: Oui
   answer2: Non
+  question_EN: Young people should be allowed to vote earlier
+  answer1_EN: Yes
+  answer2_EN: No
   answer1Type1: 8
   answer1Type1ADD: 10
   answer2Type1: -1
@@ -27,3 +30,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

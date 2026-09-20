@@ -21,5 +21,14 @@ MonoBehaviour:
   text6: 
   answer1: Trahison
   answer2: Avenir
+  text1_EN: You come across a book whose pages seem to recount exactly what you have
+    thought up until today, except for two pages.
+  text2_EN: The first describes a betrayal you experienced without knowing it.
+  text3_EN: The second describes a possible future that you do not want.
+  text4_EN: You can only read one page. Which one do you choose?
+  text5_EN: 
+  text6_EN: 
+  answer1_EN: Betrayal
+  answer2_EN: Future
   type: 1
   nbTexts: 3

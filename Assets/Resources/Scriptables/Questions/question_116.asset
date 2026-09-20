@@ -16,6 +16,9 @@ MonoBehaviour:
     mourir"
   answer1: Comment
   answer2: Quand
+  question_EN: To know how you will die or when you will die
+  answer1_EN: How
+  answer2_EN: When
   answer1Type1: -1
   answer1Type1ADD: 0
   answer2Type1: -1
@@ -28,3 +31,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

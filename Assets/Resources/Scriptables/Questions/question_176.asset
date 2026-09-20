@@ -15,6 +15,9 @@ MonoBehaviour:
   question: "Faire aveugl\xE9ment confiance \xE0 la science rel\xE8ve de la croyance"
   answer1: Oui
   answer2: Non
+  question_EN: Blindly trusting science is a form of belief
+  answer1_EN: Yes
+  answer2_EN: No
   answer1Type1: 14
   answer1Type1ADD: -10
   answer2Type1: 14
@@ -27,3 +30,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

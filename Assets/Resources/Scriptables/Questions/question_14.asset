@@ -15,6 +15,9 @@ MonoBehaviour:
   question: Le libre arbitre existe
   answer1: Oui
   answer2: Non
+  question_EN: Free will exists
+  answer1_EN: 'Yes '
+  answer2_EN: 'No '
   answer1Type1: -1
   answer1Type1ADD: 0
   answer2Type1: 17
@@ -27,3 +30,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

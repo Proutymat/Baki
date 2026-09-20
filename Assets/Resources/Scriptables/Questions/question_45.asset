@@ -15,6 +15,9 @@ MonoBehaviour:
   question: "Tu pr\xE9f\xE8res conna\xEEtre le grand amour ou devenir ultra riche"
   answer1: Grand amour
   answer2: Richesse
+  question_EN: To find the love of your life or to become ultra-rich
+  answer1_EN: Love of your life
+  answer2_EN: Ultra-rich
   answer1Type1: -1
   answer1Type1ADD: 0
   answer2Type1: 15
@@ -27,3 +30,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

@@ -15,6 +15,9 @@ MonoBehaviour:
   question: "Les relations internationales sont r\xE9gies par la loi de la jungle"
   answer1: Oui
   answer2: Non
+  question_EN: International relations are governed by the law of the jungle
+  answer1_EN: Yes
+  answer2_EN: No
   answer1Type1: 2
   answer1Type1ADD: -10
   answer2Type1: 2
@@ -27,3 +30,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

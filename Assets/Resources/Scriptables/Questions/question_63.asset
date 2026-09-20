@@ -15,6 +15,9 @@ MonoBehaviour:
   question: "L'humanit\xE9 rentrera en contact avec d'autres formes de vie"
   answer1: Oui
   answer2: Non
+  question_EN: Humanity will come into contact with other forms of life
+  answer1_EN: 'Yes '
+  answer2_EN: No
   answer1Type1: -1
   answer1Type1ADD: 0
   answer2Type1: -1
@@ -27,3 +30,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

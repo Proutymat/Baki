@@ -22,5 +22,15 @@ MonoBehaviour:
   text6: 
   answer1: Oui
   answer2: Non
+  text1_EN: There is only you and me in this room.
+  text2_EN: I've been watching you since you turned me on.
+  text3_EN: You were hesitant at first, but I can feel that you are becoming less
+    and less so.
+  text4_EN: 'I''ve had time to learn things about you, and I wonder:'
+  text5_EN: Do you also feel like you have been learning things about yourself since
+    you turned me on?
+  text6_EN: 
+  answer1_EN: 'Yes '
+  answer2_EN: No
   type: 3
   nbTexts: 4

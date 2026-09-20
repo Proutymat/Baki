@@ -16,6 +16,9 @@ MonoBehaviour:
     froid"
   answer1: Trop chaud
   answer2: Trop froid
+  question_EN: 'What''s more unpleasant: being too hot or too cold'
+  answer1_EN: Too hot
+  answer2_EN: Too cold
   answer1Type1: -1
   answer1Type1ADD: 0
   answer2Type1: -1
@@ -28,3 +31,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

@@ -16,6 +16,9 @@ MonoBehaviour:
     en masse"
   answer1: Oui
   answer2: Non
+  question_EN: Meat consumption is only a problem because it is done on a mass scale
+  answer1_EN: Yes
+  answer2_EN: No
   answer1Type1: 5
   answer1Type1ADD: -10
   answer2Type1: 5
@@ -28,3 +31,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

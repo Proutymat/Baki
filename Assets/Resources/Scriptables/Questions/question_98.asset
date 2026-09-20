@@ -15,6 +15,9 @@ MonoBehaviour:
   question: "Tu pr\xE9f\xE8res mourir br\xFBl\xE9.e ou en te noyant"
   answer1: "Brul\xE9.e"
   answer2: Noyade
+  question_EN: To die by burning or drowning
+  answer1_EN: 'By burning '
+  answer2_EN: By drowning
   answer1Type1: -1
   answer1Type1ADD: 0
   answer2Type1: -1
@@ -27,3 +30,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

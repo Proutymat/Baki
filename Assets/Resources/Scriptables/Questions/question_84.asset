@@ -15,6 +15,10 @@ MonoBehaviour:
   question: "Tu es plus fascin\xE9 par l'infiniment petit ou l'infiniment grand"
   answer1: Infiniment petit
   answer2: Infiniment grand
+  question_EN: Are you more fascinated by the infinitely small or the infinitely
+    large
+  answer1_EN: Infinitely small
+  answer2_EN: Infinitely large
   answer1Type1: -1
   answer1Type1ADD: 0
   answer2Type1: -1
@@ -27,3 +31,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 1
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

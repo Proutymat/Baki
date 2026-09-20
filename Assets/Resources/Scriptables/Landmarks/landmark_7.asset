@@ -24,5 +24,15 @@ MonoBehaviour:
   text6: 
   answer1: Quotidien
   answer2: "D\xE9couvertes"
+  text1_EN: Every day you drink, eat, breathe, clean, and repeat everyday actions
+    without even thinking about them.
+  text2_EN: But you also discover new things and meet new people.
+  text3_EN: People you may never see again, or, on the contrary, future friends.
+  text4_EN: Tonight you will go to sleep in your bed, comfortably under your blanket.
+  text5_EN: You close your eyes and fall asleep. Do you dream about your everyday
+    life or your discoveries?
+  text6_EN: 
+  answer1_EN: Every day life
+  answer2_EN: Discoveries
   type: 1
   nbTexts: 4

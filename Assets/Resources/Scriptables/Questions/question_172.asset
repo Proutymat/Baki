@@ -15,6 +15,9 @@ MonoBehaviour:
   question: "La bi\xE8re c'est de gauche et le vin c'est de droite"
   answer1: Oui
   answer2: Non
+  question_EN: In terms of politics, beer is left-wing and wine is right-wing
+  answer1_EN: Yes
+  answer2_EN: No
   answer1Type1: -1
   answer1Type1ADD: 0
   answer2Type1: -1
@@ -27,3 +30,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

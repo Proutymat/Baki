@@ -15,6 +15,9 @@ MonoBehaviour:
   question: Lampadaire ou boule de bowling
   answer1: Lampadaire
   answer2: Boule de bolwing
+  question_EN: Street lamp or bowling ball
+  answer1_EN: Street lamp
+  answer2_EN: Bowling ball
   answer1Type1: -1
   answer1Type1ADD: 0
   answer2Type1: -1
@@ -27,3 +30,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 1
   answer2Illustration: BOWLING
   answer2IllustrationPriority: 1
+  flag: 0

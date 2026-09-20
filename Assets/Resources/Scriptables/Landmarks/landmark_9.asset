@@ -24,5 +24,15 @@ MonoBehaviour:
   text6: 
   answer1: Couper
   answer2: Regarder
+  text1_EN: You sit down in a dark room, facing a large screen. The people around
+    you are noisy and waiting for the movie to begin.
+  text2_EN: '"Your loved ones are sitting next to you'
+  text3_EN: ' they are the ones who suggested you come and see this movie."'
+  text4_EN: The conversations die down and the opening credits begin.
+  text5_EN: 'But instead of the movie you were expecting, a documentary about your
+    life is shown: the highs, the lows, the betrayals, the laughter, everything.'
+  text6_EN: Do you decide to watch the movie or stop the screening?
+  answer1_EN: 
+  answer2_EN: Stop
   type: 1
   nbTexts: 4

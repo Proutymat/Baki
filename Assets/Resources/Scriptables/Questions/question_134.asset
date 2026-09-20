@@ -15,6 +15,9 @@ MonoBehaviour:
   question: Tu aurais ton BAC si tu le repassais aujourd'hui
   answer1: Oui
   answer2: Non
+  question_EN: Would you pass your high school diploma exam if you took it today?
+  answer1_EN: Yes
+  answer2_EN: No
   answer1Type1: 4
   answer1Type1ADD: 10
   answer2Type1: 4
@@ -27,3 +30,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

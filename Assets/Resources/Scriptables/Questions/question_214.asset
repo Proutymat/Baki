@@ -15,6 +15,9 @@ MonoBehaviour:
   question: "Est-ce qu'il y a des gens en qui tu fais confiance aveugl\xE9ment"
   answer1: Oui
   answer2: Non
+  question_EN: Are there people you trust blindly
+  answer1_EN: Yes
+  answer2_EN: No
   answer1Type1: 0
   answer1Type1ADD: 10
   answer2Type1: 0
@@ -27,3 +30,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

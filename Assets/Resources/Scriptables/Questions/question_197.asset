@@ -15,6 +15,9 @@ MonoBehaviour:
   question: "Pouvoir se repr\xE9senter \xE0 des \xE9lections devrait \xEAtre impossible"
   answer1: Oui
   answer2: Non
+  question_EN: It should be impossible to run for office again
+  answer1_EN: 'Yes '
+  answer2_EN: No
   answer1Type1: 12
   answer1Type1ADD: 10
   answer2Type1: 12
@@ -27,3 +30,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

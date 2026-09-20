@@ -15,6 +15,9 @@ MonoBehaviour:
   question: La famille ou les amis
   answer1: La famille
   answer2: Les amis
+  question_EN: Family or friends
+  answer1_EN: Family
+  answer2_EN: Friends
   answer1Type1: -1
   answer1Type1ADD: 0
   answer2Type1: -1
@@ -27,3 +30,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 1
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

@@ -16,6 +16,9 @@ MonoBehaviour:
     ann\xE9es de vie"
   answer1: Oui
   answer2: Non
+  question_EN: An adult's personality is the consequence of their early years
+  answer1_EN: Yes
+  answer2_EN: No
   answer1Type1: 8
   answer1Type1ADD: 10
   answer2Type1: 8
@@ -28,3 +31,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

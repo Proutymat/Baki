@@ -15,6 +15,9 @@ MonoBehaviour:
   question: Dans un trajet qu'est-ce qui passe le plus vite, l'aller ou le retour
   answer1: L'aller
   answer2: Le retour
+  question_EN: 'On a journey, which feels faster: the way there or the way back'
+  answer1_EN: Way there
+  answer2_EN: Way back
   answer1Type1: -1
   answer1Type1ADD: 0
   answer2Type1: -1
@@ -27,3 +30,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

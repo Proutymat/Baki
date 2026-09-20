@@ -16,6 +16,9 @@ MonoBehaviour:
     te diriges
   answer1: Oui
   answer2: Non
+  question_EN: Are you aware that you can change the direction you're heading in?
+  answer1_EN: Yes
+  answer2_EN: "No\r"
   answer1Type1: 0
   answer1Type1ADD: 0
   answer2Type1: 0

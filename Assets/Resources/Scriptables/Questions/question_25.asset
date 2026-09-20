@@ -15,6 +15,9 @@ MonoBehaviour:
   question: "C'\xE9tait mieux avant"
   answer1: Oui
   answer2: Non
+  question_EN: Things were better before
+  answer1_EN: 'Yes '
+  answer2_EN: No
   answer1Type1: 5
   answer1Type1ADD: -20
   answer2Type1: 5
@@ -27,3 +30,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: FOSSILE
   answer2IllustrationPriority: 1
+  flag: 0

@@ -322,8 +322,18 @@ public class PanelManager : MonoBehaviour
         LandmarkQuestion currentLandmarkQuestion = QuestionManager.Instance.CurrentLandmarkQuestion;
         
         SetPanel(PanelState.Landmark);
-        landmarkText.text = currentLandmarkQuestion.text1; // Display text
         
+        // French
+        if (GameManager.Instance.Language == GameManager.GameLanguage.French)
+        {
+            landmarkText.text = currentLandmarkQuestion.text1; // Display text
+        }
+        // English
+        else
+        {
+            landmarkText.text = currentLandmarkQuestion.text1_EN; // Display text
+        }
+
         // Set ui bubble pages
         for (int i = 0; i < bubblePages.Count; i++)
         {

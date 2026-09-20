@@ -15,6 +15,9 @@ MonoBehaviour:
   question: "Tu pr\xE9f\xE9rerais te r\xE9incarner en humain ou en animal"
   answer1: En humain
   answer2: En animal
+  question_EN: Would you rather be reincarnated as a human or an animal
+  answer1_EN: As a human
+  answer2_EN: As an animal
   answer1Type1: 3
   answer1Type1ADD: -5
   answer2Type1: 3
@@ -27,3 +30,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

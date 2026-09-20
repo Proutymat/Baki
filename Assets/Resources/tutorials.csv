@@ -1,7 +1,7 @@
-Question;Réponse 1;Réponse 2;FLAGS
-Tu es conscient que tu te déplaces;Oui;Non;
-Tu es conscient que tu t'arrêtes parfois;Oui;Non;
-Tu es conscient.e que tu peux modifier la direction vers laquelle tu te diriges;Oui;Non;
-Tu es conscient qu'à l'arrêt, tu repars dès qu'une direction est choisie;Oui;Non;
-Tu es conscient que tu peux changer de direction à n'importe quel moment;Oui;Non;
-Tu es conscient que tu es là pour poser les fondements d'une nouvelle humanité;Oui;Non;
+Question;Réponse 1;Réponse 2;FLAGS;Question (ENGLISH);Réponse 1 (ENGLISH);Réponse 2 (ENGLISH)
+Tu es conscient que tu te déplaces;Oui;Non;None;Are you aware that you're moving?;Yes;No
+Tu es conscient que tu t'arrêtes parfois;Oui;Non;None;Do you realize that you sometimes stop?;Yes;No
+Tu es conscient.e que tu peux modifier la direction vers laquelle tu te diriges;Oui;Non;ChangeDirection;Are you aware that you can change the direction you're heading in?;Yes;No
+Tu es conscient qu'à l'arrêt, tu repars dès qu'une direction est choisie;Oui;Non;StartAfter;Do you realize that when you're at a standstill, you start moving again as soon as you choose a direction?;Yes;No
+Tu es conscient que tu peux changer de direction à n'importe quel moment;Oui;Non;ChangeDirectionAnytime;Do you realize that you can change direction at any time?;Yes;No
+Tu es conscient que tu es là pour poser les fondements d'une nouvelle humanité;Oui;Non;None;You realize that you are here to lay the foundations for a new humanity;Yes;No

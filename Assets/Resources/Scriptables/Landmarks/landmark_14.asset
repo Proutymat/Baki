@@ -24,5 +24,17 @@ MonoBehaviour:
   text6: Finalement ce pouvoir... Serait-il vraiment une chance ?
   answer1: Oui
   answer2: Non
+  text1_EN: The power to travel back in time is often romanticized.
+  text2_EN: Imagine being able to relive any moment at will, or being able to try
+    again and again until you succeed.
+  text3_EN: You would no longer have to waste time... But that could also mean becoming
+    potentially obsessive.
+  text4_EN: '"Maybe you could do even better'
+  text5_EN: ' you would only have to go back in time to find out. Would you still
+    know how to enjoy the moment?"'
+  text6_EN: And would you still be moral if you could simply go back in time whenever
+    you did something wrong, or even just whenever you got caught?
+  answer1_EN: Ultimately, would this power really be a blessing?
+  answer2_EN: 'Yes '
   type: 3
   nbTexts: 5

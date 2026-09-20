@@ -15,6 +15,9 @@ MonoBehaviour:
   question: "Voyager dans le pass\xE9 ou dans le futur"
   answer1: "Pass\xE9"
   answer2: Futur
+  question_EN: Traveling to the past or the future
+  answer1_EN: Past
+  answer2_EN: Future
   answer1Type1: 5
   answer1Type1ADD: -10
   answer2Type1: 5
@@ -27,3 +30,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

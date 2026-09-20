@@ -15,6 +15,9 @@ MonoBehaviour:
   question: Devenir sourd ou devenir muet
   answer1: Sourd
   answer2: Muet
+  question_EN: To be deaf or to be mute
+  answer1_EN: Deaf
+  answer2_EN: Mute
   answer1Type1: -1
   answer1Type1ADD: 0
   answer2Type1: -1
@@ -27,3 +30,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

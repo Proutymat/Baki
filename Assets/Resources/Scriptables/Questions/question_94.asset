@@ -16,6 +16,10 @@ MonoBehaviour:
     sur terre
   answer1: Galaxie
   answer2: Sable
+  question_EN: In your opinion, are there more stars in the galaxy or more grains
+    of sand on Earth
+  answer1_EN: 'More stars '
+  answer2_EN: More grains of sand
   answer1Type1: -1
   answer1Type1ADD: 0
   answer2Type1: -1
@@ -28,3 +32,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

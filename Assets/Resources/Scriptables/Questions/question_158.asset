@@ -16,6 +16,10 @@ MonoBehaviour:
     justifier l'obtention de la nationalit\xE9 de celui-ci"
   answer1: Oui
   answer2: Non
+  question_EN: Living in a country for long enough should systematically justify
+    obtaining its nationality
+  answer1_EN: Yes
+  answer2_EN: No
   answer1Type1: 11
   answer1Type1ADD: -10
   answer2Type1: 11
@@ -28,3 +32,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

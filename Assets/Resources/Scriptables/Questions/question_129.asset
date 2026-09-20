@@ -16,6 +16,9 @@ MonoBehaviour:
     de mauvais professeurs"
   answer1: Oui
   answer2: Non
+  question_EN: Children who struggle with school subjects have had bad teachers
+  answer1_EN: Yes
+  answer2_EN: No
   answer1Type1: 2
   answer1Type1ADD: 10
   answer2Type1: 2
@@ -28,3 +31,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

@@ -15,6 +15,9 @@ MonoBehaviour:
   question: "Toute in\xE9galit\xE9 est injuste"
   answer1: Oui
   answer2: Non
+  question_EN: All inequality is unfair
+  answer1_EN: Yes
+  answer2_EN: No
   answer1Type1: 11
   answer1Type1ADD: -10
   answer2Type1: 11
@@ -27,3 +30,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

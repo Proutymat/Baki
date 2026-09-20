@@ -25,5 +25,17 @@ MonoBehaviour:
     premi\xE8re ou une derni\xE8re fois ?"
   answer1: "Premi\xE8re fois"
   answer2: "Derni\xE8re fois"
+  text1_EN: In your life, you have experienced many things for the last time without
+    realizing it.
+  text2_EN: For example, there was a last night when you slept with your stuffed
+    animal.
+  text3_EN: Or a last day when you needed help tying your shoelaces.
+  text4_EN: Some first times also happen innocently, without knowing that they will
+    be one of many.
+  text5_EN: There was the first time you saw the sea, or perhaps your first cigarette.
+  text6_EN: What would be most likely to make you happy tomorrow, a first time or
+    a last time?
+  answer1_EN: 'A first time '
+  answer2_EN: A last time
   type: 0
   nbTexts: 5

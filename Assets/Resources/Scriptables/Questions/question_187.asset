@@ -15,6 +15,9 @@ MonoBehaviour:
   question: "L'humain est plut\xF4t un corps ou plut\xF4t un esprit"
   answer1: Un corps
   answer2: Un esprit
+  question_EN: Humans are more body or more spirit
+  answer1_EN: More body
+  answer2_EN: More spirit
   answer1Type1: 2
   answer1Type1ADD: 5
   answer2Type1: 2
@@ -27,3 +30,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

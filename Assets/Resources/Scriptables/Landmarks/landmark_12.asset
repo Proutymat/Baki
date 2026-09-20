@@ -22,5 +22,13 @@ MonoBehaviour:
   text6: 
   answer1: "S'am\xE9liorer "
   answer2: Se faire du mal
+  text1_EN: If you woke up tomorrow in the body of the person you hate the most.
+  text2_EN: A person you know well.
+  text3_EN: The person who has hurt you the most, who has caused you the most harm.
+  text4_EN: If you woke up in their body for 24 hours.
+  text5_EN: Would you try to improve yourself, or would you hurt yourself?
+  text6_EN: 
+  answer1_EN: Improve yourself
+  answer2_EN: Hurt yourself
   type: 3
   nbTexts: 4

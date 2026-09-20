@@ -23,5 +23,16 @@ MonoBehaviour:
   text6: 
   answer1: Oui
   answer2: Non
+  text1_EN: If we could pause time and were omniscient.
+  text2_EN: We could then know everything about everything, such as the composition
+    and speed of an object.
+  text3_EN: But also see every neuron firing in sequence during every decision made
+    by everyone.
+  text4_EN: If we assembled all the data collected, could we then predict what is
+    going to happen in the next moment?
+  text5_EN: 
+  text6_EN: 
+  answer1_EN: 'Yes '
+  answer2_EN: No
   type: 2
   nbTexts: 3

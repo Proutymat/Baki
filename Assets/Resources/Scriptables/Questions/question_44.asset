@@ -15,6 +15,9 @@ MonoBehaviour:
   question: "Tu pourrais \xEAtre heureux.e seul.e"
   answer1: Oui
   answer2: Non
+  question_EN: Could you be happy alone
+  answer1_EN: 'Yes '
+  answer2_EN: No
   answer1Type1: 18
   answer1Type1ADD: 20
   answer2Type1: 18
@@ -27,3 +30,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0

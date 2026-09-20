@@ -21,5 +21,13 @@ MonoBehaviour:
   text6: 
   answer1: 'Oui '
   answer2: Non
+  text1_EN: If Mozart, as a child, became aware of his potential
+  text2_EN: If he knew that by practicing the piano, he would become a prodigy
+  text3_EN: But he would rather spend his afternoons playing outside with his friends
+  text4_EN: And in truth, he had no intention of starting to play the piano
+  text5_EN: Could we consider this immoral on his part?
+  text6_EN: 
+  answer1_EN: 'Yes '
+  answer2_EN: No
   type: 0
   nbTexts: 4

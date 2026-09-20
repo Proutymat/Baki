@@ -16,6 +16,10 @@ MonoBehaviour:
     ou une aventure physique"
   answer1: "\xC9motionnelle"
   answer2: Physique
+  question_EN: 'Which is a bigger form of ''infidelity'': an emotional connection
+    or a physical affair?'
+  answer1_EN: 'Emotional connection '
+  answer2_EN: Physical affair
   answer1Type1: -1
   answer1Type1ADD: 0
   answer2Type1: -1
@@ -28,3 +32,4 @@ MonoBehaviour:
   answer1IllustrationPriority: 0
   answer2Illustration: 
   answer2IllustrationPriority: 0
+  flag: 0
