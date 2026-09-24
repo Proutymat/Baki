@@ -67,7 +67,7 @@ public class GameManager : SerializedMonoBehaviour
         }
     }
 
-    public void InitializeGame(float gameDuration, GameLanguage language, bool skipIntro)
+    public void InitializeGame(float gameDuration, GameLanguage language, bool skipIntro, bool skipAnims)
     {
         // Initialize variables
         m_onboardingStep1checked = false;
@@ -110,6 +110,15 @@ public class GameManager : SerializedMonoBehaviour
         else
         {
             PanelManager.Instance.SetPanel(PanelManager.PanelState.Intro);
+        }
+
+        if (skipAnims)
+        {
+            PanelManager.Instance.SkipAnims = true;
+        }
+        else
+        {
+            PanelManager.Instance.SkipAnims = false;
         }
     }
     

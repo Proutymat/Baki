@@ -94,12 +94,14 @@ public class PanelManager : MonoBehaviour
     [SerializeField, ShowIf("m_setInInspector")] private GameObject landmarkAnswer2Button;
     
     private PanelState m_currentPanelState;
+    private bool m_skipAnims;
     
     public UiAnimations UIAnimations { get => uiAnimations; set => uiAnimations = value; }
     public ProgressBar ProgressBar { get => progressBar; set => progressBar = value; }
     public BeatingArrows BeatingArrows { get => directionalArrowsBeating; set => directionalArrowsBeating = value; }
     public GameObject DirectionalArrows { get => directionalArrowsObject; set => directionalArrowsObject = value; }
     public int CurrentQuestionZone { get => m_currentQuestionZone; }
+    public bool SkipAnims { set => m_skipAnims = value; }
 
     public void SetQuestionText(string value)
     {
@@ -405,11 +407,13 @@ public class PanelManager : MonoBehaviour
 
         
         // ANIMATION SEQUENCE
-        
-        anim.Append(selected.DOLocalMoveX(0, m_answersAnimDuration).SetEase(Ease.InOutQuad)); // Center selected answer
-        anim.Join(other.DOLocalMoveY(-200, m_answersAnimDuration).SetEase(Ease.InOutQuad)); // Exit other answer
-        anim.Append(currentZone.DOLocalMoveX(750, m_questionsAnimDuration).SetEase(Ease.InOutQuad)); // Exit current zone
-        anim.Join(nextZone.DOLocalMoveX(0, m_questionsAnimDuration).SetEase(Ease.InOutQuad)); // Enter next zone
+
+
+
+        anim.Append(selected.DOLocalMoveX(0, m_skipAnims ? 0 : m_answersAnimDuration).SetEase(Ease.InOutQuad)); // Center selected answer
+        anim.Join(other.DOLocalMoveY(-200, m_skipAnims ? 0 : m_answersAnimDuration).SetEase(Ease.InOutQuad)); // Exit other answer
+        anim.Append(currentZone.DOLocalMoveX(750, m_skipAnims ? 0 : m_questionsAnimDuration).SetEase(Ease.InOutQuad)); // Exit current zone
+        anim.Join(nextZone.DOLocalMoveX(0, m_skipAnims ? 0 : m_questionsAnimDuration).SetEase(Ease.InOutQuad)); // Enter next zone
         anim.Append(currentZone.DOLocalMoveX(-750, 0)); // Reset position
         
         anim.OnComplete(() =>

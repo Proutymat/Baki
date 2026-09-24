@@ -14,6 +14,7 @@ public class SetupPanel : MonoBehaviour
     [SerializeField] private Image m_toggleEnglishImage;
     [SerializeField] private TMP_InputField m_gameDurationInputField;
     [SerializeField] private Toggle m_skipIntroToggle;
+    [SerializeField] private Toggle m_skipAnimsToggle;
 
     public void UpdateTogglesColor()
     {
@@ -36,6 +37,6 @@ public class SetupPanel : MonoBehaviour
     {
         int gameDuration = int.Parse(m_gameDurationInputField.text);
         Enum.TryParse(m_languageToggle.GetFirstActiveToggle().gameObject.name, out GameManager.GameLanguage language);
-        GameManager.Instance.InitializeGame(gameDuration * 60, language, m_skipIntroToggle.isOn);
+        GameManager.Instance.InitializeGame(gameDuration * 60, language, m_skipIntroToggle.isOn, m_skipAnimsToggle.isOn);
     }
 }

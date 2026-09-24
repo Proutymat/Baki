@@ -327275,7 +327275,7 @@ SpriteRenderer:
   m_Size: {x: 1.42, y: 1.41}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &2061001004
@@ -341912,6 +341912,22 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: UpdateArrowButtonsSprite
       objectReference: {fileID: 0}
+    - target: {fileID: 3804707766973578305, guid: fc033a6e5c3c985458d9cfe5c96da01b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3804707766973578305, guid: fc033a6e5c3c985458d9cfe5c96da01b, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3804707766973578305, guid: fc033a6e5c3c985458d9cfe5c96da01b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3804707766973578305, guid: fc033a6e5c3c985458d9cfe5c96da01b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3825754574635072745, guid: fc033a6e5c3c985458d9cfe5c96da01b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -341925,6 +341941,26 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3825754574635072745, guid: fc033a6e5c3c985458d9cfe5c96da01b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4024906059939955232, guid: fc033a6e5c3c985458d9cfe5c96da01b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4024906059939955232, guid: fc033a6e5c3c985458d9cfe5c96da01b, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4024906059939955232, guid: fc033a6e5c3c985458d9cfe5c96da01b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4024906059939955232, guid: fc033a6e5c3c985458d9cfe5c96da01b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4024906059939955232, guid: fc033a6e5c3c985458d9cfe5c96da01b, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
@@ -342503,7 +342539,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7408118886511738652, guid: 181d769c4b7a5504d80046c88fcc14d1, type: 3}
       propertyPath: m_debug
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7408118886511738652, guid: 181d769c4b7a5504d80046c88fcc14d1, type: 3}
       propertyPath: m_questions.Array.size
@@ -342516,7 +342552,7 @@ PrefabInstance:
     - target: {fileID: 7408118886511738652, guid: 181d769c4b7a5504d80046c88fcc14d1, type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 7408118886511738652, guid: 181d769c4b7a5504d80046c88fcc14d1, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 7408118886511738652, guid: 181d769c4b7a5504d80046c88fcc14d1, type: 3}
       propertyPath: 'm_questions.Array.data[0]'
       value: 
