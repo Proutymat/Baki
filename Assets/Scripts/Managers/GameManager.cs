@@ -21,7 +21,6 @@ public class GameManager : SerializedMonoBehaviour
     [Title("Debug"), SerializeField] private bool m_debug;
     [SerializeField, ShowIf("m_debug")]private bool m_onboardingStep1checked;
     [SerializeField, ShowIf("m_debug")]private bool m_onboardingStep2checked;
-    [SerializeField, ShowIf("m_debug")] private float m_gameDuration = 600;
     [SerializeField, ShowIf("m_debug")] private float m_gameTimer;
     [SerializeField, ShowIf("m_debug")] private GameLanguage m_language;
     [SerializeField, ShowIf("m_debug")]private bool m_isGameOver;
@@ -30,6 +29,7 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("m_debug")]private string m_currentGameLogFolder;
     [SerializeField, ShowIf("m_debug")]private string m_answersLogFilePath;
     
+    private float m_gameDuration;
     private bool m_enablePrinters;
 
     public string CurrentGameLogFolder { get => m_currentGameLogFolder; }
@@ -71,6 +71,7 @@ public class GameManager : SerializedMonoBehaviour
         m_onboardingStep1checked = false;
         m_onboardingStep2checked = false;
         m_gameTimer = gameDuration;
+        m_gameDuration = gameDuration;
         m_language = language;
         m_isGameOver = false;
         m_inLandmark = false;
@@ -223,7 +224,6 @@ public class GameManager : SerializedMonoBehaviour
     private void Update()
     {
         if (m_isGameOver || !m_onboardingStep2checked || m_inLandmark) return;
-        
         // Update game time
         m_gameTimer -= Time.deltaTime;
         
