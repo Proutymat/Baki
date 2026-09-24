@@ -24,10 +24,11 @@ MonoBehaviour:
   text1_EN: It wasn't supposed to happen like this.
   text2_EN: You never planned to end up here.
   text3_EN: You didn't even see yourself getting to this point.
-  text4_EN: '"You don''t have time to think about any of this. No one saw you'
-  text5_EN: ' for now, no one knows anything."'
-  text6_EN: You can still act. Where do you hide the body?
-  answer1_EN: 
-  answer2_EN: You bury it
+  text4_EN: You don't have time to think about any of this. No one saw you for now,
+    no one knows anything.
+  text5_EN: You can still act. Where do you hide the body?
+  text6_EN: 
+  answer1_EN: You bury it
+  answer2_EN: You throw it into the water
   type: 3
   nbTexts: 4

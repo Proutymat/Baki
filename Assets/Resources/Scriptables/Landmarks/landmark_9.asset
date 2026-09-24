@@ -30,8 +30,8 @@ MonoBehaviour:
     you come and see this movie.
   text3_EN: The conversations die down and the opening credits begin.
   text4_EN: 'But instead of the movie you were expecting, a documentary about your
-    life is shown: the highs, the lows, the betrayals, the laughter, everything. '
-  text5_EN: 'Do you decide to watch the movie or stop the screening? '
+    life is shown: the highs, the lows, the betrayals, the laughter, everything.'
+  text5_EN: Do you decide to watch the movie or stop the screening?
   text6_EN: 
   answer1_EN: Stop
   answer2_EN: Watch
