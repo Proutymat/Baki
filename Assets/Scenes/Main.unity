@@ -342592,7 +342592,7 @@ PrefabInstance:
     - target: {fileID: 7408118886511738652, guid: 181d769c4b7a5504d80046c88fcc14d1, type: 3}
       propertyPath: serializationData.Prefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7408118886511738652, guid: 181d769c4b7a5504d80046c88fcc14d1, type: 3}
     - target: {fileID: 7408118886511738652, guid: 181d769c4b7a5504d80046c88fcc14d1, type: 3}
       propertyPath: 'm_questions.Array.data[0]'
       value: 
