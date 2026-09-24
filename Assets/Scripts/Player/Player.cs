@@ -105,7 +105,7 @@ public class Player : MonoBehaviour
         // Player hit landmark   
         else if (collider.tag == "Landmark")
         {
-            Debug.Log("Landmark reached");
+            //Debug.Log("Landmark reached");
             StatsManager.Instance.NbLandmarksReached++;
             
             gameManager.EnterLandmark(collider.GetComponent<Landmark>());
