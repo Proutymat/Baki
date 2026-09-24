@@ -13,10 +13,6 @@ public class GameManager : SerializedMonoBehaviour
     
     private static GameManager m_instance;
     
-    [Title("Parameters")]
-    [SerializeField] private bool m_enablePrinters;
-   
-    
     [Title("Set in inspector")]
     [SerializeField] private Player player;
     [SerializeField] private GameObject landmarksArrows;
@@ -33,6 +29,8 @@ public class GameManager : SerializedMonoBehaviour
     [SerializeField, ShowIf("m_debug")]private Landmark m_currentLandmark;
     [SerializeField, ShowIf("m_debug")]private string m_currentGameLogFolder;
     [SerializeField, ShowIf("m_debug")]private string m_answersLogFilePath;
+    
+    private bool m_enablePrinters;
 
     public string CurrentGameLogFolder { get => m_currentGameLogFolder; }
     public bool EnablePrinters { get => m_enablePrinters; }
@@ -67,7 +65,7 @@ public class GameManager : SerializedMonoBehaviour
         }
     }
 
-    public void InitializeGame(float gameDuration, GameLanguage language, bool skipIntro, bool skipAnims)
+    public void InitializeGame(float gameDuration, GameLanguage language, bool skipIntro, bool skipAnims, bool enablePrinters)
     {
         // Initialize variables
         m_onboardingStep1checked = false;
@@ -120,6 +118,8 @@ public class GameManager : SerializedMonoBehaviour
         {
             PanelManager.Instance.SkipAnims = false;
         }
+
+        m_enablePrinters = enablePrinters;
     }
     
     private void Start()
