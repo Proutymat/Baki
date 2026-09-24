@@ -325,7 +325,11 @@ public class CharteManager : MonoBehaviour
     {
         FillMissingIllustrations();
         UnlockStatsIllustrations();
-        if (GameManager.Instance.EnablePrinters) StartCoroutine(PrinterManager.Instance.PNGPrinter.PrintCharteTicket(m_lawsQueue, m_illusQueue));
+        if (GameManager.Instance.EnablePrinters)
+        {
+            PrinterManager.Instance.PNGPrinter.PrintLandmarkTicket(100);
+            StartCoroutine(PrinterManager.Instance.PNGPrinter.PrintCharteTicket(m_lawsQueue, m_illusQueue));
+        }
     }
     
     

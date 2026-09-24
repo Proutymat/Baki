@@ -210,7 +210,7 @@ public class PNGPrinter : MonoBehaviour
         headerTex.LoadImage(File.ReadAllBytes(headerPath));
         
         // Capture the text camera
-        percentageText.text = percentage < 10 ? $"0{percentage}%" : $"{percentage}%";
+        percentageText.text = percentage < 10 ? $" 0{percentage}%" : percentage < 100  ? $" {percentage}%" : $"{percentage}%";
         CaptureTextCamera(512, 512/4);
         
             // Load the footer
